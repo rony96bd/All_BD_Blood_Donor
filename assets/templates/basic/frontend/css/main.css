@@ -837,7 +837,7 @@ body::-webkit-scrollbar-thumb, .scroll-to-top, .about-thumb .play-btn, .donor-ca
 }
 
 .custom--table thead, .header, .header.menu-fixed .header__bottom, .language-select option, .inner-hero::after, .avaiable-blood-single, .about-item__icon, .donor-card::before, .work-item__icon, .testimonial-card, .sidebar-widget__header, .contact-form .select option {
-    background-color: #17173A;
+    background-color: #ffffff;
 }
 
 .custom--accordion-two .accordion-button:not(.collapsed), .header .site-logo.site-title, .hero__blood-search-form .input-field i, .avaiable-blood-single::after, .avaiable-blood-single__name, .about-item__icon, .work-item__icon i, .tags .single-tag, .sidebar-category__single a:hover, .sidebar-category .more, .footer .footer-contact-list li .icon i, .footer-links-list li a:hover, .single-info__content a:hover {
@@ -1372,8 +1372,8 @@ body::-webkit-scrollbar-thumb, .scroll-to-top, .about-thumb .play-btn, .donor-ca
 }
 .preloader {
   /* size */
-  width: 100px;
-  height: 100px;
+width: 130px;
+    height: 130px;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -2871,7 +2871,7 @@ label {
 .header__info-list li a {
     display: flex;
     align-items: center;
-    color: #fff;
+    color: #000;
     font-size: 0.875rem;
 }
 
