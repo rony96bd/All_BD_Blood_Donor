@@ -10,11 +10,6 @@ class Subscription extends BaseResource
     /**
      * @var string
      */
-    public $resource;
-
-    /**
-     * @var string
-     */
     public $id;
 
     /**
@@ -50,6 +45,11 @@ class Subscription extends BaseResource
      * @var int|null
      */
     public $times;
+
+    /**
+     * @var int|null
+     */
+    public $timesRemaining;
 
     /**
      * @var string
@@ -96,7 +96,7 @@ class Subscription extends BaseResource
      * @var \stdClass|null
      */
     public $webhookUrl;
-    
+
     /**
      * Date the next subscription payment will take place. For example: 2018-04-24
      *
@@ -110,16 +110,12 @@ class Subscription extends BaseResource
     public $_links;
 
     /**
-     * @return BaseResource|Subscription
+     * @return Subscription
      * @throws \Mollie\Api\Exceptions\ApiException
      */
     public function update()
     {
-        if (! isset($this->_links->self->href)) {
-            return $this;
-        }
-
-        $body = json_encode([
+        $body = [
             "amount" => $this->amount,
             "times" => $this->times,
             "startDate" => $this->startDate,
@@ -128,13 +124,9 @@ class Subscription extends BaseResource
             "mandateId" => $this->mandateId,
             "metadata" => $this->metadata,
             "interval" => $this->interval,
-        ]);
+        ];
 
-        $result = $this->client->performHttpCallToFullUrl(
-            MollieApiClient::HTTP_PATCH,
-            $this->_links->self->href,
-            $body
-        );
+        $result = $this->client->subscriptions->update($this->customerId, $this->id, $body);
 
         return ResourceFactory::createFromApiResult($result, new Subscription($this->client));
     }
@@ -193,6 +185,7 @@ class Subscription extends BaseResource
      * Cancels this subscription
      *
      * @return Subscription
+     * @throws \Mollie\Api\Exceptions\ApiException
      */
     public function cancel()
     {
@@ -216,6 +209,12 @@ class Subscription extends BaseResource
         return ResourceFactory::createFromApiResult($result, new Subscription($this->client));
     }
 
+    /**
+     * Get subscription payments
+     *
+     * @return \Mollie\Api\Resources\PaymentCollection
+     * @throws \Mollie\Api\Exceptions\ApiException
+     */
     public function payments()
     {
         if (! isset($this->_links->payments->href)) {

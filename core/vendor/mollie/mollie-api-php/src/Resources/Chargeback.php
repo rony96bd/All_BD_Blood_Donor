@@ -11,6 +11,13 @@ namespace Mollie\Api\Resources;
 class Chargeback extends BaseResource
 {
     /**
+     * Always 'chargeback'
+     *
+     * @var string
+     */
+    public $resource;
+
+    /**
      * Id of the payment method.
      *
      * @var string
@@ -45,6 +52,21 @@ class Chargeback extends BaseResource
      * @var \stdClass
      */
     public $settlementAmount;
+
+    /**
+     * The chargeback reason
+     *
+     * @var \stdClass|null
+     */
+    public $reason;
+
+    /**
+     * UTC datetime the date and time the chargeback was reversed in ISO-8601 format.
+     *
+     * @example "2013-12-25T10:30:54+00:00"
+     * @var string|null
+     */
+    public $reversedAt;
 
     /**
      * @var \stdClass

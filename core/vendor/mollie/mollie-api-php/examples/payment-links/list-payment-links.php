@@ -16,12 +16,12 @@ try {
      */
     $protocol = isset($_SERVER['HTTPS']) && strcasecmp('off', $_SERVER['HTTPS']) !== 0 ? "https" : "http";
     $hostname = $_SERVER['HTTP_HOST'];
-    $path = dirname(isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : $_SERVER['PHP_SELF']);
+    $path = dirname($_SERVER['REQUEST_URI'] ?? $_SERVER['PHP_SELF']);
 
     /*
      * Get the all payments for this API key ordered by newest.
      */
-    $paymentLinks = $mollie->paymentLink->page();
+    $paymentLinks = $mollie->paymentLinks->page();
 
     echo "<ul>";
     foreach ($paymentLinks as $paymentLink) {
@@ -29,7 +29,7 @@ try {
         echo "<strong style='font-family: monospace'>" . htmlspecialchars($paymentLink->id) . "</strong><br />";
         echo htmlspecialchars($paymentLink->description) . "<br />";
         echo htmlspecialchars($paymentLink->amount->currency) . " " . htmlspecialchars($paymentLink->amount->value) . "<br />";
-        echo "Link: " . htmlspecialchars($paymentLink->getPaymentLinkUrl()) . "<br />";
+        echo "Link: " . htmlspecialchars($paymentLink->getCheckoutUrl()) . "<br />";
 
         echo "</li>";
     }

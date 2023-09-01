@@ -41,18 +41,18 @@
     "socialite"
   ],
   "require": {
-    "php": "^7.2|^8.0",
-    "illuminate/support": "^6.0|^7.0|^8.0",
-    "mollie/mollie-api-php": "^2.36",
+    "php": "^8.0",
+    "illuminate/support": "^8.0|^9.0",
+    "mollie/mollie-api-php": "^2.49",
     "ext-json": "*"
   },
   "require-dev": {
-    "graham-campbell/testbench": "^5.5",
+    "graham-campbell/testbench": "^5.0",
     "mockery/mockery": "^1.0",
-    "phpunit/phpunit": "^7.5|^8.0",
-    "laravel/socialite": "^4.0|^5.0",
-    "friendsofphp/php-cs-fixer": "^3.0"
-
+    "phpunit/phpunit": "^9.0",
+    "laravel/socialite": "^5.0",
+    "laravel/pint": "^1.1",
+    "symfony/finder": "^5.0|^6.0"
   },
   "suggest": {
     "laravel/socialite": "Use Mollie Connect (OAuth) to authenticate via Laravel Socialite with the Mollie API. This is needed for some endpoints."
@@ -82,6 +82,8 @@
   },
   "scripts": {
     "test": "./vendor/bin/phpunit tests",
-    "format": "./vendor/bin/php-cs-fixer fix --allow-risky=yes"
-  }
+    "format": "./vendor/bin/pint"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
