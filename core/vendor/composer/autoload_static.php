@@ -127,6 +127,7 @@ class ComposerStaticInitdbbb649ab5d5a94633c76ad88b3b0477
             'Razorpay\\Api\\' => 13,
             'Ramsey\\Uuid\\' => 12,
             'Ramsey\\Collection\\' => 18,
+            'Rajurayhan\\Bndatetime\\' => 22,
         ),
         'P' => 
         array (
@@ -200,6 +201,7 @@ class ComposerStaticInitdbbb649ab5d5a94633c76ad88b3b0477
         'E' => 
         array (
             'Egulias\\EmailValidator\\' => 23,
+            'EasyBanglaDate\\' => 15,
         ),
         'D' => 
         array (
@@ -418,6 +420,10 @@ class ComposerStaticInitdbbb649ab5d5a94633c76ad88b3b0477
         array (
             0 => __DIR__ . '/..' . '/ramsey/collection/src',
         ),
+        'Rajurayhan\\Bndatetime\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rajurayhan/bndatetime/src',
+        ),
         'Psy\\' => 
         array (
             0 => __DIR__ . '/..' . '/psy/psysh/src',
@@ -432,8 +438,8 @@ class ComposerStaticInitdbbb649ab5d5a94633c76ad88b3b0477
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -603,6 +609,10 @@ class ComposerStaticInitdbbb649ab5d5a94633c76ad88b3b0477
         'Egulias\\EmailValidator\\' => 
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/src',
+        ),
+        'EasyBanglaDate\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ronisaha/easy-bangla-date/src',
         ),
         'Dotenv\\' => 
         array (
@@ -1119,6 +1129,12 @@ class ComposerStaticInitdbbb649ab5d5a94633c76ad88b3b0477
         'Dotenv\\Util\\Regex' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Util/Regex.php',
         'Dotenv\\Util\\Str' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Util/Str.php',
         'Dotenv\\Validator' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Validator.php',
+        'EasyBanglaDate\\Common\\BaseDateTime' => __DIR__ . '/..' . '/ronisaha/easy-bangla-date/src/Common/BaseDateTime.php',
+        'EasyBanglaDate\\Tools\\BanglaCalender' => __DIR__ . '/..' . '/ronisaha/easy-bangla-date/src/Tools/BanglaCalender.php',
+        'EasyBanglaDate\\Tools\\Converter' => __DIR__ . '/..' . '/ronisaha/easy-bangla-date/src/Tools/Converter.php',
+        'EasyBanglaDate\\Tools\\MagicNumbers' => __DIR__ . '/..' . '/ronisaha/easy-bangla-date/src/Tools/MagicNumbers.php',
+        'EasyBanglaDate\\Types\\BnDateTime' => __DIR__ . '/..' . '/ronisaha/easy-bangla-date/src/Types/BnDateTime.php',
+        'EasyBanglaDate\\Types\\DateTime' => __DIR__ . '/..' . '/ronisaha/easy-bangla-date/src/Types/DateTime.php',
         'Egulias\\EmailValidator\\EmailLexer' => __DIR__ . '/..' . '/egulias/email-validator/src/EmailLexer.php',
         'Egulias\\EmailValidator\\EmailParser' => __DIR__ . '/..' . '/egulias/email-validator/src/EmailParser.php',
         'Egulias\\EmailValidator\\EmailValidator' => __DIR__ . '/..' . '/egulias/email-validator/src/EmailValidator.php',
@@ -5414,6 +5430,7 @@ class ComposerStaticInitdbbb649ab5d5a94633c76ad88b3b0477
         'Psy\\VersionUpdater\\IntervalChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/IntervalChecker.php',
         'Psy\\VersionUpdater\\NoopChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/NoopChecker.php',
         'Psy\\VersionUpdater\\SelfUpdate' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/SelfUpdate.php',
+        'Rajurayhan\\Bndatetime\\BnDateTimeConverter' => __DIR__ . '/..' . '/rajurayhan/bndatetime/src/BnDateTimeConverter.php',
         'Ramsey\\Collection\\AbstractArray' => __DIR__ . '/..' . '/ramsey/collection/src/AbstractArray.php',
         'Ramsey\\Collection\\AbstractCollection' => __DIR__ . '/..' . '/ramsey/collection/src/AbstractCollection.php',
         'Ramsey\\Collection\\AbstractSet' => __DIR__ . '/..' . '/ramsey/collection/src/AbstractSet.php',

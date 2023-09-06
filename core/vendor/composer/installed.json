@@ -5485,6 +5485,50 @@
             "install-path": "../psy/psysh"
         },
         {
+            "name": "rajurayhan/bndatetime",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rajurayhan/bndatetime.git",
+                "reference": "e5e5f49aeee7a036250b428a018261658ab5dda4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rajurayhan/bndatetime/zipball/e5e5f49aeee7a036250b428a018261658ab5dda4",
+                "reference": "e5e5f49aeee7a036250b428a018261658ab5dda4",
+                "shasum": ""
+            },
+            "require": {
+                "ronisaha/easy-bangla-date": "dev-master"
+            },
+            "time": "2019-07-09T05:43:23+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Rajurayhan\\Bndatetime\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Raju Rayhan",
+                    "email": "raju.rayhan@yandex.com"
+                }
+            ],
+            "description": "English to Bangla Date Time Converter for Laravel.",
+            "support": {
+                "issues": "https://github.com/rajurayhan/bndatetime/issues",
+                "source": "https://github.com/rajurayhan/bndatetime/tree/master"
+            },
+            "install-path": "../rajurayhan/bndatetime"
+        },
+        {
             "name": "ralouphie/getallheaders",
             "version": "3.0.3",
             "version_normalized": "3.0.3.0",
@@ -5869,6 +5913,66 @@
                 "source": "https://github.com/WordPress/Requests"
             },
             "install-path": "../rmccue/requests"
+        },
+        {
+            "name": "ronisaha/easy-bangla-date",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ronisaha/easy-bangla-date.git",
+                "reference": "bae41f86401854a31bf8465e7d85e4fe892908eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ronisaha/easy-bangla-date/zipball/bae41f86401854a31bf8465e7d85e4fe892908eb",
+                "reference": "bae41f86401854a31bf8465e7d85e4fe892908eb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8 || ^5.7 || ^6.5",
+                "satooshi/php-coveralls": "^0.6"
+            },
+            "time": "2018-06-07T00:46:13+00:00",
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "EasyBanglaDate\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roni Saha",
+                    "email": "roni.cse@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Extended DateTime Class For Bangla Date and Time",
+            "homepage": "http://ronisaha.github.io/easy-bangla-date/",
+            "keywords": [
+                "Bangla",
+                "Bangla Date",
+                "Bangla DateTime"
+            ],
+            "support": {
+                "issues": "https://github.com/ronisaha/easy-bangla-date/issues",
+                "source": "https://github.com/ronisaha/easy-bangla-date"
+            },
+            "install-path": "../ronisaha/easy-bangla-date"
         },
         {
             "name": "sebastian/cli-parser",

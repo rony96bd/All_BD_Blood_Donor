@@ -100,7 +100,8 @@ select {
     cursor: pointer;
 }
 
-ul, ol {
+ul,
+ol {
     padding: 0;
     margin: 0;
     list-style: none;
@@ -268,7 +269,7 @@ hr {
 }
 
 .section--bg {
-    background-color:#F2F3F7;
+    background-color: #F2F3F7;
 }
 
 .section--bg2 {
@@ -581,7 +582,7 @@ a.text-white:hover {
     color: #fff;
 }
 
-.custom--accordion .accordion-item + .accordion-item {
+.custom--accordion .accordion-item+.accordion-item {
     margin-top: 1.25rem;
 }
 
@@ -654,7 +655,7 @@ a.text-white:hover {
     background-color: #f3f6f9;
 }
 
-.cmn-list li + li {
+.cmn-list li+li {
     margin-top: 0.9375rem;
 }
 
@@ -681,11 +682,11 @@ a.text-white:hover {
     padding-left: 1.125rem;
 }
 
-.number-list li + li {
+.number-list li+li {
     margin-top: 0.625rem;
 }
 
-.disc-list li + li {
+.disc-list li+li {
     margin-top: 0.625rem;
 }
 
@@ -710,7 +711,7 @@ a.text-white:hover {
     background-color: #575757;
 }
 
-.square-list li + li {
+.square-list li+li {
     margin-top: 10px;
 }
 
@@ -826,47 +827,122 @@ a.text-white:hover {
     padding-left: 20px;
 }
 
-body, .custom--checkbox label::before, .header .main-menu li.menu_has_children > a::before, .header .main-menu li .sub-menu, .header .main-menu li .sub-menu li a, .avaiable-blood-single, .blog-post, .blog-post__thumb img, .action-sidebar, .donor-item {
+body,
+.custom--checkbox label::before,
+.header .main-menu li.menu_has_children>a::before,
+.header .main-menu li .sub-menu,
+.header .main-menu li .sub-menu li a,
+.avaiable-blood-single,
+.blog-post,
+.blog-post__thumb img,
+.action-sidebar,
+.donor-item {
     -webkit-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
 }
 
-body::-webkit-scrollbar-thumb, .scroll-to-top, .about-thumb .play-btn, .donor-card, .work-item__icon .step, .blog-post__meta .tag, .footer-widget__title::after {
+body::-webkit-scrollbar-thumb,
+.scroll-to-top,
+.about-thumb .play-btn,
+.donor-card,
+.work-item__icon .step,
+.blog-post__meta .tag,
+.footer-widget__title::after {
     background-color: #FB3640;
 }
 
-.custom--table thead, .header, .header.menu-fixed .header__bottom, .language-select option, .inner-hero::after, .avaiable-blood-single, .about-item__icon, .donor-card::before, .work-item__icon, .testimonial-card, .sidebar-widget__header, .contact-form .select option {
+.custom--table thead,
+.header,
+.header.menu-fixed .header__bottom,
+.language-select option,
+.inner-hero::after,
+.avaiable-blood-single,
+.about-item__icon,
+.donor-card::before,
+.work-item__icon,
+.testimonial-card,
+.sidebar-widget__header,
+.contact-form .select option {
     background-color: #ffffff;
 }
 
-.custom--accordion-two .accordion-button:not(.collapsed), .header .site-logo.site-title, .hero__blood-search-form .input-field i, .avaiable-blood-single::after, .avaiable-blood-single__name, .about-item__icon, .work-item__icon i, .tags .single-tag, .sidebar-category__single a:hover, .sidebar-category .more, .footer .footer-contact-list li .icon i, .footer-links-list li a:hover, .single-info__content a:hover {
+.custom--accordion-two .accordion-button:not(.collapsed),
+.header .site-logo.site-title,
+.hero__blood-search-form .input-field i,
+.avaiable-blood-single::after,
+.avaiable-blood-single__name,
+.about-item__icon,
+.work-item__icon i,
+.tags .single-tag,
+.sidebar-category__single a:hover,
+.sidebar-category .more,
+.footer .footer-contact-list li .icon i,
+.footer-links-list li a:hover,
+.single-info__content a:hover {
     color: #FB3640;
 }
 
-.t-company-thumb, .hero__blood-search-form, .hero__blood-search-form::before, .volunteer-card, .blog-post, .footer-widget__title::before, .donor-item {
+.t-company-thumb,
+.hero__blood-search-form,
+.hero__blood-search-form::before,
+.volunteer-card,
+.blog-post,
+.footer-widget__title::before,
+.donor-item {
     background-color: #fff;
 }
 
-.hero__title, .avaiable-blood-single__amount, .about-thumb .play-btn, .blog-post__meta .tag, .footer li, .footer span, .footer a, .footer i, .footer p, .footer .footer-contact-list li .content .title, .footer .footer-contact-list li .content a, .footer-widget__title, .footer-overview__number {
+.hero__title,
+.avaiable-blood-single__amount,
+.about-thumb .play-btn,
+.blog-post__meta .tag,
+.footer li,
+.footer span,
+.footer a,
+.footer i,
+.footer p,
+.footer .footer-contact-list li .content .title,
+.footer .footer-contact-list li .content a,
+.footer-widget__title,
+.footer-overview__number {
     color: #fff;
 }
 
-.about-thumb img, .volunteer-card__thumb img, .donor-card__thumb img, .involve-item__thumb img, .blog-post__thumb img {
+.about-thumb img,
+.volunteer-card__thumb img,
+.donor-card__thumb img,
+.involve-item__thumb img,
+.blog-post__thumb img {
     object-fit: cover;
     -o-object-fit: cover;
     object-position: center;
     -o-object-position: center;
 }
 
-.hero__blood-search-form, .about-item, .volunteer-card__social-links, .donor-card, .blog-post__meta, .footer .footer-contact-list, .footer .footer-contact-list li, .donor-search-form, .donor-item{
+.hero__blood-search-form,
+.about-item,
+.volunteer-card__social-links,
+.donor-card,
+.blog-post__meta,
+.footer .footer-contact-list,
+.footer .footer-contact-list li,
+.donor-search-form,
+.donor-item {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
 }
 
-.t-company-thumb, .about-item__icon, .volunteer-card__thumb, .blog-post__thumb, .blog-post__meta .tag, .tags .single-tag, .donor-item, .donor-item__thumb {
+.t-company-thumb,
+.about-item__icon,
+.volunteer-card__thumb,
+.blog-post__thumb,
+.blog-post__meta .tag,
+.tags .single-tag,
+.donor-item,
+.donor-item__thumb {
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -874,7 +950,18 @@ body::-webkit-scrollbar-thumb, .scroll-to-top, .about-thumb .play-btn, .donor-ca
     -o-border-radius: 5px;
 }
 
-.custom--card, .hero__blood-search-form, .hero__blood-search-form::before, .avaiable-blood-single, .volunteer-card, .donor-card, .involve-item, .testimonial-card, .blog-post, .blog-details-thumb, .sidebar-widget, .donor-profile__thumb {
+.custom--card,
+.hero__blood-search-form,
+.hero__blood-search-form::before,
+.avaiable-blood-single,
+.volunteer-card,
+.donor-card,
+.involve-item,
+.testimonial-card,
+.blog-post,
+.blog-details-thumb,
+.sidebar-widget,
+.donor-profile__thumb {
     border-radius: 8px;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
@@ -940,19 +1027,27 @@ body::-webkit-scrollbar-thumb, .scroll-to-top, .about-thumb .play-btn, .donor-ca
 }
 
 @-webkit-keyframes shake {
-    0%, 100% {
+0%,
+    100% {
         -webkit-transform: translateX(0);
         -ms-transform: translateX(0);
         transform: translateX(0);
     }
 
-    10%, 30%, 50%, 70%, 90% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                10%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                30%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                50%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                70%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                90% {
         -webkit-transform: translateX(-10px);
         -ms-transform: translateX(-10px);
         transform: translateX(-10px);
     }
 
-    20%, 40%, 60%, 80% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                20%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                40%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                60%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                80% {
         -webkit-transform: translateX(10px);
         -ms-transform: translateX(10px);
         transform: translateX(10px);
@@ -960,19 +1055,27 @@ body::-webkit-scrollbar-thumb, .scroll-to-top, .about-thumb .play-btn, .donor-ca
 }
 
 @-moz-keyframes shake {
-    0%, 100% {
+0%,
+    100% {
         -webkit-transform: translateX(0);
         -ms-transform: translateX(0);
         transform: translateX(0);
     }
 
-    10%, 30%, 50%, 70%, 90% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                10%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                30%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                50%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                70%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                90% {
         -webkit-transform: translateX(-10px);
         -ms-transform: translateX(-10px);
         transform: translateX(-10px);
     }
 
-    20%, 40%, 60%, 80% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                20%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                40%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                60%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                80% {
         -webkit-transform: translateX(10px);
         -ms-transform: translateX(10px);
         transform: translateX(10px);
@@ -980,19 +1083,27 @@ body::-webkit-scrollbar-thumb, .scroll-to-top, .about-thumb .play-btn, .donor-ca
 }
 
 @-ms-keyframes shake {
-    0%, 100% {
+0%,
+    100% {
         -webkit-transform: translateX(0);
         -ms-transform: translateX(0);
         transform: translateX(0);
     }
 
-    10%, 30%, 50%, 70%, 90% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                10%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                30%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                50%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                70%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                90% {
         -webkit-transform: translateX(-10px);
         -ms-transform: translateX(-10px);
         transform: translateX(-10px);
     }
 
-    20%, 40%, 60%, 80% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                20%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                40%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                60%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                80% {
         -webkit-transform: translateX(10px);
         -ms-transform: translateX(10px);
         transform: translateX(10px);
@@ -1000,19 +1111,27 @@ body::-webkit-scrollbar-thumb, .scroll-to-top, .about-thumb .play-btn, .donor-ca
 }
 
 @keyframes shake {
-    0%, 100% {
+0%,
+    100% {
         -webkit-transform: translateX(0);
         -ms-transform: translateX(0);
         transform: translateX(0);
     }
 
-    10%, 30%, 50%, 70%, 90% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                10%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                30%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                50%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                70%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                90% {
         -webkit-transform: translateX(-10px);
         -ms-transform: translateX(-10px);
         transform: translateX(-10px);
     }
 
-    20%, 40%, 60%, 80% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                20%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                40%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                60%,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                80% {
         -webkit-transform: translateX(10px);
         -ms-transform: translateX(10px);
         transform: translateX(10px);
@@ -1362,288 +1481,354 @@ body::-webkit-scrollbar-thumb, .scroll-to-top, .about-thumb .play-btn, .donor-ca
     color: #ffffff;
     display: inline-block;
 }
+
 .preloader-holder {
-  position: fixed;
-  z-index: 9999999;
-  inset:  0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #17173A;
+    position: fixed;
+        z-index: 9999999;
+    inset: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #17173A;
 }
+
 .preloader {
-  /* size */
-width: 130px;
+    /* size */
+        width: 130px;
     height: 130px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  animation: rotatePreloader 2s infinite ease-in;
+    position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        animation: rotatePreloader 2s infinite ease-in;
 }
+
 @keyframes rotatePreloader {
-  0% {
-    transform: translateX(-50%) translateY(-50%) rotateZ(0deg);
-  }
-  100% {
-    transform: translateX(-50%) translateY(-50%) rotateZ(-360deg);
-  }
+    0% {
+            transform: translateX(-50%) translateY(-50%) rotateZ(0deg);
+        }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                100% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: translateX(-50%) translateY(-50%) rotateZ(-360deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
 }
+
 .preloader div {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
+    position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
 }
+
 .preloader div:before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 0%;
-  width: 10%;
-  height: 10%;
-  background-color: #FB3640;
-  transform: translateX(-50%);
-  border-radius: 50%;
+    content: "";
+        position: absolute;
+        left: 50%;
+        top: 0%;
+        width: 10%;
+        height: 10%;
+        background-color: #FB3640;
+        transform: translateX(-50%);
+        border-radius: 50%;
 }
+
 .preloader div:nth-child(1) {
-  transform: rotateZ(0deg);
-  animation: rotateCircle1 2s infinite linear;
-  z-index: 9;
+    transform: rotateZ(0deg);
+        animation: rotateCircle1 2s infinite linear;
+        z-index: 9;
 }
+
 @keyframes rotateCircle1 {
-  0% {
-    opacity: 0;
-  }
-  0% {
-    opacity: 1;
-    transform: rotateZ(36deg);
-  }
-  7% {
-    transform: rotateZ(0deg);
-  }
-  57% {
-    transform: rotateZ(0deg);
-  }
-  100% {
-    transform: rotateZ(-324deg);
-    opacity: 1;
-  }
+    0% {
+            opacity: 0;
+        }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                0% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    opacity: 1;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(36deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                7% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(0deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                57% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(0deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                100% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-324deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    opacity: 1;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
 }
+
 .preloader div:nth-child(2) {
-  transform: rotateZ(36deg);
-  animation: rotateCircle2 2s infinite linear;
-  z-index: 8;
+    transform: rotateZ(36deg);
+        animation: rotateCircle2 2s infinite linear;
+        z-index: 8;
 }
+
 @keyframes rotateCircle2 {
-  5% {
-    opacity: 0;
-  }
-  5.0001% {
-    opacity: 1;
-    transform: rotateZ(0deg);
-  }
-  12% {
-    transform: rotateZ(-36deg);
-  }
-  62% {
-    transform: rotateZ(-36deg);
-  }
-  100% {
-    transform: rotateZ(-324deg);
-    opacity: 1;
-  }
+    5% {
+            opacity: 0;
+        }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                5.0001% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    opacity: 1;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(0deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                12% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-36deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                62% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-36deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                100% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-324deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    opacity: 1;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
 }
+
 .preloader div:nth-child(3) {
-  transform: rotateZ(72deg);
-  animation: rotateCircle3 2s infinite linear;
-  z-index: 7;
+    transform: rotateZ(72deg);
+        animation: rotateCircle3 2s infinite linear;
+        z-index: 7;
 }
+
 @keyframes rotateCircle3 {
-  10% {
-    opacity: 0;
-  }
-  10.0002% {
-    opacity: 1;
-    transform: rotateZ(-36deg);
-  }
-  17% {
-    transform: rotateZ(-72deg);
-  }
-  67% {
-    transform: rotateZ(-72deg);
-  }
-  100% {
-    transform: rotateZ(-324deg);
-    opacity: 1;
-  }
+    10% {
+            opacity: 0;
+        }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                10.0002% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    opacity: 1;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-36deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                17% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-72deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                67% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-72deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                100% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-324deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    opacity: 1;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
 }
+
 .preloader div:nth-child(4) {
-  transform: rotateZ(108deg);
-  animation: rotateCircle4 2s infinite linear;
-  z-index: 6;
+    transform: rotateZ(108deg);
+        animation: rotateCircle4 2s infinite linear;
+        z-index: 6;
 }
+
 @keyframes rotateCircle4 {
-  15% {
-    opacity: 0;
-  }
-  15.0003% {
-    opacity: 1;
-    transform: rotateZ(-72deg);
-  }
-  22% {
-    transform: rotateZ(-108deg);
-  }
-  72% {
-    transform: rotateZ(-108deg);
-  }
-  100% {
-    transform: rotateZ(-324deg);
-    opacity: 1;
-  }
+    15% {
+            opacity: 0;
+        }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                15.0003% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    opacity: 1;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-72deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                22% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-108deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                72% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-108deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                100% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-324deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    opacity: 1;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
 }
+
 .preloader div:nth-child(5) {
-  transform: rotateZ(144deg);
-  animation: rotateCircle5 2s infinite linear;
-  z-index: 5;
+    transform: rotateZ(144deg);
+        animation: rotateCircle5 2s infinite linear;
+        z-index: 5;
 }
+
 @keyframes rotateCircle5 {
-  20% {
-    opacity: 0;
-  }
-  20.0004% {
-    opacity: 1;
-    transform: rotateZ(-108deg);
-  }
-  27% {
-    transform: rotateZ(-144deg);
-  }
-  77% {
-    transform: rotateZ(-144deg);
-  }
-  100% {
-    transform: rotateZ(-324deg);
-    opacity: 1;
-  }
+    20% {
+            opacity: 0;
+        }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                20.0004% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    opacity: 1;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-108deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                27% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-144deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                77% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-144deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                100% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-324deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    opacity: 1;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
 }
+
 .preloader div:nth-child(6) {
-  transform: rotateZ(180deg);
-  animation: rotateCircle6 2s infinite linear;
-  z-index: 4;
+    transform: rotateZ(180deg);
+        animation: rotateCircle6 2s infinite linear;
+        z-index: 4;
 }
+
 @keyframes rotateCircle6 {
-  25% {
-    opacity: 0;
-  }
-  25.0005% {
-    opacity: 1;
-    transform: rotateZ(-144deg);
-  }
-  32% {
-    transform: rotateZ(-180deg);
-  }
-  82% {
-    transform: rotateZ(-180deg);
-  }
-  100% {
-    transform: rotateZ(-324deg);
-    opacity: 1;
-  }
+    25% {
+            opacity: 0;
+        }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                25.0005% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    opacity: 1;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-144deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                32% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-180deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                82% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-180deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                100% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-324deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    opacity: 1;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
 }
+
 .preloader div:nth-child(7) {
-  transform: rotateZ(216deg);
-  animation: rotateCircle7 2s infinite linear;
-  z-index: 3;
+    transform: rotateZ(216deg);
+        animation: rotateCircle7 2s infinite linear;
+        z-index: 3;
 }
+
 @keyframes rotateCircle7 {
-  30% {
-    opacity: 0;
-  }
-  30.0006% {
-    opacity: 1;
-    transform: rotateZ(-180deg);
-  }
-  37% {
-    transform: rotateZ(-216deg);
-  }
-  87% {
-    transform: rotateZ(-216deg);
-  }
-  100% {
-    transform: rotateZ(-324deg);
-    opacity: 1;
-  }
+    30% {
+            opacity: 0;
+        }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                30.0006% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    opacity: 1;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-180deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                37% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-216deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                87% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-216deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                100% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-324deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    opacity: 1;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
 }
+
 .preloader div:nth-child(8) {
-  transform: rotateZ(252deg);
-  animation: rotateCircle8 2s infinite linear;
-  z-index: 2;
+    transform: rotateZ(252deg);
+        animation: rotateCircle8 2s infinite linear;
+        z-index: 2;
 }
+
 @keyframes rotateCircle8 {
-  35% {
-    opacity: 0;
-  }
-  35.0007% {
-    opacity: 1;
-    transform: rotateZ(-216deg);
-  }
-  42% {
-    transform: rotateZ(-252deg);
-  }
-  92% {
-    transform: rotateZ(-252deg);
-  }
-  100% {
-    transform: rotateZ(-324deg);
-    opacity: 1;
-  }
+    35% {
+            opacity: 0;
+        }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                35.0007% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    opacity: 1;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-216deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                42% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-252deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                92% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-252deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                100% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-324deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    opacity: 1;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
 }
+
 .preloader div:nth-child(9) {
-  transform: rotateZ(288deg);
-  animation: rotateCircle9 2s infinite linear;
-  z-index: 1;
+    transform: rotateZ(288deg);
+        animation: rotateCircle9 2s infinite linear;
+        z-index: 1;
 }
+
 @keyframes rotateCircle9 {
-  40% {
-    opacity: 0;
-  }
-  40.0008% {
-    opacity: 1;
-    transform: rotateZ(-252deg);
-  }
-  47% {
-    transform: rotateZ(-288deg);
-  }
-  97% {
-    transform: rotateZ(-288deg);
-  }
-  100% {
-    transform: rotateZ(-324deg);
-    opacity: 1;
-  }
+    40% {
+            opacity: 0;
+        }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                40.0008% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    opacity: 1;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-252deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                47% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-288deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                97% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-288deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                100% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-324deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    opacity: 1;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
 }
+
 .preloader div:nth-child(10) {
-  transform: rotateZ(324deg);
-  animation: rotateCircle10 2s infinite linear;
-  z-index: 0;
+    transform: rotateZ(324deg);
+        animation: rotateCircle10 2s infinite linear;
+        z-index: 0;
 }
+
 @keyframes rotateCircle10 {
-  45% {
-    opacity: 0;
-  }
-  45.0009% {
-    opacity: 1;
-    transform: rotateZ(-288deg);
-  }
-  52% {
-    transform: rotateZ(-324deg);
-  }
-  102% {
-    transform: rotateZ(-324deg);
-  }
-  100% {
-    transform: rotateZ(-324deg);
-    opacity: 1;
-  }
+    45% {
+            opacity: 0;
+        }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                45.0009% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    opacity: 1;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-288deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                52% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-324deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                102% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-324deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                100% {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    transform: rotateZ(-324deg);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    opacity: 1;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
 }
 
 /* global css end */
@@ -1697,7 +1882,12 @@ h6 {
     font-size: 1.125rem;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: "Fira Sans", sans-serif;
     color: #17173A;
     font-weight: 500;
@@ -1706,7 +1896,12 @@ h1, h2, h3, h4, h5, h6 {
     word-break: break-word;
 }
 
-h1 > a, h2 > a, h3 > a, h4 > a, h5 > a, h6 > a {
+h1>a,
+h2>a,
+h3>a,
+h4>a,
+h5>a,
+h6>a {
     font-family: "Fira Sans", sans-serif;
     color: #17173A;
     font-weight: 500;
@@ -1717,7 +1912,9 @@ h1 > a, h2 > a, h3 > a, h4 > a, h5 > a, h6 > a {
     word-break: break-word;
 }
 
-p, li, span {
+p,
+li,
+span {
     margin: 0;
 }
 
@@ -2217,14 +2414,16 @@ button:focus {
         padding-right: 15px;
     }
 
-    .table-responsive--md tr th, .table-responsive--md tr td {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .table-responsive--md tr th,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .table-responsive--md tr td {
         display: block;
         padding-left: 45% !important;
         text-align: right !important;
         border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
     }
 
-    .table-responsive--md tr th:first-child, .table-responsive--md tr td:first-child {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .table-responsive--md tr th:first-child,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .table-responsive--md tr td:first-child {
         border-top: none !important;
     }
 
@@ -2250,14 +2449,16 @@ button:focus {
         padding-right: 15px;
     }
 
-    .table-responsive--sm tr th, .table-responsive--sm tr td {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .table-responsive--sm tr th,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .table-responsive--sm tr td {
         display: block;
         padding-left: 45% !important;
         text-align: right !important;
         border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
     }
 
-    .table-responsive--sm tr th:first-child, .table-responsive--sm tr td:first-child {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .table-responsive--sm tr th:first-child,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                .table-responsive--sm tr td:first-child {
         border-top: none !important;
     }
 
@@ -2267,7 +2468,8 @@ button:focus {
 }
 
 @media (max-width: 1199px) {
-    *[class*="table-responsive--"].data-label--none tr th, *[class*="table-responsive--"].data-label--none tr td {
+*[class*="table-responsive--"].data-label--none tr th,
+    *[class*="table-responsive--"].data-label--none tr td {
         padding-left: .75rem;
     }
 }
@@ -2420,8 +2622,8 @@ label {
     font-weight: 500;
 }
 
-.input-group > .form--control,
-.input-group > .select {
+.input-group>.form--control,
+.input-group>.select {
     position: relative;
     flex: 1 1 auto;
     width: 1%;
@@ -2447,12 +2649,12 @@ label {
     cursor: pointer;
 }
 
-.custom--radio input[type=radio]:checked ~ label::before {
+.custom--radio input[type=radio]:checked~label::before {
     border-width: 2px;
     border-color: #FB3640;
 }
 
-.custom--radio input[type=radio]:checked ~ label::after {
+.custom--radio input[type=radio]:checked~label::after {
     opacity: 1;
 }
 
@@ -2509,7 +2711,7 @@ label {
     display: none;
 }
 
-.custom--checkbox input:checked ~ label::before {
+.custom--checkbox input:checked~label::before {
     content: "\f14a";
     color: #FB3640;
 }
@@ -2538,7 +2740,7 @@ label {
     box-shadow: 0 0 6px 1px rgba(234, 84, 85, 0.3) !important;
 }
 
-.select2-basic ~ .select2-container {
+.select2-basic~.select2-container {
     display: block;
     width: 100% !important;
     max-width: 100% !important;
@@ -2550,7 +2752,9 @@ label {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.select2-container .selection, .select2-container .select2-selection--single, .select2-container .select2-selection__rendered {
+.select2-container .selection,
+.select2-container .select2-selection--single,
+.select2-container .select2-selection__rendered {
     display: block;
 }
 
@@ -2627,6 +2831,7 @@ label {
 
 .header__top {
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 3px 4px -3px gray;
     padding: 0.625rem 0;
 }
 
@@ -2684,21 +2889,21 @@ label {
     position: relative;
 }
 
-.header .main-menu li.menu_has_children.open > .sub-menu {
+.header .main-menu li.menu_has_children.open>.sub-menu {
     display: block;
 }
 
-.header .main-menu li.menu_has_children > a {
+.header .main-menu li.menu_has_children>a {
     padding-right: 1.5625rem;
 }
 
 @media (max-width: 1199px) {
-    .header .main-menu li.menu_has_children > a {
+    .header .main-menu li.menu_has_children>a {
         display: block;
     }
 }
 
-.header .main-menu li.menu_has_children > a::before {
+.header .main-menu li.menu_has_children>a::before {
     position: absolute;
     content: "\f067";
     font-family: "Line Awesome Free";
@@ -2709,14 +2914,14 @@ label {
 }
 
 @media (max-width: 1199px) {
-    .header .main-menu li.menu_has_children > a::before {
+    .header .main-menu li.menu_has_children>a::before {
         display: block;
         top: 0.5625rem;
         color: #fff;
     }
 }
 
-.header .main-menu li.menu_has_children:hover > a::before {
+.header .main-menu li.menu_has_children:hover>a::before {
     content: "\f068";
     color: #FB3640;
 }
@@ -2726,7 +2931,7 @@ label {
     font-weight: 500;
     padding: 0.9375rem 0.9375rem 0.9375rem 0;
     font-size: 0.9375rem;
-    color: #fff;
+    color: #000;
 }
 
 @media (max-width: 1199px) {
@@ -2737,7 +2942,8 @@ label {
     }
 }
 
-.header .main-menu li a:hover, .header .main-menu li a:focus {
+.header .main-menu li a:hover,
+.header .main-menu li a:focus {
     color: #FB3640;
 }
 
@@ -2809,38 +3015,38 @@ label {
     color: #FB3640;
 }
 
-.header .main-menu li .sub-menu li + li {
+.header .main-menu li .sub-menu li+li {
     margin-left: 0;
 }
 
-.header .main-menu li:hover > .sub-menu {
+.header .main-menu li:hover>.sub-menu {
     top: 100%;
     opacity: 1;
     visibility: visible;
 }
 
-.header .main-menu li + li {
+.header .main-menu li+li {
     margin-left: 1.25rem;
 }
 
 @media (max-width: 1199px) {
-    .header .main-menu li + li {
+    .header .main-menu li+li {
         margin-left: 0;
     }
 }
 
-.header .main-menu .sub-menu li.menu_has_children > a::before {
+.header .main-menu .sub-menu li.menu_has_children>a::before {
     top: 9px;
     right: 8px;
 }
 
-.header .main-menu .sub-menu li.menu_has_children > .sub-menu {
+.header .main-menu .sub-menu li.menu_has_children>.sub-menu {
     left: 100%;
     top: 0;
 }
 
 @media (max-width: 1199px) {
-    .header .main-menu .sub-menu li.menu_has_children > .sub-menu {
+    .header .main-menu .sub-menu li.menu_has_children>.sub-menu {
         padding-left: 15px;
     }
 }
@@ -2923,7 +3129,7 @@ label {
     background: transparent;
     border-top: 2px solid;
     border-bottom: 2px solid;
-    color: #fff;
+    color: #000;
     font-size: 0;
     -webkit-transition: all 0.25s ease-in-out;
     -o-transition: all 0.25s ease-in-out;
@@ -2931,7 +3137,8 @@ label {
     cursor: pointer;
 }
 
-.menu-toggle:before, .menu-toggle:after {
+.menu-toggle:before,
+.menu-toggle:after {
     content: '';
     display: block;
     width: 100%;
@@ -2952,7 +3159,8 @@ label {
 }
 
 @media (max-width: 1199px) {
-    .menu-toggle:before, .menu-toggle:after {
+.menu-toggle:before,
+    .menu-toggle:after {
         background-color: #fff;
     }
 }
@@ -3110,7 +3318,8 @@ label {
     }
 }
 
-.hero__blood-search-form .input-field input, .hero__blood-search-form .input-field select {
+.hero__blood-search-form .input-field input,
+.hero__blood-search-form .input-field select {
     background-color: transparent;
     border: none;
     border-bottom: 1px solid #e0e0e0;
@@ -3121,7 +3330,8 @@ label {
 }
 
 @media (max-width: 767px) {
-    .hero__blood-search-form .input-field input, .hero__blood-search-form .input-field select {
+.hero__blood-search-form .input-field input,
+    .hero__blood-search-form .input-field select {
         font-size: 0.875rem;
         padding-left: 1.25rem;
     }
@@ -3520,28 +3730,34 @@ label {
     background-color: #17173A;
     box-shadow: 0 3px 5px rgba(23, 23, 58, 0.05);
 }
+
 .donor-card.style--two::before {
     display: none;
 }
+
 .donor-card.style--two .donor-card__thumb {
     background-color: transparent;
     width: 100%;
     height: 200px;
     border-radius: 8px 8px 0 0;
 }
+
 .donor-card.style--two .donor-card__thumb img {
     object-position: top;
     -o-object-position: top;
 }
+
 .donor-card.style--two .donor-card__content {
     background-color: transparent;
     width: 100%;
     padding: 15px 0;
     text-align: center;
 }
+
 .donor-card.style--two .donor-card__name {
     font-size: 18px;
 }
+
 .donor-card.style--two .donor-card__amount {
     justify-content: center;
 }
@@ -3551,6 +3767,7 @@ label {
     position: relative;
     z-index: 9;
 }
+
 .donor-card__social li {
     padding: 2px 3px;
 }
@@ -3561,14 +3778,14 @@ label {
 
 
 
-@media (min-width:  420px) and (max-width:  575px) {
+@media (min-width: 420px) and (max-width: 575px) {
     .col-xs-6 {
         flex: 0 0 auto;
         width: 50%;
     }
 }
 
-@media (min-width:  1200px) {
+@media (min-width: 1200px) {
     .col-100-5 {
         flex: 0 0 auto;
         width: 20%;
@@ -3580,30 +3797,36 @@ label {
 .donor-card.style--three {
     display: block;
     padding: 0;
-    
+
     box-shadow: 0 3px 5px rgba(23, 23, 58, 0.05);
 }
+
 .donor-card.style--three::before {
     display: none;
 }
+
 .donor-card.style--three .donor-card__thumb {
     background-color: transparent;
     width: 100%;
     height: 150px;
     border-radius: 8px 8px 0 0;
 }
+
 .donor-card.style--three .donor-card__thumb img {
     object-position: top;
     -o-object-position: top;
 }
+
 .donor-card.style--three .donor-card__content {
     width: 100%;
     padding: 15px 0;
     text-align: center;
 }
+
 .donor-card.style--three .donor-card__name {
     font-size: 18px;
 }
+
 .donor-card.style--three .donor-card__amount {
     justify-content: center;
 }
@@ -3745,14 +3968,14 @@ label {
     display: none;
 }
 
-@media (max-width:  991px) {
+@media (max-width: 991px) {
     .work-card:nth-child(2)::after,
     .work-card:nth-child(2)::before {
         display: none;
     }
 }
 
-@media (max-width:  991px) {
+@media (max-width: 991px) {
     .work-card::after,
     .work-card::before {
         display: none;
@@ -3934,6 +4157,7 @@ label {
 .subscribe-form .form--control::placeholder {
     color: #ffffff90;
 }
+
 .subscribe-form button {
     position: absolute;
     top: 5px;
@@ -3945,17 +4169,20 @@ label {
     border-radius: 5px;
 }
 
-.bonus + .bonus  {
+.bonus+.bonus {
     margin-top: 20px;
 }
+
 /* subscribe section css end */
 /* blog-details-section css start */
 .blog-details__thumb {
     position: relative;
 }
+
 .blog-details__thumb img {
     width: 100%;
 }
+
 .blog-details__thumb .post__date {
     position: absolute;
     bottom: -1px;
@@ -3963,6 +4190,7 @@ label {
     width: 75px;
     text-align: center;
 }
+
 .blog-details__thumb .post__date .date {
     font-size: 30px;
     font-weight: 700;
@@ -3972,6 +4200,7 @@ label {
     width: 100%;
     line-height: 1;
 }
+
 .blog-details__thumb .post__date .month {
     background-color: #ffffff;
     text-transform: uppercase;
@@ -3980,19 +4209,24 @@ label {
     line-height: 1;
     font-size: 18px;
 }
+
 .blog-details__content {
     margin-top: 30px;
 }
+
 .blog-details__content p {
     margin-top: 20px;
 }
+
 .blog-details__content .blog-details__title {
     font-size: 24px;
 }
+
 .blog-details__content blockquote {
     margin-top: 30px;
     margin-bottom: 0;
 }
+
 blockquote {
     font-size: 18px;
     color: #464646;
@@ -4002,21 +4236,25 @@ blockquote {
     background-color: #002046;
     color: #fff;
 }
+
 @media (max-width: 575px) {
     blockquote {
         padding: 30px 40px;
         font-size: 16px;
     }
 }
+
 .blog-details__footer {
     text-align: center;
     padding: 50px 0;
     border-bottom: 1px solid #e5e5e5;
 }
+
 .blog-details__footer .caption {
     font-size: 24px;
     margin-bottom: 20px;
 }
+
 .blog-details__footer .social__links {
     justify-content: center;
     display: -ms-flexbox;
@@ -4024,6 +4262,7 @@ blockquote {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
 }
+
 .blog-details__footer .social__links li a {
     width: 30px;
     height: 30px;
@@ -4031,41 +4270,49 @@ blockquote {
     line-height: 30px;
     color: #373e4a;
 }
+
 .blog-details__footer .social__links li a:hover {
     color: #ffffff;
 }
+
 /* blog-details-section css end */
 
 /* sidebar css start */
 .sidebar {
     padding-left: 30px;
 }
+
 @media (max-width: 991px) {
     .sidebar {
         padding-left: 0;
         margin-top: 50px;
     }
 }
-.sidebar .widget + .widget {
+.sidebar .widget+.widget {
     margin-top: 50px;
 }
+
 @media (max-width: 767px) {
-    .sidebar .widget + .widget {
+    .sidebar .widget+.widget {
         margin-top: 30px;
     }
 }
+
 .sidebar .widget {
     padding: 30px;
     border: 1px solid #e5e5e5;
     background-color: #f0f8ff;
 }
+
 .sidebar .widget .search-form {
     position: relative;
 }
+
 .sidebar .widget .search-form input {
     width: 100%;
     border: 1px solid #e5e5e5;
 }
+
 .sidebar .widget .search-form .search-btn {
     position: absolute;
     color: #16c79a;
@@ -4077,11 +4324,13 @@ blockquote {
     width: 50px;
     height: 100%;
 }
+
 .sidebar .widget .widget__title {
     position: relative;
     padding-bottom: 8px;
     margin-bottom: 25px;
 }
+
 .sidebar .widget .widget__title::after {
     position: absolute;
     content: '';
@@ -4091,76 +4340,97 @@ blockquote {
     height: 2px;
     background-color: #16c79a;
 }
+
 .sidebar .widget .map iframe {
     width: 100%;
 }
+
 .sidebar .list li {
     padding: 10px 0;
     border-bottom: 1px solid #e5e5e5;
 }
+
 .sidebar .list li:first-child {
     padding-top: 0;
 }
+
 .sidebar .list li:last-child {
     padding-bottom: 0;
     border-bottom: none;
 }
+
 .sidebar .list li .caption {
     font-weight: 600;
 }
+
 .sidebar .list li .caption::after {
     content: ' :';
 }
+
 .sidebar .list li .info {
     float: right;
 }
+
 .sidebar .categories__list li:first-child a {
     padding-top: 0;
 }
+
 .sidebar .categories__list li:last-child a {
     padding-bottom: 0;
     border-bottom: none;
 }
+
 .sidebar .categories__list li a {
     display: block;
     color: #464646;
     padding: 10px 0;
     border-bottom: 1px solid #e5e5e5;
 }
+
 .sidebar .categories__list li a span {
     float: right;
 }
+
 .sidebar .categories__list li a span::before {
     content: '(';
 }
+
 .sidebar .categories__list li a span::after {
     content: ')';
 }
+
 .sidebar .archive__list li:first-child a {
     padding-top: 0;
 }
+
 .sidebar .archive__list li:last-child a {
     padding-bottom: 0;
     border-bottom: none;
 }
+
 .sidebar .archive__list li a {
     display: block;
     color: #464646;
     padding: 10px 0;
     border-bottom: 1px solid #e5e5e5;
 }
+
 .sidebar .archive__list li a:hover {
     color: #16c79a;
 }
+
 .sidebar .archive__list li a span {
     float: right;
 }
+
 .sidebar .archive__list li a span::before {
     content: '(';
 }
+
 .sidebar .archive__list li a span::after {
     content: ')';
 }
+
 .sidebar .small-post-list .small-post {
     display: -ms-flexbox;
     display: flex;
@@ -4169,20 +4439,25 @@ blockquote {
     padding: 20px 0;
     border-bottom: 1px solid #e5e5e5;
 }
+
 .sidebar .small-post-list .small-post:first-child {
     padding-top: 0;
 }
+
 .sidebar .small-post-list .small-post:last-child {
     padding-bottom: 0;
     border-bottom: none;
 }
+
 .sidebar .small-post-list .small-post__thumb {
     width: 58px;
 }
+
 .sidebar .small-post-list .small-post__content {
     width: calc(100% - 58px);
     padding-left: 20px;
 }
+
 .sidebar .small-post-list .small-post__content .post__title a {
     font-size: 16px;
     font-weight: 600;
@@ -4192,9 +4467,11 @@ blockquote {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 .sidebar .tags {
     margin: -5px -2px;
 }
+
 .sidebar .tags a {
     font-size: 16px;
     font-weight: 400;
@@ -4207,11 +4484,13 @@ blockquote {
     margin: 5px 2px;
     text-transform: capitalize;
 }
+
 .sidebar .tags a:hover {
     background-color: #16c79a;
     color: #ffffff;
     border-color: #16c79a;
 }
+
 /* sidebar css end */
 
 /* sidebar css start */
@@ -4361,7 +4640,7 @@ blockquote {
     background-color: transparent;
 }
 
-.action-widget .form-check + .form-check {
+.action-widget .form-check+.form-check {
     margin-top: 0.3125rem;
 }
 
@@ -4805,6 +5084,7 @@ blockquote {
     color: #fff;
     border-color: rgba(255, 255, 255, 0.15);
 }
+
 .contact-donor-form .form--control::placeholder {
     color: #ffffff90;
 }
@@ -4868,9 +5148,11 @@ blockquote {
 .contact-info-list .single-info:last-child {
     padding-bottom: 0;
 }
+
 .contact-wrapper-content {
     padding: 40px;
 }
+
 .contact-form {
     padding: 40px;
 }
@@ -4879,16 +5161,17 @@ blockquote {
     .contact-wrapper-content {
         padding: 20px;
     }
+
     .contact-form {
         padding: 20px;
     }
 }
-.contact-wrapper-content > .title {
+.contact-wrapper-content>.title {
     font-size: 28px;
     position: relative;
     padding-bottom: 3px;
 }
-.contact-wrapper-content > .title::after {
+.contact-wrapper-content>.title::after {
     position: absolute;
     content: '';
     bottom: 0;
@@ -4897,6 +5180,7 @@ blockquote {
     height: 2px;
     background-color: red;
 }
+
 /* contact section css end */
 
 
@@ -4915,6 +5199,7 @@ blockquote {
     z-index: 99999;
     color: #ddd;
 }
+
 .cookie__wrapper .txt {
     max-width: 720px;
     margin-right: 20px;

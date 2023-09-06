@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'aaf810762b1f068da2722f410ad1fc8f57bb36b5',
+        'reference' => 'cd9bfd1372802cac44676535721c98b7e4d4a0a1',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -478,7 +478,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'aaf810762b1f068da2722f410ad1fc8f57bb36b5',
+            'reference' => 'cd9bfd1372802cac44676535721c98b7e4d4a0a1',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -913,8 +913,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0',
-                1 => '1.0.0 || 2.0.0 || 3.0.0',
+                0 => '1.0.0 || 2.0.0 || 3.0.0',
+                1 => '1.0|2.0',
             ),
         ),
         'psr/simple-cache' => array(
@@ -939,6 +939,17 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../psy/psysh',
             'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'rajurayhan/bndatetime' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => 'e5e5f49aeee7a036250b428a018261658ab5dda4',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../rajurayhan/bndatetime',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
             'dev_requirement' => false,
         ),
         'ralouphie/getallheaders' => array(
@@ -990,6 +1001,17 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../rmccue/requests',
             'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'ronisaha/easy-bangla-date' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => 'bae41f86401854a31bf8465e7d85e4fe892908eb',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../ronisaha/easy-bangla-date',
+            'aliases' => array(
+                0 => '1.0.x-dev',
+            ),
             'dev_requirement' => false,
         ),
         'sebastian/cli-parser' => array(
