@@ -5068,6 +5068,17 @@ blockquote {
     }
 }
 
+@media (max-width: 575px) {
+    .hero__blood-search-form::before,
+    .hero__blood-search-form {
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    }
+}
+
 .donor-profile__thumb {
     width: 120px;
     overflow: hidden;

@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="row justify-content-center mt-4">
-            <div class="col-xxl-12 col-xl-8 col-lg-10">
+            <div class="col-xxl-12 col-xl-12 col-lg-10">
                 <form method="GET" action="{{route('donor.search')}}" class="hero__blood-search-form">
                     <div class="input-field">
                         <i class="las la-tint"></i>
