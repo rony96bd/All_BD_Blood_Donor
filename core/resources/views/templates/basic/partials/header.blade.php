@@ -5,7 +5,7 @@
 <header class="header">
     <div class="header__top">
         <div class="container">
-            <div class="row align-items-center gy-2">
+            <div class="row align-items-center gy-2" style="font-family: 'BenSen', sans-serif; font-size: 20px;">
                 @php
                     use Rajurayhan\Bndatetime\BnDateTimeConverter; // on Top
 
@@ -42,7 +42,7 @@
                 <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="menu-toggle"></span>
+                    <span style="font-size: 30px;"><i class="las la-bars"></i></span>
                 </button>
                 <div class="collapse navbar-collapse mt-lg-0 mt-3" id="navbarSupportedContent">
                     <ul class="navbar-nav main-menu ms-auto">

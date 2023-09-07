@@ -394,6 +394,7 @@ hr {
 .section-title {
     font-size: 2.625rem;
     font-weight: 700;
+    font-family: 'BenSen';
 }
 
 @media (max-width: 1199px) {
@@ -894,7 +895,6 @@ body::-webkit-scrollbar-thumb,
 }
 
 .hero__title,
-.avaiable-blood-single__amount,
 .about-thumb .play-btn,
 .blog-post__meta .tag,
 .footer li,
@@ -909,6 +909,9 @@ body::-webkit-scrollbar-thumb,
     color: #fff;
 }
 
+.avaiable-blood-single__amount {
+    color: #fff;
+}
 .about-thumb img,
 .volunteer-card__thumb img,
 .donor-card__thumb img,
@@ -951,8 +954,6 @@ body::-webkit-scrollbar-thumb,
 }
 
 .custom--card,
-.hero__blood-search-form,
-.hero__blood-search-form::before,
 .avaiable-blood-single,
 .volunteer-card,
 .donor-card,
@@ -969,6 +970,14 @@ body::-webkit-scrollbar-thumb,
     -o-border-radius: 8px;
 }
 
+.hero__blood-search-form::before,
+.hero__blood-search-form {
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+}
 .object-fit--cover {
     object-fit: cover;
     -o-object-fit: cover;
@@ -3303,7 +3312,7 @@ label {
 
 .hero__blood-search-form .input-field {
     position: relative;
-    width: calc((100% /2) - 70px);
+    width: calc((100% /4) - 70px);
 }
 
 @media (max-width: 520px) {
@@ -3444,6 +3453,12 @@ label {
     padding: 1.875rem 0.9375rem;
     position: relative;
     overflow: hidden;
+    border: #ddd solid 1px;
+        background-position: center;
+        background-image: url(https://uxwing.com/wp-content/themes/uxwing/download/medical-science-lab/blood-drop-icon.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 180px;
 }
 
 .avaiable-blood-single:hover {
@@ -3455,18 +3470,20 @@ label {
 
 .avaiable-blood-single::after {
     position: absolute;
-    content: "\f043";
-    bottom: -15px;
-    right: -25px;
-    font-family: 'Line Awesome Free';
+    /* content: "\f043"; */
+        bottom: -8px;
+        right: 75px;
+        /* font-family: 'Line Awesome Free'; */
     font-weight: 900;
-    font-size: 5.625rem;
+    font-size: 9.625rem;
     opacity: 0.3;
+    color: red;
     line-height: 1;
 }
 
 .avaiable-blood-single__name {
     font-size: 2.25rem;
+    padding-top: 30px;
 }
 
 .avaiable-blood-single__amount::before {

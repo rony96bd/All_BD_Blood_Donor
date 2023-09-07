@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{{ asset($activeTemplateTrue . 'frontend/css/lib/slick.css') }}">
     <link rel="stylesheet" href="{{ asset($activeTemplateTrue . 'frontend/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset($activeTemplateTrue . 'css/custom.css') }}">
+    <link href="https://fonts.maateen.me/bensen/font.css" rel="stylesheet">
+
     @stack('style-lib')
     @stack('style')
     <link

@@ -36,7 +36,7 @@ if (!$secondColor or !checkhexcolor2($secondColor)) {
 background-color: <?php echo $color ?>;
 }
 
-.custom--accordion-two .accordion-button:not(.collapsed), .header .site-logo.site-title, .hero__blood-search-form .input-field i, .avaiable-blood-single::after, .avaiable-blood-single__name, .about-item__icon, .work-item__icon i, .tags .single-tag, .sidebar-category__single a:hover, .sidebar-category .more, .footer .footer-contact-list li .icon i, .footer-links-list li a:hover, .single-info__content a:hover, .overview-item__icon,.header .main-menu li a:hover, .header .main-menu li a:focus, .page-breadcrumb li:first-child::before{
+.custom--accordion-two .accordion-button:not(.collapsed), .header .site-logo.site-title, .hero__blood-search-form .input-field i, .avaiable-blood-single__name, .about-item__icon, .work-item__icon i, .tags .single-tag, .sidebar-category__single a:hover, .sidebar-category .more, .footer .footer-contact-list li .icon i, .footer-links-list li a:hover, .single-info__content a:hover, .overview-item__icon,.header .main-menu li a:hover, .header .main-menu li a:focus, .page-breadcrumb li:first-child::before{
 color: <?php echo $color ?>;
 }
 
