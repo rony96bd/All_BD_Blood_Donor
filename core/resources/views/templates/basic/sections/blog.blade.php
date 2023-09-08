@@ -8,7 +8,7 @@
             <div class="col-xxl-6 col-xl-8 col-lg-10">
                 <div class="section-header text-center">
                     <h2 class="section-title">{{__($blog->data_values->heading)}}</h2>
-                    <p class="mt-2">{{__($blog->data_values->sub_heading)}}</p>
+                    {{-- <p class="mt-2">{{__($blog->data_values->sub_heading)}}</p> --}}
                 </div>
             </div>
         </div>

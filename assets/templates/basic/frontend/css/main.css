@@ -378,7 +378,7 @@ hr {
 }
 
 .section-header {
-    margin-bottom: 2.8125rem;
+    margin-bottom: 15px;
 }
 
 .section-header p {
@@ -403,6 +403,17 @@ hr {
     }
 }
 
+@media (min-width: 1199px) {
+    .login-menu {
+        margin: 0px 0 0 776px;
+    }
+}
+
+@media (max-width: 1199px) {
+    .login-menu {
+        margin: auto;
+    }
+}
 @media (max-width: 991px) {
     .section-title {
         font-size: 2.25rem;
@@ -4778,8 +4789,8 @@ blockquote {
 /* action-sidebar css end */
 /* footer section css start */
 .footer__top {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 2rem;
+        padding-bottom: 2rem;
 }
 
 .footer__bottom {

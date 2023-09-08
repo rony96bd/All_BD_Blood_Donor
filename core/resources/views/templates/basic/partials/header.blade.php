@@ -5,7 +5,8 @@
 <header class="header">
     <div class="header__top">
         <div class="container">
-            <div class="row align-items-center gy-2" style="font-family: 'Noto Sans Bengali', sans-serif; font-size: 20px;">
+            <div class="row align-items-center gy-2"
+                style="font-family: 'Noto Sans Bengali', sans-serif; font-size: 20px;">
                 <div class="adv2 text-center">
                     @php
                         echo advertisements('Front_Top');
@@ -51,6 +52,9 @@
                 <a class="site-logo site-title" href="{{ route('home') }}">
                     <img src="{{ getImage(imagePath()['logoIcon']['path'] . '/logo.png') }}" alt="@lang('logo')">
                 </a>
+
+                <span class="login-menu"><a href="#">Login</a>   <a href="#">Signup</a></span>
+
                 <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">

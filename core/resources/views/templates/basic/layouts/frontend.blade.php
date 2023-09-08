@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset($activeTemplateTrue . 'frontend/css/lib/bootstrap-drawer.css') }}">
     <link rel="stylesheet" href="{{ asset($activeTemplateTrue . 'frontend/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset($activeTemplateTrue . 'frontend/css/line-awesome.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset($activeTemplateTrue . 'frontend/css/font-awesome.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset($activeTemplateTrue . 'frontend/css/lightcase.css') }}">
     <link rel="stylesheet" href="{{ asset($activeTemplateTrue . 'frontend/css/lib/slick.css') }}">
     <link rel="stylesheet" href="{{ asset($activeTemplateTrue . 'frontend/css/main.css') }}">
@@ -69,6 +70,7 @@
     <script src="{{ asset($activeTemplateTrue . 'frontend/js/lib/lightcase.js') }}"></script>
     <script src="{{ asset($activeTemplateTrue . 'frontend/js/app.js') }}"></script>
     <script src="{{ asset($activeTemplateTrue . 'frontend/js/drawer.js') }}"></script>
+    <script src="https://kit.fontawesome.com/88197b63d0.js" crossorigin="anonymous"></script>
     @stack('script-lib')
     @stack('script')
     @include('partials.plugins')
