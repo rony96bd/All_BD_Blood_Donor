@@ -5,22 +5,28 @@
 <header class="header">
     <div class="header__top">
         <div class="container">
-            <div class="row align-items-center gy-2" style="font-family: 'BenSen', sans-serif; font-size: 20px;">
-                <div class=".d-block .d-sm-none">Show only mobile</div>
-                <div class="col top-nav-bar">
-                @php
-                    use Rajurayhan\Bndatetime\BnDateTimeConverter; // on Top
-
-                    $dateConverter = new BnDateTimeConverter();
-                    $date_now = date('Y-m-d');
-                    $dateConverter->getConvertedDateTime('2018-09-07 12:19:50 pm', 'EnBn', ''); // Friday 23rd Bhadra 1425 12:19:50 pm
-                    $dateConverter->getConvertedDateTime('2018-09-07 12:19:50 pm', 'BnBn', ''); // শুক্রবার ২৩শে ভাদ্র ১৪২৫ দুপুর ১২:১৯:৫০
-                    echo $dateConverter->getConvertedDateTime($date_now, 'BnEn', 'l, jS F Y ইং'); // শুক্রবার ৭ই সেপ্টেম্বর ২০১৮ দুপুর ১২:১৯:৫০
-                    $dateConverter->getConvertedDateTime('2018-09-07 12:19:50 pm', 'EnEn', ''); // Friday 7th September 2018 12:19:50 PM
-                @endphp
+            <div class="row align-items-center gy-2" style="font-family: 'Noto Sans Bengali', sans-serif; font-size: 20px;">
+                <div class="adv2 text-center">
+                    @php
+                        echo advertisements('550x50');
+                    @endphp
                 </div>
-                <div class="col top-nav-bar adv">
-                    ---Advertisement---
+                <div class="col top-nav-date">
+                    @php
+                        use Rajurayhan\Bndatetime\BnDateTimeConverter; // on Top
+
+                        $dateConverter = new BnDateTimeConverter();
+                        $date_now = date('Y-m-d');
+                        $dateConverter->getConvertedDateTime('2018-09-07 12:19:50 pm', 'EnBn', ''); // Friday 23rd Bhadra 1425 12:19:50 pm
+                        $dateConverter->getConvertedDateTime('2018-09-07 12:19:50 pm', 'BnBn', ''); // শুক্রবার ২৩শে ভাদ্র ১৪২৫ দুপুর ১২:১৯:৫০
+                        echo $dateConverter->getConvertedDateTime($date_now, 'BnEn', 'l, jS F Y ইং'); // শুক্রবার ৭ই সেপ্টেম্বর ২০১৮ দুপুর ১২:১৯:৫০
+                        $dateConverter->getConvertedDateTime('2018-09-07 12:19:50 pm', 'EnEn', ''); // Friday 7th September 2018 12:19:50 PM
+                    @endphp
+                </div>
+                <div class="top-nav-bar adv text-center hidden-lg">
+                    @php
+                        echo advertisements('550x50');
+                    @endphp
                 </div>
                 {{-- <div class="col-lg-6 col-md-8 col-sm-9">
                     <ul class="header__info-list d-flex flex-wrap align-items-center justify-content-sm-start justify-content-center">

@@ -1,6 +1,6 @@
 /* reset css start */
 @import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;600&display=swap");
-
+@import url("https://use.typekit.net/nwg5kpj.css");
 html {
     scroll-behavior: smooth;
 }
@@ -526,6 +526,11 @@ a.text-white:hover {
     z-index: 1;
 }
 
+.bnfont {
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
 .custom--dropdown .dropdown-toggle.no-arrow::after {
     display: none;
 }
@@ -872,7 +877,6 @@ body::-webkit-scrollbar-thumb,
 .header .site-logo.site-title,
 .hero__blood-search-form .input-field i,
 .avaiable-blood-single::after,
-.avaiable-blood-single__name,
 .about-item__icon,
 .work-item__icon i,
 .tags .single-tag,
@@ -884,6 +888,9 @@ body::-webkit-scrollbar-thumb,
     color: #FB3640;
 }
 
+.avaiable-blood-single__name {
+    color: #fff;
+}
 .t-company-thumb,
 .hero__blood-search-form,
 .hero__blood-search-form::before,
@@ -912,6 +919,7 @@ body::-webkit-scrollbar-thumb,
 .avaiable-blood-single__amount {
     color: #fff;
 }
+
 .about-thumb img,
 .volunteer-card__thumb img,
 .donor-card__thumb img,
@@ -978,6 +986,7 @@ body::-webkit-scrollbar-thumb,
     -ms-border-radius: 50px;
     -o-border-radius: 50px;
 }
+
 .object-fit--cover {
     object-fit: cover;
     -o-object-fit: cover;
@@ -1036,7 +1045,8 @@ body::-webkit-scrollbar-thumb,
 }
 
 @-webkit-keyframes shake {
-0%,
+
+    0%,
     100% {
         -webkit-transform: translateX(0);
         -ms-transform: translateX(0);
@@ -1064,7 +1074,8 @@ body::-webkit-scrollbar-thumb,
 }
 
 @-moz-keyframes shake {
-0%,
+
+    0%,
     100% {
         -webkit-transform: translateX(0);
         -ms-transform: translateX(0);
@@ -1092,7 +1103,8 @@ body::-webkit-scrollbar-thumb,
 }
 
 @-ms-keyframes shake {
-0%,
+
+    0%,
     100% {
         -webkit-transform: translateX(0);
         -ms-transform: translateX(0);
@@ -1120,7 +1132,8 @@ body::-webkit-scrollbar-thumb,
 }
 
 @keyframes shake {
-0%,
+
+    0%,
     100% {
         -webkit-transform: translateX(0);
         -ms-transform: translateX(0);
@@ -1493,19 +1506,19 @@ body::-webkit-scrollbar-thumb,
 
 .preloader-holder {
     position: fixed;
-        z-index: 9999999;
+    z-index: 9999999;
     inset: 0;
-        width: 100vw;
+    width: 100vw;
         height: 100vh;
         background-color: #17173A;
 }
 
 .preloader {
     /* size */
-        width: 130px;
+    width: 130px;
     height: 130px;
     position: absolute;
-        left: 50%;
+    left: 50%;
         top: 50%;
         transform: translateX(-50%) translateY(-50%);
         animation: rotatePreloader 2s infinite ease-in;
@@ -1513,7 +1526,7 @@ body::-webkit-scrollbar-thumb,
 
 @keyframes rotatePreloader {
     0% {
-            transform: translateX(-50%) translateY(-50%) rotateZ(0deg);
+        transform: translateX(-50%) translateY(-50%) rotateZ(0deg);
         }
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 100% {
@@ -1523,14 +1536,14 @@ body::-webkit-scrollbar-thumb,
 
 .preloader div {
     position: absolute;
-        width: 100%;
+    width: 100%;
         height: 100%;
         opacity: 0;
 }
 
 .preloader div:before {
     content: "";
-        position: absolute;
+    position: absolute;
         left: 50%;
         top: 0%;
         width: 10%;
@@ -1542,13 +1555,13 @@ body::-webkit-scrollbar-thumb,
 
 .preloader div:nth-child(1) {
     transform: rotateZ(0deg);
-        animation: rotateCircle1 2s infinite linear;
+    animation: rotateCircle1 2s infinite linear;
         z-index: 9;
 }
 
 @keyframes rotateCircle1 {
     0% {
-            opacity: 0;
+        opacity: 0;
         }
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 0% {
@@ -1572,13 +1585,13 @@ body::-webkit-scrollbar-thumb,
 
 .preloader div:nth-child(2) {
     transform: rotateZ(36deg);
-        animation: rotateCircle2 2s infinite linear;
+    animation: rotateCircle2 2s infinite linear;
         z-index: 8;
 }
 
 @keyframes rotateCircle2 {
     5% {
-            opacity: 0;
+        opacity: 0;
         }
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 5.0001% {
@@ -1602,13 +1615,13 @@ body::-webkit-scrollbar-thumb,
 
 .preloader div:nth-child(3) {
     transform: rotateZ(72deg);
-        animation: rotateCircle3 2s infinite linear;
+    animation: rotateCircle3 2s infinite linear;
         z-index: 7;
 }
 
 @keyframes rotateCircle3 {
     10% {
-            opacity: 0;
+        opacity: 0;
         }
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 10.0002% {
@@ -1632,13 +1645,13 @@ body::-webkit-scrollbar-thumb,
 
 .preloader div:nth-child(4) {
     transform: rotateZ(108deg);
-        animation: rotateCircle4 2s infinite linear;
+    animation: rotateCircle4 2s infinite linear;
         z-index: 6;
 }
 
 @keyframes rotateCircle4 {
     15% {
-            opacity: 0;
+        opacity: 0;
         }
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 15.0003% {
@@ -1662,13 +1675,13 @@ body::-webkit-scrollbar-thumb,
 
 .preloader div:nth-child(5) {
     transform: rotateZ(144deg);
-        animation: rotateCircle5 2s infinite linear;
+    animation: rotateCircle5 2s infinite linear;
         z-index: 5;
 }
 
 @keyframes rotateCircle5 {
     20% {
-            opacity: 0;
+        opacity: 0;
         }
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 20.0004% {
@@ -1692,13 +1705,13 @@ body::-webkit-scrollbar-thumb,
 
 .preloader div:nth-child(6) {
     transform: rotateZ(180deg);
-        animation: rotateCircle6 2s infinite linear;
+    animation: rotateCircle6 2s infinite linear;
         z-index: 4;
 }
 
 @keyframes rotateCircle6 {
     25% {
-            opacity: 0;
+        opacity: 0;
         }
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 25.0005% {
@@ -1722,13 +1735,13 @@ body::-webkit-scrollbar-thumb,
 
 .preloader div:nth-child(7) {
     transform: rotateZ(216deg);
-        animation: rotateCircle7 2s infinite linear;
+    animation: rotateCircle7 2s infinite linear;
         z-index: 3;
 }
 
 @keyframes rotateCircle7 {
     30% {
-            opacity: 0;
+        opacity: 0;
         }
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 30.0006% {
@@ -1752,13 +1765,13 @@ body::-webkit-scrollbar-thumb,
 
 .preloader div:nth-child(8) {
     transform: rotateZ(252deg);
-        animation: rotateCircle8 2s infinite linear;
+    animation: rotateCircle8 2s infinite linear;
         z-index: 2;
 }
 
 @keyframes rotateCircle8 {
     35% {
-            opacity: 0;
+        opacity: 0;
         }
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 35.0007% {
@@ -1782,13 +1795,13 @@ body::-webkit-scrollbar-thumb,
 
 .preloader div:nth-child(9) {
     transform: rotateZ(288deg);
-        animation: rotateCircle9 2s infinite linear;
+    animation: rotateCircle9 2s infinite linear;
         z-index: 1;
 }
 
 @keyframes rotateCircle9 {
     40% {
-            opacity: 0;
+        opacity: 0;
         }
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 40.0008% {
@@ -1812,13 +1825,13 @@ body::-webkit-scrollbar-thumb,
 
 .preloader div:nth-child(10) {
     transform: rotateZ(324deg);
-        animation: rotateCircle10 2s infinite linear;
+    animation: rotateCircle10 2s infinite linear;
         z-index: 0;
 }
 
 @keyframes rotateCircle10 {
     45% {
-            opacity: 0;
+        opacity: 0;
         }
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 45.0009% {
@@ -1897,7 +1910,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Fira Sans", sans-serif;
+    font-family: 'Noto Sans Bengali', sans-serif;
     color: #17173A;
     font-weight: 500;
     margin: 0;
@@ -2477,7 +2490,8 @@ button:focus {
 }
 
 @media (max-width: 1199px) {
-*[class*="table-responsive--"].data-label--none tr th,
+
+    *[class*="table-responsive--"].data-label--none tr th,
     *[class*="table-responsive--"].data-label--none tr td {
         padding-left: .75rem;
     }
@@ -3168,7 +3182,7 @@ label {
 }
 
 @media (max-width: 1199px) {
-.menu-toggle:before,
+.menu-toggle: before,
     .menu-toggle:after {
         background-color: #fff;
     }
@@ -3339,7 +3353,8 @@ label {
 }
 
 @media (max-width: 767px) {
-.hero__blood-search-form .input-field input,
+
+    .hero__blood-search-form .input-field input,
     .hero__blood-search-form .input-field select {
         font-size: 0.875rem;
         padding-left: 1.25rem;
@@ -3454,7 +3469,7 @@ label {
     position: relative;
     overflow: hidden;
     border: #ddd solid 1px;
-        background-position: center;
+    background-position: center;
         background-image: url(https://uxwing.com/wp-content/themes/uxwing/download/medical-science-lab/blood-drop-icon.png);
         background-size: contain;
         background-repeat: no-repeat;
@@ -3468,10 +3483,11 @@ label {
     transform: translateY(-5px);
 }
 
+
 .avaiable-blood-single::after {
     position: absolute;
     /* content: "\f043"; */
-        bottom: -8px;
+    bottom: -8px;
         right: 75px;
         /* font-family: 'Line Awesome Free'; */
     font-weight: 900;
@@ -3482,10 +3498,16 @@ label {
 }
 
 .avaiable-blood-single__name {
-    font-size: 2.25rem;
-    padding-top: 30px;
+    font-size: 2.00rem;
+        padding-top: 36px;
 }
-
+.custom-btn {
+    background: #ff2121;
+    font-size: 12px;
+    padding: 3px 7px;
+    color: #fff;
+    border-radius: 5px;
+}
 .avaiable-blood-single__amount::before {
     content: '(';
 }
@@ -3685,6 +3707,16 @@ label {
     overflow: hidden;
 }
 
+.donor-card:hover {
+    box-shadow: 0 5px 15px rgba(23, 23, 58, 0.35);
+    -webkit-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    transform: translateY(-5px);
+
+    -webkit-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
 .donor-card::before {
     position: absolute;
     content: '';
@@ -3715,10 +3747,10 @@ label {
 .donor-card__content {
     width: calc(100% - 75px);
     padding-left: 2.1875rem;
+    text-align: left;
 }
 
 .donor-card__name {
-    font-size: 1.125rem;
     color: #fff;
 }
 
@@ -3986,6 +4018,7 @@ label {
 }
 
 @media (max-width: 991px) {
+
     .work-card:nth-child(2)::after,
     .work-card:nth-child(2)::before {
         display: none;
@@ -3993,6 +4026,7 @@ label {
 }
 
 @media (max-width: 991px) {
+
     .work-card::after,
     .work-card::before {
         display: none;
@@ -4114,7 +4148,7 @@ label {
 }
 
 .blog-post__thumb {
-    height: 15.9375rem;
+    height: 10.9375rem;
     overflow: hidden;
 }
 
@@ -4305,6 +4339,7 @@ blockquote {
         margin-top: 50px;
     }
 }
+
 .sidebar .widget+.widget {
     margin-top: 50px;
 }
@@ -5069,17 +5104,29 @@ blockquote {
 }
 
 @media (max-width: 575px) {
+
     .hero__blood-search-form::before,
     .hero__blood-search-form {
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
+        border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -ms-border-radius: 10px;
+            -o-border-radius: 10px;
     }
 }
 
-@media (max-width: 575px){
+.top-nav-bar {
+    width: 550px;
+    height: 50px;
+}
+
+@media (max-width: 962px) {
+    .top-nav-date {
+        text-align: center;
+    }
+}
+
+@media (max-width: 962px) {
     .top-nav-bar {
         width: 100%;
         flex: none;
@@ -5091,6 +5138,11 @@ blockquote {
     }
 }
 
+@media (min-width: 962px) {
+    .adv2 {
+        display: none;
+    }
+}
 .donor-profile__thumb {
     width: 120px;
     overflow: hidden;
@@ -5206,11 +5258,13 @@ blockquote {
         padding: 20px;
     }
 }
+
 .contact-wrapper-content>.title {
     font-size: 28px;
     position: relative;
     padding-bottom: 3px;
 }
+
 .contact-wrapper-content>.title::after {
     position: absolute;
     content: '';

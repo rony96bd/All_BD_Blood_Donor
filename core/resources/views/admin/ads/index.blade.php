@@ -55,7 +55,7 @@
                              <td data-label="@lang('Total Impression')">
                                 {{__($advr->impression)}}
                             </td>
-                         
+
                             <td data-label="@lang('Status')">
                                 @if($advr->status == 1)
                                     <span class="badge badge--success">@lang('Enable')</span>
@@ -67,7 +67,7 @@
                             <td data-label="@lang('Last Update')">
                                 {{showDateTime($advr->updated_at)}}<br>{{diffforhumans($advr->updated_at)}}
                             </td>
-                            
+
                             <td data-label="Action">
                                 <a href="{{route('admin.ads.edit', $advr->id)}}" class="icon-btn mr-2 edit" data-toggle="tooltip" title="@lang('Edit')">
                                     <i class="las la-pen text--shadow"></i>
@@ -121,6 +121,10 @@
                         <option value="220x467">@lang('220x467')</option>
                         <option value="820x213">@lang('820x213')</option>
                         <option value="416x554">@lang('416x554')</option>
+                        <option value="550x50">@lang('550x50')</option>
+                        <option value="1140x1140">@lang('Front-1st')</option>
+                        <option value="1140x280">@lang('Front-2')</option>
+                        <option value="1140x280">@lang('Front-3')</option>
                     </select>
                 </div>
 
@@ -179,7 +183,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            
+
             <form action="{{ route('admin.ads.delete') }}" method="POST">
                 @csrf
                 @method('POST')

@@ -31,6 +31,8 @@
                                             <option value="820x213" selected="">@lang('820x213')</option>
                                         @elseif($ads->size == "820x213")
                                             <option value="416x554" selected="">@lang('416x554')</option>
+                                        @elseif($ads->size == "550x50")
+                                            <option value="550x50" selected="">@lang('550x50')</option>
                                         @endif
                                     </select>
                                 </div>
@@ -72,7 +74,7 @@
                                         <textarea type="text" class="form-control" name="script" id="script">{{$ads->script}}</textarea>
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label font-weight-bold">@lang('Status') </label>

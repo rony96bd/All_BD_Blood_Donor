@@ -1,6 +1,6 @@
 @php
     $blog = getContent('blog.content', true);
-    $blogElements = getContent('blog.element', false, 3, true);
+    $blogElements = getContent('blog.element', false, 4, true);
 @endphp
 <section class="pt-100 pb-100">
     <div class="container">
@@ -15,7 +15,7 @@
 
         <div class="row gy-4 justify-content-center">
             @foreach($blogElements as $blogElement)
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-3 col-md-6">
                     <div class="blog-post">
                         <div class="blog-post__thumb">
                             <a href="{{ route('blog.details',[$blogElement->id,slug($blogElement->data_values->title)]) }}" class="d-block"><img src="{{getImage('assets/images/frontend/blog/'. @$blogElement->data_values->blog_image, '728x465')}}" alt="@lang('image1')"></a>

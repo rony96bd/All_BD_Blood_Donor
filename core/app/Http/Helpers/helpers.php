@@ -510,10 +510,10 @@ function sendSmtpMail($config, $receiver_email, $receiver_name, $subject, $messa
         $mail->Body    = $message;
         $mail->send();
     } catch (Exception $e) {
-        throw new Exception($e); 
+        throw new Exception($e);
     }
 }
- 
+
 
 function sendSendGridMail($config, $receiver_email, $receiver_name, $subject, $message,$general)
 {
@@ -526,7 +526,7 @@ function sendSendGridMail($config, $receiver_email, $receiver_name, $subject, $m
     try {
         $response = $sendgrid->send($sendgridMail);
     } catch (Exception $e) {
-        throw new Exception($e); 
+        throw new Exception($e);
     }
 }
 
@@ -768,12 +768,13 @@ function impressionCount($id)
     $item->save();
 }
 
-function advertisements($size) {
-    $ad = Advertisement::where('status',1)->where('size', $size)->inRandomOrder()->first();
+function advertisements($name)
+{
+    $ad = Advertisement::where('status', 1)->where('name', $name)->inRandomOrder()->first();
     if ($ad) {
         if ($ad->type == 1) {
             impressionCount($ad->id);
-            return  '<a  target="_blank" href="'.route('add.clicked',encrypt($ad->id)).'" class="d-block bonus"><img src="'.getImage('assets/images/advertisement/'.$ad->image).'" alt="image"></a>';            
+            return  '<a  target="_blank" href="' . route('add.clicked', encrypt($ad->id)) . '" class="d-block bonus"><img src="' . getImage('assets/images/advertisement/' . $ad->image) . '" alt="image"></a>';
         }
         if($ad->type == 2) {
             impressionCount($ad->id);
