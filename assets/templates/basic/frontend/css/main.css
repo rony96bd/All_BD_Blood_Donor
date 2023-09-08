@@ -3329,11 +3329,17 @@ label {
     width: calc((100% /4) - 70px);
 }
 
+@media (max-width: 667px) {
+    .hero__blood-search-form .input-field {
+        width: calc((100% / 1) - 10px);
+    }
+}
 @media (max-width: 520px) {
     .hero__blood-search-form .input-field {
         width: calc((100% / 2) - 10px);
     }
 }
+
 
 @media (max-width: 420px) {
     .hero__blood-search-form .input-field {
@@ -5103,6 +5109,21 @@ blockquote {
     }
 }
 
+@media (max-width: 667px) {
+
+    .hero__blood-search-form::before,
+    .hero__blood-search-form {
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+    }
+
+    .resp {
+        width: auto;
+    }
+}
 @media (max-width: 575px) {
 
     .hero__blood-search-form::before,

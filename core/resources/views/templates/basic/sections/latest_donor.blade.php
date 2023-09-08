@@ -20,7 +20,7 @@
 
         <div class="row justify-content-center gy-4">
             @foreach($donors as $donor)
-                <div class="col-100-1 col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="col-100-1 col-lg-4 col-md-4 resp col-xs-6">
                     <div class="donor-card has--link">
                         <a href="{{route('donor.details', [slug($donor->name), encrypt($donor->id)])}}" class="item--link"></a>
                         <div class="donor-card__thumb">
