@@ -59,13 +59,16 @@
                     <div class="footer-widget">
                         <a style="background-color: white;
                         border-radius: 10px;
-                        padding: 8px;" href="{{ route('home') }}" class="footer-logo"><img
+                        padding: 8px;"
+                            href="{{ route('home') }}" class="footer-logo"><img
                                 src="{{ getImage(imagePath()['logoIcon']['path'] . '/logo.png') }}"
                                 alt="@lang('logo')"></a>
                         <p class="mt-3">{{ __($footer->data_values->title) }}</p>
 
-                        <br/>
-                        <span class="text-light mb1" style="font-size: 14px">POWERED BY <i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span><span style="color: #00e999"> MA GROUP</span>
+                        <br />
+                        <span class="text-light mb1" style="font-size: 14px">POWERED BY <i
+                                class="fa fa-chevron-circle-right" aria-hidden="true"></i></span><span
+                            style="color: #00e999"> MA GROUP</span>
                         {{-- <form class="subscribe-form mt-4">
                             <input type="email" name="email" id="emailSub" class="form--control"
                                 placeholder="@lang('Enter email address')">
@@ -82,6 +85,7 @@
                                         href="{{ route('footer.menu', [slug($policy->data_values->title), $policy->id]) }}">{{ __($policy->data_values->title) }}</a>
                                 </li>
                             @endforeach
+                            <li><a href="#">About Us</a></li>
                             {{-- @foreach ($pages as $k => $data)
                                 <li><a href="{{ route('pages', [$data->slug]) }}">{{ __($data->name) }}</a></li>
                             @endforeach --}}
@@ -105,7 +109,7 @@
                                 <div class="icon">
                                     <i class="las la-envelope"></i>  <a
                                         href="mailto:{{ __($contact->data_values->email_address) }}">{{ __($contact->data_values->email_address) }}</a>
-                                        <i class="las la-envelope"></i>  <a
+                                    <i class="las la-envelope"></i>  <a
                                         href="mailto:{{ __($contact->data_values->email_address) }}">{{ __($contact->data_values->email_address) }}</a>
                                     <i class="las la-phone-volume"></i>  <a
                                         href="tel:{{ __($contact->data_values->contact_number) }}">{{ __($contact->data_values->contact_number) }}</a>
@@ -117,8 +121,18 @@
                                 <a href="https://facebook.com/roktodin/" style="margin: 0 6px;" target="_blank">
                                     <i class="fa-brands fa-square-facebook"></i>
                                 </a>
-                                <a href="#" style="margin: 0 6px;"
-                                    target="_blank"><i class="fa fa-youtube"></i></a>
+                                <a href="#" style="margin: 0 6px;" target="_blank">
+                                    <i class="fa fa-youtube"></i>
+                                </a>
+                                <a href="#" style="margin: 0 6px;" target="_blank">
+                                    <i class="fa-brands fa-linkedin"></i>
+                                </a>
+                                <a href="#" style="margin: 0 6px;" target="_blank">
+                                    <i class="fa-brands fa-pinterest"></i>
+                                </a>
+                                <a href="#" style="margin: 0 6px;" target="_blank">
+                                    <i class="fa-brands fa-twitter"></i>
+                                </a>
                             </li>
                         </ul>
 
