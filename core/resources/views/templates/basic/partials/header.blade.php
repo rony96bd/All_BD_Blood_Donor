@@ -8,7 +8,7 @@
             <div class="row align-items-center gy-2" style="font-family: 'Noto Sans Bengali', sans-serif; font-size: 20px;">
                 <div class="adv2 text-center">
                     @php
-                        echo advertisements('550x50');
+                        echo advertisements('Front_Top');
                     @endphp
                 </div>
                 <div class="col top-nav-date">
@@ -23,9 +23,9 @@
                         $dateConverter->getConvertedDateTime('2018-09-07 12:19:50 pm', 'EnEn', ''); // Friday 7th September 2018 12:19:50 PM
                     @endphp
                 </div>
-                <div class="top-nav-bar adv text-center hidden-lg">
+                <div class="top-nav-bar adv text-end hidden-lg" style="width: 320px; height: 50px">
                     @php
-                        echo advertisements('550x50');
+                        echo advertisements('Front_Top');
                     @endphp
                 </div>
                 {{-- <div class="col-lg-6 col-md-8 col-sm-9">

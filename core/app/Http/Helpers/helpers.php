@@ -35,7 +35,7 @@ function sidebarVariation(){
 
 function systemDetails()
 {
-    $system['name'] = 'bloodlab';
+    $system['name'] = 'roktodin';
     $system['version'] = '1.0';
     return $system;
 }

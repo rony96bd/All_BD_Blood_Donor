@@ -87,15 +87,21 @@
             </div>
         </div>
     </section>
-    <div class="my-5 text-center">
+    <div class="mt-3 text-center">
         @php
-            echo advertisements('ad');
+            echo advertisements('After_Banner1');
         @endphp
-        <div>
+        @php
+            echo advertisements('After_Banner2');
+        @endphp
+        @php
+            echo advertisements('After_Banner3');
+        @endphp
+    </div>
 
-            @if ($sections->secs != null)
-                @foreach (json_decode($sections->secs) as $sec)
-                    @include($activeTemplate . 'sections.' . $sec)
-                @endforeach
-            @endif
-        @endsection
+    @if ($sections->secs != null)
+        @foreach (json_decode($sections->secs) as $sec)
+            @include($activeTemplate . 'sections.' . $sec)
+        @endforeach
+    @endif
+@endsection

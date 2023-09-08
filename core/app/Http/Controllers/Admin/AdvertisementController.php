@@ -22,7 +22,7 @@ class AdvertisementController extends Controller
         $request->validate([
             'name' => 'required|max:60',
             'type' => 'required|in:1,2',
-            'size' => 'required|in:220x474,220x303,220x315,220x467,820x213,416x554,550x50,front-1',
+            'size' => 'required|in:220x474,220x303,220x315,220x467,820x213,416x554,320x50,1140x320',
         ]);
         if($request->type == 1){
             $request->validate([

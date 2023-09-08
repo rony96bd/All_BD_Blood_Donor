@@ -127,7 +127,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::post('extensions/update/{id}', 'ExtensionController@update')->name('extensions.update');
         Route::post('extensions/activate', 'ExtensionController@activate')->name('extensions.activate');
         Route::post('extensions/deactivate', 'ExtensionController@deactivate')->name('extensions.deactivate');
-        
+
         // Email Setting
         Route::get('email-template/global', 'EmailTemplateController@emailTemplate')->name('email.template.global');
         Route::post('email-template/global', 'EmailTemplateController@emailTemplateUpdate')->name('email.template.global');
@@ -155,7 +155,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::name('frontend.')->prefix('frontend')->group(function () {
             Route::get('templates', 'FrontendController@templates')->name('templates');
             Route::post('templates', 'FrontendController@templatesActive')->name('templates.active');
-            
+
             Route::get('frontend-sections/{key}', 'FrontendController@frontendSections')->name('sections');
             Route::post('frontend-content/{key}', 'FrontendController@frontendContent')->name('sections.content');
             Route::get('frontend-element/{key}/{id?}', 'FrontendController@frontendElement')->name('sections.element');

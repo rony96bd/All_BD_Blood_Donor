@@ -108,7 +108,13 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label for="name" class="font-weight-bold">@lang('Name')</label>
-                    <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="@lang("Enter Name")" value="{{old('name')}}" id="name" maxlength="60" required="">
+                    <select class="form-control form-control-lg" name="name" id="name">
+                        <option value="">@lang('Select AD Place Name')</option>
+                        <option value="Front_Top">@lang('Front Top')</option>
+                        <option value="After_Banner1">@lang('After Banner 1')</option>
+                        <option value="After_Banner2">@lang('After Banner 2')</option>
+                        <option value="After_Banner3">@lang('After Banner 3')</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -121,10 +127,9 @@
                         <option value="220x467">@lang('220x467')</option>
                         <option value="820x213">@lang('820x213')</option>
                         <option value="416x554">@lang('416x554')</option>
-                        <option value="550x50">@lang('550x50')</option>
-                        <option value="1140x1140">@lang('Front-1st')</option>
-                        <option value="1140x280">@lang('Front-2')</option>
-                        <option value="1140x280">@lang('Front-3')</option>
+                        <option value="320x50">@lang('320x50')</option>
+                        <option value="1140x1140">@lang('1140x1140')</option>
+                        <option value="1140x320">@lang('1140x320')</option>
                     </select>
                 </div>
 
