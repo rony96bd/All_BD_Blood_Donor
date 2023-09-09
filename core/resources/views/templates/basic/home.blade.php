@@ -53,29 +53,25 @@
                         </div>
                         <div class="input-field">
                             <i class="las la-location-arrow"></i>
-                            <select name="city_id">
-                                <option value="" selected="" disabled="">@lang('বিভাগ')</option>
-                                @foreach ($cities as $city)
-                                    <option value="{{ __($city->id) }}">{{ __($city->name) }}</option>
+                            <select class="select" name="division_id" id="division-dropdown">
+                                <option value="" disabled="" selected="">@lang('বিভাগ')</option>
+                                @foreach ($divisions as $data)
+                                    <option value="{{ $data->id }}">
+                                        {{ $data->name }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="input-field">
                             <i class="las la-location-arrow"></i>
-                            <select name="city_id">
-                                <option value="" selected="" disabled="">@lang('জেলা')</option>
-                                @foreach ($cities as $city)
-                                    <option value="{{ __($city->id) }}">{{ __($city->name) }}</option>
-                                @endforeach
+                            <select class="select" name="location_id" id="city-dropdown">
+                                <option value="" disabled="" selected="">@lang('জেলা')</option>
                             </select>
                         </div>
                         <div class="input-field">
                             <i class="las la-location-arrow"></i>
-                            <select name="city_id">
-                                <option value="" selected="" disabled="">@lang('উপজেলা')</option>
-                                @foreach ($cities as $city)
-                                    <option value="{{ __($city->id) }}">{{ __($city->name) }}</option>
-                                @endforeach
+                            <select class="select" name="location_id" id="location-dropdown">
+                                <option value="" disabled="" selected="">@lang('উপজেলা')</option>
                             </select>
                         </div>
                         <div class="btn-area">
@@ -105,3 +101,55 @@
         @endforeach
     @endif
 @endsection
+@push('script')
+    <script>
+        $(document).ready(function() {
+            $('#division-dropdown').on('change', function() {
+                var idDivision = this.value;
+                $("#city-dropdown").html('');
+                $.ajax({
+                    url: "{{ url('api/fetch-cities') }}",
+                    type: "POST",
+                    data: {
+                        division_id: idDivision,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    dataType: 'json',
+                    success: function(result) {
+                        $('#city-dropdown').html(
+                            '<option value="">-- জেলা সিলেক্ট করুন --</option>');
+                        $.each(result.cities, function(key, value) {
+                            $("#city-dropdown").append('<option value="' + value.id +
+                                '">' + value.name + '</option>');
+                        });
+                        $('#location-dropdown').html(
+                            '<option value="">-- Select City --</option>');
+                    }
+                })
+            });
+
+            $('#city-dropdown').on('change', function() {
+                var idCity = this.value;
+                $("#location-dropdown").html('');
+                $.ajax({
+                    url: "{{ url('api/fetch-locations') }}",
+                    type: "POST",
+                    data: {
+                        city_id: idCity,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    dataType: 'json',
+                    success: function(result) {
+                        $('#location-dropdown').html(
+                            '<option value="">-- উপজেলা সিলেক্ট করুন --</option>');
+                        $.each(result.locations, function(key, value) {
+                            $("#location-dropdown").append('<option value="' + value
+                                .id + '">' + value.name + '</option>');
+                        });
+                    }
+                })
+            });
+        });
+    </script>
+@endpush
+

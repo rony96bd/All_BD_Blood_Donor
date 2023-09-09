@@ -85,7 +85,7 @@
                                         href="{{ route('footer.menu', [slug($policy->data_values->title), $policy->id]) }}">{{ __($policy->data_values->title) }}</a>
                                 </li>
                             @endforeach
-                            <li><a href="#">About Us</a></li>
+                            <li><a href="./about-us">About Us</a></li>
                             {{-- @foreach ($pages as $k => $data)
                                 <li><a href="{{ route('pages', [$data->slug]) }}">{{ __($data->name) }}</a></li>
                             @endforeach --}}

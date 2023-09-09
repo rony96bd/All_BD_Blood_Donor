@@ -63,7 +63,8 @@
         @yield('content')
     </div>
     @include($activeTemplate . 'partials.footer')
-    <script src="{{ asset($activeTemplateTrue . 'frontend/js/lib/jquery-3.6.0.min.js') }}"></script>
+    {{-- <script src="{{ asset($activeTemplateTrue . 'frontend/js/lib/jquery-3.6.0.min.js') }}"></script> --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ asset($activeTemplateTrue . 'frontend/js/lib/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset($activeTemplateTrue . 'frontend/js/lib/slick.min.js') }}"></script>
     <script src="{{ asset($activeTemplateTrue . 'frontend/js/lib/wow.min.js') }}"></script>
@@ -71,6 +72,7 @@
     <script src="{{ asset($activeTemplateTrue . 'frontend/js/app.js') }}"></script>
     <script src="{{ asset($activeTemplateTrue . 'frontend/js/drawer.js') }}"></script>
     <script src="https://kit.fontawesome.com/88197b63d0.js" crossorigin="anonymous"></script>
+
     @stack('script-lib')
     @stack('script')
     @include('partials.plugins')

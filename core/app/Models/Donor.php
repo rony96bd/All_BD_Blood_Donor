@@ -26,6 +26,10 @@ class Donor extends Model
         return $this->belongsTo(Blood::class, 'blood_id');
     }
 
+    public function division()
+    {
+        return $this->belongsTo(Division::class, 'division_id');
+    }
 
     public function city()
     {

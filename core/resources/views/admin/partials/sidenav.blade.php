@@ -19,6 +19,13 @@
                     </a>
                 </li>
 
+                <li class="sidebar-menu-item  {{menuActive('admin.division.index')}}">
+                    <a href="{{route('admin.division.index')}}" class="nav-link"
+                       data-default-url="{{ route('admin.division.index') }}">
+                        <i class="menu-icon las la-city"></i>
+                        <span class="menu-title">@lang('Manage division') </span>
+                    </a>
+                </li>
 
                 <li class="sidebar-menu-item  {{menuActive('admin.city.index')}}">
                     <a href="{{route('admin.city.index')}}" class="nav-link"
@@ -305,7 +312,7 @@
                         <span class="menu-title">@lang('GDPR Cookie')</span>
                     </a>
                 </li>
-                
+
                 <li class="sidebar-menu-item  {{menuActive('admin.system.info')}}">
                     <a href="{{route('admin.system.info')}}" class="nav-link"
                        data-default-url="{{ route('admin.system.info') }}">

@@ -2,7 +2,7 @@
     $blog = getContent('blog.content', true);
     $blogElements = getContent('blog.element', false, 4, true);
 @endphp
-<section class="pt-100 pb-100">
+<section class="pt-80 pb-80">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xxl-6 col-xl-8 col-lg-10">
@@ -31,4 +31,7 @@
             @endforeach
         </div>
     </div>
+    <div style="width: 100%; padding-top: 20px" class="text-center"><span><a
+        href="{{ route('blog') }}"
+        class="custom-btn2" style="">সকল পোস্টসমূহ</a></span></div>
 </section>

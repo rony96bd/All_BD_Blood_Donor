@@ -3,7 +3,7 @@
     $bloods = App\Models\Blood::where('status', 1)->with('donor')->get();
 @endphp
 
-<section class="pt-80 pb-80 position-relative z-index-2 overflow-hidden">
+<section class="pt-50 pb-50 position-relative z-index-2 overflow-hidden">
     <div class="top-el-bg">
         <img src="{{getImage('assets/images/frontend/blood/'. @$blood->data_values->background_image, '1920x389')}}" alt="@lang('image')">
     </div>

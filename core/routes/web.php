@@ -56,6 +56,11 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::post('city/store', 'CityController@store')->name('city.store');
         Route::post('city/update', 'CityController@update')->name('city.update');
 
+        //City
+        Route::get('division/list', 'DivisionController@index')->name('division.index');
+        Route::post('division/store', 'DivisionController@store')->name('division.store');
+        Route::post('division/update', 'DivisionController@update')->name('division.update');
+
         // Donor
         Route::get('donor/list', 'ManageDonorController@index')->name('donor.index');
         Route::get('donor/pending', 'ManageDonorController@pending')->name('donor.pending');
@@ -186,7 +191,13 @@ Route::get('blog/{id}/{slug}', 'SiteController@blogDetails')->name('blog.details
 Route::get('placeholder-image/{size}', 'SiteController@placeholderImage')->name('placeholder.image');
 Route::get('/{slug}', 'SiteController@pages')->name('pages');
 Route::get('/', 'SiteController@index')->name('home');
+
 Route::get('/apply/donor', 'SiteController@applyDonor')->name('apply.donor');
+
+//Dropdown
+Route::post('api/fetch-cities', 'SiteController@fetchCity')->name('fetchcity');
+Route::post('api/fetch-locations', 'SiteController@fetchLocation')->name('fetchlocation');
+
 Route::post('/apply/donor/store', 'SiteController@applyDonorstore')->name('apply.donor.store');
 Route::get('/menu/{slug}/{id}', 'SiteController@footerMenu')->name('footer.menu');
 Route::get('/add/{id}', 'SiteController@adclicked')->name('add.clicked');

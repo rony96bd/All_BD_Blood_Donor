@@ -9,34 +9,30 @@
                             <thead>
                                 <tr>
                                     <th>@lang('Name')</th>
-                                    <th>@lang('Division')</th>
                                     <th>@lang('Status')</th>
                                     <th>@lang('Last Update')</th>
                                     <th>@lang('Action')</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            @forelse($citys as $city)
+                            @forelse($divisions as $division)
                                 <tr>
-                                    <td data-label="@lang('Name')">{{__($city->name)}}</td>
-                                    <td data-label="@lang('Division')">
-                                        {{__($city->division->name)}}
-                                    </td>
+                                    <td data-label="@lang('Name')">{{__($division->name)}}</td>
                                     <td data-label="@lang('Status')">
-                                        @if($city->status == 1)
+                                        @if($division->status == 1)
                                             <span class="badge badge--success">@lang('Enable')</span>
                                         @else
                                             <span class="badge badge--danger">@lang('Disable')</span>
                                         @endif
                                     </td>
                                     <td data-label="@lang('Last Update')">
-                                        {{ showDateTime($city->updated_at) }}<br> {{ diffForHumans($city->updated_at) }}
+                                        {{ showDateTime($division->updated_at) }}<br> {{ diffForHumans($division->updated_at) }}
                                     </td>
                                     <td data-label="@lang('Action')">
-                                        <a href="javascript:void(0)" class="icon-btn btn--primary ml-1 updateCity"
-                                            data-id="{{$city->id}}"
-                                            data-name="{{$city->name}}"
-                                            data-status ="{{$city->status}}"
+                                        <a href="javascript:void(0)" class="icon-btn btn--primary ml-1 updateDivision"
+                                            data-id="{{$division->id}}"
+                                            data-name="{{$division->name}}"
+                                            data-status ="{{$division->status}}"
                                         ><i class="las la-pen"></i></a>
                                     </td>
                                 </tr>
@@ -51,38 +47,28 @@
                     </div>
                 </div>
                 <div class="card-footer py-4">
-                    {{ paginateLinks($citys) }}
+                    {{ paginateLinks($divisions) }}
                 </div>
             </div>
         </div>
     </div>
 
 
-    <div id="cityModel" class="modal fade" tabindex="-1" role="dialog">
+    <div id="divisionModel" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">@lang('Add City')</h5>
+                    <h5 class="modal-title">@lang('Add Division')</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{route('admin.city.store')}}" method="POST">
+                <form action="{{route('admin.division.store')}}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="name" class="form-control-label font-weight-bold">@lang('Name')</label>
                             <input type="text" class="form-control form-control-lg" name="name" id="name" placeholder="@lang("Enter Name")"  maxlength="80" required="">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="division" class="form-control-label font-weight-bold">@lang('Division')</label>
-                            <select class="form-control form-control-lg" id="division" name="division" required="">
-                                <option>@lang('Select One')</option>
-                                @foreach($divisions as $division)
-                                    <option value="{{$division->id}}">{{__($division->name)}}</option>
-                                @endforeach
-                            </select>
                         </div>
 
                         <div class="form-group">
@@ -102,32 +88,22 @@
     </div>
 
 
-    <div id="updateCityModel" class="modal fade" tabindex="-1" role="dialog">
+    <div id="updateDivisionModel" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">@lang('Update City')</h5>
+                    <h5 class="modal-title">@lang('Update Division')</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{route('admin.city.update')}}" method="POST">
+                <form action="{{route('admin.division.update')}}" method="POST">
                     @csrf
                     <input type="hidden" name="id">
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="name" class="form-control-label font-weight-bold">@lang('Name')</label>
                             <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="@lang("Enter Name")"  maxlength="80" required="">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="division" class="form-control-label font-weight-bold">@lang('Division')</label>
-                            <select class="form-control form-control-lg" id="division" name="division" required="">
-                                <option>@lang('Select One')</option>
-                                @foreach($divisions as $division)
-                                    <option value="{{$division->id}}">{{__($division->name)}}</option>
-                                @endforeach
-                            </select>
                         </div>
 
                         <div class="form-group">
@@ -148,21 +124,20 @@
 @endsection
 
 @push('breadcrumb-plugins')
-    <a href="javascript:void(0)" class="btn btn-sm btn--primary box--shadow1 text--small addCity" ><i class="fa fa-fw fa-paper-plane"></i>@lang('Add City')</a>
+    <a href="javascript:void(0)" class="btn btn-sm btn--primary box--shadow1 text--small addDivision" ><i class="fa fa-fw fa-paper-plane"></i>@lang('Add Division')</a>
 @endpush
 
 @push('script')
 <script>
     "use strict";
-    $('.addCity').on('click', function() {
-        $('#cityModel').modal('show');
+    $('.addDivision').on('click', function() {
+        $('#divisionModel').modal('show');
     });
 
-    $('.updateCity').on('click', function() {
-        var modal = $('#updateCityModel');
+    $('.updateDivision').on('click', function() {
+        var modal = $('#updateDivisionModel');
         modal.find('input[name=id]').val($(this).data('id'));
         modal.find('input[name=name]').val($(this).data('name'));
-        modal.find('select[name=division]').val($(this).data('division'));
         var data = $(this).data('status');
         if(data == 1){
             modal.find('input[name=status]').bootstrapToggle('on');

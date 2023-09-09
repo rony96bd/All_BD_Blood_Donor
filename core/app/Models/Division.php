@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Location extends Model
+class Division extends Model
 {
     use HasFactory;
 
-    public function city()
-    {
-        return $this->belongsTo(City::class, 'city_id');
-    }
-
     protected $fillable = [
-        'name', 'city_id'
+        'name'
     ];
+
+    public function donor()
+    {
+        return $this->hasMany(Donor::class);
+    }
 }

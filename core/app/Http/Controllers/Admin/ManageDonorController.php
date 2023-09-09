@@ -5,13 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Blood;
 use App\Models\City;
+use App\Models\Division;
 use App\Models\Donor;
 use App\Rules\FileTypeValidate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ManageDonorController extends Controller
 {
-    
+
     public function index()
     {
         $pageTitle = "Manage Donor List";
@@ -51,9 +53,10 @@ class ManageDonorController extends Controller
     public function create()
     {
         $pageTitle = "Donor Create";
+        $data['divisions'] = Division::get(["name", "id"]);
         $cities = City::where('status', 1)->select('id', 'name')->with('location')->get();
         $bloods = Blood::where('status', 1)->select('id', 'name')->get();
-        return view('admin.donor.create', compact('pageTitle', 'cities', 'bloods'));
+        return view('admin.donor.create', $data, compact('pageTitle', 'cities', 'bloods'));
     }
 
     public function donorBloodSearch(Request $request)
@@ -133,47 +136,38 @@ class ManageDonorController extends Controller
     {
         $request->validate([
             'name' => 'required|max:80',
-            'email' => 'required|email|max:60|unique:donors,email',
-            'phone' => 'required|max:40|unique:donors,phone',
+            'gender' => 'required|in:1,2',
+            'division' => 'required|exists:divisions,id',
             'city' => 'required|exists:cities,id',
             'location' => 'required|exists:locations,id',
-            'blood' => 'required|exists:bloods,id',
-            'gender' => 'required|in:1,2',
+            'address' => 'required|max:255',
             'religion' => 'required|max:40',
             'profession' => 'required|max:80',
-            'donate' => 'required|integer',
-            'address' => 'required|max:255',
-            'details' => 'required',
-            'birth_date' => 'required|date',
+            'blood' => 'required|exists:bloods,id',
             'last_donate' => 'required|date',
+            'birth_date' => 'required|date',
+            'email' => 'required|email|max:60|unique:donors,email',
             'facebook' => 'required',
-            'twitter' => 'required',
-            'linkedinIn' => 'required',
-            'instagram' => 'required',
-            'image' => ['required', 'image', new FileTypeValidate(['jpg', 'jpeg', 'png'])],
+            'image' => ['required', 'image', new FileTypeValidate(['jpg', 'jpeg', 'png'])], 'phone' => 'required|max:40|unique:donors,phone',
+            'phone' => 'required|max:40|unique:donors,phone',
+            'phone2' => 'required|max:40|unique:donors,phone2',
+            'password' => 'required|confirmed|min:6',
         ]);
         $donor = new Donor();
         $donor->name = $request->name;
-        $donor->email = $request->email;
-        $donor->phone = $request->phone;
-        $donor->city_id = $request->city;
-        $donor->blood_id = $request->blood;
-        $donor->location_id = $request->location;
         $donor->gender = $request->gender;
+        $donor->division_id = $request->division;
+        $donor->city_id = $request->city;
+        $donor->location_id = $request->location;
+        $donor->address = $request->address;
         $donor->religion = $request->religion;
         $donor->profession = $request->profession;
-        $donor->address = $request->address;
-        $donor->details = $request->details;
-        $donor->total_donate = $request->donate;
-        $donor->birth_date =  $request->birth_date;
+        $donor->blood_id = $request->blood;
         $donor->last_donate = $request->last_donate;
-        $socialMedia = [
-            'facebook' => $request->facebook,
-            'twitter' => $request->twitter,
-            'linkedinIn' => $request->linkedinIn,
-            'instagram' => $request->instagram
-        ];
-        $donor->socialMedia = $socialMedia;
+        $donor->birth_date =  $request->birth_date;
+        $donor->email = $request->email;
+        $donor->facebook = $request->facebook;
+
         $path = imagePath()['donor']['path'];
         $size = imagePath()['donor']['size'];
         if ($request->hasFile('image')) {
@@ -185,7 +179,9 @@ class ManageDonorController extends Controller
             }
             $donor->image = $filename;
         }
-        $donor->status = $request->status ? 1 : 2;
+        $donor->phone = $request->phone;
+        $donor->phone2 = $request->phone2;
+        $donor->password = Hash::make($request->password);
         $donor->save();
         $notify[] = ['success', 'Donor has been created'];
         return back()->withNotify($notify);

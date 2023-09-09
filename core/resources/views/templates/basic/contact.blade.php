@@ -9,15 +9,15 @@
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="section-header text-center">
-                    <span class="subtitle fw-bold text--base font-size--18px border-left">@lang('Contact with us')</span>
-                    <h2 class="section-title">{{__($contact->data_values->title)}}</h2>
+                    <h2><span class="subtitle fw-bold text--base font-size--18px border-left">@lang('Contact with us')</span></h2>
+                    {{-- <h5 class="section-title">{{__($contact->data_values->title)}}</h5> --}}
                 </div>
             </div>
         </div>
         <div class="contact-wrapper">
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="contact-wrapper-content section--bg2 h-100">
+                    <div class="contact-wrapper-content h-100" style="background-color: #280718">
                         <h4 class="title text-white mb-4">@lang('Reach Us')</h4>
                         <ul class="contact-info-list">
                             <li class="single-info d-flex flex-wrap align-items-center">
@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="single-info__content">
                                     <p>{{__($contact->data_values->contact_details)}}</p>
-                                </div> 
+                                </div>
                             </li>
 
                             <li class="single-info d-flex flex-wrap align-items-center">
@@ -35,7 +35,16 @@
                                 </div>
                                 <div class="single-info__content">
                                     <p><a href="mailto:{{__($contact->data_values->email_address)}}">{{__($contact->data_values->email_address)}}</a></p>
-                                </div> 
+                                </div>
+                            </li>
+
+                            <li class="single-info d-flex flex-wrap align-items-center">
+                                <div class="single-info__icon text-white d-flex justify-content-center align-items-center rounded-3">
+                                    <i class="las la-envelope"></i>
+                                </div>
+                                <div class="single-info__content">
+                                    <p><a href="mailto:{{__($contact->data_values->email_address)}}">{{__($contact->data_values->email_address)}}</a></p>
+                                </div>
                             </li>
 
                             <li class="single-info d-flex flex-wrap align-items-center">
@@ -44,9 +53,9 @@
                                 </div>
                                 <div class="single-info__content">
                                     <p><a href="tel:{{__($contact->data_values->contact_number)}}">{{__($contact->data_values->contact_number)}}</a></p>
-                                </div> 
+                                </div>
                             </li>
-                            
+
                         </ul>
 
                         <div class="map-area mt-4">

@@ -114,6 +114,8 @@
                         <option value="After_Banner1">@lang('After Banner 1')</option>
                         <option value="After_Banner2">@lang('After Banner 2')</option>
                         <option value="After_Banner3">@lang('After Banner 3')</option>
+                        <option value="All_Donor_Left">@lang('All Donor Left')</option>
+                        <option value="All_Donor_Right">@lang('All Donor Right')</option>
                     </select>
                 </div>
 

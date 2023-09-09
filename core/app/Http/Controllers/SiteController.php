@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 use App\Models\Advertisement;
 use App\Models\Blood;
 use App\Models\City;
+use App\Models\Division;
 use App\Models\Donor;
 use App\Models\Frontend;
 use App\Models\Language;
 use App\Models\Location;
 use App\Models\Page;
 use App\Models\Subscriber;
+use Illuminate\Support\Facades\Hash;
 use App\Models\SupportAttachment;
 use App\Models\SupportMessage;
 use App\Models\SupportTicket;
@@ -42,9 +44,10 @@ class SiteController extends Controller
         $pageTitle = 'Home';
         $sections = Page::where('tempname',$this->activeTemplate)->where('slug','home')->first();
         $bloods = Blood::where('status', 1)->select('id', 'name')->get();
+        $divisions = Division::where('status', 1)->select('id', 'name')->get();
         $cities = City::where('status', 1)->select('id', 'name')->get();
 
-        return view($this->activeTemplate . 'home', compact('pageTitle', 'sections', 'bloods', 'cities'));
+        return view($this->activeTemplate . 'home', compact('pageTitle', 'sections', 'divisions', 'cities', 'bloods'));
     }
 
     public function pages($slug)
@@ -60,14 +63,16 @@ class SiteController extends Controller
         $pageTitle = "All Donor";
         $emptyMessage = "No data found";
         $bloods = Blood::where('status', 1)->select('id', 'name')->get();
+        $divisions = Division::where('status', 1)->select('id', 'name')->get();
         $cities = City::where('status', 1)->select('id', 'name')->with('location')->get();
-        $donors = Donor::where('status',1)->with('blood', 'location')->paginate(getPaginate());
-        return view($this->activeTemplate . 'donor', compact('pageTitle','emptyMessage', 'donors', 'cities', 'bloods'));
+        $donors = Donor::where('status', 1)->with('blood', 'city', 'location', 'division')->paginate(getPaginate());
+        return view($this->activeTemplate . 'donor', compact('pageTitle', 'emptyMessage', 'donors', 'divisions', 'cities', 'bloods'));
     }
 
     public function donorDetails($slug, $id)
     {
         $pageTitle = "Donor Details";
+        Donor::where('status', 1)->where('id', decrypt($id))->firstOrFail()->increment('click');
         $donor = Donor::where('status',1)->where('id', decrypt($id))->firstOrFail();
         return view($this->activeTemplate . 'donor_details', compact('pageTitle', 'donor'));
     }
@@ -75,20 +80,21 @@ class SiteController extends Controller
     public function donorSearch(Request $request)
     {
         $request->validate([
-            'location_id' => 'nullable|exists:locations,id',
-            'city_id' => 'nullable|exists:cities,id',
             'blood_id' => 'nullable|exists:bloods,id',
-            'gender' => 'nullable|in:1,2'
+            'division_id' => 'nullable|exists:divisions,id',
+            'city_id' => 'nullable|exists:cities,id',
+            'localtion_id' => 'nullable|exists:locations,id',
         ]);
+        $divisions = Division::where('status', 1)->select('id', 'name')->get();
         $locations = Location::where('status', 1)->select('id', 'name')->get();
         $bloods = Blood::where('status', 1)->select('id', 'name')->get();
         $cities = City::where('status', 1)->select('id', 'name')->get();
         $pageTitle = "Donor Search";
         $emptyMessage = "No data found";
+        $divisionId = $request->division_id;
         $locationId = $request->location_id;
         $cityId = $request->city_id;
         $bloodId = $request->blood_id;
-        $gender = $request->gender;
         $donors = Donor::where('status', 1);
         if($request->blood_id){
             $donors = $donors->where('blood_id', $request->blood_id);
@@ -99,11 +105,11 @@ class SiteController extends Controller
         if($request->location_id){
             $donors = $donors->where('location_id', $request->location_id);
         }
-        if($request->gender){
-            $donors = $donors->where('gender', $request->gender);
+        if ($request->division_id) {
+            $donors = $donors->where('division_id', $request->division_id);
         }
         $donors = $donors->with('blood', 'location')->paginate(getPaginate());
-        return view($this->activeTemplate . 'donor', compact('pageTitle','emptyMessage', 'donors', 'cities', 'locations', 'bloods', 'locationId', 'cityId', 'bloodId', 'gender'));
+        return view($this->activeTemplate . 'donor', compact('pageTitle', 'emptyMessage', 'donors', 'cities', 'locations', 'bloods', 'locationId', 'cityId', 'bloodId', 'divisions'));
     }
 
     public function contactWithDonor(Request $request)
@@ -240,56 +246,64 @@ class SiteController extends Controller
     public function applyDonor()
     {
         $pageTitle = "Apply as a Donor";
-        $cities = City::where('status', 1)->select('id', 'name')->with('location')->get();
+        $data['divisions'] = Division::get(["name", "id"]);
         $bloods = Blood::where('status', 1)->select('id', 'name')->get();
-        return view($this->activeTemplate.'apply_donor',compact('pageTitle', 'bloods', 'cities'));
+        return view($this->activeTemplate . 'apply_donor', $data, compact('pageTitle', 'bloods'));
+    }
+
+    public function fetchCity(Request $request)
+    {
+        $data['cities'] = City::where("division_id", $request->division_id)
+            ->get(["name", "id"]);
+
+        return response()->json($data);
+    }
+
+    public function fetchLocation(Request $request)
+    {
+        $data['locations'] = Location::where("city_id", $request->city_id)
+            ->get(["name", "id"]);
+
+        return response()->json($data);
     }
 
     public function applyDonorstore(Request $request)
     {
         $request->validate([
             'name' => 'required|max:80',
-            'email' => 'required|email|max:60|unique:donors,email',
-            'phone' => 'required|max:40|unique:donors,phone',
+            'gender' => 'required|in:1,2',
+            'division' => 'required|exists:divisions,id',
             'city' => 'required|exists:cities,id',
             'location' => 'required|exists:locations,id',
-            'blood' => 'required|exists:bloods,id',
-            'gender' => 'required|in:1,2',
+            'address' => 'required|max:255',
             'religion' => 'required|max:40',
             'profession' => 'required|max:80',
-            'donate' => 'required|integer',
-            'address' => 'required|max:255',
-            'details' => 'required',
-            'birth_date' => 'required|date',
+            'blood' => 'required|exists:bloods,id',
             'last_donate' => 'required|date',
+            'birth_date' => 'required|date',
+            'email' => 'required|email|max:60|unique:donors,email',
             'facebook' => 'required',
-            'twitter' => 'required',
-            'linkedinIn' => 'required',
-            'instagram' => 'required',
-            'image' => ['required', 'image', new FileTypeValidate(['jpg', 'jpeg', 'png'])],
+            'image' => ['required', 'image', new FileTypeValidate(['jpg', 'jpeg', 'png'])], 'phone' => 'required|max:40|unique:donors,phone',
+            'phone' => 'required|max:40|unique:donors,phone',
+            'phone2' => 'required|max:40|unique:donors,phone2',
+            'password' => 'required|confirmed|min:6',
         ]);
+
         $donor = new Donor();
         $donor->name = $request->name;
-        $donor->email = $request->email;
-        $donor->phone = $request->phone;
-        $donor->city_id = $request->city;
-        $donor->blood_id = $request->blood;
-        $donor->location_id = $request->location;
         $donor->gender = $request->gender;
+        $donor->division_id = $request->division;
+        $donor->city_id = $request->city;
+        $donor->location_id = $request->location;
+        $donor->address = $request->address;
         $donor->religion = $request->religion;
         $donor->profession = $request->profession;
-        $donor->address = $request->address;
-        $donor->details = $request->details;
-        $donor->total_donate = $request->donate;
-        $donor->birth_date =  $request->birth_date;
+        $donor->blood_id = $request->blood;
         $donor->last_donate = $request->last_donate;
-        $socialMedia = [
-            'facebook' => $request->facebook,
-            'twitter' => $request->twitter,
-            'linkedinIn' => $request->linkedinIn,
-            'instagram' => $request->instagram
-        ];
-        $donor->socialMedia = $socialMedia;
+        $donor->birth_date =  $request->birth_date;
+        $donor->email = $request->email;
+        $donor->facebook = $request->facebook;
+
         $path = imagePath()['donor']['path'];
         $size = imagePath()['donor']['size'];
         if ($request->hasFile('image')) {
@@ -301,6 +315,9 @@ class SiteController extends Controller
             }
             $donor->image = $filename;
         }
+        $donor->phone = $request->phone;
+        $donor->phone2 = $request->phone2;
+        $donor->password = Hash::make($request->password);
         $donor->save();
         $notify[] = ['success', 'Your Requested Submitted'];
         return back()->withNotify($notify);

@@ -9,7 +9,7 @@ use App\Models\City;
 
 class LocationController extends Controller
 {
-    
+
     public function index()
     {
         $pageTitle = "Manage Location";

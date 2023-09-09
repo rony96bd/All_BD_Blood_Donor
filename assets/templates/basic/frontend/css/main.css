@@ -128,7 +128,7 @@ span {
 }
 
 a:hover {
-    color: #FB3640;
+    color: #000;
 }
 
 hr {
@@ -2623,8 +2623,8 @@ button:focus {
     padding: 0.625rem 0;
     display: block;
     border-top: 1px solid #e5e5e5;
-    color: #fff;
-    background-color: #141433;
+    color: #000;
+        background-color: #fff;
 }
 
 .select.style--trans {
@@ -2781,6 +2781,9 @@ label {
     height: 50px;
 }
 
+.container {
+    font-family: 'Noto Sans Bengali', sans-serif;
+}
 .select2-container .select2-dropdown {
     border: none;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -2871,6 +2874,8 @@ label {
 
 .header__bottom {
     padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 3px 4px -3px gray;
 }
 
 @media (max-width: 1199px) {
@@ -3414,8 +3419,8 @@ label {
 /* hero section css end */
 /* inner hero css start */
 .inner-hero {
-    padding-top: 4.0625rem;
-    padding-bottom: 4.0625rem;
+    padding-top: 20px;
+        padding-bottom: 5px;
     position: relative;
     z-index: 1;
 }
@@ -3431,6 +3436,27 @@ label {
     z-index: -1;
 }
 
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    background-color: #fff;
+    border-radius: 0.625rem;
+}
+
+.breadcrumb a {
+    color: #00B074;
+}
+
+.breadcrumb li:first-child::before {
+    content: "\f015";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 0.375rem;
+    color: #00B074;
+}
 .page-breadcrumb {
     display: -ms-flexbox;
     display: flex;
@@ -3524,6 +3550,20 @@ label {
     padding: 3px 7px;
     color: #fff;
     border-radius: 5px;
+}
+.custom-btn2 {
+    background: #00B074;
+    font-size: 15px;
+    padding: 3px 7px;
+    color: #fff;
+    border-radius: 5px;
+    font-family: 'Noto Sans Bengali', sans-serif;
+
+}
+
+.custom-btn:hover {
+    color: black;
+    text-decoration: none;
 }
 .avaiable-blood-single__amount::before {
     content: '(';
@@ -3747,12 +3787,12 @@ label {
 
 .donor-card__thumb {
     width: 75px;
-    height: 75px;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
+    height: 103px;
+        border-radius: 10%;
+        -webkit-border-radius: 10%;
+        -moz-border-radius: 10%;
+        -ms-border-radius: 10%;
+        -o-border-radius: 10%;
     overflow: hidden;
 }
 
@@ -4998,7 +5038,6 @@ blockquote {
 /* footer section css end */
 /* donor search area css start */
 .donor-search-area {
-    background-color: #141433;
     padding: 1.25rem 0;
 }
 
@@ -5063,8 +5102,8 @@ blockquote {
 }
 
 .donor-item__thumb {
-    width: 35%;
-    height: 120px;
+    width: 83px;
+        height: 105px;
     overflow: hidden;
 }
 
@@ -5083,8 +5122,8 @@ blockquote {
 }
 
 .donor-item__content {
-    width: 65%;
-    padding-left: 1.5625rem;
+    width: 73%;
+        padding-left: 8px;
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
