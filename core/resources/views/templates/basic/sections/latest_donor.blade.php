@@ -28,11 +28,11 @@
                 <div class="col-lg-4 col-md-12 col-sm-6">
                     <div class="donor-item has--link" style="font-family: 'Noto Sans Bengali',  sans-serif;">
                         <div class="donor-item__thumb">
-                            <img src="{{ getImage('assets/images/donor/' . $donor->image, imagePath()['donor']['size']) }}"
+                            <img style="border-radius: 5px;" src="{{ getImage('assets/images/donor/' . $donor->image, imagePath()['donor']['size']) }}"
                                 alt="@lang('image')">
                         </div>
                         <div class="donor-item__content">
-                            <h5 style="color: #00b074; font-weight: 600;" class="donor-item__name">{{ __($donor->name) }}</h5>
+                            <h5 style="color: #fff; font-weight: 600;" class="donor-item__name">{{ __($donor->name) }}</h5>
                             <ul class="donor-item__list">
                                 <li class="donor-item__list">
                                     <i class="las la-tint"></i> @lang('ব্লাড গ্রুপ') :
