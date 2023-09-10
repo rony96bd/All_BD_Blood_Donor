@@ -65,5 +65,7 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\RedirectIfNotAdmin::class,
         'admin.guest' => \App\Http\Middleware\RedirectIfAdmin::class,
         'demo' => \App\Http\Middleware\Demo::class,
+        'donor' => \App\Http\Middleware\RedirectIfNotDonor::class,
+        'donor.guest' => \App\Http\Middleware\RedirectIfDonor::class,
     ];
 }

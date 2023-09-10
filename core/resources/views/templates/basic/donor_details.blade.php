@@ -99,7 +99,7 @@
                                                 onclick="myFunction()"> <i class="fa-regular fa-envelope"></i></i> Email
                                                 <span class="popuptext" id="myPopup">
                                                     ইমেইল দেখতে <a href="{{ route('apply.donor') }}"> Signup </a> করে <a
-                                                        href="{{ route('admin.login') }}"> Login </a> করুন</a>
+                                                        href="{{ route('donor.login') }}"> Login </a> করুন</a>
                                                 </span>
                                             </p></span>
                                     @endif
@@ -116,7 +116,7 @@
                                                 onclick="myFunction2()"> <i class="fa fa-phone"></i> কল দিন
                                                 <span class="popuptext" id="myPopup2">
                                                     মোবাইল নম্বর দেখতে <a href="{{ route('apply.donor') }}"> Signup </a>
-                                                    করে <a href="{{ route('admin.login') }}"> Login </a> করুন</a>
+                                                    করে <a href="{{ route('donor.login') }}"> Login </a> করুন</a>
                                                 </span>
                                     @endif
                                 </li>

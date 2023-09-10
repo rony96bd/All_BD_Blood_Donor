@@ -96,7 +96,7 @@
                     <div class="footer-widget">
                         <h4 class="footer-widget__title">@lang('Join Now')</h4>
                         <ul class="footer-links-list">
-                            <li><a href="{{ route('admin.login') }}">@lang('Login')</a></li>
+                            <li><a href="{{ route('donor.login') }}">@lang('Login')</a></li>
                             <li><a href="{{ route('apply.donor') }}">@lang('Signup')</a></li>
                         </ul>
                     </div>

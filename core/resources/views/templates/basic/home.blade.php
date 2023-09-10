@@ -3,28 +3,7 @@
     @php
         $banner = getContent('banner.content', true);
     @endphp
-
-    <style>
-        .anym {
-            animation-name: example;
-            animation-duration: 2s;
-        }
-
-        @keyframes example {
-            25% {
-                background-color: yellow;
-                left: 200px;
-                top: 0px;
-            }
-
-            100% {
-                background-color: red;
-                left: 0px;
-                top: 0px;
-            }
-        }
-    </style>
-    <section class="hero bg_img anym"
+    <section class="hero bg_img"
         style="background-image: url({{ getImage('assets/images/frontend/banner/' . @$banner->data_values->background_image, '1920x1280') }});">
         <div class="container">
             <div class="row justify-content-center">

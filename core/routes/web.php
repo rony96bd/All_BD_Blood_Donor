@@ -13,6 +13,54 @@ Route::prefix('ticket')->group(function () {
     Route::get('/download/{ticket}', 'TicketController@ticketDownload')->name('ticket.download');
 });
 
+Route::namespace('Donor')->prefix('donor')->name('donor.')->group(function () {
+    Route::namespace('Auth')->group(function () {
+        Route::get('/', 'LoginController@showLoginForm')->name('login');
+        Route::post('/', 'LoginController@login')->name('login');
+        Route::get('logout', 'LoginController@logout')->name('logout');
+        // Donor Password Reset
+        Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.reset');
+        Route::post('password/reset', 'ForgotPasswordController@sendResetCodeEmail');
+        Route::post('password/verify-code', 'ForgotPasswordController@verifyCode')->name('password.verify.code');
+        Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset.form');
+        Route::post('password/reset/change', 'ResetPasswordController@reset')->name('password.change');
+    });
+    Route::group(['middleware' => ['donor']], function () {
+        Route::get('dashboard', 'DonorController@dashboard')->name('dashboard');
+        Route::get('profile', 'DonorController@profile')->name('profile');
+        Route::post('profile', 'DonorController@profileUpdate')->name('profile.update');
+        Route::get('password', 'DonorController@password')->name('password');
+        Route::post('password', 'DonorController@passwordUpdate')->name('password.update');
+
+        Route::get('donor/list', 'ManageDonorController@index')->name('donor.index');
+        Route::get('donor/pending', 'ManageDonorController@pending')->name('donor.pending');
+        Route::get('donor/approved', 'ManageDonorController@approved')->name('donor.approved');
+        Route::get('donor/banned', 'ManageDonorController@banned')->name('donor.banned');
+        Route::get('donor/create', 'ManageDonorController@create')->name('donor.create');
+        Route::post('donor/store', 'ManageDonorController@store')->name('donor.store');
+        Route::get('donor/edit/{id}', 'ManageDonorController@edit')->name('donor.edit');
+        Route::post('donor/update/{id}', 'ManageDonorController@update')->name('donor.update');
+        Route::post('donor/approved/status', 'ManageDonorController@approvedStatus')->name('donor.approved.status');
+        Route::post('donor/banned/status', 'ManageDonorController@bannedStatus')->name('donor.banned.status');
+        Route::get('donor/search', 'ManageDonorController@search')->name('donor.search');
+        Route::get('donor/blood/search', 'ManageDonorController@donorBloodSearch')->name('donor.blood.search');
+        Route::post('donor/featured/list/Include', 'ManageDonorController@featuredInclude')->name('donor.featured.include');
+        Route::post('donor/featured/list/remove', 'ManageDonorController@featuredNotInclude')->name('donor.featured.remove');
+
+        Route::get('blood/list', 'BloodController@index')->name('blood.index');
+        Route::post('blood/store', 'BloodController@store')->name('blood.store');
+        Route::post('blood/update', 'BloodController@update')->name('blood.update');
+
+        Route::get('location/list', 'LocationController@index')->name('location.index');
+        Route::post('location/store', 'LocationController@store')->name('location.store');
+        Route::post('location/update', 'LocationController@update')->name('location.update');
+
+        Route::get('city/list', 'CityController@index')->name('city.index');
+        Route::post('city/store', 'CityController@store')->name('city.store');
+        Route::post('city/update', 'CityController@update')->name('city.update');
+    });
+});
+
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
     Route::namespace('Auth')->group(function () {
@@ -177,10 +225,10 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
     });
 });
 
-Route::get('/donor', 'SiteController@donor')->name('donor');
-Route::get('/donor/{slug}/{id}', 'SiteController@donorDetails')->name('donor.details');
-Route::get('/donor/search', 'SiteController@donorSearch')->name('donor.search');
-Route::post('/donor/contact', 'SiteController@contactWithDonor')->name('donor.contact');
+Route::get('/donor-list', 'SiteController@donor')->name('donor.list');
+Route::get('/donor-list/{slug}/{id}', 'SiteController@donorDetails')->name('donor.details');
+Route::get('/donor-list/search', 'SiteController@donorSearch')->name('donor.search');
+Route::post('/donor-list/contact', 'SiteController@contactWithDonor')->name('donor.contact');
 Route::get('/blood/donor/{slug}/{id}', 'SiteController@bloodGroup')->name('blood.group.donor');
 Route::get('/contact', 'SiteController@contact')->name('contact');
 Route::post('/contact', 'SiteController@contactSubmit');

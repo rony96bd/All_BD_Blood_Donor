@@ -81,6 +81,6 @@
             @endforelse
         </div>
     </div>
-    <div style="width: 100%; padding-top: 20px" class="text-center"><span><a href="{{ route('donor') }}"
+    <div style="width: 100%; padding-top: 20px" class="text-center"><span><a href="{{ route('donor.list') }}"
                 class="custom-btn2" style="">সকল রক্তদাতা</a></span></div>
 </section>
