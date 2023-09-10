@@ -3540,6 +3540,26 @@ label {
     line-height: 1;
 }
 
+.donor-info-span {
+    width: 30%;
+    font-weight: bold;
+    color: #00B074;
+    margin-bottom: 10px;
+}
+
+.donor-info-span-right {
+    padding-left: 10px;
+}
+
+.donor-info-span-right a {
+    color: #000;
+}
+
+.img-ext {
+    width: 165px;
+    border-radius: 10px;
+    margin-top: 16px;
+}
 .avaiable-blood-single__name {
     font-size: 2.00rem;
         padding-top: 36px;

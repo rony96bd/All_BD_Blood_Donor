@@ -22,7 +22,7 @@ class AdvertisementController extends Controller
         $request->validate([
             'name' => 'required|max:60',
             'type' => 'required|in:1,2',
-            'size' => 'required|in:220x474,220x303,220x315,220x467,820x213,416x554,320x50,1140x320',
+            'size' => 'required|in:220x474,261x474,820x213,416x554,320x50,1140x320, 1140x1140',
         ]);
         if($request->type == 1){
             $request->validate([
@@ -72,7 +72,7 @@ class AdvertisementController extends Controller
         $advr = Advertisement::findOrFail($id);
         $request->validate([
             'name' => 'required|max:40',
-            'size' => 'required|in:220x474,220x303,220x315,220x467,820x213,416x554,550x50',
+            'size' => 'required|in:220x474,261x474,820x213,416x554,320x50,1140x320,1140x1140',
         ]);
         if($advr->type == 1){
             $request->validate([

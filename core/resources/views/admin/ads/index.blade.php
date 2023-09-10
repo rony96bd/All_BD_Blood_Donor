@@ -116,6 +116,8 @@
                         <option value="After_Banner3">@lang('After Banner 3')</option>
                         <option value="All_Donor_Left">@lang('All Donor Left')</option>
                         <option value="All_Donor_Right">@lang('All Donor Right')</option>
+                        <option value="Single_Donor_Left">@lang('Single Donor Left')</option>
+                        <option value="Single_Donor_Right">@lang('Single Donor Right')</option>
                     </select>
                 </div>
 
@@ -124,9 +126,7 @@
                     <select class="form-control form-control-lg" name="size" id="size">
                         <option value="">@lang('Select Size')</option>
                         <option value="220x474">@lang('220x474')</option>
-                        <option value="220x303">@lang('220x303')</option>
-                        <option value="220x315">@lang('220x315')</option>
-                        <option value="220x467">@lang('220x467')</option>
+                        <option value="261x474">@lang('261x474')</option>
                         <option value="820x213">@lang('820x213')</option>
                         <option value="416x554">@lang('416x554')</option>
                         <option value="320x50">@lang('320x50')</option>
