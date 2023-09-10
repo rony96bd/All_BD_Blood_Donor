@@ -25,7 +25,7 @@
 
         <div class="row justify-content-center gy-4">
             @forelse($donors as $donor)
-                <div class="col-lg-4 col-md-12 col-sm-6">
+                <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="donor-item has--link" style="font-family: 'Noto Sans Bengali',  sans-serif;">
                         <div class="donor-item__thumb">
                             <img style="border-radius: 5px;" src="{{ getImage('assets/images/donor/' . $donor->image, imagePath()['donor']['size']) }}"
