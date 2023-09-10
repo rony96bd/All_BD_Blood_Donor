@@ -63,7 +63,7 @@
                                             alt="@lang('image')">
                                     </div>
                                     <div class="donor-item__content">
-                                        <h5 style="color: #00b074;" class="donor-item__name">{{ __($donor->name) }}</h5>
+                                        <h5 style="color: #fff;" class="donor-item__name">{{ __($donor->name) }}</h5>
                                         <ul class="donor-item__list">
                                             <li class="donor-item__list">
                                                 <i class="las la-tint"></i> @lang('ব্লাড গ্রুপ') :
