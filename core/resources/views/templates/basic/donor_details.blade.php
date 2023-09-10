@@ -30,89 +30,94 @@
                                         margin-bottom: 20px;">
                                 <li>
                                     <span class="caption">Name</span>
-                                    <span class="value">Saibul Sakib</span>
+                                    <span class="value">{{ __($donor->name) }}</span>
+                                </li>
+                                <li>
+                                    <span class="caption">Blood Group</span>
+                                    <span class="value">{{ __($donor->blood->name) }}</span>
+                                </li>
+                                <li>
+                                    <span class="caption">Last Donate</span>
+                                    <span class="value">{{ showDateTime($donor->last_donate, 'd M Y') }}</span>
+                                </li>
+                                <li>
+                                    <span class="caption">Last Donate</span>
+                                    <span class="value">{{ showDateTime($donor->last_donate, 'd M Y') }}</span>
                                 </li>
                                 <li>
                                     <span class="caption">Gender</span>
                                     <span class="value">
-                                        Male </span>
+                                        @if ($donor->gender == 1)
+                                            @lang('Male')
+                                        @else
+                                            @lang('Female')
+                                        @endif
+                                    </span>
                                 </li>
                                 <li>
                                     <span class="caption">Date of Birth</span>
-                                    <span class="value">04 May 1987</span>
+                                    <span class="value">{{ showDateTime($donor->birth_date, 'd M Y') }}</span>
                                 </li>
                                 <li>
                                     <span class="caption">Age</span>
-                                    <span class="value">36
-                                        Years</span>
+                                    <span class="value">{{ Carbon\Carbon::parse($donor->birth_date)->age }}
+                                        @lang('Years')</span>
                                 </li>
                                 <li>
                                     <span class="caption">Religion</span>
-                                    <span class="value">Islam</span>
+                                    <span class="value">{{ __($donor->religion) }}</span>
+                                </li>
+                                <li>
+                                    <span class="caption">Profession</span>
+                                    <span class="value">{{ __($donor->profession) }}</span>
+                                </li>
+                                <li>
+                                    <span class="caption">Division</span>
+                                    <span class="value">{{ __($donor->division->name) }}</span>
+                                </li>
+                                <li>
+                                    <span class="caption">District</span>
+                                    <span class="value">{{ __($donor->city->name) }}</span>
+                                </li>
+                                <li>
+                                    <span class="caption">Upazila</span>
+                                    <span class="value">{{ __($donor->location->name) }}</span>
                                 </li>
                                 <li>
                                     <span class="caption">Email</span>
-                                    <span class="value">saibulsakib@gmail.com</span>
+                                    @if (auth()->guard('admin')->check())
+                                        <span class="value">{{ __($donor->email) }}</span>
+                                    @else
+                                        <span class="value">xxxxxxxxxx@gmail.com</span>
+                                    @endif
                                 </li>
 
                                 <li>
                                     <span class="caption">Phone</span>
-                                    <span class="value">01xxxxxxxxx <a href="https://nearblood.com/apply/donor">&nbsp;See
-                                            Phone
-                                            Number? Please Signup and Login</a></span>
+                                    @if (auth()->guard('admin')->check())
+                                        <span class="value">{{ __($donor->phone) }} <a
+                                                href="https://wa.me/+88{{ __($donor->phone) }}"> Click to chat on
+                                                WhatsApp</a></span>
+                                    @else
+                                        <span class="value">01xxxxxxxxx <a
+                                                href="https://test.roktodin.com/apply/donor"> মোবাইল নম্বর দেখতে লগইন
+                                                করুন</a></span>
+                                    @endif
                                 </li>
-
                                 <li>
-                                    <span class="caption">Profession</span>
-                                    <span class="value">Service</span>
-                                </li>
-
-                                <li>
-                                    <span class="caption">Address</span>
-                                    <span class="value">Vill: Faridpur</span>
+                                    <span class="caption">Secondary Phone</span>
+                                    @if (auth()->guard('admin')->check())
+                                        <span class="value">{{ __($donor->phone2) }} <a
+                                                href="https://wa.me/+88{{ __($donor->phone2) }}"> Click to chat on
+                                                WhatsApp</a></span>
+                                    @else
+                                        <span class="value">01xxxxxxxxx <a
+                                                href="https://test.roktodin.com/apply/donor"> মোবাইল নম্বর দেখতে লগইন
+                                                করুন</a></span>
+                                    @endif
                                 </li>
                             </ul>
                         </div>
-                        {{-- <div style="padding: 0px 20px 20px 20px;">
-                            <p><span class="donor-info-span">Name</span>:<span
-                                    class="donor-info-span-right">{{ __($donor->name) }}</span></p>
-                            <p><span class="donor-info-span">Blood Group</span>:<span
-                                    class="donor-info-span-right">{{ __($donor->blood->name) }}</span></p>
-                            <p><span class="donor-info-span">Last Donate</span>:<span
-                                    class="donor-info-span-right">{{ showDateTime($donor->last_donate, 'd M Y') }}</span>
-                            </p>
-                            <p><span class="donor-info-span">Gender</span>:<span class="donor-info-span-right">
-                                    @if ($donor->gender == 1)
-                                        @lang('Male')
-                                    @else
-                                        @lang('Female')
-                                    @endif
-                                </span></p>
-                            <p><span class="donor-info-span">Date of Birth</span>:<span
-                                    class="donor-info-span-right">{{ showDateTime($donor->birth_date, 'd M Y') }}</span>
-                            </p>
-                            <p><span class="donor-info-span">Age:</span>:<span
-                                    class="donor-info-span-right">{{ Carbon\Carbon::parse($donor->birth_date)->age }}
-                                    @lang('Years')</span></p>
-                            <p><span class="donor-info-span">Religion </span>:<span
-                                    class="donor-info-span-right">{{ __($donor->religion) }}</span></p>
-                            <p><span class="donor-info-span">Email</span>:<span
-                                    class="donor-info-span-right"></span>{{ __($donor->email) }}</p>
-                            <p><span class="donor-info-span">Profession</span>:<span
-                                    class="donor-info-span-right">{{ __($donor->profession) }}</span></p>
-                            <p><span class="donor-info-span">Division</span>:<span
-                                    class="donor-info-span-right">{{ __($donor->division->name) }}</span></p>
-                            <p><span class="donor-info-span">District</span>:<span
-                                    class="donor-info-span-right">{{ __($donor->city->name) }}</span></p>
-                            <p><span class="donor-info-span">Upazila</span>:<span
-                                    class="donor-info-span-right">{{ __($donor->location->name) }}</span></p>
-                            <p><span class="donor-info-span">Address</span>:<span
-                                    class="donor-info-span-right">{{ __($donor->address) }}</span></p>
-                            <p><span class="donor-info-span">Phone</span>:<span
-                                    class="donor-info-span-right"><a href="tel:{{ __($donor->phone) }}">{{ __($donor->phone) }}</a></span></p>
-                            <p><span class="donor-info-span">Secondary Phone</span>:<span
-                                    class="donor-info-span-right">{{ __($donor->phone2) }}</span></p>
-                        </div> --}}
                     </div>
 
                 </div>
