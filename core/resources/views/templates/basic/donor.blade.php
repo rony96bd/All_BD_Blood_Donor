@@ -47,15 +47,15 @@
     <section class="pt-50 pb-50">
         <div class="container">
             <div class="row">
-                <div class="col-xl-2 col-lg-3 col-md-4 d-md-block d-none">
+                <div class="col-xl-2 d-xl-block d-none">
                     @php
                         echo advertisements('All_Donor_Left');
                     @endphp
                 </div>
-                <div class="col-xl-8 col-lg-9 col-md-8">
+                <div class="col-xl-8 col-lg-9 col-md-12">
                     <div class="row gy-4">
                         @forelse($donors as $donor)
-                            <div class="col-lg-6 col-md-12 col-sm-6">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="donor-item has--link" style="font-family: 'Noto Sans Bengali',  sans-serif;">
 
                                     <div class="donor-item__thumb">
