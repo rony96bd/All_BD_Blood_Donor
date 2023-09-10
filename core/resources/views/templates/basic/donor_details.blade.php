@@ -92,7 +92,7 @@
                                 <li>
                                     <span class="caption">Email</span>
                                     @if (auth()->guard('admin')->check())
-                                        <span class="value">{{ __($donor->email) }} <a href=""><i
+                                        <span class="value">{{ __($donor->email) }} <a target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&to={{ __($donor->email) }}"><i
                                                     class="fa-regular fa-envelope"></i> Email</a></span>
                                     @else
                                         <span class="value">xxxxxxxxxx@gmail.com <p class="popup" style="color: #00B074;"
@@ -109,8 +109,7 @@
                                     <span class="caption">Phone</span>
                                     @if (auth()->guard('admin')->check())
                                         <span class="value">{{ __($donor->phone) }} <a
-                                                href="https://wa.me/+88{{ __($donor->phone) }}"> Click to chat on
-                                                WhatsApp</a></span>
+                                                href="tel:{{ __($donor->phone) }}"> <i class="fa fa-phone"></i> কল দিন</a></span>
                                     @else
                                         <span class="value">01xxxxxxxxx  <p class="popup" style="color: #00B074;"
                                                 onclick="myFunction2()"> <i class="fa fa-phone"></i> কল দিন
@@ -124,14 +123,13 @@
                                     <span class="caption">Secondary Phone</span>
                                     @if (auth()->guard('admin')->check())
                                         <span class="value">{{ __($donor->phone2) }} <a
-                                                href="https://wa.me/+88{{ __($donor->phone2) }}"> Click to chat on
-                                                WhatsApp</a></span>
+                                                href="tel:{{ __($donor->phone2) }}"> <i class="fa fa-phone"></i> কল দিন</a></span>
                                     @else
                                         <span class="value">01xxxxxxxxx <p class="popup" style="color: #00B074;"
                                                 onclick="myFunction3()"> <i class="fa fa-phone"></i> কল দিন
                                                 <span class="popuptext" id="myPopup3">
                                                     মোবাইল নম্বর দেখতে <a href="{{ route('apply.donor') }}"> Signup </a>
-                                                    করে <a href="{{ route('admin.login') }}"> Login </a> করুন</a>
+                                                    করে <a href="{{ route('donor.login') }}"> Login </a> করুন</a>
                                                 </span>
                                     @endif
                                 </li>

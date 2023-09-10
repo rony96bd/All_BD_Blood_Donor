@@ -105,15 +105,14 @@
                     <div class="footer-widget">
                         <h4 class="footer-widget__title">@lang('Contact Us')</h4>
                         <ul>
-                            <li>
-                                <div class="icon">
-                                    <i class="las la-envelope"></i>  <a
-                                        href="mailto:{{ __($contact->data_values->email_address) }}">{{ __($contact->data_values->email_address) }}</a>
-                                    <i class="las la-envelope"></i>  <a
-                                        href="mailto:{{ __($contact->data_values->email_address) }}">{{ __($contact->data_values->email_address) }}</a>
-                                    <i class="las la-phone-volume"></i>  <a
-                                        href="tel:{{ __($contact->data_values->contact_number) }}">{{ __($contact->data_values->contact_number) }}</a>
-                                </div>
+                            <li><i class="las la-envelope"></i>  <a
+                                    href="mailto:{{ __($contact->data_values->email_address) }}">{{ __($contact->data_values->email_address) }}</a>
+                            </li>
+                            <li><i class="las la-envelope"></i>  <a
+                                    href="mailto:{{ __($contact->data_values->email_address) }}">{{ __($contact->data_values->email_address) }}</a>
+                            </li>
+                            <li><i class="las la-phone-volume"></i>  <a
+                                    href="tel:{{ __($contact->data_values->contact_number) }}">{{ __($contact->data_values->contact_number) }}</a>
                             </li>
                             <hr>
                             <li>Follow Us</li>
