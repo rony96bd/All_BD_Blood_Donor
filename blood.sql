@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 09, 2023 at 09:24 PM
+-- Generation Time: Sep 10, 2023 at 05:57 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -87,10 +87,12 @@ CREATE TABLE `advertisements` (
 --
 
 INSERT INTO `advertisements` (`id`, `name`, `click`, `impression`, `type`, `size`, `redirect_url`, `image`, `script`, `status`, `created_at`, `updated_at`) VALUES
-(17, 'Front_Top', 1, 776, 1, '320x50', 'https://epagebd.com', '64fb067eefc251694172798.jpg', NULL, 1, '2023-09-08 05:33:19', '2023-09-09 19:21:20'),
-(18, 'After_Banner2', 1, 232, 1, '1140x320', 'https://epagebd.com', '64fb082651a691694173222.jpg', NULL, 1, '2023-09-08 05:40:22', '2023-09-09 19:21:19'),
-(19, 'All_Donor_Left', 0, 99, 1, '220x474', 'https://epagebd.com', '64fc7ab4203bc1694268084.jpg', NULL, 1, '2023-09-09 13:58:00', '2023-09-09 18:53:44'),
-(20, 'All_Donor_Right', 0, 70, 1, '220x474', 'https://epagebd.com', '64fc7ad0ca7031694268112.jpg', NULL, 1, '2023-09-09 14:01:52', '2023-09-09 18:53:44');
+(17, 'Front_Top', 1, 902, 1, '320x50', 'https://epagebd.com', '64fb067eefc251694172798.jpg', NULL, 1, '2023-09-08 05:33:19', '2023-09-10 03:53:02'),
+(18, 'After_Banner2', 1, 233, 1, '1140x320', 'https://epagebd.com', '64fb082651a691694173222.jpg', NULL, 1, '2023-09-08 05:40:22', '2023-09-10 01:29:18'),
+(19, 'All_Donor_Left', 0, 116, 1, '220x474', 'https://epagebd.com', '64fc7ab4203bc1694268084.jpg', NULL, 1, '2023-09-09 13:58:00', '2023-09-10 03:28:05'),
+(20, 'All_Donor_Right', 0, 78, 1, '220x474', 'https://epagebd.com', '64fc7ad0ca7031694268112.jpg', NULL, 1, '2023-09-09 14:01:52', '2023-09-10 03:28:05'),
+(21, 'Single_Donor_Left', 0, 47, 1, '261x474', 'https://epagebd.com', '64fd26446c7741694312004.jpg', NULL, 1, '2023-09-10 02:13:24', '2023-09-10 03:53:01'),
+(22, 'Single_Donor_Right', 0, 47, 1, '261x474', 'https://roktodin.com', '64fd2655b4dff1694312021.jpg', NULL, 1, '2023-09-10 02:13:41', '2023-09-10 03:53:02');
 
 -- --------------------------------------------------------
 
@@ -204,7 +206,7 @@ INSERT INTO `donors` (`id`, `name`, `gender`, `division_id`, `city_id`, `locatio
 (2, 'মোঃ মনিরুল হক', 1, 1, 1, 1, 'UNO Office, Alamdanga, Chuadanga', 'Islam', 'Job', 2, '2023-09-05', '2023-09-08', 'r.rony94966@gmail.com', 'https://www.facebook.com/rony92bd', '64fc4e1225eda1694256658.jpg', '01722414102', '01722414102', '$2y$10$BbnENxOLGefhvYkIQpR.1O7L9i7gzO8BPgd6LkyYFhhO6LpiaSSxm', 1, 4, '2023-09-09 04:50:58', '2023-09-09 13:42:28'),
 (3, 'মোঃ শরিফুল ইসলাম', 1, 1, 1, 1, 'UNO Office, Alamdanga, Chuadanga', 'Islam', 'Job', 1, '2023-09-05', '2023-09-08', 'r.rony98966@gmail.com', 'https://www.facebook.com/rony92bd', '64fc4e1225eda1694256658.jpg', '01723414102', '01723414102', '$2y$10$BbnENxOLGefhvYkIQpR.1O7L9i7gzO8BPgd6LkyYFhhO6LpiaSSxm', 1, 5, '2023-09-09 04:50:58', '2023-09-09 15:24:59'),
 (4, 'মোঃ ইবাদত আলী', 1, 1, 1, 1, 'UNO Office, Alamdanga, Chuadanga', 'Islam', 'Job', 1, '2023-09-05', '2023-09-08', 'r.rony926@gmail.com', 'https://www.facebook.com/rony92bd', '64fc4e1225eda1694256658.jpg', '01723000000', '01723000000', '$2y$10$BbnENxOLGefhvYkIQpR.1O7L9i7gzO8BPgd6LkyYFhhO6LpiaSSxm', 1, 4, '2023-09-09 04:50:58', '2023-09-09 13:42:28'),
-(5, 'মোঃ ইমাদুল হক', 1, 1, 2, 2, 'UNO Office, Alamdanga, Chuadanga', 'Islam', 'Job', 3, '2023-09-20', '1970-02-04', 'r.ronycoc2015@gmail.com', 'https://www.facebook.com/rony92bd', '64fcb6767b5d81694283382.jpg', '01755847452', '01831945224', '$2y$10$e0wfw7cNPA1U1.uXkSvKyeXIQbGXwUX2kHmV6HmRsuVuGYt6R1xUW', 1, 0, '2023-09-09 18:16:23', '2023-09-09 18:16:53'),
+(5, 'মোঃ ইমাদুল হক', 1, 1, 2, 2, 'UNO Office, Alamdanga, Chuadanga', 'Islam', 'Job', 3, '2023-09-20', '1970-02-04', 'r.ronycoc2015@gmail.com', 'https://www.facebook.com/rony92bd', '64fcb6767b5d81694283382.jpg', '01755847452', '01831945224', '$2y$10$e0wfw7cNPA1U1.uXkSvKyeXIQbGXwUX2kHmV6HmRsuVuGYt6R1xUW', 1, 59, '2023-09-09 18:16:23', '2023-09-10 03:53:01'),
 (6, 'মেহেবুব দিপ্ত', 1, 1, 1, 1, 'কুমারগাড়া, কুষ্টিয়া', 'Islam', 'Job', 3, '2023-09-06', '2023-09-08', 'Dipto224@gmail.com', 'https://www.facebook.com/rony92bd', '64fcb75164fae1694283601.jpg', '01831933224', '01831933224', '$2y$10$j5DW7tIZGLGfFwlUCwfmwOpaRVV7sQWCii1OWuUVLGaiQSOtQCav.', 1, 0, '2023-09-09 18:20:01', '2023-09-09 18:20:13');
 
 -- --------------------------------------------------------
@@ -700,7 +702,7 @@ ALTER TABLE `admin_password_resets`
 -- AUTO_INCREMENT for table `advertisements`
 --
 ALTER TABLE `advertisements`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `bloods`
