@@ -21,7 +21,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700&family=Noto+Serif+Bengali:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700&family=Noto+Serif+Bengali:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     @stack('style-lib')
     @stack('style')
@@ -72,6 +74,7 @@
     <script src="{{ asset($activeTemplateTrue . 'frontend/js/app.js') }}"></script>
     <script src="{{ asset($activeTemplateTrue . 'frontend/js/drawer.js') }}"></script>
     <script src="https://kit.fontawesome.com/88197b63d0.js" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     @stack('script-lib')
     @stack('script')
@@ -84,6 +87,20 @@
                 window.location.href = "{{ route('home') }}/change/" + $(this).val();
             });
         })(jQuery);
+
+        // When the user clicks on div, open the popup
+        function myFunction() {
+            var popup = document.getElementById("myPopup");
+            popup.classList.toggle("show");
+        }
+        function myFunction2() {
+            var popup = document.getElementById("myPopup2");
+            popup.classList.toggle("show");
+        }
+        function myFunction3() {
+            var popup = document.getElementById("myPopup3");
+            popup.classList.toggle("show");
+        }
     </script>
 </body>
 

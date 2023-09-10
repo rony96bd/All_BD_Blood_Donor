@@ -805,7 +805,7 @@ a.text-white:hover {
 }
 
 .caption-list-two li {
-    font-family: "Fira Sans", sans-serif;
+    font-family: 'Noto Sans Bengali', sans-serif;
     font-weight: 500;
     color: #17173A;
     font-size: 0.875rem;
@@ -1954,7 +1954,7 @@ span {
 a {
     text-decoration: none;
     display: inline-block;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Noto Sans Bengali', sans-serif;
     font-weight: 400;
 }
 
@@ -5392,4 +5392,75 @@ blockquote {
 .cookie__wrapper .txt {
     max-width: 720px;
     margin-right: 20px;
+}
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+    visibility: hidden;
+    width: max-content;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+.popuptext a {
+    color: yellow;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }

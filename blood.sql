@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 10, 2023 at 05:57 AM
+-- Generation Time: Sep 10, 2023 at 07:32 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -44,7 +44,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `username`, `email_verified_at`, `image`, `password`, `created_at`, `updated_at`) VALUES
-(1, 'Super Admin', 'admin@site.com', 'admin', NULL, '5ff1c3531ed3f1609679699.jpg', '$2y$10$2qcOUKrDIUqyyCklvHp7IO8fGNcJ1gAXtxouTn1isZPHu6H8CfHPq', NULL, '2021-05-07 07:54:06');
+(1, 'Super Admin', 'admin@site.com', 'admin', NULL, '5ff1c3531ed3f1609679699.jpg', '$2y$10$MP/tUwJl67bd2KeORXpzt.kkOBuBG8I3mtyR4c6SP.PL72t6vznfS', NULL, '2023-09-10 17:31:28');
 
 -- --------------------------------------------------------
 
@@ -87,12 +87,12 @@ CREATE TABLE `advertisements` (
 --
 
 INSERT INTO `advertisements` (`id`, `name`, `click`, `impression`, `type`, `size`, `redirect_url`, `image`, `script`, `status`, `created_at`, `updated_at`) VALUES
-(17, 'Front_Top', 1, 902, 1, '320x50', 'https://epagebd.com', '64fb067eefc251694172798.jpg', NULL, 1, '2023-09-08 05:33:19', '2023-09-10 03:53:02'),
-(18, 'After_Banner2', 1, 233, 1, '1140x320', 'https://epagebd.com', '64fb082651a691694173222.jpg', NULL, 1, '2023-09-08 05:40:22', '2023-09-10 01:29:18'),
-(19, 'All_Donor_Left', 0, 116, 1, '220x474', 'https://epagebd.com', '64fc7ab4203bc1694268084.jpg', NULL, 1, '2023-09-09 13:58:00', '2023-09-10 03:28:05'),
-(20, 'All_Donor_Right', 0, 78, 1, '220x474', 'https://epagebd.com', '64fc7ad0ca7031694268112.jpg', NULL, 1, '2023-09-09 14:01:52', '2023-09-10 03:28:05'),
-(21, 'Single_Donor_Left', 0, 47, 1, '261x474', 'https://epagebd.com', '64fd26446c7741694312004.jpg', NULL, 1, '2023-09-10 02:13:24', '2023-09-10 03:53:01'),
-(22, 'Single_Donor_Right', 0, 47, 1, '261x474', 'https://roktodin.com', '64fd2655b4dff1694312021.jpg', NULL, 1, '2023-09-10 02:13:41', '2023-09-10 03:53:02');
+(17, 'Front_Top', 1, 1048, 1, '320x50', 'https://epagebd.com', '64fb067eefc251694172798.jpg', NULL, 1, '2023-09-08 05:33:19', '2023-09-10 17:30:49'),
+(18, 'After_Banner2', 1, 235, 1, '1140x320', 'https://epagebd.com', '64fb082651a691694173222.jpg', NULL, 1, '2023-09-08 05:40:22', '2023-09-10 15:10:52'),
+(19, 'All_Donor_Left', 0, 121, 1, '220x474', 'https://epagebd.com', '64fc7ab4203bc1694268084.jpg', NULL, 1, '2023-09-09 13:58:00', '2023-09-10 15:11:26'),
+(20, 'All_Donor_Right', 0, 83, 1, '220x474', 'https://epagebd.com', '64fc7ad0ca7031694268112.jpg', NULL, 1, '2023-09-09 14:01:52', '2023-09-10 15:11:26'),
+(21, 'Single_Donor_Left', 0, 109, 1, '261x474', 'https://epagebd.com', '64fd26446c7741694312004.jpg', NULL, 1, '2023-09-10 02:13:24', '2023-09-10 17:30:49'),
+(22, 'Single_Donor_Right', 0, 109, 1, '261x474', 'https://roktodin.com', '64fd2655b4dff1694312021.jpg', NULL, 1, '2023-09-10 02:13:41', '2023-09-10 17:30:49');
 
 -- --------------------------------------------------------
 
@@ -202,7 +202,7 @@ CREATE TABLE `donors` (
 --
 
 INSERT INTO `donors` (`id`, `name`, `gender`, `division_id`, `city_id`, `location_id`, `address`, `religion`, `profession`, `blood_id`, `last_donate`, `birth_date`, `email`, `facebook`, `image`, `phone`, `phone2`, `password`, `status`, `click`, `created_at`, `updated_at`) VALUES
-(1, 'মোঃ রাকিব উদ্দিন', 1, 1, 1, 1, 'UNO Office, Alamdanga, Chuadanga', 'Islam', 'Job', 1, '2023-09-05', '2023-09-08', 'r.rony9966@gmail.com', 'https://www.facebook.com/rony92bd', '64fc4e1225eda1694256658.jpg', '01722414101', '01722414101', '$2y$10$BbnENxOLGefhvYkIQpR.1O7L9i7gzO8BPgd6LkyYFhhO6LpiaSSxm', 1, 4, '2023-09-09 04:50:58', '2023-09-09 15:24:47'),
+(1, 'মোঃ রাকিব উদ্দিন', 1, 1, 1, 1, 'UNO Office, Alamdanga, Chuadanga', 'Islam', 'Job', 1, '2023-09-05', '2023-09-08', 'r.rony9966@gmail.com', 'https://www.facebook.com/rony92bd', '64fc4e1225eda1694256658.jpg', '01722414101', '01722414101', '$2y$10$BbnENxOLGefhvYkIQpR.1O7L9i7gzO8BPgd6LkyYFhhO6LpiaSSxm', 1, 66, '2023-09-09 04:50:58', '2023-09-10 17:30:49'),
 (2, 'মোঃ মনিরুল হক', 1, 1, 1, 1, 'UNO Office, Alamdanga, Chuadanga', 'Islam', 'Job', 2, '2023-09-05', '2023-09-08', 'r.rony94966@gmail.com', 'https://www.facebook.com/rony92bd', '64fc4e1225eda1694256658.jpg', '01722414102', '01722414102', '$2y$10$BbnENxOLGefhvYkIQpR.1O7L9i7gzO8BPgd6LkyYFhhO6LpiaSSxm', 1, 4, '2023-09-09 04:50:58', '2023-09-09 13:42:28'),
 (3, 'মোঃ শরিফুল ইসলাম', 1, 1, 1, 1, 'UNO Office, Alamdanga, Chuadanga', 'Islam', 'Job', 1, '2023-09-05', '2023-09-08', 'r.rony98966@gmail.com', 'https://www.facebook.com/rony92bd', '64fc4e1225eda1694256658.jpg', '01723414102', '01723414102', '$2y$10$BbnENxOLGefhvYkIQpR.1O7L9i7gzO8BPgd6LkyYFhhO6LpiaSSxm', 1, 5, '2023-09-09 04:50:58', '2023-09-09 15:24:59'),
 (4, 'মোঃ ইবাদত আলী', 1, 1, 1, 1, 'UNO Office, Alamdanga, Chuadanga', 'Islam', 'Job', 1, '2023-09-05', '2023-09-08', 'r.rony926@gmail.com', 'https://www.facebook.com/rony92bd', '64fc4e1225eda1694256658.jpg', '01723000000', '01723000000', '$2y$10$BbnENxOLGefhvYkIQpR.1O7L9i7gzO8BPgd6LkyYFhhO6LpiaSSxm', 1, 4, '2023-09-09 04:50:58', '2023-09-09 13:42:28'),

@@ -83,12 +83,25 @@
                                     <span class="caption">Upazila</span>
                                     <span class="value">{{ __($donor->location->name) }}</span>
                                 </li>
+                            </ul>
+                            <span style="padding-left: 20px; font-weight: bold;">Contact Details</span><br>
+                            <span style="padding-left: 20px; color: #00B074;"><a href="{{ route('admin.login') }}">দেখার
+                                    জন্য লগইন করুন</a></span>
+                            <ul class="caption-list-two"
+                                style="background-color: #FFDADC; margin-left: 10px; margin-right: 10px; margin-bottom: 20px;">
                                 <li>
                                     <span class="caption">Email</span>
                                     @if (auth()->guard('admin')->check())
-                                        <span class="value">{{ __($donor->email) }}</span>
+                                        <span class="value">{{ __($donor->email) }} <a href=""><i
+                                                    class="fa-regular fa-envelope"></i> Email</a></span>
                                     @else
-                                        <span class="value">xxxxxxxxxx@gmail.com</span>
+                                        <span class="value">xxxxxxxxxx@gmail.com <p class="popup" style="color: #00B074;"
+                                                onclick="myFunction()"> <i class="fa-regular fa-envelope"></i></i> Email
+                                                <span class="popuptext" id="myPopup">
+                                                    ইমেইল দেখতে <a href="{{ route('apply.donor') }}"> Signup </a> করে <a
+                                                        href="{{ route('admin.login') }}"> Login </a> করুন</a>
+                                                </span>
+                                            </p></span>
                                     @endif
                                 </li>
 
@@ -99,9 +112,12 @@
                                                 href="https://wa.me/+88{{ __($donor->phone) }}"> Click to chat on
                                                 WhatsApp</a></span>
                                     @else
-                                        <span class="value">01xxxxxxxxx <a
-                                                href="https://test.roktodin.com/apply/donor"> মোবাইল নম্বর দেখতে লগইন
-                                                করুন</a></span>
+                                        <span class="value">01xxxxxxxxx  <p class="popup" style="color: #00B074;"
+                                                onclick="myFunction2()"> <i class="fa fa-phone"></i> কল দিন
+                                                <span class="popuptext" id="myPopup2">
+                                                    মোবাইল নম্বর দেখতে <a href="{{ route('apply.donor') }}"> Signup </a>
+                                                    করে <a href="{{ route('admin.login') }}"> Login </a> করুন</a>
+                                                </span>
                                     @endif
                                 </li>
                                 <li>
@@ -111,9 +127,12 @@
                                                 href="https://wa.me/+88{{ __($donor->phone2) }}"> Click to chat on
                                                 WhatsApp</a></span>
                                     @else
-                                        <span class="value">01xxxxxxxxx <a
-                                                href="https://test.roktodin.com/apply/donor"> মোবাইল নম্বর দেখতে লগইন
-                                                করুন</a></span>
+                                        <span class="value">01xxxxxxxxx <p class="popup" style="color: #00B074;"
+                                                onclick="myFunction3()"> <i class="fa fa-phone"></i> কল দিন
+                                                <span class="popuptext" id="myPopup3">
+                                                    মোবাইল নম্বর দেখতে <a href="{{ route('apply.donor') }}"> Signup </a>
+                                                    করে <a href="{{ route('admin.login') }}"> Login </a> করুন</a>
+                                                </span>
                                     @endif
                                 </li>
                             </ul>
