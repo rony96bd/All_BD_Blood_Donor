@@ -22,7 +22,58 @@
                                 <h3 class="text-danger">{{ __($donor->name) }}</h3>
                             </span>
                         </div>
-                        <div style="padding: 0px 20px 20px 20px;">
+                        <div class="col-lg-12 col-md-12 col-sm-6">
+                            <ul class="caption-list-two mt-4"
+                                style="background-color: #FFDADC;
+                                        margin-left: 10px;
+                                        margin-right: 10px;
+                                        margin-bottom: 20px;">
+                                <li>
+                                    <span class="caption">Name</span>
+                                    <span class="value">Saibul Sakib</span>
+                                </li>
+                                <li>
+                                    <span class="caption">Gender</span>
+                                    <span class="value">
+                                        Male </span>
+                                </li>
+                                <li>
+                                    <span class="caption">Date of Birth</span>
+                                    <span class="value">04 May 1987</span>
+                                </li>
+                                <li>
+                                    <span class="caption">Age</span>
+                                    <span class="value">36
+                                        Years</span>
+                                </li>
+                                <li>
+                                    <span class="caption">Religion</span>
+                                    <span class="value">Islam</span>
+                                </li>
+                                <li>
+                                    <span class="caption">Email</span>
+                                    <span class="value">saibulsakib@gmail.com</span>
+                                </li>
+
+                                <li>
+                                    <span class="caption">Phone</span>
+                                    <span class="value">01xxxxxxxxx <a href="https://nearblood.com/apply/donor">&nbsp;See
+                                            Phone
+                                            Number? Please Signup and Login</a></span>
+                                </li>
+
+                                <li>
+                                    <span class="caption">Profession</span>
+                                    <span class="value">Service</span>
+                                </li>
+
+                                <li>
+                                    <span class="caption">Address</span>
+                                    <span class="value">Vill: Faridpur</span>
+                                </li>
+                            </ul>
+                        </div>
+                        {{-- <div style="padding: 0px 20px 20px 20px;">
                             <p><span class="donor-info-span">Name</span>:<span
                                     class="donor-info-span-right">{{ __($donor->name) }}</span></p>
                             <p><span class="donor-info-span">Blood Group</span>:<span
@@ -61,7 +112,7 @@
                                     class="donor-info-span-right"><a href="tel:{{ __($donor->phone) }}">{{ __($donor->phone) }}</a></span></p>
                             <p><span class="donor-info-span">Secondary Phone</span>:<span
                                     class="donor-info-span-right">{{ __($donor->phone2) }}</span></p>
-                        </div>
+                        </div> --}}
                     </div>
 
                 </div>
