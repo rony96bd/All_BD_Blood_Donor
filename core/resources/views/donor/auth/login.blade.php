@@ -36,7 +36,7 @@
     }
     </style>
     <div class="container2">
-        <nav class="navbar navbar-expand-login navbar-light bg-light">
+        <nav id="navbar_top" class="navbar navbar-expand-login navbar-light bg-light">
             <a class="site-logo site-title" href="{{ route('home') }}">
                 <img src="{{ getImage(imagePath()['logoIcon']['path'] . '/logo.png') }}" alt="@lang('logo')">
             </a>
@@ -107,3 +107,19 @@
         </div><!-- login-area end -->
     </div>
 @endsection
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    document.getElementById('navbar_top').classList.add('fixed-top');
+                    // add padding top to show content behind navbar
+                    navbar_height = document.querySelector('.navbar').offsetHeight;
+                    document.body.style.paddingTop = navbar_height + 'px';
+                } else {
+                    document.getElementById('navbar_top').classList.remove('fixed-top');
+                    // remove padding top from body
+                    document.body.style.paddingTop = '0';
+                }
+            });
+        });
+    </script>
