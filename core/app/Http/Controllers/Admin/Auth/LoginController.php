@@ -68,7 +68,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
 
-        $this->validateLogin($request);
+        $this->validateLoginAdmin($request);
         $lv = @getLatestVersion();
         $general = GeneralSetting::first();
         if (@systemDetails()['version'] < @json_decode($lv)->version) {

@@ -62,9 +62,9 @@ class LoginController extends Controller
         return Auth::guard('donor');
     }
 
-    public function email()
+    public function phone()
     {
-        return 'email';
+        return 'phone';
     }
 
     public function login(Request $request)
@@ -120,6 +120,6 @@ class LoginController extends Controller
 
     protected function credentials(Request $request)
     {
-        return array_merge($request->only($this->email(), 'password'));
+        return array_merge($request->only($this->phone(), 'password'));
     }
 }
