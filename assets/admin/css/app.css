@@ -6361,7 +6361,7 @@ th.w-85 {
 @media (max-width: 575px) {
     .form-area {
         padding: 15px 15px;
-            min-height: 0vh;
+            min-height: 100vh;
     }
 }
 
