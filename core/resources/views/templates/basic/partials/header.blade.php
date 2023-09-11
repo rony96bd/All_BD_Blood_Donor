@@ -55,7 +55,7 @@
                             alt="@lang('logo')">
                     </a>
 
-                    <span class="login-menu"><a href="#">Login</a>   <a
+                    <span class="login-menu"><a href="{{ route('donor.login') }}">Login</a>   <a
                             href="{{ route('apply.donor') }}">Signup</a></span>
 
                     <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
