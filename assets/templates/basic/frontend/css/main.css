@@ -2867,7 +2867,7 @@ label {
 }
 
 .header__top {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid lightgray;
     box-shadow: 0 3px 4px -3px gray;
     padding: 0.625rem 0;
 }
