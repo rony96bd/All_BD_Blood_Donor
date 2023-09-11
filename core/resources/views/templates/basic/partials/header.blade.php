@@ -46,33 +46,37 @@
             </div>
         </div>
     </div>
-    <div class="header__bottom">
-        <div class="container">
-            <nav class="navbar navbar-expand-xl p-0 align-items-center">
-                <a class="site-logo site-title" href="{{ route('home') }}">
-                    <img src="{{ getImage(imagePath()['logoIcon']['path'] . '/logo.png') }}" alt="@lang('logo')">
-                </a>
+    <nav id="navbar_top" style="background-color: #fff;">
+        <div class="header__bottom">
+            <div class="container">
+                <nav class="navbar navbar-expand-xl p-0 align-items-center">
+                    <a class="site-logo site-title" href="{{ route('home') }}">
+                        <img src="{{ getImage(imagePath()['logoIcon']['path'] . '/logo.png') }}"
+                            alt="@lang('logo')">
+                    </a>
 
-                <span class="login-menu"><a href="#">Login</a>   <a href="{{ route('apply.donor') }}">Signup</a></span>
+                    <span class="login-menu"><a href="#">Login</a>   <a
+                            href="{{ route('apply.donor') }}">Signup</a></span>
 
-                <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span style="font-size: 30px;"><i class="las la-bars"></i></span>
-                </button>
-                <div class="collapse navbar-collapse mt-lg-0 mt-3" id="navbarSupportedContent">
-                    <ul class="navbar-nav main-menu text-center">
-                        <li><a href="{{ route('home') }}">@lang('Home')</a></li>
-                        @foreach ($pages as $k => $data)
-                            <li><a href="{{ route('pages', [$data->slug]) }}">{{ __($data->name) }}</a></li>
-                        @endforeach
-                    </ul>
-                    {{-- <div class="nav-right">
+                    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span style="font-size: 30px;"><i class="las la-bars"></i></span>
+                    </button>
+                    <div class="collapse navbar-collapse mt-lg-0 mt-3" id="navbarSupportedContent">
+                        <ul class="navbar-nav main-menu text-center">
+                            <li><a href="{{ route('home') }}">@lang('Home')</a></li>
+                            @foreach ($pages as $k => $data)
+                                <li><a href="{{ route('pages', [$data->slug]) }}">{{ __($data->name) }}</a></li>
+                            @endforeach
+                        </ul>
+                        {{-- <div class="nav-right">
                         <a href="{{ route('apply.donor') }}" class="btn btn-md btn--base d-flex align-items-center"><i
                                 class="las la-user fs--18px me-2"></i> @lang('Apply as a Donor')</a>
                     </div> --}}
-                </div>
-            </nav>
+                    </div>
+                </nav>
+            </div>
         </div>
-    </div>
+    </nav>
 </header>
