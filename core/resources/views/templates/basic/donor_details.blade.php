@@ -85,7 +85,7 @@
                                 </li>
                             </ul>
                             <span style="padding-left: 20px; font-weight: bold;">Contact Details</span><br>
-                            <span style="padding-left: 20px; color: #00B074;"><a href="{{ route('admin.login') }}">দেখার
+                            <span style="padding-left: 20px; color: #00B074;"><a href="{{ route('donor.login') }}">দেখার
                                     জন্য লগইন করুন</a></span>
                             <ul class="caption-list-two"
                                 style="background-color: #FFDADC; margin-left: 10px; margin-right: 10px; margin-bottom: 20px;">
