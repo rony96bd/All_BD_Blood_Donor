@@ -405,7 +405,7 @@ hr {
 
 @media (min-width: 1199px) {
     .login-menu {
-        margin: 0px 0 0 970px;
+        margin: 0px 0 0 790px;
     }
 }
 
@@ -2867,7 +2867,7 @@ label {
 }
 
 .header__top {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid lightgray;
     box-shadow: 0 3px 4px -3px gray;
     padding: 0.625rem 0;
 }
@@ -5465,3 +5465,12 @@ blockquote {
         opacity: 1;
     }
 }
+
+#boxThis.box {
+    margin-top: 0;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    -webkit-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+  }

@@ -7266,3 +7266,9 @@ a.icon-btn {
 .menu-badge{
     color: #fff !important;
 }
+
+.bnfont {
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
