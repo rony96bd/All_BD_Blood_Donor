@@ -5401,6 +5401,7 @@ blockquote {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    width: 115px;
 }
 
 /* The actual popup */
@@ -5415,8 +5416,8 @@ blockquote {
     position: absolute;
     z-index: 1;
     bottom: 125%;
-    left: 50%;
-    margin-left: -80px;
+    left: 0%;
+        margin-left: -120px;
 }
 
 .popuptext a {
