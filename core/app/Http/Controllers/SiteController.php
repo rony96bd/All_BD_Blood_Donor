@@ -275,9 +275,9 @@ class SiteController extends Controller
             'division' => 'required|exists:divisions,id',
             'city' => 'required|exists:cities,id',
             'location' => 'required|exists:locations,id',
-            'address' => 'required|max:255',
+            // 'address' => 'required|max:255',
             'religion' => 'required|max:40',
-            'profession' => 'required|max:80',
+            // 'profession' => 'required|max:80',
             'blood' => 'required|exists:bloods,id',
             'last_donate' => 'required|date',
             'birth_date' => 'required|date',
@@ -287,6 +287,7 @@ class SiteController extends Controller
             'phone' => 'required|max:40|unique:donors,phone',
             'phone2' => 'required|max:40|unique:donors,phone2',
             'password' => 'required|confirmed|min:6',
+            'term' => 'accepted',
         ]);
 
         $donor = new Donor();
@@ -295,9 +296,9 @@ class SiteController extends Controller
         $donor->division_id = $request->division;
         $donor->city_id = $request->city;
         $donor->location_id = $request->location;
-        $donor->address = $request->address;
+        // $donor->address = $request->address;
         $donor->religion = $request->religion;
-        $donor->profession = $request->profession;
+        // $donor->profession = $request->profession;
         $donor->blood_id = $request->blood;
         $donor->last_donate = $request->last_donate;
         $donor->birth_date =  $request->birth_date;

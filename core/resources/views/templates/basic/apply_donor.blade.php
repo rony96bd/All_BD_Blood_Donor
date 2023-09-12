@@ -20,7 +20,7 @@
                             <div class="form-group col-lg-6">
                                 <label for="gender">@lang('Gender') <sup class="text--danger">*</sup></label>
                                 <select name="gender" id="gender" class="select" required="">
-                                    <option value="" selected="" disabled="">@lang('Select One')</option>
+                                    <option value="{{ old('gender') }}" selected="" disabled="">{{ old('gender') }}</option>
                                     <option value="1">@lang('Male')</option>
                                     <option value="2">@lang('Female')</option>
                                 </select>
@@ -52,26 +52,31 @@
                                 </select>
                             </div>
 
-                            <!-- ঠিকানা বিস্তারিত ----------------------------------->
+                            {{-- <!-- ঠিকানা বিস্তারিত ----------------------------------->
                             <div class="form-group col-lg-6">
                                 <label for="address">@lang('Address') <sup class="text--danger">*</sup></label>
                                 <input type="text" name="address" id="address" value="{{ old('address') }}"
                                     placeholder="@lang('Enter Address')" class="form--control" maxlength="255" required="">
-                            </div>
+                            </div> --}}
 
                             <!-- ধর্ম ----------------------------------->
                             <div class="form-group col-lg-6">
                                 <label for="religion">@lang('Religion') <sup class="text--danger">*</sup></label>
-                                <input type="text" name="religion" id="religion" value="{{ old('religion') }}"
-                                    placeholder="@lang('Enter Religion')" class="form--control" maxlength="40" required="">
+                                <select name="religion" id="religion" class="select" required="">
+                                    <option value="{{ old('religion') }}" selected="" disabled="">{{ old('religion') }}</option>
+                                    <option value="Islam">@lang('Islam')</option>
+                                    <option value="Hinduism">@lang('Hinduism')</option>
+                                    <option value="Buddhism">@lang('Buddhism')</option>
+                                    <option value="Christianity">@lang('Christianity')</option>
+                                </select>
                             </div>
 
-                            <!-- পেশা ----------------------------------->
+                            {{-- <!-- পেশা ----------------------------------->
                             <div class="form-group col-lg-6">
                                 <label for="profession">@lang('Profession') <sup class="text--danger">*</sup></label>
                                 <input type="text" name="profession" id="profession" value="{{ old('profession') }}"
                                     placeholder="@lang('Enter Profession')" class="form--control" maxlength="80" required="">
-                            </div>
+                            </div> --}}
 
                             <!-- রক্তের গ্রুপ ----------------------------------->
                             <div class="form-group col-lg-6">
@@ -152,6 +157,13 @@
                             <div class="form-group col-lg-6">
                                 <label for="password_confirmation">@lang('Confirm Password') <sup class="text--danger">*</sup></label>
                                 <input type="password" name="password_confirmation" id="password_confirmation" value="{{old('password_confirmation')}}" placeholder="@lang('Enter Confirm Password')" class="form--control" maxlength="60" required="">
+                            </div>
+                            <!-- Accept Terms and Conditions ----------------------------------->
+                            <div class="form-group col-lg-6">
+                                <label class="checkbox" style="color:#00B074;">
+                                    <input type="checkbox" value="1" id="rememberMe" name="term"> <a target="_blank" href="../menu/terms-of-service/43"> Accept Terms and Conditions. </a>
+                                    <span class="checkmark"></span>
+                                </label>
                             </div>
                         </div>
 
