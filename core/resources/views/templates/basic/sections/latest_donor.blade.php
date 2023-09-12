@@ -68,7 +68,7 @@
                             </ul>
                             <div class="row">
                                 <div class="col-7 text-white"><span><a
-                                            href="{{ route('donor.details', [slug($donor->name), encrypt($donor->id)]) }}"
+                                            href="{{ route('donor.details', [slug($donor->name), $donor->id]) }}"
                                             class="custom-btn">View Details <i
                                                 class="fa fa-angle-double-right"></i></a></span></div>
                                 <div class="col-5" style="text-align: right"><i class="las la-eye"></i> {{ __($donor->click) }}</div>

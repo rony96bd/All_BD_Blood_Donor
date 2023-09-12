@@ -72,8 +72,8 @@ class SiteController extends Controller
     public function donorDetails($slug, $id)
     {
         $pageTitle = "Donor Details";
-        Donor::where('status', 1)->where('id', decrypt($id))->firstOrFail()->increment('click');
-        $donor = Donor::where('status',1)->where('id', decrypt($id))->firstOrFail();
+        Donor::where('status', 1)->where('id', $id)->firstOrFail()->increment('click');
+        $donor = Donor::where('status', 1)->where('id', $id)->firstOrFail();
         return view($this->activeTemplate . 'donor_details', compact('pageTitle', 'donor'));
     }
 
@@ -109,7 +109,7 @@ class SiteController extends Controller
             $donors = $donors->where('division_id', $request->division_id);
         }
         $donors = $donors->with('blood', 'location')->paginate(getPaginate());
-        return view($this->activeTemplate . 'donor', compact('pageTitle', 'emptyMessage', 'donors', 'cities', 'locations', 'bloods', 'locationId', 'cityId', 'bloodId', 'divisions'));
+        return view($this->activeTemplate . 'donor', compact('pageTitle', 'emptyMessage', 'donors', 'divisions', 'cities', 'locations', 'bloods', 'locationId', 'cityId', 'divisionId',  'bloodId'));
     }
 
     public function contactWithDonor(Request $request)
