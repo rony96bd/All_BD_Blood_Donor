@@ -139,10 +139,7 @@
                             </ul>
                         </div>
                     </div>
-                    {{-- <div class="fb-comments" data-href="https://test.roktodin.com/" data-width="" data-numposts="5"></div> --}}
-                    @push('fbComment')
-                        @php echo loadFbComment() @endphp
-                    @endpush
+                    <div class="fb-comments" data-href="https://test.roktodin.com/" data-width="" data-numposts="5"></div>
                 </div>
                 <div class="col-xl-3 d-xl-block d-none">
                     @php
