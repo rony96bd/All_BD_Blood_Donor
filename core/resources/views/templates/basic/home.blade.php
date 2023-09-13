@@ -74,6 +74,26 @@
         @endphp
     </div>
 
+    <div id="myModal" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100 fw-bold bnfont text-danger">সাবধানতা</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bnfont text-center">
+                    <p>রক্তের বিনিময়ে কেউ টাকা চাইলে বুঝে নিবেন সে প্রতারক।<br/> প্রকৃত রক্তদাতা কখনো টাকার বিনিময়ে রক্তদান করেন না।</p>
+
+                    {{-- <a href="#">This link</a> --}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @php
+        $popup = 1;
+    @endphp
+
     @if ($sections->secs != null)
         @foreach (json_decode($sections->secs) as $sec)
             @include($activeTemplate . 'sections.' . $sec)
@@ -81,6 +101,14 @@
     @endif
 @endsection
 @push('script')
+    @if ($popup == 1)
+        <script>
+            $(document).ready(function() {
+                $("#myModal").modal("show");
+            });
+        </script>
+    @endif
+
     <script>
         $(document).ready(function() {
             $('#division-dropdown').on('change', function() {
@@ -131,4 +159,3 @@
         });
     </script>
 @endpush
-
