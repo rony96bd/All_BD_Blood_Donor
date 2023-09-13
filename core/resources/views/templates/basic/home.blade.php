@@ -82,7 +82,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body bnfont text-center">
-                    <p>রক্তের বিনিময়ে কেউ টাকা চাইলে বুঝে নিবেন সে প্রতারক।<br/> প্রকৃত রক্তদাতা কখনো টাকার বিনিময়ে রক্তদান করেন না।</p>
+                    <p>রক্তের বিনিময়ে কেউ টাকা চাইলে বুঝে নিবেন সে প্রতারক।<br /> প্রকৃত রক্তদাতা কখনো টাকার বিনিময়ে রক্তদান
+                        করেন না।</p>
 
                     {{-- <a href="#">This link</a> --}}
                 </div>
@@ -103,6 +104,19 @@
 @push('script')
     @if ($popup == 1)
         <script>
+            // Show popup once in page load
+            // $(document).ready(function() {
+            //     var isshow = localStorage.getItem('isshow');
+            //     if (isshow == null) {
+            //         localStorage.setItem('isshow', 1);
+
+            //         // Show popup here
+            //         $(document).ready(function() {
+            //             $("#myModal").modal("show");
+            //         });
+            //     }
+            // });
+            // If popup need every time on page load
             $(document).ready(function() {
                 $("#myModal").modal("show");
             });
