@@ -81,14 +81,50 @@
                     <h5 class="modal-title w-100 fw-bold bnfont text-danger">সাবধানতা</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body bnfont text-center">
-                    <p>রক্তের বিনিময়ে কেউ টাকা চাইলে বুঝে নিবেন সে প্রতারক।<br /> প্রকৃত রক্তদাতা কখনো টাকার বিনিময়ে রক্তদান
+                <div class="modal-body bnfont text-center" style="padding-bottom: unset;">
+                    <p>রক্তের বিনিময়ে কেউ টাকা চাইলে বুঝে নিবেন সে প্রতারক। প্রকৃত রক্তদাতা কখনো টাকার বিনিময়ে রক্তদান
                         করেন না।</p>
 
-                    {{-- <a href="#">This link</a> --}}
+                </div>
+                <hr>
+                <span class="bnfont text-center fw-bold text-primary">লগইন করুন</span>
+                <hr>
+                <div class="form-wrapper">
+                    <form action="{{ route('donor.login') }}" method="POST" class="cmn-form mt-30">
+                        @csrf
+                        <div class="form-group">
+                            <label for="phone">@lang('Phone')</label>
+                            <input type="text" name="phone" class="form-control b-radius--capsule" id="phone"
+                                value="{{ old('phone') }}" placeholder="@lang('Phone No: 017xxxxxxxx')">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="pass">@lang('Password')</label>
+                            <input type="password" name="password" class="form-control b-radius--capsule" id="pass"
+                                placeholder="@lang('Enter your password')">
+
+                        </div>
+                        <div class="form-group d-flex justify-content-between align-items-center">
+                            <label class="checkbox" style="color:#00B074;">
+                                <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe">
+                                Stay login
+                                <span class="checkmark"></span>
+                            </label>
+                            <a href="{{ route('donor.password.reset') }}" class="text-muted text--small"><i
+                                    class="las la-lock"></i>@lang('Forgot password?')</a>
+
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="submit-btn mt-25 b-radius--capsule">@lang('Login') <i
+                                    class="las la-sign-in-alt"></i></button>
+                        </div>
+                    </form>
+                    <span class="bnfont">একাউন্ট নেই? <a style="font-size: 16px;" href="{{ Route('apply.donor') }}"><span
+                                style="color:#00B074">নতুন একাউন্ট তৈরি করুন</span></a></span>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     @php
