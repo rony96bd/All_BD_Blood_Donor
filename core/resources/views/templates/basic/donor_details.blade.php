@@ -147,3 +147,6 @@
         </div>
     </section>
 @endsection
+@push('fbComment')
+	@php echo loadFbComment() @endphp
+@endpush
