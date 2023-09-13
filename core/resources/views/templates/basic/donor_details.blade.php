@@ -92,7 +92,8 @@
                                 <li>
                                     <span class="caption">Email</span>
                                     @if (auth()->guard('admin')->check())
-                                        <span class="value">{{ __($donor->email) }} <a target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&to={{ __($donor->email) }}"><i
+                                        <span class="value">{{ __($donor->email) }} <a target="_blank"
+                                                href="https://mail.google.com/mail/?view=cm&fs=1&to={{ __($donor->email) }}"><i
                                                     class="fa-regular fa-envelope"></i> Email</a></span>
                                     @else
                                         <span class="value">xxxxxxxxxx@gmail.com <p class="popup" style="color: #00B074;"
@@ -109,7 +110,8 @@
                                     <span class="caption">Phone</span>
                                     @if (auth()->guard('admin')->check())
                                         <span class="value">{{ __($donor->phone) }} <a
-                                                href="tel:{{ __($donor->phone) }}"> <i class="fa fa-phone"></i> কল দিন</a></span>
+                                                href="tel:{{ __($donor->phone) }}"> <i class="fa fa-phone"></i> কল
+                                                দিন</a></span>
                                     @else
                                         <span class="value">01xxxxxxxxx  <p class="popup" style="color: #00B074;"
                                                 onclick="myFunction2()"> <i class="fa fa-phone"></i> কল দিন
@@ -123,7 +125,8 @@
                                     <span class="caption">Secondary Phone</span>
                                     @if (auth()->guard('admin')->check())
                                         <span class="value">{{ __($donor->phone2) }} <a
-                                                href="tel:{{ __($donor->phone2) }}"> <i class="fa fa-phone"></i> কল দিন</a></span>
+                                                href="tel:{{ __($donor->phone2) }}"> <i class="fa fa-phone"></i> কল
+                                                দিন</a></span>
                                     @else
                                         <span class="value">01xxxxxxxxx <p class="popup" style="color: #00B074;"
                                                 onclick="myFunction3()"> <i class="fa fa-phone"></i> কল দিন
@@ -138,6 +141,10 @@
                     </div>
 
                 </div>
+                <div class="fb-comments" data-href="https://test.roktodin.com/" data-width="" data-numposts="5"></div>
+                @push('fbComment')
+                    @php echo loadFbComment() @endphp
+                @endpush
                 <div class="col-xl-3 d-xl-block d-none">
                     @php
                         echo advertisements('Single_Donor_Right');
@@ -147,6 +154,3 @@
         </div>
     </section>
 @endsection
-@push('fbComment')
-	@php echo loadFbComment() @endphp
-@endpush
