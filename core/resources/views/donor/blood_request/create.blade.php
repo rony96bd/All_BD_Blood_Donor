@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('donor.layouts.app')
 @section('panel')
     <div class="row mb-none-30">
         <div class="col-lg-12 mb-30">

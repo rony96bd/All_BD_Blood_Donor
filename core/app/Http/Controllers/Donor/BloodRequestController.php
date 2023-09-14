@@ -33,7 +33,11 @@ class BloodRequestController extends Controller
      */
     public function create()
     {
-        //
+        $pageTitle = "Donor Create";
+        $data['divisions'] = Division::get(["name", "id"]);
+        $cities = City::where('status', 1)->select('id', 'name')->with('location')->get();
+        $bloods = Blood::where('status', 1)->select('id', 'name')->get();
+        return view('donor.blood_request.create', $data, compact('pageTitle', 'cities', 'bloods'));
     }
 
     /**
