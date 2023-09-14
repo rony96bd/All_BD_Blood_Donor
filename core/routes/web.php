@@ -58,6 +58,13 @@ Route::namespace('Donor')->prefix('donor')->name('donor.')->group(function () {
         Route::get('city/list', 'CityController@index')->name('city.index');
         Route::post('city/store', 'CityController@store')->name('city.store');
         Route::post('city/update', 'CityController@update')->name('city.update');
+
+        // Blood Request
+        Route::get('blood-request/list', 'BloodRequestController@index')->name('blood-request.index');
+        Route::get('blood-request/create', 'BloodRequestController@create')->name('blood-request.create');
+        Route::post('blood-request/store', 'BloodRequestController@store')->name('blood-request.store');
+        Route::get('blood-request/edit/{id}', 'BloodRequestController@edit')->name('blood-request.edit');
+        Route::post('blood-request/update/{id}', 'BloodRequestController@update')->name('blood-request.update');
     });
 });
 

@@ -24,10 +24,10 @@
                         <span class="menu-title">@lang('Dashboard')</span>
                     </a>
                 </li>
-                <li class="sidebar-menu-item {{menuActive('donor.dashboard')}}">
-                    <a href="https://nearblood.com/donor-list" class="nav-link ">
+                <li class="sidebar-menu-item {{menuActive('donor.blood-request.index')}}">
+                    <a href="{{Route('donor.blood-request.index')}}" class="nav-link ">
                         <i class="menu-icon las la-user"></i>
-                        <span class="menu-title">@lang('All Donors')</span>
+                        <span class="menu-title">@lang('Blood Request')</span>
                     </a>
                 </li>
             </ul>
