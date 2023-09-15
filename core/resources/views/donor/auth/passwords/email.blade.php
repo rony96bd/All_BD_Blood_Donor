@@ -66,7 +66,7 @@
     </nav>
 </div>
     <div class="page-wrapper default-version">
-        <div class="form-area bg_img" data-background="{{asset('assets/admin/images/1.jpg')}}">
+        <div class="form-area" style="background: rgb(0,236,255); background: linear-gradient(117deg, rgba(0,236,255,1) 0%, rgba(173,0,255,1) 100%);">
             <div class="form-wrapper">
                 <h4 class="logo-text mb-15"><strong>@lang('Recover Account')</strong></h4>
                 <form action="{{ route('donor.password.reset') }}" method="POST" class="cmn-form mt-30">
