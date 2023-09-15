@@ -7477,7 +7477,6 @@ a.icon-btn {
 @media (max-width: 1199px) {
     .navbar-collapse {
         margin-top: 20px !important;
-        background-color: #071e3e;
         color: #fff;
         padding: 0 1.875rem 1.25rem 1.875rem;
     }
