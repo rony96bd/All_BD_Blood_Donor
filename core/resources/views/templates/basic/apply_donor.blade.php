@@ -122,8 +122,7 @@
                             <div class="form-group col-lg-6">
                                 <label for="gender">@lang('Gender') <sup class="text--danger">*</sup></label>
                                 <select name="gender" id="gender" class="select" required="">
-                                    <option value="{{ old('gender') }}" selected="" disabled="">{{ old('gender') }}
-                                    </option>
+                                    <option value="" selected="" disabled=""></option>
                                     <option value="1">@lang('Male')</option>
                                     <option value="2">@lang('Female')</option>
                                 </select>
@@ -195,23 +194,25 @@
 
                             <!-- শেষ রক্ত দানের তারিখ ----------------------------------->
                             <div class="form-group col-lg-4">
-                                <label for="last_donate">@lang('Last Donate') <sup class="text--danger">*</sup></label>
+                                <label for="last_donate">@lang('Last Blood Donate') </label>
                                 <input type="text" name="last_donate" id="last_donate" value="{{ old('donate') }}"
-                                    data-language="en" placeholder="@lang('Last Blood Donate Date')"
+                                    data-language="en" placeholder="@lang('DD/MM/YYYY')"
                                     class="form--control datepicker-here">
                             </div>
+
 
                             <!-- জন্ম তারিখ ----------------------------------->
                             <div class="form-group col-lg-4">
                                 <label for="date_birth">@lang('Date Of Birth') <sup class="text--danger">*</sup></label>
                                 <input type="text" id="date_birth" name="birth_date" value="{{ old('birth_date') }}"
-                                    data-language="en" placeholder="@lang('Enter Date Of Birth')"
+                                    data-language="en" placeholder="@lang('DD/MM/YYYY')"
                                     class="form--control datepicker-here" maxlength="255" required="">
+
                             </div>
 
                             <!-- ইমেইল ----------------------------------->
                             <div class="form-group col-lg-4">
-                                <label for="email">@lang('Email') <sup class="text--danger">*</sup></label>
+                                <label for="email">@lang('Email')</label>
                                 <input type="email" name="email" id="email" value="{{ old('email') }}"
                                     placeholder="@lang('Enter Email')" class="form--control" maxlength="60"
                                     required="">
@@ -244,7 +245,7 @@
 
                             <!-- সেকেন্ডারী মোবাইল নং ----------------------------------->
                             <div class="form-group col-lg-6">
-                                <label for="phone2">@lang('Secondary Phone') <sup class="text--danger">*</sup></label>
+                                <label for="phone2">@lang('Secondary Phone')</label>
                                 <input type="text" name="phone2" id="phone2" value="{{ old('phone2') }}"
                                     placeholder="@lang('Enter Phone')" class="form--control" maxlength="40"
                                     required="">
@@ -267,35 +268,35 @@
                             </div>
                             <!-- ছবি আপলোড ---------------------------------------->
                             <div>
-                            <div class="avatar-upload">
-                                <div class="avatar-edit">
-                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" name="imageUpload"
-                                        class="imageUpload" />
-                                    <input type="hidden" name="base64image" name="base64image" id="base64image">
-                                    <label for="imageUpload"></label>
-                                </div>
-                                <div class="avatar-preview container2">
-                                    @php
-                                        if (!empty($image->image) && $image->image != '' && file_exists(public_path('assets/images/donor' . $image->image))) {
-                                            $image = $image->image;
-                                        } else {
-                                            $image = 'default.png';
-                                        }
-                                        $url = url('assets/images/' . $image);
-                                        $imgs = "background-image:url($url)";
+                                <div class="avatar-upload">
+                                    <div class="avatar-edit">
+                                        <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
+                                            name="imageUpload" class="imageUpload" />
+                                        <input type="hidden" name="base64image" name="base64image" id="base64image">
+                                        <label for="imageUpload"></label>
+                                    </div>
+                                    <div class="avatar-preview container2">
+                                        @php
+                                            if (!empty($image->image) && $image->image != '' && file_exists(public_path('assets/images/donor' . $image->image))) {
+                                                $image = $image->image;
+                                            } else {
+                                                $image = 'default.png';
+                                            }
+                                            $url = url('assets/images/' . $image);
+                                            $imgs = "background-image:url($url)";
 
-                                    @endphp
-                                    <div id="imagePreview" style="{{ $imgs }};">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        @endphp
+                                        <div id="imagePreview" style="{{ $imgs }};">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                             <!-- Accept Terms and Conditions ----------------------------------->
                             <div class="form-group col-lg-6">
                                 <label class="checkbox" style="color:#00B074;">
                                     <input type="checkbox" value="1" id="rememberMe" name="term">Accept <a
-                                        target="_blank" href="../menu/terms-of-service/43">  Terms and Conditions.
+                                        target="_blank" href="../menu/terms-of-service/43"> Terms and Conditions.
                                     </a>
                                     <span class="checkmark"></span>
                                 </label>
@@ -311,7 +312,8 @@
                 </div>
             </div>
         </div>
-        <div id="model" class="modal fade imagecrop" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div id="model" class="modal fade imagecrop" tabindex="-1" role="dialog"
+            aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -336,7 +338,7 @@
         </div>
     </section>
 
-    @include($activeTemplate . 'sections.faq')
+    {{-- @include($activeTemplate . 'sections.faq') --}}
 @endsection
 
 
@@ -448,6 +450,6 @@
                     $modal.modal('hide');
                 }
             });
-        })
+        });
     </script>
 @endpush
