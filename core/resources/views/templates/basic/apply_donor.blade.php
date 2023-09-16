@@ -218,8 +218,7 @@
                             <div class="form-group col-lg-4">
                                 <label for="email">@lang('Email')</label>
                                 <input type="email" name="email" id="email" value="{{ old('email') }}"
-                                    placeholder="@lang('Enter Email')" class="form--control" maxlength="60"
-                                    required="">
+                                    placeholder="@lang('Enter Email')" class="form--control" maxlength="60">
                             </div>
 
                             <!-- ফেসবুক আইডি ----------------------------------->
