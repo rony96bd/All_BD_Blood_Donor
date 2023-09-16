@@ -105,6 +105,10 @@
         .error {
             color: red;
         }
+
+        .cropper-container {
+            right: 12px;
+        }
     </style>
     @include($activeTemplate . 'partials.breadcrumb')
     <section class="pb-100 position-relative z-index section--bg" style="background-color: #FDE7EF">
