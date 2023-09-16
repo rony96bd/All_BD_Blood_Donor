@@ -101,13 +101,17 @@
             /* This rule is very important, please don't ignore this */
             max-width: 100%;
         }
+
+        .error {
+            color: red;
+        }
     </style>
     @include($activeTemplate . 'partials.breadcrumb')
     <section class="pb-100 position-relative z-index section--bg" style="background-color: #FDE7EF">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <form method="POST" enctype="multipart/form-data" action="{{ route('apply.donor.store') }}"
+                    <form method="POST" id="basic-form" enctype="multipart/form-data" action="{{ route('apply.donor.store') }}"
                         class="contact-form bg-white p-sm-5 p-3 rounded-3 position-relative" enctype="multipart/form-data">
                         @csrf
                         <h5 class="mb-3">@lang('Personal Information')</h5>
@@ -121,7 +125,7 @@
                             <!-- লিঙ্গ ----------------------------------->
                             <div class="form-group col-lg-6">
                                 <label for="gender">@lang('Gender') <sup class="text--danger">*</sup></label>
-                                <select name="gender" id="gender" class="select" required="">
+                                <select name="gender" id="gender" class="select" required="" class="form--control">
                                     <option value="" selected="" disabled=""></option>
                                     <option value="1">@lang('Male')</option>
                                     <option value="2">@lang('Female')</option>
@@ -224,7 +228,7 @@
                                 <div class="custom-icon-field">
                                     <i class="lab la-facebook-f"></i>
                                     <input type="text" name="facebook" id="facebook" value="{{ old('facebook') }}"
-                                        placeholder="@lang('Enter Facebook Url')" class="form--control" required="">
+                                        placeholder="@lang('Enter Facebook Url')" class="form--control">
                                 </div>
                             </div>
 
@@ -271,8 +275,8 @@
                                 <div class="avatar-upload">
                                     <div class="avatar-edit">
                                         <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
-                                            name="imageUpload" class="imageUpload" />
-                                        <input type="hidden" name="base64image" name="base64image" id="base64image">
+                                            name="imageUpload" class="imageUpload" required="" />
+                                        <input type="hidden" name="base64image" required="" name="base64image" id="base64image">
                                         <label for="imageUpload"></label>
                                     </div>
                                     <div class="avatar-preview container2">
@@ -287,16 +291,16 @@
 
                                         @endphp
                                         <div id="imagePreview" style="{{ $imgs }};">
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            <input type="hidden" required="" name="_token" value="{{ csrf_token() }}">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- Accept Terms and Conditions ----------------------------------->
-                            <div class="form-group col-lg-6">
+                            <div class="form-group checkbox required col-lg-6">
                                 <label class="checkbox" style="color:#00B074;">
-                                    <input type="checkbox" value="1" id="rememberMe" name="term">Accept <a
-                                        target="_blank" href="../menu/terms-of-service/43"> Terms and Conditions.
+                                    <input type="checkbox" required value="1" id="rememberMe" name="term">Accept
+                                    <a target="_blank" href="../menu/terms-of-service/43"> Terms and Conditions.
                                     </a>
                                     <span class="checkmark"></span>
                                 </label>
@@ -348,9 +352,30 @@
 @push('script-lib')
     <script src="{{ asset($activeTemplateTrue . 'frontend/js/datepicker.min.js') }}"></script>
     <script src="{{ asset($activeTemplateTrue . 'frontend/js/datepicker.en.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 @endpush
 @push('script')
     <script>
+        $("#imageUpload").change(function() {
+
+            var val = $(this).val();
+
+            switch (val.substring(val.lastIndexOf('.') + 1).toLowerCase()) {
+                case 'gif':
+                case 'jpg':
+                case 'png':
+                    alert("an image");
+                    break;
+                default:
+                    $(this).val('');
+                    // error message here
+                    alert("not an image");
+                    break;
+            }
+        });
+        $(document).ready(function() {
+            $("#basic-form").validate();
+        });
         $(document).ready(function() {
             $('#division-dropdown').on('change', function() {
                 var idDivision = this.value;
