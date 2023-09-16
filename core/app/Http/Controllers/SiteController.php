@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Advertisement;
 use App\Models\Blood;
 use App\Models\City;
@@ -24,13 +25,15 @@ use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->activeTemplate = activeTemplate();
     }
 
-    public function index(){
-        $count = Page::where('tempname',$this->activeTemplate)->where('slug','home')->count();
-        if($count == 0){
+    public function index()
+    {
+        $count = Page::where('tempname', $this->activeTemplate)->where('slug', 'home')->count();
+        if ($count == 0) {
             $page = new Page();
             $page->tempname = $this->activeTemplate;
             $page->name = 'HOME';
@@ -42,7 +45,7 @@ class SiteController extends Controller
             session()->put('reference', $reference);
         }
         $pageTitle = 'Home';
-        $sections = Page::where('tempname',$this->activeTemplate)->where('slug','home')->first();
+        $sections = Page::where('tempname', $this->activeTemplate)->where('slug', 'home')->first();
         $bloods = Blood::where('status', 1)->select('id', 'name')->get();
         $divisions = Division::where('status', 1)->select('id', 'name')->get();
         $cities = City::where('status', 1)->select('id', 'name')->get();
@@ -52,10 +55,10 @@ class SiteController extends Controller
 
     public function pages($slug)
     {
-        $page = Page::where('tempname',$this->activeTemplate)->where('slug',$slug)->firstOrFail();
+        $page = Page::where('tempname', $this->activeTemplate)->where('slug', $slug)->firstOrFail();
         $pageTitle = $page->name;
         $sections = $page->secs;
-        return view($this->activeTemplate . 'pages', compact('pageTitle','sections'));
+        return view($this->activeTemplate . 'pages', compact('pageTitle', 'sections'));
     }
 
     public function donor()
@@ -96,13 +99,13 @@ class SiteController extends Controller
         $cityId = $request->city_id;
         $bloodId = $request->blood_id;
         $donors = Donor::where('status', 1);
-        if($request->blood_id){
+        if ($request->blood_id) {
             $donors = $donors->where('blood_id', $request->blood_id);
         }
-        if($request->city_id){
+        if ($request->city_id) {
             $donors = $donors->where('city_id', $request->city_id);
         }
-        if($request->location_id){
+        if ($request->location_id) {
             $donors = $donors->where('location_id', $request->location_id);
         }
         if ($request->division_id) {
@@ -121,7 +124,7 @@ class SiteController extends Controller
             'message' => 'required|max:500'
         ]);
         $donor = Donor::findOrFail($request->donor_id);
-        notify($donor, 'DONOR_CONTACT',[
+        notify($donor, 'DONOR_CONTACT', [
             'name' => $request->name,
             'email' => $request->email,
             'message' => $request->message
@@ -133,20 +136,20 @@ class SiteController extends Controller
     public function bloodGroup($slug, $id)
     {
         $blood = Blood::where('status', 1)->where('id', decrypt($id))->firstOrFail();
-        $pageTitle = $blood->name." Blood Group Donor";
+        $pageTitle = $blood->name . " Blood Group Donor";
         $emptyMessage = "No data found";
         $bloods = Blood::where('status', 1)->select('id', 'name')->get();
         $cities = City::where('status', 1)->select('id', 'name')->get();
         $locations = Location::where('status', 1)->select('id', 'name')->get();
-        $donors = Donor::where('status',1)->where('blood_id', $blood->id)->with('blood', 'location')->paginate(getPaginate());
-        return view($this->activeTemplate . 'donor', compact('pageTitle','emptyMessage', 'donors', 'bloods', 'cities', 'locations'));
+        $donors = Donor::where('status', 1)->where('blood_id', $blood->id)->with('blood', 'location')->paginate(getPaginate());
+        return view($this->activeTemplate . 'donor', compact('pageTitle', 'emptyMessage', 'donors', 'bloods', 'cities', 'locations'));
     }
 
     public function contact()
     {
         $pageTitle = "Contact Us";
-        $sections = Page::where('tempname',$this->activeTemplate)->where('slug','contact')->first();
-        return view($this->activeTemplate . 'contact',compact('pageTitle', 'sections'));
+        $sections = Page::where('tempname', $this->activeTemplate)->where('slug', 'contact')->first();
+        return view($this->activeTemplate . 'contact', compact('pageTitle', 'sections'));
     }
 
     public function contactSubmit(Request $request)
@@ -188,18 +191,20 @@ class SiteController extends Controller
         return redirect()->back();
     }
 
-    public function blog(){
+    public function blog()
+    {
         $pageTitle = "Blog";
-        $blogs = Frontend::where('data_keys','blog.element')->paginate(9);
-        $sections = Page::where('tempname',$this->activeTemplate)->where('slug','blog')->first();
-        return view($this->activeTemplate.'blog',compact('blogs','pageTitle', 'sections'));
+        $blogs = Frontend::where('data_keys', 'blog.element')->paginate(9);
+        $sections = Page::where('tempname', $this->activeTemplate)->where('slug', 'blog')->first();
+        return view($this->activeTemplate . 'blog', compact('blogs', 'pageTitle', 'sections'));
     }
 
-    public function blogDetails($id,$slug){
-        $blogs = Frontend::where('data_keys','blog.element')->latest()->limit(6)->get();
-        $blog = Frontend::where('id',$id)->where('data_keys','blog.element')->firstOrFail();
+    public function blogDetails($id, $slug)
+    {
+        $blogs = Frontend::where('data_keys', 'blog.element')->latest()->limit(6)->get();
+        $blog = Frontend::where('id', $id)->where('data_keys', 'blog.element')->firstOrFail();
         $pageTitle = "Blog Details";
-        return view($this->activeTemplate.'blog_details',compact('blog','pageTitle', 'blogs'));
+        return view($this->activeTemplate . 'blog_details', compact('blog', 'pageTitle', 'blogs'));
     }
 
     public function footerMenu($slug, $id)
@@ -209,22 +214,24 @@ class SiteController extends Controller
         return view($this->activeTemplate . 'menu', compact('data', 'pageTitle'));
     }
 
-    public function cookieAccept(){
-        session()->put('cookie_accepted',true);
+    public function cookieAccept()
+    {
+        session()->put('cookie_accepted', true);
         $notify = 'Cookie accepted successfully';
         return response()->json($notify);
     }
 
-    public function placeholderImage($size = null){
-        $imgWidth = explode('x',$size)[0];
-        $imgHeight = explode('x',$size)[1];
+    public function placeholderImage($size = null)
+    {
+        $imgWidth = explode('x', $size)[0];
+        $imgHeight = explode('x', $size)[1];
         $text = $imgWidth . '×' . $imgHeight;
         $fontFile = realpath('assets/font') . DIRECTORY_SEPARATOR . 'RobotoMono-Regular.ttf';
         $fontSize = round(($imgWidth - 50) / 8);
         if ($fontSize <= 9) {
             $fontSize = 9;
         }
-        if($imgHeight < 100 && $fontSize > 30){
+        if ($imgHeight < 100 && $fontSize > 30) {
             $fontSize = 30;
         }
 
@@ -282,8 +289,8 @@ class SiteController extends Controller
             'last_donate' => 'required|date',
             'birth_date' => 'required|date',
             'email' => 'required|email|max:60|unique:donors,email',
-            'facebook' => 'required',
-            'image' => ['required', 'image', new FileTypeValidate(['jpg', 'jpeg', 'png'])], 'phone' => 'required|max:40|unique:donors,phone',
+            // 'facebook' => 'required',
+            'imageUpload' => ['required', 'image', new FileTypeValidate(['jpg', 'jpeg', 'png'])],
             'phone' => 'required|max:40|unique:donors,phone',
             'phone2' => 'required|max:40|unique:donors,phone2',
             'password' => 'required|confirmed|min:6',
@@ -296,26 +303,52 @@ class SiteController extends Controller
         $donor->division_id = $request->division;
         $donor->city_id = $request->city;
         $donor->location_id = $request->location;
-        // $donor->address = $request->address;
         $donor->religion = $request->religion;
-        // $donor->profession = $request->profession;
         $donor->blood_id = $request->blood;
         $donor->last_donate = $request->last_donate;
         $donor->birth_date =  $request->birth_date;
         $donor->email = $request->email;
         $donor->facebook = $request->facebook;
 
-        $path = imagePath()['donor']['path'];
+        $input = $request->all();
+
         $size = imagePath()['donor']['size'];
-        if ($request->hasFile('image')) {
-            try {
-                $filename = uploadImage($request->image, $path, $size);
-            } catch (\Exception $exp) {
-                $notify[] = ['error', 'Image could not be uploaded.'];
-                return back()->withNotify($notify);
-            }
+
+        if ($input['base64image'] || $input['base64image'] != '0') {
+
+            // Available alpha caracters
+            $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+            // generate a pin based on 2 * 7 digits + a random character
+            $pin = mt_rand(1000000, 9999999)
+                . mt_rand(1000000, 9999999)
+                . $characters[rand(0, strlen($characters) - 1)];
+
+            // shuffle the result
+            $string = str_shuffle($pin);
+
+            // $folderPath = public_path('images/');
+            $path = imagePath()['donor']['path'] . '/';
+            $image_parts = explode(";base64,", $input['base64image']);
+            $image_type_aux = explode("image/", $image_parts[0]);
+            $image_type = $image_type_aux[1];
+            $image_base64 = base64_decode($image_parts[1]);
+            // $file = $folderPath . uniqid() . '.png';
+            $filename = time() . '_' . $string . '.' . $image_type;
+            $file = $path . $filename;
+            file_put_contents($file, $image_base64);
             $donor->image = $filename;
         }
+
+        // if ($request->hasFile('image')) {
+        //     try {
+        //         $filename = uploadImage($request->image, $path, $size);
+        //     } catch (\Exception $exp) {
+        //         $notify[] = ['error', 'Image could not be uploaded.'];
+        //         return back()->withNotify($notify);
+        //     }
+        //     $donor->image = $filename;
+        // }
         $donor->phone = $request->phone;
         $donor->phone2 = $request->phone2;
         $donor->password = Hash::make($request->password);
@@ -327,7 +360,7 @@ class SiteController extends Controller
     public function adclicked($id)
     {
         $ads = Advertisement::where('id', decrypt($id))->firstOrFail();
-        $ads->click +=1;
+        $ads->click += 1;
         $ads->save();
         return redirect($ads->redirect_url);
     }
@@ -337,7 +370,7 @@ class SiteController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
         ]);
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return response()->json($validator->errors());
         }
         $if_exist = Subscriber::where('email', $request->email)->first();
@@ -346,9 +379,8 @@ class SiteController extends Controller
                 'email' => $request->email
             ]);
             return response()->json(['success' => 'Subscribed Successfully']);
-        }else {
+        } else {
             return response()->json(['error' => 'Already Subscribed']);
         }
     }
-
 }

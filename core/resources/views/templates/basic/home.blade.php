@@ -140,19 +140,6 @@
 @push('script')
     @if ($popup == 1)
         <script>
-            // Show popup once in page load
-            // $(document).ready(function() {
-            //     var isshow = localStorage.getItem('isshow');
-            //     if (isshow == null) {
-            //         localStorage.setItem('isshow', 1);
-
-            //         // Show popup here
-            //         $(document).ready(function() {
-            //             $("#myModal").modal("show");
-            //         });
-            //     }
-            // });
-            // If popup need every time on page load
             $(document).ready(function() {
                 $("#myModal").modal("show");
             });
