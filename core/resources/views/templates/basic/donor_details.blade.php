@@ -40,10 +40,7 @@
                                     <span class="caption">Last Donate</span>
                                     <span class="value">{{ showDateTime($donor->last_donate, 'd M Y') }}</span>
                                 </li>
-                                <li>
-                                    <span class="caption">Last Donate</span>
-                                    <span class="value">{{ showDateTime($donor->last_donate, 'd M Y') }}</span>
-                                </li>
+
                                 <li>
                                     <span class="caption">Gender</span>
                                     <span class="value">
