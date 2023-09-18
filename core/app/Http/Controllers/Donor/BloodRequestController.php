@@ -100,7 +100,7 @@ class BloodRequestController extends Controller
 
         $commaSeparatedNumbers = implode(', ', $arrayWithNumber);
 
-        $message = "test sms check";
+        $message = "From, test.roktodin.com, Message: test sms check";
 
         $data = [
             "api_key" => $api_key,
