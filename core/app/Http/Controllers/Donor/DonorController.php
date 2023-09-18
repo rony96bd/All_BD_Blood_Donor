@@ -167,6 +167,22 @@ class DonorController extends Controller
         return back()->withNotify($notify);
     }
 
+    public function fetchCity(Request $request)
+    {
+        $data['cities'] = City::where("division_id", $request->division_id)
+            ->get(["name", "id"]);
+
+        return response()->json($data);
+    }
+
+    public function fetchLocation(Request $request)
+    {
+        $data['locations'] = Location::where("city_id", $request->city_id)
+            ->get(["name", "id"]);
+
+        return response()->json($data);
+    }
+
     public function systemInfo()
     {
         $laravelVersion = app()->version();

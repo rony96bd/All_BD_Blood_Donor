@@ -121,6 +121,54 @@
                 }
             });
         });
+
+        $(document).ready(function() {
+            $('#division-dropdown').on('change', function() {
+                var idDivision = this.value;
+                $("#city-dropdown").html('');
+                $.ajax({
+                    url: "{{ Route('fetchcity') }}",
+                    type: "POST",
+                    data: {
+                        division_id: idDivision,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    dataType: 'json',
+                    success: function(result) {
+                        $('#city-dropdown').html(
+                            '<option value="">-- জেলা সিলেক্ট করুন --</option>');
+                        $.each(result.cities, function(key, value) {
+                            $("#city-dropdown").append('<option value="' + value.id +
+                                '">' + value.name + '</option>');
+                        });
+                        $('#location-dropdown').html(
+                            '<option value="">-- Select City --</option>');
+                    }
+                })
+            });
+
+            $('#city-dropdown').on('change', function() {
+                var idCity = this.value;
+                $("#location-dropdown").html('');
+                $.ajax({
+                    url: "{{ Route('fetchlocation') }}",
+                    type: "POST",
+                    data: {
+                        city_id: idCity,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    dataType: 'json',
+                    success: function(result) {
+                        $('#location-dropdown').html(
+                            '<option value="">-- উপজেলা সিলেক্ট করুন --</option>');
+                        $.each(result.locations, function(key, value) {
+                            $("#location-dropdown").append('<option value="' + value
+                                .id + '">' + value.name + '</option>');
+                        });
+                    }
+                })
+            });
+        });
     </script>
 </body>
 

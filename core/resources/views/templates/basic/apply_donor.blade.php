@@ -162,13 +162,6 @@
                                 </select>
                             </div>
 
-                            {{-- <!-- ঠিকানা বিস্তারিত ----------------------------------->
-                            <div class="form-group col-lg-6">
-                                <label for="address">@lang('Address') <sup class="text--danger">*</sup></label>
-                                <input type="text" name="address" id="address" value="{{ old('address') }}"
-                                    placeholder="@lang('Enter Address')" class="form--control" maxlength="255" required="">
-                            </div> --}}
-
                             <!-- ধর্ম ----------------------------------->
                             <div class="form-group col-lg-4">
                                 <label for="religion">@lang('Religion') <sup class="text--danger">*</sup></label>
@@ -361,53 +354,6 @@
     <script>
         $(document).ready(function() {
             $("#basic-form").validate();
-        });
-        $(document).ready(function() {
-            $('#division-dropdown').on('change', function() {
-                var idDivision = this.value;
-                $("#city-dropdown").html('');
-                $.ajax({
-                    url: "{{ url('api/fetch-cities') }}",
-                    type: "POST",
-                    data: {
-                        division_id: idDivision,
-                        _token: '{{ csrf_token() }}'
-                    },
-                    dataType: 'json',
-                    success: function(result) {
-                        $('#city-dropdown').html(
-                            '<option value="">-- জেলা সিলেক্ট করুন --</option>');
-                        $.each(result.cities, function(key, value) {
-                            $("#city-dropdown").append('<option value="' + value.id +
-                                '">' + value.name + '</option>');
-                        });
-                        $('#location-dropdown').html(
-                            '<option value="">-- Select City --</option>');
-                    }
-                })
-            });
-
-            $('#city-dropdown').on('change', function() {
-                var idCity = this.value;
-                $("#location-dropdown").html('');
-                $.ajax({
-                    url: "{{ url('api/fetch-locations') }}",
-                    type: "POST",
-                    data: {
-                        city_id: idCity,
-                        _token: '{{ csrf_token() }}'
-                    },
-                    dataType: 'json',
-                    success: function(result) {
-                        $('#location-dropdown').html(
-                            '<option value="">-- উপজেলা সিলেক্ট করুন --</option>');
-                        $.each(result.locations, function(key, value) {
-                            $("#location-dropdown").append('<option value="' + value
-                                .id + '">' + value.name + '</option>');
-                        });
-                    }
-                })
-            });
         });
         // Cropper JS
         var $modal = $('.imagecrop');

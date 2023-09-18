@@ -20,6 +20,8 @@ use App\Rules\FileTypeValidate;
 use Carbon\Carbon;
 use Validator;
 use Illuminate\Http\Request;
+use Exception;
+use Twilio\Rest\Client;
 
 
 
@@ -380,5 +382,56 @@ class SiteController extends Controller
         } else {
             return response()->json(['error' => 'Already Subscribed']);
         }
+    }
+
+    // Test SMS Sender Twilio......
+    public function sms_page()
+    {
+        return view('sms_page');
+    }
+
+    // public function send_sms(Request $request)
+    // {
+    //     $receiver_number = $request->number;
+    //     $message = 'SMSFrom roktodin.com';
+    //     try {
+    //         $account_sid = getenv("TWILIO_SID");
+    //         $auth_token = getenv("TWILIO_TOKEN");
+    //         $twilio_number = getenv("TWILIO_FROM");
+
+    //         $client = new Client($account_sid, $auth_token);
+    //         $client->messages->create($receiver_number, [
+    //             'from' => $twilio_number,
+    //             'body' => $message
+    //         ]);
+    //         return redirect()->back();
+    //     } catch (Exception $e) {
+    //         //
+    //     }
+    // }
+    // BulkSMSBD sms service......
+    function send_sms(Request $request)
+    {
+        $url = "http://bulksmsbd.net/api/smsapi";
+        $api_key = "4Lt4gE724SVi59ZruK0q";
+        $senderid = "8809617612994";
+        $number = $request->number;
+        $message = "test sms check";
+
+        $data = [
+            "api_key" => $api_key,
+            "senderid" => $senderid,
+            "number" => $number,
+            "message" => $message
+        ];
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        $response = curl_exec($ch);
+        curl_close($ch);
+        return $response;
     }
 }
