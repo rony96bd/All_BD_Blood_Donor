@@ -209,6 +209,22 @@ class SiteController extends Controller
         return view($this->activeTemplate . 'blog_details', compact('blog', 'pageTitle', 'blogs'));
     }
 
+    public function bloodRequestpost()
+    {
+        $pageTitle = "Blog";
+        $blogs = Frontend::where('data_keys', 'blog.element')->paginate(9);
+        $sections = Page::where('tempname', $this->activeTemplate)->where('slug', 'blog')->first();
+        return view($this->activeTemplate . 'blood-request-post', compact('blogs', 'pageTitle', 'sections'));
+    }
+
+    public function bloodRequestpostDetails($id, $slug)
+    {
+        $blogs = Frontend::where('data_keys', 'blog.element')->latest()->limit(6)->get();
+        $blog = Frontend::where('id', $id)->where('data_keys', 'blog.element')->firstOrFail();
+        $pageTitle = "Blog Details";
+        return view($this->activeTemplate . 'blog_details', compact('blog', 'pageTitle', 'blogs'));
+    }
+
     public function footerMenu($slug, $id)
     {
         $data = Frontend::where('id', $id)->where('data_keys', 'policy_pages.element')->firstOrFail();

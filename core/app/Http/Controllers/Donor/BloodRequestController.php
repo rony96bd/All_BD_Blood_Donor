@@ -24,10 +24,11 @@ class BloodRequestController extends Controller
     {
         $pageTitle = "Manage Donor List";
         $emptyMessage = "No data found";
+        $bloodRequests = BloodRequest::latest()->with('blood', 'division', 'city', 'location')->paginate(getPaginate());
         $bloods = Blood::where('status', 1)->select('id', 'name')->get();
         $donors = Donor::latest()->with('blood', 'location')->paginate(getPaginate());
 
-        return view('donor.blood_request.index', compact('pageTitle', 'emptyMessage', 'donors', 'bloods'));
+        return view('donor.blood_request.index', compact('pageTitle', 'emptyMessage', 'donors', 'bloods', 'bloodRequests'));
     }
 
     /**
