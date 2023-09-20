@@ -47,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <div class="row mx-auto my-auto justify-content-center">
+        <div class="container text-center my-3"">
             <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner" role="listbox">
                     @foreach ($bloodRequests as $bloodRequest)
@@ -56,16 +56,50 @@
                             $timeAgo = Carbon\Carbon::parse($timestamp)->ago();
                         @endphp
                         <div class="carousel-item @if ($loop->first) active @endif">
-                            <div class="col-md-3">
-                                <div class="card" style="padding: 5px; margin-right: 10px; border-radius: 10px">
-                                    <div class="row">
+                            <div class="row">
+                                <div class="col-lg-11 col-md-11">
+                                    <div class="blog-post" style="padding: 5px">
+                                        <div class="row respalign">
                                         <div class="col-lg-3"><img
-                                                src="{{ getImage('assets/images/donor/' . $bloodRequest->donor->image, imagePath()['donor']['size']) }}"
-                                                alt="@lang('image')"
-                                                style="border-radius: 50%; width: 50px; height: 47px;"
-                                                class="img-fluid"></div>
-                                        <div style="padding-left: 0px" class="col-lg-9">
-                                            {{ __($bloodRequest->donor->name) }}<br>{{ __($timeAgo) }}</div>
+                                            src="{{ getImage('assets/images/donor/' . $bloodRequest->donor->image, imagePath()['donor']['size']) }}"
+                                            alt="@lang('image')" class="img-fluid" style="border-radius: 50px; height: 40px; width: 40px"></div>
+                                        <div class="col-lg-9" style="padding-left: 0px; line-height: 20px;">{{ __($bloodRequest->donor->name) }}<br>{{ __($timeAgo) }}</div>
+                                        </div>
+                                        <div class="blog-post__content" style="padding: 5px 0px 0px 0px;">
+                                            <p class="fw-bold" style="font-size: 14px;padding: 5px 0px 0px 0px; color: red; border-top: 1px solid lightgray;">জরুরী প্রয়োজনে রক্তের সন্ধানে</p>
+                                            <ul class="caption-list-three">
+                                                <li>
+                                                    <span class="caption">বিভাগ</span>
+                                                    <span class="value">খুলনা</span>
+                                                </li>
+                                                <li>
+                                                    <span class="caption">জেলা</span>
+                                                    <span class="value">চুয়াডাঙ্গা</span>
+                                                </li>
+                                                <li>
+                                                    <span class="caption">উপজেলা</span>
+                                                    <span class="value">আলমডাঙ্গা</span>
+                                                </li>
+                                                <li>
+                                                    <span class="caption">রক্তের গ্রুপ</span>
+                                                    <span class="value">B+ (বি পজেটিভ)</span>
+                                                </li>
+                                                <li>
+                                                    <span class="caption">রক্তের পরিমাণ</span>
+                                                    <span class="value">১ ব্যাগ</span>
+                                                </li>
+                                                <li>
+                                                    <span class="caption">রক্তদানের তারিখ</span>
+                                                    <span class="value">25-10-2023</span>
+                                                </li>
+                                                <li style="border-bottom: none">
+                                                    <span class="caption">রক্তদানের সময়</span>
+                                                    <span class="value">04:45 PM</span>
+                                                </li>
+                                            </ul>
+                                            <div style="width: 267px"></div>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -73,11 +107,11 @@
                     @endforeach
                 </div>
                 <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button"
-                    data-bs-slide="prev" style="width: 5%;left: -28px;">
+                    data-bs-slide="prev" style="width: 3%; left: -28px;">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 </a>
                 <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button"
-                    data-bs-slide="next" style="width: 5%;">
+                    data-bs-slide="next" style="width: 4%; right: -26px;">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 </a>
             </div>
