@@ -157,6 +157,9 @@
                     slidesPerView: 2,
                 },
                 950: {
+                    slidesPerView: 2,
+                },
+                992: {
                     slidesPerView: 3,
                 },
                 1200: {
