@@ -79,6 +79,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js"></script>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.css">
 
     @stack('script-lib')
     @stack('script')
@@ -170,21 +171,22 @@
             });
         });
 
-        let items = document.querySelectorAll('.carousel .carousel-item')
 
-        items.forEach((el) => {
-            const minPerSlide = 4
-            let next = el.nextElementSibling
-            for (var i = 1; i < minPerSlide; i++) {
-                if (!next) {
-                    // wrap carousel by using first child
-                    next = items[0]
-                }
-                let cloneChild = next.cloneNode(true)
-                el.appendChild(cloneChild.children[0])
-                next = next.nextElementSibling
-            }
-        });
+        // let items = document.querySelectorAll('.carousel .carousel-item')
+
+        // items.forEach((el) => {
+        //     const minPerSlide = 4
+        //     let next = el.nextElementSibling
+        //     for (var i = 1; i < minPerSlide; i++) {
+        //         if (!next) {
+        //             // wrap carousel by using first child
+        //             next = items[0]
+        //         }
+        //         let cloneChild = next.cloneNode(true)
+        //         el.appendChild(cloneChild.children[0])
+        //         next = next.nextElementSibling
+        //     }
+        // });
     </script>
 </body>
 

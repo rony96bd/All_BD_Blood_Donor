@@ -38,7 +38,7 @@
     </div>
 </section>
 
-<section class="pt-50 pb-50 position-relative z-index-2 overflow-hidden">
+<section class="pt-35 pb-50 position-relative z-index-2 overflow-hidden">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6 text-center">
@@ -47,7 +47,126 @@
                 </div>
             </div>
         </div>
-        <div class="container text-center my-3"">
+    </div>
+
+    <div class="slide-container container swiper">
+        <div class="slide-content">
+            <div class="card-wrapper swiper-wrapper">
+                @foreach ($bloodRequests as $bloodRequest)
+                    @php
+                        $timestamp = $bloodRequest->created_at;
+                        $timeAgo = Carbon\Carbon::parse($timestamp)->ago();
+                    @endphp
+                    <div class="card swiper-slide bnfont">
+                        <div class="image-content">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="" style="text-align: right; width: 25%"><img
+                                            src="{{ getImage('assets/images/donor/' . $bloodRequest->donor->image, imagePath()['donor']['size']) }}"
+                                            alt="@lang('image')" class="img-fluid"
+                                            style="border-radius: 50px; height: 40px; width: 40px"></div>
+                                    <div class="" style="padding-left: 0px; line-height: 20px; width: 75%">
+                                        {{ __($bloodRequest->donor->name) }}<br>{{ __($timeAgo) }}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-content">
+                            <p class="fw-bold text-center"
+                                style="font-size: 14px;padding: 5px 0px 0px 0px; color: red; border-top: 1px solid lightgray;">
+                                জরুরী প্রয়োজনে রক্তের সন্ধানে</p>
+                            <ul class="caption-list-three">
+                                <li>
+                                    <span class="caption">বিভাগ</span>
+                                    <span class="value">খুলনা</span>
+                                </li>
+                                <li>
+                                    <span class="caption">জেলা</span>
+                                    <span class="value">চুয়াডাঙ্গা</span>
+                                </li>
+                                <li>
+                                    <span class="caption">উপজেলা</span>
+                                    <span class="value">আলমডাঙ্গা</span>
+                                </li>
+                                <li>
+                                    <span class="caption">রক্তের গ্রুপ</span>
+                                    <span class="value">B+ (বি পজেটিভ)</span>
+                                </li>
+                                <li>
+                                    <span class="caption">রক্তের পরিমাণ</span>
+                                    <span class="value">১ ব্যাগ</span>
+                                </li>
+                                <li>
+                                    <span class="caption">রক্তদানের তারিখ</span>
+                                    <span class="value">25-10-2023</span>
+                                </li>
+                                <li style="border-bottom: none">
+                                    <span class="caption">রক্তদানের সময়</span>
+                                    <span class="value">04:45 PM</span>
+                                </li>
+                            </ul>
+
+                            <span style="text-align: center;width: 100%;"><a href="#" class="button">View
+                                    Details</a></span>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        <div class="swiper-button-next swiper-navBtn"></div>
+        <div class="swiper-button-prev swiper-navBtn"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <div style="width: 100%; padding-top: 20px" class="text-center"><span><a href="#"
+                class="custom-btn2" style="">সকল ব্লাড রিকোয়েস্ট পোস্টসমূহ</a></span></div>
+
+    <!-- Swiper JS -->
+    <script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.js"></script>
+
+    <!-- JavaScript -->
+    <!--Uncomment this line-->
+    <script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/script.js"></script>
+    <script>
+        var swiper = new Swiper(".slide-content", {
+            slidesPerView: 3,
+            spaceBetween: 25,
+            loop: true,
+            centerSlide: 'true',
+            fade: 'true',
+            autoplay: false,
+            grabCursor: 'true',
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                dynamicBullets: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+
+            breakpoints: {
+                0: {
+                    slidesPerView: 1,
+                },
+                520: {
+                    slidesPerView: 2,
+                },
+                768: {
+                    slidesPerView: 2,
+                },
+                950: {
+                    slidesPerView: 3,
+                },
+                1200: {
+                    slidesPerView: 4,
+                },
+            },
+        });
+    </script>
+
+    {{-- <div class="container text-center my-3"">
             <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner" role="listbox">
                     @foreach ($bloodRequests as $bloodRequest)
@@ -115,6 +234,6 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 </a>
             </div>
-        </div>
-    </div>
+        </div> --}}
+
 </section>
