@@ -408,7 +408,11 @@ hr {
         margin: 0px 0 0 790px;
     }
 }
-
+@media (min-width: 1400px) {
+    .login-menu {
+        margin: 0px 0 0 970px;
+    }
+}
 @media (max-width: 1199px) {
     .login-menu {
         margin: auto;
@@ -5820,3 +5824,4 @@ blockquote {
         display: none;
     }
 }
+
