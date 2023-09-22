@@ -59,7 +59,7 @@
                     <div class="footer-widget">
                         <a style="background-color: white;
                         border-radius: 10px;
-                        padding: 8px;"
+                        padding: 24px 9px 24px 9px;"
                             href="{{ route('home') }}" class="footer-logo"><img
                                 src="{{ getImage(imagePath()['logoIcon']['path'] . '/logo.png') }}"
                                 alt="@lang('logo')"></a>
