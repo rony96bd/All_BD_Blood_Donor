@@ -250,8 +250,8 @@ Route::get('/cookie/accept', 'SiteController@cookieAccept')->name('cookie.accept
 Route::get('/blog', 'SiteController@blog')->name('blog');
 Route::get('blog/{id}/{slug}', 'SiteController@blogDetails')->name('blog.details');
 
-Route::get('/blood-request-post', 'SiteController@blog')->name('blood.request.post');
-Route::get('blood-request-post/{id}/{slug}', 'SiteController@blogDetails')->name('blog.details');
+Route::get('/blood-request', 'SiteController@bloodRequest')->name('bloodrequest');
+Route::get('blood-request/{id}', 'SiteController@bloodRequestDetails')->name('bloodrequest.details');
 
 Route::get('placeholder-image/{size}', 'SiteController@placeholderImage')->name('placeholder.image');
 Route::get('/', 'SiteController@index')->name('home');

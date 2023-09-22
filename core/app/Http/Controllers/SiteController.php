@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Advertisement;
 use App\Models\Blood;
+use App\Models\BloodRequest;
 use App\Models\City;
 use App\Models\Division;
 use App\Models\Donor;
@@ -209,20 +210,25 @@ class SiteController extends Controller
         return view($this->activeTemplate . 'blog_details', compact('blog', 'pageTitle', 'blogs'));
     }
 
-    public function bloodRequestpost()
+    public function bloodRequest()
     {
-        $pageTitle = "Blog";
+        $pageTitle = "Blood Request";
+        $bloodRequests = BloodRequest::orderBy('created_at', 'desc')
+        ->with('blood', 'division', 'city', 'location', 'donor')
+        ->paginate(6);
         $blogs = Frontend::where('data_keys', 'blog.element')->paginate(9);
-        $sections = Page::where('tempname', $this->activeTemplate)->where('slug', 'blog')->first();
-        return view($this->activeTemplate . 'blood-request-post', compact('blogs', 'pageTitle', 'sections'));
+        $sections = Page::where('tempname', $this->activeTemplate)->where('slug', 'blood-request')->first();
+        return view($this->activeTemplate . 'blood_request', compact('bloodRequests', 'pageTitle', 'sections'));
     }
 
-    public function bloodRequestpostDetails($id, $slug)
+    public function bloodRequestDetails($id)
     {
-        $blogs = Frontend::where('data_keys', 'blog.element')->latest()->limit(6)->get();
-        $blog = Frontend::where('id', $id)->where('data_keys', 'blog.element')->firstOrFail();
-        $pageTitle = "Blog Details";
-        return view($this->activeTemplate . 'blog_details', compact('blog', 'pageTitle', 'blogs'));
+        $pageTitle = "Blood Request Details";
+        $bloodRequest = BloodRequest::where('id', $id)->with('blood', 'division', 'city', 'location', 'donor')->firstOrFail();
+        $bloodRequests = BloodRequest::orderBy('created_at', 'desc')
+        ->with('blood', 'division', 'city', 'location', 'donor')
+        ->limit(6)->get();
+        return view($this->activeTemplate . 'blood_request_details', compact('pageTitle', 'bloodRequest', 'bloodRequests'));
     }
 
     public function footerMenu($slug, $id)

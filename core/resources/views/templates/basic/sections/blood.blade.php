@@ -110,7 +110,7 @@
                                 </li>
                             </ul>
 
-                            <span style="text-align: center; width: 100%; padding-top: 12px;"><a href="#" class="button">View
+                            <span style="text-align: center; width: 100%; padding-top: 12px;"><a href="{{ route('bloodrequest.details',[$bloodRequest->id]) }}" class="button">View
                                     Details</a></span>
                         </div>
                     </div>
@@ -122,7 +122,7 @@
         <div class="swiper-pagination"></div>
     </div>
 
-    <div style="width: 100%; padding-top: 20px" class="text-center"><span><a href="#" class="custom-btn2"
+    <div style="width: 100%; padding-top: 20px" class="text-center"><span><a href="{{ Route('bloodrequest')}}" class="custom-btn2"
                 style="">সকল ব্লাড রিকোয়েস্ট পোস্টসমূহ</a></span></div>
 
     <!-- Swiper JS -->

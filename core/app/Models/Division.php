@@ -17,4 +17,9 @@ class Division extends Model
     {
         return $this->hasMany(Donor::class);
     }
+
+    public function bloodRequest()
+    {
+        return $this->hasMany(BloodRequest::class);
+    }
 }
