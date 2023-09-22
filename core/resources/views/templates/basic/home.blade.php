@@ -10,12 +10,9 @@
                 <div class="col-xxl-6 col-xl-7 col-lg-8 text-center">
                     <h2 class="hero__title">{{ __(@$banner->data_values->heading) }}</h2>
                     <span
-                        style="color: red;
-                font-size: 40px;
-                font-weight: bold;
-                line-height: initial;
-                font-family: 'Bensen'; text-shadow: -1px -1px 0 #fff, 0 -1px 0 #fff, 1px -1px 0 #fff, 1px 0 0 #fff, 1px 1px 0 #fff, 0 1px 0 #fff, -1px 1px 0 #fff, -1px 0 0 #fff;">বাংলাদেশের
-                        সকল রক্তদাতাদের খুঁজুন এখানে</span>
+                        style="color: red; font-size: 40px; font-weight: bold; line-height: initial; font-family: 'Bensen'; text-shadow: -1px -1px 0 #fff, 0 -1px 0 #fff, 1px -1px 0 #fff, 1px 0 0 #fff, 1px 1px 0 #fff, 0 1px 0 #fff, -1px 1px 0 #fff, -1px 0 0 #fff;">
+                        বাংলাদেশের সকল রক্তদাতাদের খুঁজুন এখানে
+                    </span>
                 </div>
             </div>
             <div class="row justify-content-center mt-4">
