@@ -125,7 +125,6 @@
             </div>
         </div>
     </div>
-    </div>
 
     @php
         $popup = 1;
