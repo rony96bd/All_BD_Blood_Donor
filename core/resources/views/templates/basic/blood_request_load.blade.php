@@ -3,7 +3,7 @@
         $timestamp = $bloodRequest->created_at;
         $timeAgo = Carbon\Carbon::parse($timestamp)->ago();
     @endphp
-    <div class="col-lg-6">
+    <div class="col-lg-6 col-mb-6">
         <div class="card swiper-slide bnfont">
             <div class="image-content">
                 <div class="container">

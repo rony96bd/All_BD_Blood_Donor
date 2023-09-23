@@ -4,7 +4,7 @@
     <section class="pt-50 pb-100">
         <div class="container">
             <div class="row">
-                <div class="col-xl-2 col-lg-3 col-md-4 d-md-block d-none">
+                <div class="col-xl-2 d-xl-block d-none">
                     @php
                         echo advertisements('220x474');
                     @endphp
@@ -15,7 +15,7 @@
                         echo advertisements('220x474');
                     @endphp
                 </div>
-                <div class="col-xl-8 col-lg-9 col-md-8">
+                <div class="col-xl-8 col-lg-9 col-md-12">
                     <div class="row gy-4 justify-content-center" id="posts-container">
 
                         @include('templates.basic.blood_request_load')
