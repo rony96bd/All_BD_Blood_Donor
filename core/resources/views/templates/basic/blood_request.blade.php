@@ -21,19 +21,20 @@
                         @include('templates.basic.blood_request_load')
 
                     </div>
-                    <div class="col-xl-2 d-xl-block d-none">
-                        @php
-                            echo advertisements('220x474');
-                        @endphp
-                        @php
-                            echo advertisements('220x474');
-                        @endphp
-                        @php
-                            echo advertisements('220x474');
-                        @endphp
-                    </div>
-
                 </div>
+                <div class="col-xl-2 d-xl-block d-none">
+                    @php
+                        echo advertisements('220x474');
+                    @endphp
+                    @php
+                        echo advertisements('220x474');
+                    @endphp
+                    @php
+                        echo advertisements('220x474');
+                    @endphp
+                </div>
+            </div>
+        </div>
     </section>
 
     @if ($sections->secs != null)
