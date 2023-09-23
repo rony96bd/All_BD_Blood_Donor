@@ -67,7 +67,7 @@
                                                 src="{{ getImage('assets/images/donor/' . $bloodRequest->donor->image, imagePath()['donor']['size']) }}"
                                                 alt="@lang('image')" class="img-fluid"
                                                 style="border-radius: 50px; height: 40px; width: 40px"></div>
-                                        <div class="" style="padding-left: 0px; line-height: 20px; width: 75%">
+                                        <div class="" style="padding-left: 0px; line-height: 20px; width: 65%">
                                             {{ __($bloodRequest->donor->name) }}<br>{{ __($timeAgo) }}</div>
                                     </div>
                                 </a>
