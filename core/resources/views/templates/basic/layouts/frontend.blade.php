@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="{{ asset($activeTemplateTrue . 'frontend/css/lib/bootstrap-drawer.css') }}">
     <link rel="stylesheet" href="{{ asset($activeTemplateTrue . 'frontend/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset($activeTemplateTrue . 'frontend/css/line-awesome.min.css') }}">
-    {{-- <link rel="stylesheet" href="{{ asset($activeTemplateTrue . 'frontend/css/font-awesome.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset($activeTemplateTrue . 'frontend/css/lightcase.css') }}">
     <link rel="stylesheet" href="{{ asset($activeTemplateTrue . 'frontend/css/lib/slick.css') }}">
     <link rel="stylesheet" href="{{ asset($activeTemplateTrue . 'frontend/css/main.css') }}">
@@ -171,22 +170,6 @@
             });
         });
 
-
-        // let items = document.querySelectorAll('.carousel .carousel-item')
-
-        // items.forEach((el) => {
-        //     const minPerSlide = 4
-        //     let next = el.nextElementSibling
-        //     for (var i = 1; i < minPerSlide; i++) {
-        //         if (!next) {
-        //             // wrap carousel by using first child
-        //             next = items[0]
-        //         }
-        //         let cloneChild = next.cloneNode(true)
-        //         el.appendChild(cloneChild.children[0])
-        //         next = next.nextElementSibling
-        //     }
-        // });
     </script>
 </body>
 

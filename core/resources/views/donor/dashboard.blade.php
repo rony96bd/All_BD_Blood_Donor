@@ -59,22 +59,7 @@
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                     <i class="fab la-facebook-f fa-lg" style="color: #333333;"></i>
                                     <p class="mb-0"><a href="{{ __(@$donor->socialMedia->facebook) }}" target="_blank"
-                                            tabindex="-1">{{ __(@$donor->socialMedia->facebook) }}</a></p>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                    <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
-                                    <p class="mb-0"><a href="{{ __(@$donor->socialMedia->twitter) }}" target="_blank"
-                                            tabindex="-1">{{ __(@$donor->socialMedia->twitter) }}</a></p>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                    <i class="fab la-linkedin-in fa-lg" style="color: #ac2bac;"></i>
-                                    <p class="mb-0"><a href="{{ __(@$donor->socialMedia->linkedinIn) }}" target="_blank"
-                                            tabindex="-1">{{ __(@$donor->socialMedia->linkedinIn) }}</a></p>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                    <i class="fab fa-instagram fa-lg" style="color: #3b5998;"></i>
-                                    <p class="mb-0"><a href="{{ __(@$donor->socialMedia->instagram) }}" target="_blank"
-                                            tabindex="-1">{{ __(@$donor->socialMedia->instagram) }}</a></p>
+                                            tabindex="-1">{{ __($donor->facebook) }}</a></p>
                                 </li>
                             </ul>
                         </div>
@@ -170,6 +155,15 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
+                                    <p class="mb-0 font-weight-bold">Secondary Phone</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">{{ __($donor->phone2) }}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
                                     <p class="mb-0 font-weight-bold">Profession</p>
                                 </div>
                                 <div class="col-sm-9">
@@ -206,10 +200,10 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0 font-weight-bold">Details</p>
+                                    <p class="mb-0 font-weight-bold">About Me</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">{{ __($donor->details) }}</p>
+                                    <p class="text-muted mb-0">{{ __($donor->about_me) }}</p>
                                 </div>
                             </div>
                         </div>

@@ -175,13 +175,6 @@
                                 </select>
                             </div>
 
-                            {{-- <!-- পেশা ----------------------------------->
-                            <div class="form-group col-lg-6">
-                                <label for="profession">@lang('Profession') <sup class="text--danger">*</sup></label>
-                                <input type="text" name="profession" id="profession" value="{{ old('profession') }}"
-                                    placeholder="@lang('Enter Profession')" class="form--control" maxlength="80" required="">
-                            </div> --}}
-
                             <!-- রক্তের গ্রুপ ----------------------------------->
                             <div class="form-group col-lg-4">
                                 <label for="blood_id">@lang('Blood Group') <sup class="text--danger">*</sup></label>
@@ -227,13 +220,6 @@
                                         placeholder="@lang('Enter Facebook Url')" class="form--control">
                                 </div>
                             </div>
-
-                            <!-- প্রোফাইল পিক ----------------------------------->
-                            {{-- <div class="form-group col-lg-6">
-                                <label for="file">@lang('Image') <sup class="text--danger">*</sup></label>
-                                <input type="file" id="file" name="image"
-                                    class="form--control custom-file-upload" required="">
-                            </div> --}}
 
                             <!-- প্রাইমারী মোবাইল নং ----------------------------------->
                             <div class="form-group col-lg-6">

@@ -1,85 +1,164 @@
 @extends('donor.layouts.app')
+<style>
+    h1 {
+        font-size: 20px;
+        text-align: center;
+        margin: 20px 0 20px;
+    }
 
+    h1 small {
+        display: block;
+        font-size: 15px;
+        padding-top: 8px;
+        color: gray;
+    }
+
+    .avatar-upload {
+        position: relative;
+        max-width: 205px;
+        margin: 5px auto;
+    }
+
+    .avatar-upload .avatar-edit {
+        position: absolute;
+        right: 12px;
+        z-index: 1;
+        top: 10px;
+    }
+
+    .avatar-upload .avatar-edit input {
+        display: none;
+    }
+
+    .avatar-upload .avatar-edit input+label {
+        display: inline-block;
+        width: 34px;
+        height: 34px;
+        margin-bottom: 0;
+        border-radius: 100%;
+        background: #FFFFFF;
+        border: 1px solid transparent;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+        cursor: pointer;
+        font-weight: normal;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .avatar-upload .avatar-edit input+label:hover {
+        background: #f1f1f1;
+        border-color: #d6d6d6;
+    }
+
+    .avatar-upload .avatar-edit input+label:after {
+        content: "\f040";
+        font-family: 'FontAwesome';
+        color: #757575;
+        position: absolute;
+        top: 10px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        margin: auto;
+    }
+
+    .avatar-upload .avatar-preview {
+        width: 192px;
+        height: 192px;
+        position: relative;
+        border-radius: 100%;
+        border: 6px solid #F8F8F8;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .avatar-upload .avatar-preview>div {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .container2 .btn {
+        position: absolute;
+        top: 90%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+
+        color: white;
+        font-size: 16px;
+
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    #image {
+        display: block;
+        /* This rule is very important, please don't ignore this */
+        max-width: 100%;
+    }
+
+    .error {
+        color: red;
+    }
+
+    .cropper-container {
+        right: 12px;
+    }
+</style>
 @section('panel')
     <div class="row mb-none-30">
         <div class="col-xl-12 col-lg-8 mb-30">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title mb-25 border-bottom pb-2">{{ __($donor->name) }}'s @lang('Profile Information')</h5>
-                    UserName: {{ __($donor->username) }}<br/>
+                    UserName: {{ __($donor->phone) }}<br />
                     Email: {{ $donor->email }}
-                    <br/> <br/>
+                    <br /> <br />
 
-                    <form action="{{ route('donor.profile.update') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('donor.profile.update') }}" id="basic-form" method="POST"
+                        enctype="multipart/form-data" autocomplete="off">
                         @csrf
-
+                        <input autocomplete="false" name="hidden" type="text" style="display:none;">
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <div class="image-upload">
-                                        <div class="thumb">
-                                            <div class="avatar-preview">
-                                                <div class="profilePicPreview"
-                                                    style="background-image: url({{ getImage('assets/images/donor/' . $donor->image, imagePath()['donor']['size']) }})">
-                                                    <button type="button" class="remove-image"><i
-                                                            class="fa fa-times"></i></button>
-                                                </div>
-                                            </div>
-                                            <div class="avatar-edit">
-                                                <input type="file" class="profilePicUpload" name="image"
-                                                    id="profilePicUpload1" accept=".png, .jpg, .jpeg">
-                                                <label for="profilePicUpload1" class="bg--success">@lang('Upload Image')</label>
-                                                <small class="mt-2 text-facebook">@lang('Supported files'): <b>@lang('jpeg'),
-                                                        @lang('jpg').</b> @lang('Image will be resized into 400x400px') </small>
+                                    <div class="avatar-upload">
+                                        <div class="avatar-edit">
+                                            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
+                                                name="imageUpload" class="imageUpload" required="" />
+                                            <input type="hidden" name="base64image" required="" name="base64image"
+                                                id="base64image">
+                                            <label for="imageUpload"></label>
+                                        </div>
+                                        <div class="avatar-preview container2">
+                                            @php
+                                                if (!empty($donor->image) && $donor->image != '' && getImage('assets/images/donor/' . $donor->image, imagePath()['donor']['size'])) {
+                                                    $image = $donor->image;
+                                                } else {
+                                                    $image = 'default.png';
+                                                }
+                                                $url = url('assets/images/donor/' . $image);
+                                                $imgs = "background-image:url($url)";
+
+                                            @endphp
+                                            <div id="imagePreview" style="{{ $imgs }};">
+                                                <input type="hidden" required="" name="_token"
+                                                    value="{{ csrf_token() }}">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
+
                             <div class="col-md-6">
                                 <div class="form-group ">
                                     <label class="form-control-label font-weight-bold">@lang('Name')</label>
                                     <input class="form-control" type="text" name="name"
                                         value="{{ auth()->guard('donor')->user()->name }}">
-                                </div>
-
-                                <div class="form-group ">
-                                    <label class="form-control-label font-weight-bold">@lang('Phone')</label>
-                                    <input class="form-control" type="text" name="phone"
-                                        value="{{ auth()->guard('donor')->user()->phone }}">
-                                </div>
-
-                                <div class="form-group ">
-                                    <label for="blood" class="font-weight-bold">@lang('Blood Group')</label>
-                                    <select name="blood" id="blood" class="form-control form-control" required="">
-                                        <option value="" selected="" disabled="">@lang('Select One')</option>
-                                        @foreach ($bloods as $blood)
-                                            <option value="{{ $blood->id }}"
-                                                @if ($blood->id == $donor->blood_id) selected @endif>{{ __($blood->name) }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="city" class="font-weight-bold">@lang('City')</label>
-                                    <select name="city" id="city" class="form-control form-control" required="">
-                                        <option value="" selected="" disabled="">@lang('Select One')</option>
-                                        @foreach ($cities as $city)
-                                            <option value="{{ $city->id }}"
-                                                data-locations="{{ json_encode($city->location) }}"
-                                                @if ($city->id == $donor->city_id) selected @endif>{{ __($city->name) }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="location" class="font-weight-bold">@lang('Location')</label>
-                                    <select name="location" id="location" class="form-control form-control" required="">
-                                        <option value="" selected="" disabled="">@lang('Select One')</option>
-                                    </select>
                                 </div>
 
                                 <div class="form-group">
@@ -93,200 +172,211 @@
                                     </select>
                                 </div>
 
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="facebook"
-                                        class="form-control-label font-weight-bold">@lang('Facebook Url')</label>
-                                    <div class="input-group mb-3">
-                                        <input type="text" id="facebook" class="form-control form-control-lg"
-                                            value="{{ @$donor->socialMedia->facebook }}" placeholder="@lang('Enter Facebook Url')"
-                                            name="facebook" aria-label="Recipient's username"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" id="basic-addon2"><i
-                                                    class="lab la-facebook-f"></i></span>
-                                        </div>
-                                    </div>
+                                    <label for="division" class="font-weight-bold">@lang('Division') <sup
+                                            class="text--danger">*</sup></label>
+                                    <select name="division" id="division-dropdown" class="form-control" required="">
+                                        <option value="{{ __($donor->division->id) }}">{{ __($donor->division->name) }}
+                                        </option>
+                                        @foreach ($divisions as $data)
+                                            <option value="{{ $data->id }}">
+                                                {{ $data->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                            </div>
-
-                            <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="twitter"
-                                        class="form-control-label font-weight-bold">@lang('Twitter Url')</label>
-                                    <div class="input-group mb-3">
-                                        <input type="text" id="twitter" value="{{ @$donor->socialMedia->twitter }}"
-                                            class="form-control form-control-lg" placeholder="@lang('Enter Twitter Url')"
-                                            name="twitter" aria-label="Recipient's username"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" id="basic-addon2"><i
-                                                    class="lab la-twitter"></i></span>
-                                        </div>
-                                    </div>
+                                    <label for="city" class="font-weight-bold">@lang('City')</label>
+                                    <select name="city" id="city-dropdown" class="form-control" required="">
+                                        <option value="{{ __($donor->city->id) }}">{{ __($donor->city->name) }}</option>
+                                    </select>
                                 </div>
-                            </div>
 
-                            <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="linkedinIn"
-                                        class="form-control-label font-weight-bold">@lang('LinkedinIn Url')</label>
-                                    <div class="input-group mb-3">
-                                        <input type="text" id="linkedinIn"
-                                            value="{{ @$donor->socialMedia->linkedinIn }}"
-                                            class="form-control form-control-lg" placeholder="@lang('Enter LinkedinIn Url')"
-                                            name="linkedinIn" aria-label="Recipient's username"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" id="basic-addon2"><i
-                                                    class="lab la-linkedin-in"></i></span>
-                                        </div>
-                                    </div>
+                                    <label for="location" class="font-weight-bold">@lang('Location')</label>
+                                    <select name="location" id="location-dropdown" class="form-control" required="">
+                                        <option value="{{ __($donor->location->id) }}">{{ __($donor->location->name) }}
+                                        </option>
+                                    </select>
                                 </div>
-                            </div>
-
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label for="instagram"
-                                        class="form-control-label font-weight-bold">@lang('Instagram Url')</label>
-                                    <div class="input-group mb-3">
-                                        <input type="text" id="instagram"
-                                            value="{{ @$donor->socialMedia->instagram }}"
-                                            class="form-control form-control-lg" placeholder="@lang('Enter Instagram Url')"
-                                            name="instagram" aria-label="Recipient's username"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" id="basic-addon2"><i
-                                                    class="lab la-instagram"></i></span>
-                                        </div>
-                                    </div>
+                                <div class="form-group ">
+                                    <label for="blood" class="font-weight-bold">@lang('Blood Group')</label>
+                                    <select name="blood" id="blood" class="form-control" required="">
+                                        <option value="" selected="" disabled="">@lang('Select One')</option>
+                                        @foreach ($bloods as $blood)
+                                            <option value="{{ $blood->id }}"
+                                                @if ($blood->id == $donor->blood_id) selected @endif>{{ __($blood->name) }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="profession" class="font-weight-bold">@lang('Profession')</label>
-                                    <input type="text" name="profession" id="profession"
-                                        value="{{ $donor->profession }}" class="form-control form-control-lg"
-                                        placeholder="@lang('Enter Profession')" maxlength="80" required="">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="religion" class="font-weight-bold">@lang('Religion')</label>
-                                    <input type="text" id="religion" name="religion" value="{{ $donor->religion }}"
-                                        class="form-control form-control-lg" placeholder="@lang('Enter Religion')"
-                                        maxlength="40" required="">
+                                    <select name="religion" id="religion" class="form-control" required="">
+                                        <option value="{{ __($donor->religion) }}" selected="">{{ __($donor->religion) }}</option>
+                                        <option value="Islam">@lang('Islam')</option>
+                                        <option value="Hinduism">@lang('Hinduism')</option>
+                                        <option value="Buddhism">@lang('Buddhism')</option>
+                                        <option value="Christianity">@lang('Christianity')</option>
+                                    </select>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="address" class="font-weight-bold">@lang('Address')</label>
-                                    <input type="text" name="address" id="address" value="{{ $donor->address }}"
-                                        class="form-control form-control-lg" placeholder="@lang('Enter Address')"
+                            <div class="col-md-6">
+                                <div class="form-group ">
+                                    <label for="date_birth" class="font-weight-bold">@lang('Date Of Birth') <sup
+                                            class="text--danger">*</sup></label>
+                                    <input type="text" id="date_birth" name="birth_date"
+                                        value="{{ showDateTime($donor->birth_date, 'd/m/Y') }}" data-language="en"
+                                        placeholder="@lang('DD/MM/YYYY')" class="form-control datepicker-here"
                                         maxlength="255" required="">
                                 </div>
-                            </div>
-
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="donate" class="font-weight-bold">@lang('Total Donate')</label>
-                                    <input type="text" id="donate" name="donate"
-                                        value="{{ $donor->total_donate }}" class="form-control form-control-lg"
-                                        placeholder="@lang('Enter Total Blood Donate')">
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="birth_date" class="font-weight-bold">@lang('Date Of Birth')</label>
-                                    <input type="text" name="birth_date" id="birth_date"
-                                        value="{{ showDateTime($donor->birth_date, 'Y-m-d') }}" data-language="en"
-                                        class="form-control form-control-lg datepicker-here"
-                                        placeholder="@lang('Enter Date Of Birth')" required="">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label for="last_donate" class="font-weight-bold">@lang('Last Donate')</label>
+                                <div class="form-group ">
+                                    <label class="form-control-label font-weight-bold">@lang('Last Blood Donate')</label>
                                     <input type="text" name="last_donate" id="last_donate"
-                                        value="@if ($donor->last_donate != null){{ showDateTime($donor->last_donate, 'Y-m-d') }}@endif" data-language="en"
-                                        class="form-control form-control-lg datepicker-here"
-                                        placeholder="@lang('Enter Last Donate Date')">
+                                        value="{{ showDateTime($donor->last_donate, 'd/m/Y') }}" data-language="en"
+                                        placeholder="@lang('DD/MM/YYYY')" class="form-control datepicker-here"
+                                        autocomplete="off">
                                 </div>
-                            </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="email" class="font-weight-bold">@lang('Email')</label>
+                                    <input type="email" name="email" id="email" value="{{ __($donor->email) }}"
+                                        placeholder="@lang('Enter Email')" class="form-control" maxlength="60">
+                                </div>
+                                <label for="facebook"
+                                    class="form-control-label font-weight-bold">@lang('Facebook Url')</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" id="facebook" class="form-control"
+                                        value="{{ $donor->facebook }}" placeholder="@lang('Enter Facebook Url')" name="facebook"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="basic-addon2"><i
+                                                class="lab la-facebook-f"></i></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group ">
+                                    <label class="form-control-label font-weight-bold">@lang('Primary Phone')</label>
+                                    <input class="form-control" type="text" name="phone"
+                                        value="{{ auth()->guard('donor')->user()->phone }}">
+                                </div>
+
+                                <div class="form-group ">
+                                    <label class="form-control-label font-weight-bold">@lang('Secondary Phone')</label>
+                                    <input class="form-control" type="text" name="phone2"
+                                        value="{{ auth()->guard('donor')->user()->phone2 }}">
+                                </div>
                                 <div class="form-group">
                                     <label for="details" class="font-weight-bold">@lang('About Donor')</label>
-                                    <textarea name="details" id="details" class="form-control form-control-lg" placeholder="@lang('Enter About Donor')">{{ $donor->details }}</textarea>
+                                    <textarea name="about_me" id="about_me" class="form-control form-control-lg" placeholder="@lang('Enter About Donor')">{{ $donor->about_me }}</textarea>
                                 </div>
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            <button type="submit" class="btn btn--primary btn-block btn-lg">@lang('Save Changes')</button>
+                        </div>
+                    </form>
                 </div>
-
-                <div class="form-group">
-                    <button type="submit" class="btn btn--primary btn-block btn-lg">@lang('Save Changes')</button>
-                </div>
-                </form>
             </div>
         </div>
     </div>
+    <div id="model" class="modal fade imagecrop" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Crop Image</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="img-container">
+                        <div class="row">
+                            <div class="col-md-11">
+                                <img id="image" src="https://avatars0.githubusercontent.com/u/3456749">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary crop" id="crop">Crop</button>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
+
 
 @push('breadcrumb-plugins')
     <a href="{{ route('donor.password') }}" class="btn btn-sm btn--primary box--shadow1 text--small"><i
             class="fa fa-key"></i>@lang('Password Setting')</a>
 @endpush
 
-@push('script-lib')
-    <script src="{{ asset('assets/admin/js/vendor/datepicker.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/vendor/datepicker.en.js') }}"></script>
+@push('style-lib')
+    <link rel="stylesheet" href="{{ asset($activeTemplateTrue . 'frontend/css/datepicker.min.css') }}">
 @endpush
-
+@push('script-lib')
+    <script src="{{ asset($activeTemplateTrue . 'frontend/js/datepicker.min.js') }}"></script>
+    <script src="{{ asset($activeTemplateTrue . 'frontend/js/datepicker.en.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+@endpush
 @push('script')
     <script>
-        (function($) {
-            "use strict";
-            if (!$('.datepicker-here').val()) {
-                $('.datepicker-here').datepicker({
-                    autoClose: true,
-                    dateFormat: 'yyyy-mm-dd',
-                });
+        $(document).ready(function() {
+            $("#basic-form").validate();
+        });
+        // Cropper JS
+        var $modal = $('.imagecrop');
+        var image = document.getElementById('image');
+        var cropper;
+        $("body").on("change", ".imageUpload", function(e) {
+            var files = e.target.files;
+            var done = function(url) {
+                image.src = url;
+                $modal.modal('show');
+            };
+            var reader;
+            var file;
+            var url;
+            if (files && files.length > 0) {
+                file = files[0];
+                if (URL) {
+                    done(URL.createObjectURL(file));
+                } else if (FileReader) {
+                    reader = new FileReader();
+                    reader.onload = function(e) {
+                        done(reader.result);
+                    };
+                    reader.readAsDataURL(file);
+                }
             }
-
-            $('select[name=city]').change(function() {
-                $('select[name=location]').html(
-                    '<option value="" selected="" disabled="">@lang('Select One')</option>');
-                var locations = $('select[name=city] :selected').data('locations');
-                var html = '';
-                locations.forEach(function myFunction(item, index) {
-                    if (item.id == {{ $donor->location_id }}) {
-                        html += `<option value="${item.id}" selected>${item.name}</option>`
-                    } else {
-                        html += `<option value="${item.id}">${item.name}</option>`
-                    }
-                });
-                $('select[name=location]').append(html);
-            }).change();
-        })(jQuery)
+        });
+        $modal.on('shown.bs.modal', function() {
+            cropper = new Cropper(image, {
+                aspectRatio: 1.5 / 1.9,
+                viewMode: 1,
+            });
+        }).on('hidden.bs.modal', function() {
+            cropper.destroy();
+            cropper = null;
+        });
+        $("body").on("click", "#crop", function() {
+            canvas = cropper.getCroppedCanvas({
+                width: 450,
+                height: 570,
+            });
+            canvas.toBlob(function(blob) {
+                url = URL.createObjectURL(blob);
+                var reader = new FileReader();
+                reader.readAsDataURL(blob);
+                reader.onloadend = function() {
+                    var base64data = reader.result;
+                    $('#base64image').val(base64data);
+                    document.getElementById('imagePreview').style.backgroundImage = "url(" +
+                        base64data + ")";
+                    $modal.modal('hide');
+                }
+            });
+        });
     </script>
 @endpush

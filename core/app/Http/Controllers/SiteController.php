@@ -316,11 +316,8 @@ class SiteController extends Controller
             'blood' => 'required|exists:bloods,id',
             'last_donate' => 'date_format:d/m/Y',
             'birth_date' => 'required|date_format:d/m/Y',
-            // 'email' => 'required|email|max:60|unique:donors,email',
-            // 'facebook' => 'required',
             'imageUpload' => ['required', 'image', new FileTypeValidate(['jpg', 'jpeg', 'png'])],
             'phone' => 'required|max:40|unique:donors,phone',
-            // 'phone2' => 'required|max:40|unique:donors,phone2',
             'password' => 'required|confirmed|min:6',
             'term' => 'accepted',
         ]);
@@ -355,7 +352,6 @@ class SiteController extends Controller
             // shuffle the result
             $string = str_shuffle($pin);
 
-            // $folderPath = public_path('images/');
             $path = imagePath()['donor']['path'] . '/';
             $image_parts = explode(";base64,", $input['base64image']);
             $image_type_aux = explode("image/", $image_parts[0]);

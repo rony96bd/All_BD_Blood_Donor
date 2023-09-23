@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{{asset('assets/admin/css/all.min.css')}}">
     <!-- line-awesome webfont -->
     <link rel="stylesheet" href="{{asset('assets/admin/css/line-awesome.min.css')}}">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css" />
 
     @stack('style-lib')
 
@@ -64,6 +66,11 @@
 <!-- custom select box js -->
 <script src="{{asset('assets/admin/js/vendor/jquery.nice-select.min.js')}}"></script>
 
+<script src="https://kit.fontawesome.com/88197b63d0.js" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js"></script>
+
+
 
 @include('partials.notify')
 @stack('script-lib')
@@ -91,6 +98,53 @@
             $('.nicEdit-main').focus();
         });
     })(jQuery);
+    $(document).ready(function() {
+            $('#division-dropdown').on('change', function() {
+                var idDivision = this.value;
+                $("#city-dropdown").html('');
+                $.ajax({
+                    url: "{{ Route('fetchcity') }}",
+                    type: "POST",
+                    data: {
+                        division_id: idDivision,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    dataType: 'json',
+                    success: function(result) {
+                        $('#city-dropdown').html(
+                            '<option value="">-- জেলা সিলেক্ট করুন --</option>');
+                        $.each(result.cities, function(key, value) {
+                            $("#city-dropdown").append('<option value="' + value.id +
+                                '">' + value.name + '</option>');
+                        });
+                        $('#location-dropdown').html(
+                            '<option value="">-- Select City --</option>');
+                    }
+                })
+            });
+
+            $('#city-dropdown').on('change', function() {
+                var idCity = this.value;
+                $("#location-dropdown").html('');
+                $.ajax({
+                    url: "{{ Route('fetchlocation') }}",
+                    type: "POST",
+                    data: {
+                        city_id: idCity,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    dataType: 'json',
+                    success: function(result) {
+                        $('#location-dropdown').html(
+                            '<option value="">-- উপজেলা সিলেক্ট করুন --</option>');
+                        $.each(result.locations, function(key, value) {
+                            $("#location-dropdown").append('<option value="' + value
+                                .id + '">' + value.name + '</option>');
+                        });
+                    }
+                })
+            });
+        });
 </script>
 
 @stack('script')
