@@ -82,7 +82,7 @@ class BloodRequestController extends Controller
         $donor->save();
 
         $url = "http://bulksmsbd.net/api/smsapi";
-        $api_key = "4Lt4gE724SVi59ZruK0q";
+        $api_key = env('BULKSMS_API');
         $senderid = "8809617612994";
 
         $numbers = Donor::where('division_id', $request->division)
