@@ -82,31 +82,32 @@
                             <ul class="caption-list-three">
                                 <li>
                                     <span class="caption">বিভাগ</span>
-                                    <span class="value">খুলনা</span>
+                                    <span class="value">{{ __($bloodRequest->division->name) }}
+                                    </span>
                                 </li>
                                 <li>
                                     <span class="caption">জেলা</span>
-                                    <span class="value">চুয়াডাঙ্গা</span>
+                                    <span class="value">{{ __($bloodRequest->city->name) }}</span>
                                 </li>
                                 <li>
                                     <span class="caption">উপজেলা</span>
-                                    <span class="value">আলমডাঙ্গা</span>
+                                    <span class="value">{{ __($bloodRequest->location->name) }}</span>
                                 </li>
                                 <li>
                                     <span class="caption">রক্তের গ্রুপ</span>
-                                    <span class="value">B+ (বি পজেটিভ)</span>
+                                    <span class="value">{{ __($bloodRequest->blood->name) }}</span>
                                 </li>
                                 <li>
                                     <span class="caption">রক্তের পরিমাণ</span>
-                                    <span class="value">১ ব্যাগ</span>
+                                    <span class="value">{{ __($bloodRequest->amount_of_blood) }}</span>
                                 </li>
                                 <li>
                                     <span class="caption">রক্তদানের তারিখ</span>
-                                    <span class="value">25-10-2023</span>
+                                    <span class="value">{{ showDateTime($bloodRequest->donate_date, 'd M Y') }}</span>
                                 </li>
                                 <li style="border-bottom: none">
                                     <span class="caption">রক্তদানের সময়</span>
-                                    <span class="value">04:45 PM</span>
+                                    <span class="value">{{ __($bloodRequest->donate_time) }}</span>
                                 </li>
                             </ul>
 
