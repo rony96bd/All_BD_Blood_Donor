@@ -23,6 +23,8 @@ use Validator;
 use Illuminate\Http\Request;
 use Exception;
 use Twilio\Rest\Client;
+use Illuminate\Support\Facades\Response;
+
 
 
 
@@ -210,14 +212,18 @@ class SiteController extends Controller
         return view($this->activeTemplate . 'blog_details', compact('blog', 'pageTitle', 'blogs'));
     }
 
-    public function bloodRequest()
+    public function bloodRequest(Request $request)
     {
         $pageTitle = "Blood Request";
         $bloodRequests = BloodRequest::orderBy('created_at', 'desc')
         ->with('blood', 'division', 'city', 'location', 'donor')
-        ->paginate(6);
+        ->paginate(10);
         $blogs = Frontend::where('data_keys', 'blog.element')->paginate(9);
         $sections = Page::where('tempname', $this->activeTemplate)->where('slug', 'blood-request')->first();
+        if ($request->ajax()) {
+            $view = view('templates.basic.blood_request_load', compact('bloodRequests'))->render();
+            return Response::json(['view' => $view, 'nextPageUrl' => $bloodRequests->nextPageUrl()]);
+        }
         return view($this->activeTemplate . 'blood_request', compact('bloodRequests', 'pageTitle', 'sections'));
     }
 
