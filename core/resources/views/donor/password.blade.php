@@ -1,7 +1,7 @@
 @extends('donor.layouts.app')
 
 @section('panel')
-    <div class="row mb-none-30">
+    <div class="row mb-none-30 bnfont">
         <div class="col-lg-3 col-md-3 mb-30">
 
             <div class="card b-radius--5 overflow-hidden">
@@ -21,11 +21,7 @@
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             @lang('Username')
-                            <span  class="font-weight-bold">{{ __($donor->username) }}</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            @lang('Email')
-                            <span  class="font-weight-bold">{{ $donor->email }}</span>
+                            <span  class="font-weight-bold">{{ __($donor->phone) }}</span>
                         </li>
                     </ul>
                 </div>
