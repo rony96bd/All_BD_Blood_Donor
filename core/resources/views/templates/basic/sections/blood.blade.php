@@ -63,7 +63,7 @@
                                 <a class="link-dark"
                                     href="{{ route('donor.details', [slug($bloodRequest->donor->name), $bloodRequest->donor->id]) }}">
                                     <div class="row">
-                                        <div class="" style="text-align: right; width: 25%"><img
+                                        <div class="" style="text-align: right; width: 65px"><img
                                                 src="{{ getImage('assets/images/donor/' . $bloodRequest->donor->image, imagePath()['donor']['size']) }}"
                                                 alt="@lang('image')" class="img-fluid"
                                                 style="border-radius: 50px; height: 40px; width: 40px"></div>
