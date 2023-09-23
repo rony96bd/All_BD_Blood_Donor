@@ -1,18 +1,20 @@
 @extends($activeTemplate . 'layouts.frontend')
+<style>
+    div.sticky {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 84px;
+      padding: 5px;
+    }
+    </style>
 @section('content')
     @include($activeTemplate . 'partials.breadcrumb')
     <section class="pt-50 pb-100">
         <div class="container">
-            <div class="row">
-                <div class="col-xl-2 d-xl-block d-none">
+            <div class="row" style="align-items:flex-start">
+                <div class="col-xl-2 d-xl-block d-none sticky">
                     @php
-                        echo advertisements('220x474');
-                    @endphp
-                    @php
-                        echo advertisements('220x474');
-                    @endphp
-                    @php
-                        echo advertisements('220x474');
+                        echo advertisements('Blood_Request_Left');
                     @endphp
                 </div>
                 <div class="col-xl-8 col-lg-12 col-md-12">
@@ -22,15 +24,9 @@
 
                     </div>
                 </div>
-                <div class="col-xl-2 d-xl-block d-none">
+                <div class="col-xl-2 d-xl-block d-none sticky">
                     @php
-                        echo advertisements('220x474');
-                    @endphp
-                    @php
-                        echo advertisements('220x474');
-                    @endphp
-                    @php
-                        echo advertisements('220x474');
+                        echo advertisements('Blood_Request_Right');
                     @endphp
                 </div>
             </div>

@@ -118,6 +118,8 @@
                         <option value="All_Donor_Right">@lang('All Donor Right')</option>
                         <option value="Single_Donor_Left">@lang('Single Donor Left')</option>
                         <option value="Single_Donor_Right">@lang('Single Donor Right')</option>
+                        <option value="Blood_Request_Left">@lang('Blood Request Left')</option>
+                        <option value="Blood_Request_Right">@lang('Blood Request Right')</option>
                     </select>
                 </div>
 
