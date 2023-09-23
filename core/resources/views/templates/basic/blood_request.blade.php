@@ -15,7 +15,7 @@
                         echo advertisements('220x474');
                     @endphp
                 </div>
-                <div class="col-xl-8 col-lg-9 col-md-12">
+                <div class="col-xl-8 col-lg-12 col-md-12">
                     <div class="row gy-4 justify-content-center" id="posts-container">
 
                         @include('templates.basic.blood_request_load')
