@@ -69,6 +69,11 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+        if ($request->has('remember')) {
+            config(['expire_on_close' => 'true']);
+        } else {
+            config(['expire_on_close' => 'false']);
+        }
         $this->validateLogin($request);
         $lv = @getLatestVersion();
         $general = GeneralSetting::first();
