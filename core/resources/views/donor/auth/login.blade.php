@@ -168,7 +168,7 @@
                             }
                         </style>
                         <label class="checkbox" style="color:#00B074;">
-                            <input type="checkbox" value="remember-me" id="rememberMe" name="remember"> Stay login
+                            <input type="checkbox" value="remember" id="rememberMe" name="remember"> Stay login
                             <span class="checkmark"></span>
                         </label>
                         <a href="{{ route('donor.password.reset') }}" class="text-muted text--small"><i
