@@ -2,6 +2,8 @@
 require_once('timezone.php');
 return [
 
+    'cache' => false,
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
