@@ -103,7 +103,7 @@
                         </div>
                         <div class="form-group d-flex justify-content-between align-items-center">
                             <label class="checkbox" style="color:#00B074;">
-                                <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe">
+                                <input type="checkbox" value="remember" id="rememberMe" name="remember">
                                 Stay login
                                 <span class="checkmark"></span>
                             </label>
