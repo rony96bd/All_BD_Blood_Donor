@@ -79,12 +79,13 @@ class BloodRequestController extends Controller
         $donor->donate_address =  $request->donate_address;
         $donor->phone = $request->phone;
         $donor->message = $request->message;
-        // $donor->save();
+        $donor->save();
 
         $division = Division::where('id', $request->division)->select('id', 'name')->value('name');
         $city = City::where('id', $request->city)->select('id', 'name')->value('name');
         $location = Location::where('id', $request->location)->select('id', 'name')->value('name');
         $blood = Blood::where('id', $request->blood)->select('id', 'name')->value('name');
+        $requrlid = $donor->id;
 
         $url = "http://bulksmsbd.net/api/smsapi";
         $api_key = env('BULKSMS_API');
