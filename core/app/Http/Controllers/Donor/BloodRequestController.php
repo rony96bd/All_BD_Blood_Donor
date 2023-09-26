@@ -9,9 +9,9 @@ use App\Models\Blood;
 use App\Models\City;
 use App\Models\Division;
 use App\Models\Donor;
-use Auth;
-
+use App\Models\Location;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class BloodRequestController extends Controller
 {
@@ -79,7 +79,7 @@ class BloodRequestController extends Controller
         $donor->donate_address =  $request->donate_address;
         $donor->phone = $request->phone;
         $donor->message = $request->message;
-        $donor->save();
+        // $donor->save();
 
         $url = "http://bulksmsbd.net/api/smsapi";
         $api_key = env('BULKSMS_API');
@@ -100,8 +100,12 @@ class BloodRequestController extends Controller
         }, $array);
 
         $commaSeparatedNumbers = implode(', ', $arrayWithNumber);
+        $division = Division::where('id', $request->division)->select('id', 'name')->value('name');
+        $city = City::where('id', $request->city)->select('id', 'name')->value('name');
+        $location = Location::where('id', $request->location)->select('id', 'name')->value('name');
+        $blood = Blood::where('id', $request->blood)->select('id', 'name')->value('name');
 
-        $message = "From, roktodin.com \n Emargency Need Blood:\n";
+        $message = "From, https://roktodin.com \nEmargency Need Blood:\nDivision: " . $division . "\nDistrict: " . $city . "\nUpazila: " . $location . "\nBlood Group: " . $blood . "\nContact: " . $request->phone;
 
         $data = [
             "api_key" => $api_key,
