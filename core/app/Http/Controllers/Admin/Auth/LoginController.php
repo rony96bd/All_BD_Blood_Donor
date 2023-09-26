@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Validator;
 
 class LoginController extends Controller
 {
@@ -68,7 +69,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
 
-        $this->validateLoginAdmin($request);
+        $this->validateLogin($request);
         $lv = @getLatestVersion();
         $general = GeneralSetting::first();
         if (@systemDetails()['version'] < @json_decode($lv)->version) {
