@@ -81,6 +81,11 @@ class BloodRequestController extends Controller
         $donor->message = $request->message;
         // $donor->save();
 
+        $division = Division::where('id', $request->division)->select('id', 'name')->value('name');
+        $city = City::where('id', $request->city)->select('id', 'name')->value('name');
+        $location = Location::where('id', $request->location)->select('id', 'name')->value('name');
+        $blood = Blood::where('id', $request->blood)->select('id', 'name')->value('name');
+
         $url = "http://bulksmsbd.net/api/smsapi";
         $api_key = env('BULKSMS_API');
         $senderid = "8809617612994";
@@ -99,14 +104,10 @@ class BloodRequestController extends Controller
             return '88' . $item;
         }, $array);
 
-        $commaSeparatedNumbers = implode(', ', $arrayWithNumber);
-        $division = Division::where('id', $request->division)->select('id', 'name')->value('name');
-        $city = City::where('id', $request->city)->select('id', 'name')->value('name');
-        $location = Location::where('id', $request->location)->select('id', 'name')->value('name');
-        $blood = Blood::where('id', $request->blood)->select('id', 'name')->value('name');
+        $commaSeparatedNumbers = implode(',', $arrayWithNumber);
 
-        $message = "From, https://roktodin.com \nEmargency Need Blood:\nDivision: " . $division . "\nDistrict: " . $city . "\nUpazila: " . $location . "\nBlood Group: " . $blood . "\nContact: " . $request->phone;
-
+        $sendmess = "From, https://roktodin.com \nEmargency Need Blood:\nDivision: " . $division . "\nDistrict: " . $city . "\nUpazila: " . $location . "\nBlood Group: " . $blood . "\nContact: " . $request->phone;
+        $message = "$sendmess";
         $data = [
             "api_key" => $api_key,
             "senderid" => $senderid,
