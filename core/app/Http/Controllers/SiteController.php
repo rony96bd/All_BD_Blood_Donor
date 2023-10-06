@@ -146,8 +146,9 @@ class SiteController extends Controller
         $bloods = Blood::where('status', 1)->select('id', 'name')->get();
         $cities = City::where('status', 1)->select('id', 'name')->get();
         $locations = Location::where('status', 1)->select('id', 'name')->get();
-        $donors = Donor::where('status', 1)->where('blood_id', $blood->id)->with('blood', 'location')->paginate(getPaginate());
-        return view($this->activeTemplate . 'donor', compact('pageTitle', 'emptyMessage', 'donors', 'bloods', 'cities', 'locations'));
+        $divisions = Division::where('status', 1)->select('id', 'name')->get();
+        $donors = Donor::where('status', 1)->where('blood_id', $blood->id)->with('blood', 'division', 'city', 'location')->paginate(getPaginate());
+        return view($this->activeTemplate . 'donor', compact('pageTitle', 'emptyMessage', 'donors', 'bloods', 'cities', 'locations', 'divisions'));
     }
 
     public function contact()

@@ -3,15 +3,15 @@
 @section('panel')
     <div class="row mb-none-30 bnfont">
         <div class="col-lg-3 col-md-3 mb-30">
-
             <div class="card b-radius--5 overflow-hidden">
                 <div class="card-body p-0">
                     <div class="d-flex p-3 bg--primary">
                         <div class="avatar avatar--lg">
-                            <img src="{{getImage('assets/images/donor/'. $donor->image ?? "", imagePath()['donor']['size'])}}" alt="@lang('Image')">
+                            <img src="{{ getImage('assets/images/donor/' . $donor->image ?? '', imagePath()['donor']['size']) }}"
+                                alt="@lang('Image')">
                         </div>
                         <div class="pl-3">
-                            <h4 class="text--white">{{__($donor->name)}}</h4>
+                            <h4 class="text--white">{{ __($donor->name) }}</h4>
                         </div>
                     </div>
                     <ul class="list-group">
@@ -21,7 +21,7 @@
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             @lang('Username')
-                            <span  class="font-weight-bold">{{ __($donor->phone) }}</span>
+                            <span class="font-weight-bold">{{ __($donor->phone) }}</span>
                         </li>
                     </ul>
                 </div>
@@ -39,7 +39,8 @@
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">@lang('Password')</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="password" placeholder="@lang('Password')" name="old_password">
+                                <input class="form-control" type="password" placeholder="@lang('Password')"
+                                    name="old_password">
                             </div>
                         </div>
 
@@ -53,7 +54,8 @@
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label">@lang('Confirm Password')</label>
                             <div class="col-lg-9">
-                                <input class="form-control" type="password" placeholder="@lang('Confirm Password')" name="password_confirmation">
+                                <input class="form-control" type="password" placeholder="@lang('Confirm Password')"
+                                    name="password_confirmation">
                             </div>
                         </div>
 
@@ -61,7 +63,7 @@
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label"></label>
                             <div class="col-lg-9">
-                            <button type="submit" class="btn btn--primary btn-block btn-lg">@lang('Save Changes')</button>
+                                <button type="submit" class="btn btn--primary btn-block btn-lg">@lang('Save Changes')</button>
                             </div>
                         </div>
                     </form>
@@ -72,5 +74,6 @@
 @endsection
 
 @push('breadcrumb-plugins')
-    <a href="{{route('donor.profile')}}" class="btn btn-sm btn--primary box--shadow1 text--small" ><i class="fa fa-user"></i>@lang('Profile Setting')</a>
+    <a href="{{ route('donor.profile') }}" class="btn btn-sm btn--primary box--shadow1 text--small"><i
+            class="fa fa-user"></i>@lang('Profile Setting')</a>
 @endpush
