@@ -136,9 +136,13 @@
 @push('script')
     @if ($popup == 1)
         <script>
-            $(document).ready(function() {
-                $("#myModal").modal("show");
-            });
+            setTimeout(function() {
+                $('#myModal').modal('show');
+            }, 3000);
+
+            // $(document).ready(function() {
+            //     $("#myModal").modal("show");
+            // });
         </script>
     @endif
 
