@@ -1,3 +1,8 @@
+@php
+    $footer = getContent('footer.content', true);
+    $contact = getContent('contact_us.content', true);
+    $policys = getContent('policy_pages.element', false);
+@endphp
 @extends('donor.layouts.master')
 @section('content')
     <div class="flash-message">
@@ -97,76 +102,6 @@
                         <i class="las la-lock input-icon"></i>
                     </div>
                     <div class="form-group d-flex justify-content-between align-items-center">
-                        <style>
-                            /* The container */
-                            .checkbox {
-                                display: block;
-                                position: relative;
-                                padding-left: 28px;
-                                margin-bottom: 12px;
-                                cursor: pointer;
-                                font-size: 22px;
-                                -webkit-user-select: none;
-                                -moz-user-select: none;
-                                -ms-user-select: none;
-                                user-select: none;
-                            }
-
-                            /* Hide the browser's default checkbox */
-                            .checkbox input {
-                                position: absolute;
-                                opacity: 0;
-                                cursor: pointer;
-                                height: 0;
-                                width: 0;
-                            }
-
-                            /* Create a custom checkbox */
-                            .checkmark {
-                                position: absolute;
-                                top: 0;
-                                left: 0;
-                                height: 20px;
-                                width: 20px;
-                                background-color: #eee;
-                                border: 1px solid darkgray;
-                            }
-
-                            /* On mouse-over, add a grey background color */
-                            .checkbox:hover input~.checkmark {
-                                background-color: #ccc;
-                            }
-
-                            /* When the checkbox is checked, add a blue background */
-                            .checkbox input:checked~.checkmark {
-                                background-color: #00B074;
-                            }
-
-                            /* Create the checkmark/indicator (hidden when not checked) */
-                            .checkmark:after {
-                                content: "";
-                                position: absolute;
-                                display: none;
-                            }
-
-                            /* Show the checkmark when checked */
-                            .checkbox input:checked~.checkmark:after {
-                                display: block;
-                            }
-
-                            /* Style the checkmark/indicator */
-                            .checkbox .checkmark:after {
-                                left: 8px;
-                                top: 3px;
-                                width: 5px;
-                                height: 10px;
-                                border: solid white;
-                                border-width: 0 3px 3px 0;
-                                -webkit-transform: rotate(45deg);
-                                -ms-transform: rotate(45deg);
-                                transform: rotate(45deg);
-                            }
-                        </style>
                         <label class="checkbox" style="color:#00B074;">
                             <input type="checkbox" value="remember" id="rememberMe" name="remember"> Stay login
                             <span class="checkmark"></span>
@@ -186,6 +121,98 @@
 
         </div><!-- login-area end -->
     </div>
+    <footer class="footer img-overlay"
+        style="background-image: url({{ getImage('assets/images/frontend/footer/' . $footer->data_values->background_image, '1920x921') }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
+        <div class="footer__top">
+            <div class="container">
+                <div class="row gy-5 justify-content-between">
+                    <div class="col-xl-4 col-lg-4 col-sm-8 order-lg-1 order-1">
+                        <div class="footer-widget">
+                            <a style="background-color: white;
+                        border-radius: 10px;
+                        padding: 24px 9px 24px 9px;"
+                                href="{{ route('home') }}" class="footer-logo"><img
+                                    src="{{ getImage(imagePath()['logoIcon']['path'] . '/logo.png') }}"
+                                    alt="@lang('logo')"></a>
+                            <p class="mt-3">{{ __($footer->data_values->title) }}</p>
+
+                            <br />
+                            <span class="text-light mb1" style="font-size: 14px">POWERED BY <i
+                                    class="fa fa-chevron-circle-right" aria-hidden="true"></i></span><span
+                                style="color: #00e999"> MA GROUP</span>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-sm-6 order-lg-2 order-3">
+                        <div class="footer-widget">
+                            <h4 class="footer-widget__title">@lang('User Reading')</h4>
+                            <ul class="footer-links-list">
+                                @foreach ($policys as $policy)
+                                    <li><a
+                                            href="{{ route('footer.menu', [slug($policy->data_values->title), $policy->id]) }}">{{ __($policy->data_values->title) }}</a>
+                                    </li>
+                                @endforeach
+                                <li><a href="./about-us">About Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-sm-6 order-lg-3 order-4">
+                        <div class="footer-widget">
+                            <h4 class="footer-widget__title">@lang('Join Now')</h4>
+                            <ul class="footer-links-list">
+                                <li><a href="{{ route('donor.login') }}">@lang('Login')</a></li>
+                                <li><a href="{{ route('apply.donor') }}">@lang('Signup')</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-sm-4 order-lg-4 order-2">
+                        <div class="footer-widget">
+                            <h4 class="footer-widget__title">@lang('Contact Us')</h4>
+                            <ul>
+                                <li><i class="las la-envelope"></i>  <a
+                                        href="mailto:{{ __($contact->data_values->email_address) }}">{{ __($contact->data_values->email_address) }}</a>
+                                </li>
+                                <li><i class="las la-envelope"></i>  <a
+                                        href="mailto:{{ __($contact->data_values->email_address) }}">{{ __($contact->data_values->email_address) }}</a>
+                                </li>
+                                <li><i class="las la-phone-volume"></i>  <a
+                                        href="tel:{{ __($contact->data_values->contact_number) }}">{{ __($contact->data_values->contact_number) }}</a>
+                                </li>
+                                <hr>
+                                <li>Follow Us</li>
+                                <li>
+                                    <a href="https://facebook.com/" style="margin: 0 6px;" target="_blank">
+                                        <i class="fa-brands fa-square-facebook"></i>
+                                    </a>
+                                    <a href="#" style="margin: 0 6px;" target="_blank">
+                                        <i class="fa fa-youtube"></i>
+                                    </a>
+                                    <a href="#" style="margin: 0 6px;" target="_blank">
+                                        <i class="fa-brands fa-linkedin"></i>
+                                    </a>
+                                    <a href="#" style="margin: 0 6px;" target="_blank">
+                                        <i class="fa-brands fa-pinterest"></i>
+                                    </a>
+                                    <a href="#" style="margin: 0 6px;" target="_blank">
+                                        <i class="fa-brands fa-twitter"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <p>@lang('Copyright') © {{ Carbon\Carbon::now()->format('Y') }} <a href="{{ route('home') }}"
+                                class="text--base"> {{ __($general->sitename) }} </a> @lang('All Right Reserved')</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 @endsection
 <script>
     document.addEventListener("DOMContentLoaded", function() {

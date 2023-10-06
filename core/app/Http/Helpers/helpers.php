@@ -730,7 +730,6 @@ function getContent($data_keys, $singleQuery = false, $limit = null,$orderById =
     return $content;
 }
 
-
 function verifyG2fa($user,$code,$secret = null)
 {
     $ga = new GoogleAuthenticator();

@@ -117,7 +117,7 @@
                             <hr>
                             <li>Follow Us</li>
                             <li>
-                                <a href="https://facebook.com/roktodin/" style="margin: 0 6px;" target="_blank">
+                                <a href="https://facebook.com/" style="margin: 0 6px;" target="_blank">
                                     <i class="fa-brands fa-square-facebook"></i>
                                 </a>
                                 <a href="#" style="margin: 0 6px;" target="_blank">
