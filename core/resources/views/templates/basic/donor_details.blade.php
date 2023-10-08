@@ -88,7 +88,7 @@
                                 style="background-color: #FFDADC; margin-left: 10px; margin-right: 10px; margin-bottom: 20px;">
                                 <li>
                                     <span class="caption">Email</span>
-                                    @if (auth()->guard('admin')->check())
+                                    @if (auth()->guard('donor')->check())
                                         <span class="value">{{ __($donor->email) }} <a target="_blank"
                                                 href="https://mail.google.com/mail/?view=cm&fs=1&to={{ __($donor->email) }}"><i
                                                     class="fa-regular fa-envelope"></i> Email</a></span>

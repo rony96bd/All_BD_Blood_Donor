@@ -15,16 +15,22 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Auth;
+use App\Models\Page;
 use Illuminate\Support\Facades\Storage;
 
 class DonorController extends Controller
 {
+    public function __construct()
+    {
+        $this->activeTemplate = activeTemplate();
+    }
 
     public function dashboard()
     {
         $pageTitle = 'Donor Dashboard';
         $blood = Blood::count();
         $city = City::count();
+        $sections = Page::where('tempname', $this->activeTemplate)->where('slug', 'home')->first();
         $divisions = Division::where('status', 1)->select('id', 'name')->get();
         $locations = Location::count();
         $ads = Advertisement::count();
@@ -34,7 +40,7 @@ class DonorController extends Controller
         $don['banned'] = Donor::where('status', 0)->count();
         $donors = Donor::orderBy('id', 'DESC')->with('blood', 'location')->limit(8)->get();
         $donor = Auth::guard('donor')->user();
-        return view('donor.dashboard', compact('pageTitle', 'don', 'blood', 'divisions', 'city', 'locations', 'ads', 'donors', 'donor'));
+        return view($this->activeTemplate . 'donor.dashboard', compact('pageTitle', 'sections', 'don', 'blood', 'divisions', 'city', 'locations', 'ads', 'donors', 'donor'));
     }
 
     public function profile()

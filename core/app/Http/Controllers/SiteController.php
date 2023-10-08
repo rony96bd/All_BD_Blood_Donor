@@ -459,4 +459,5 @@ class SiteController extends Controller
         curl_close($ch);
         return $response;
     }
+
 }

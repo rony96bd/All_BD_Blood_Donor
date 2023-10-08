@@ -29,23 +29,21 @@
                         echo advertisements('Front_Top');
                     @endphp
                 </div>
-                {{-- <div class="col-lg-6 col-md-8 col-sm-9">
-                    <ul class="header__info-list d-flex flex-wrap align-items-center justify-content-sm-start justify-content-center">
-                        <li><a href="tel:{{__($contact->data_values->contact_number)}}"><i class="las la-phone"></i> {{__($contact->data_values->contact_number)}}</a></li>
-                       <li><a href="mailto:{{__($contact->data_values->email_address)}}"><i class="las la-envelope"></i> {{__($contact->data_values->email_address)}}</a></li>
-                    </ul>
-                </div> --}}
-
-                {{-- <div class="col-lg-6 col-md-4 col-sm-3 text-sm-end text-center">
-                    <select class="language-select langSel">
-                        @foreach ($language as $item)
-                            <option value="{{$item->code}}" @if (session('lang') == $item->code) selected  @endif>{{ __($item->name) }}</option>
-                        @endforeach
-                    </select>
-                </div> --}}
             </div>
         </div>
     </div>
+    <style>
+        .login-menu2 {
+            margin-right: 10px;
+            float: left;
+        }
+
+        @media (max-width: 962px) {
+            .donorname {
+                display: none;
+            }
+        }
+    </style>
     <nav id="navbar_top" style="background-color: #fff;">
         <div class="header__bottom">
             <div class="container">
@@ -54,21 +52,33 @@
                         <img src="{{ getImage(imagePath()['logoIcon']['path'] . '/logo.png') }}"
                             alt="@lang('logo')">
                     </a>
+                    <span>
+                        @if (auth()->guard('donor')->check())
+                            <p class="login-menu2">
+                                <img style="height: 45px; border-radius: 50px; width: 45px; border: 1px solid lightgray;"
+                                    src="{{ getImage('assets/images/donor/' .auth()->guard('donor')->user()->image) }}"
+                                    alt="Donor Image">
+                                <span class="donorname"> {{ auth()->guard('donor')->user()->name }} </span>
+                            </p>
+                        @else
+                            <p class="login-menu2"><a href="{{ route('donor.login') }}">Login</a>   <a
+                                    href="{{ route('apply.donor') }}">Signup</a></p>
+                        @endif
 
-                    <span class="login-menu"><a href="{{ route('donor.login') }}">Login</a>   <a
-                            href="{{ route('apply.donor') }}">Signup</a></span>
-
-                    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span style="font-size: 30px;"><i class="las la-bars"></i></span>
-                    </button>
+                        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span style="font-size: 30px;"><i class="las la-bars"></i></span>
+                        </button>
+                    </span>
 
                     <div class="collapse navbar-collapse mt-lg-0 mt-3" id="navbarSupportedContent">
                         <ul class="navbar-nav main-menu text-center">
-                            <li style="border-bottom: 1px solid lightgray;"><a href="{{ route('home') }}">@lang('Home')</a></li>
+                            <li style="border-bottom: 1px solid lightgray;"><a
+                                    href="{{ route('home') }}">@lang('Home')</a></li>
                             @foreach ($pages as $k => $data)
-                                <li style="border-bottom: 1px solid lightgray;"><a href="{{ route('pages', [$data->slug]) }}">{{ __($data->name) }}</a></li>
+                                <li style="border-bottom: 1px solid lightgray;"><a
+                                        href="{{ route('pages', [$data->slug]) }}">{{ __($data->name) }}</a></li>
                             @endforeach
                         </ul>
                         {{-- <div class="nav-right">

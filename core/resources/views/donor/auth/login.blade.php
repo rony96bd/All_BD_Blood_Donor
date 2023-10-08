@@ -13,34 +13,7 @@
             @endif
         @endforeach
     </div>
-    <style>
-        .site-logo img {
-            max-width: 10.9375rem;
-            max-height: 3.75rem;
-        }
 
-        @media (max-width: 1199px) {
-            .site-logo img {
-                max-width: 9.375rem;
-            }
-        }
-
-        .site-logo.site-title {
-            font-size: 1.5rem;
-        }
-
-        @media (min-width: 1400px) {
-
-            .container2,
-            .container-lg,
-            .container-md,
-            .container-sm,
-            .container-xl,
-            .container-xxl {
-                max-width: 1320px;
-            }
-        }
-    </style>
     <div class="container2">
         <nav id="navbar_top" class="navbar navbar-expand-login navbar-light bg-light">
             <a class="site-logo site-title" href="{{ route('home') }}">
@@ -51,7 +24,7 @@
             <button class="navbar-toggler" style="border: none;" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
-                <span class="login-menu"><a href="{{ route('donor.login') }}">Login</a>   <a
+                <span class="login-menu"><a style="color: #0d6efd" href="{{ route('donor.login') }}">Login</a>   <a style="color: #0d6efd"
                         href="{{ route('apply.donor') }}">Signup</a></span>
                 <span class="navbar-toggler-icon"></span>
             </button>
