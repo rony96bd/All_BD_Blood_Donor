@@ -3,42 +3,6 @@
     @php
         $contact = getContent('contact_us.content', true);
     @endphp
-    <style>
-        .active {
-            background-color: lightgray;
-        }
-
-        .active a {
-            font-weight: bold;
-        }
-
-        .sidebar__menu-wrapper .active ul li a {
-            font-weight: bold;
-        }
-
-        .sidebar__menu-wrapper ul li:hover {
-            background-color: lightgray;
-        }
-
-        .sidebar__menu-wrapper ul li a {
-            color: #333
-        }
-
-        .sidebar__menu-wrapper ul li a:hover {
-            color: #00B074;
-        }
-
-        .donor-menu-card-header {
-            background-color: #00B074;
-            color: white;
-            font-weight: bold;
-            font-size: 125%;
-        }
-
-        .donor-menu-card-header:first-child {
-            border-radius: 10px 10px 0px 0px;
-        }
-    </style>
     <div class="row" style="margin: 10px">
         <div class="col-md-2" style="padding-top: 10px">
             <div class="card" style="border-radius: 10px">
@@ -48,25 +12,29 @@
                 <div class="card-body" style="padding: 0">
                     <div class="sidebar__menu-wrapper" id="sidebar__menuWrapper">
                         <ul>
-                            <li style="border-bottom:lightgray solid 1px" class="sidebar-menu-item {{ menuActive('donor.dashboard') }}">
+                            <li style="border-bottom:lightgray solid 1px"
+                                class="sidebar-menu-item {{ menuActive('donor.dashboard') }}">
                                 <a href="{{ route('donor.dashboard') }}" class="nav-link ">
                                     <i style="color: #00B074" class="fa-solid fa-gauge"></i>
                                     <span class="menu-title">@lang('My Profile')</span>
                                 </a>
                             </li>
-                            <li style="border-bottom:lightgray solid 1px" class="sidebar-menu-item {{ menuActive('donor.blood-request.index') }}">
+                            <li style="border-bottom:lightgray solid 1px"
+                                class="sidebar-menu-item {{ menuActive('donor.blood-request.index') }}">
                                 <a href="{{ Route('donor.blood-request.index') }}" class="nav-link ">
                                     <i class="fa-solid fa-user"></i>
                                     <span class="menu-title">@lang('Blood Request')</span>
                                 </a>
                             </li>
-                            <li style="border-bottom:lightgray solid 1px" class="sidebar-menu-item {{ menuActive('donor.blood-request.index') }}">
+                            <li style="border-bottom:lightgray solid 1px"
+                                class="sidebar-menu-item {{ menuActive('donor.blood-request.index') }}">
                                 <a href="{{ Route('donor.blood-request.index') }}" class="nav-link ">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                     <span class="menu-title">@lang('Edit Profile')</span>
                                 </a>
                             </li>
-                            <li style="border-bottom:lightgray solid 1px" class="sidebar-menu-item {{ menuActive('donor.blood-request.index') }}">
+                            <li style="border-bottom:lightgray solid 1px"
+                                class="sidebar-menu-item {{ menuActive('donor.blood-request.index') }}">
                                 <a href="{{ Route('donor.blood-request.index') }}" class="nav-link ">
                                     <i class="fa-solid fa-key"></i>
                                     <span class="menu-title">@lang('Change Password')</span>
@@ -101,13 +69,28 @@
                                             <h5 class="my-3">{{ __($donor->name) }}</h5>
                                             <p class="mb-1 text-danger">@lang('Blood Group') : {{ __($donor->blood->name) }}
                                             </p>
-                                            <p class="text-muted mb-4">@lang('Location') : {{ __($donor->location->name) }},
+                                            <p class="text-muted mb-4">@lang('Location') :
+                                                {{ __($donor->location->name) }},
                                                 {{ __($donor->city->name) }}</p>
+                                            <style>
+                                                .button1 {
+                                                    background-color: #00b074;
+                                                    color: white;
+                                                    padding: 8px 10px 4px;
+                                                    border-radius: 5px;
+                                                    transition: all .5s ease-out;
+                                                }
 
-                                            <div class="d-flex justify-content-center mb-2">
-                                                <button type="button" class="btn btn-primary"
-                                                    onclick="window.location.href = '{{ route('donor.profile') }}';">Edit
-                                                    your profile</button>
+                                                .button1:hover {
+                                                    background-color: #0866FF;
+                                                    color: white;
+                                                }
+                                            </style>
+
+                                            <div class="d-flex justify-content-center mb-2 edit-button">
+                                                <a href="{{ route('donor.profile') }}" class="button1">
+                                                    <i class="fa-solid fa-pen-to-square"></i><span
+                                                        style="padding-left: 5px;">Edit Your Profile</span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -121,14 +104,11 @@
                                                 </div>
                                                 <div class="col-sm-9">
                                                     @if ($donor->status == 1)
-                                                        <span
-                                                            class="badge badge--success fw-bold">@lang('Your Profile is Actived')</span>
+                                                        <span class="badge badge--success fw-bold">@lang('Your Profile is Actived')</span>
                                                     @elseif($donor->status == 2)
-                                                        <span
-                                                            class="badge badge--danger fw-bold">@lang('Your Profile is Banned')</span>
+                                                        <span class="badge badge--danger fw-bold">@lang('Your Profile is Banned')</span>
                                                     @else
-                                                        <span
-                                                            class="badge badge--primary fw-bold">@lang('Your Profile is Pending for Admin Approval.')</span>
+                                                        <span class="badge badge--primary fw-bold">@lang('Your Profile is Pending for Admin Approval.')</span>
                                                     @endif
                                                 </div>
                                             </div>

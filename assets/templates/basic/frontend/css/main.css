@@ -5825,3 +5825,49 @@ blockquote {
     }
 }
 
+.login-menu2 {
+    margin-right: 10px;
+    float: left;
+}
+
+@media (max-width: 962px) {
+    .donorname {
+        display: none;
+    }
+}
+
+.active {
+    background-color: lightgray;
+}
+
+.active a {
+    font-weight: bold;
+}
+
+.sidebar__menu-wrapper .active ul li a {
+    font-weight: bold;
+}
+
+.sidebar__menu-wrapper ul li:hover {
+    background-color: lightgray;
+}
+
+.sidebar__menu-wrapper ul li a {
+    color: #333;
+    padding: 8px 10px 4px 10px;
+}
+
+.sidebar__menu-wrapper ul li a:hover {
+    color: #00B074;
+}
+
+.donor-menu-card-header {
+    background-color: #00B074;
+    color: white;
+    font-weight: bold;
+    font-size: 125%;
+}
+
+.donor-menu-card-header:first-child {
+    border-radius: 10px 10px 0px 0px;
+}

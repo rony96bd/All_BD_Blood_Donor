@@ -32,18 +32,6 @@
             </div>
         </div>
     </div>
-    <style>
-        .login-menu2 {
-            margin-right: 10px;
-            float: left;
-        }
-
-        @media (max-width: 962px) {
-            .donorname {
-                display: none;
-            }
-        }
-    </style>
     <nav id="navbar_top" style="background-color: #fff;">
         <div class="header__bottom">
             <div class="container">
@@ -52,24 +40,74 @@
                         <img src="{{ getImage(imagePath()['logoIcon']['path'] . '/logo.png') }}"
                             alt="@lang('logo')">
                     </a>
+                    <style>
+                        .dropdown ul li a {
+                            color: #333;
+                        }
+
+                        .dropdown ul li a:hover {
+                            color: #FFF;
+                        }
+
+                        .dropdown ul li:hover {
+                            background-color: #00b074;
+                            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+                        }
+                    </style>
                     <span>
                         @if (auth()->guard('donor')->check())
-                            <p class="login-menu2">
-                                <img style="height: 45px; border-radius: 50px; width: 45px; border: 1px solid lightgray;"
-                                    src="{{ getImage('assets/images/donor/' .auth()->guard('donor')->user()->image) }}"
-                                    alt="Donor Image">
-                                <span class="donorname"> {{ auth()->guard('donor')->user()->name }} </span>
-                            </p>
+                            <span class="dropdown">
+                                <button style="background: none;" class="dropdown-toggle" type="button"
+                                    id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img style="height: 45px; border-radius: 50px; width: 45px; border: 1px solid lightgray;"
+                                        src="{{ getImage('assets/images/donor/' .auth()->guard('donor')->user()->image) }}"
+                                        alt="Donor Image">
+                                    <span class="donorname"> {{ auth()->guard('donor')->user()->name }} </span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li style="border-bottom:lightgray solid 1px" class="sidebar-menu-item">
+                                        <a href="{{ route('donor.dashboard') }}" class="nav-link ">
+                                            <i class="fa-solid fa-gauge"></i>
+                                            <span class="menu-title">@lang('My Profile')</span>
+                                        </a>
+                                    </li>
+                                    <li style="border-bottom:lightgray solid 1px" class="sidebar-menu-item">
+                                        <a href="{{ Route('donor.blood-request.index') }}" class="nav-link ">
+                                            <i class="fa-solid fa-user"></i>
+                                            <span class="menu-title">@lang('Blood Request')</span>
+                                        </a>
+                                    </li>
+                                    <li style="border-bottom:lightgray solid 1px" class="sidebar-menu-item">
+                                        <a href="{{ Route('donor.blood-request.index') }}" class="nav-link ">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                            <span class="menu-title">@lang('Edit Profile')</span>
+                                        </a>
+                                    </li>
+                                    <li style="border-bottom:lightgray solid 1px" class="sidebar-menu-item">
+                                        <a href="{{ Route('donor.blood-request.index') }}" class="nav-link ">
+                                            <i class="fa-solid fa-key"></i>
+                                            <span class="menu-title">@lang('Change Password')</span>
+                                        </a>
+                                    </li>
+                                    <li class="sidebar-menu-item">
+                                        <a href="{{ route('donor.logout') }}" class="nav-link ">
+                                            <i class="fa fa-sign-out"></i>
+                                            <span class="menu-title">@lang('Sign Out')</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </span>
                         @else
                             <p class="login-menu2"><a href="{{ route('donor.login') }}">Login</a>   <a
                                     href="{{ route('apply.donor') }}">Signup</a></p>
                         @endif
-
-                        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span style="font-size: 30px;"><i class="las la-bars"></i></span>
-                        </button>
+                        <span>
+                            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span style="font-size: 30px;"><i class="las la-bars"></i></span>
+                            </button>
+                        </span>
                     </span>
 
                     <div class="collapse navbar-collapse mt-lg-0 mt-3" id="navbarSupportedContent">
