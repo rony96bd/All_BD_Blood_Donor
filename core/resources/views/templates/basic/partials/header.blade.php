@@ -40,20 +40,6 @@
                         <img src="{{ getImage(imagePath()['logoIcon']['path'] . '/logo.png') }}"
                             alt="@lang('logo')">
                     </a>
-                    <style>
-                        .dropdown ul li a {
-                            color: #333;
-                        }
-
-                        .dropdown ul li a:hover {
-                            color: #FFF;
-                        }
-
-                        .dropdown ul li:hover {
-                            background-color: #00b074;
-                            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
-                        }
-                    </style>
                     <span>
                         @if (auth()->guard('donor')->check())
                             <span class="dropdown">
@@ -78,13 +64,13 @@
                                         </a>
                                     </li>
                                     <li style="border-bottom:lightgray solid 1px" class="sidebar-menu-item">
-                                        <a href="{{ Route('donor.blood-request.index') }}" class="nav-link ">
+                                        <a href="{{ route('donor.profile') }}" class="nav-link ">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                             <span class="menu-title">@lang('Edit Profile')</span>
                                         </a>
                                     </li>
                                     <li style="border-bottom:lightgray solid 1px" class="sidebar-menu-item">
-                                        <a href="{{ Route('donor.blood-request.index') }}" class="nav-link ">
+                                        <a href="{{route('donor.password')}}" class="nav-link ">
                                             <i class="fa-solid fa-key"></i>
                                             <span class="menu-title">@lang('Change Password')</span>
                                         </a>

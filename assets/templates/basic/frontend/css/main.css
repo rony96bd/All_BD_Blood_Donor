@@ -5871,3 +5871,15 @@ blockquote {
 .donor-menu-card-header:first-child {
     border-radius: 10px 10px 0px 0px;
 }
+.dropdown ul li a {
+    color: #333;
+}
+
+.dropdown ul li a:hover {
+    color: #FFF;
+}
+
+.dropdown ul li:hover {
+    background-color: #00b074;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
