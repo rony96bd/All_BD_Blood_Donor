@@ -92,6 +92,7 @@
                                         <span class="value">{{ __($donor->email) }} <a target="_blank"
                                                 href="https://mail.google.com/mail/?view=cm&fs=1&to={{ __($donor->email) }}"><i
                                                     class="fa-regular fa-envelope"></i> Email</a></span>
+
                                     @else
                                         <span class="value">xxxxxxxxxx@gmail.com <p class="popup" style="color: #00B074;"
                                                 onclick="myFunction()"> <i class="fa-regular fa-envelope"></i></i> Email
@@ -105,7 +106,7 @@
 
                                 <li>
                                     <span class="caption">Phone</span>
-                                    @if (auth()->guard('admin')->check())
+                                    @if (auth()->guard('donor')->check())
                                         <span class="value">{{ __($donor->phone) }} <a
                                                 href="tel:{{ __($donor->phone) }}"> <i class="fa fa-phone"></i> কল
                                                 দিন</a></span>
@@ -120,7 +121,7 @@
                                 </li>
                                 <li>
                                     <span class="caption">Secondary Phone</span>
-                                    @if (auth()->guard('admin')->check())
+                                    @if (auth()->guard('donor')->check())
                                         <span class="value">{{ __($donor->phone2) }} <a
                                                 href="tel:{{ __($donor->phone2) }}"> <i class="fa fa-phone"></i> কল
                                                 দিন</a></span>
