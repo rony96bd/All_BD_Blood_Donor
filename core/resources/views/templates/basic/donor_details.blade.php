@@ -31,13 +31,15 @@
                     @endphp
                 </div>
                 <div class="col-xl-6 col-lg-9 col-md-8 bg-light rounded-2">
-                    <div class="row gy-4">
+                    <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-6 text-center">
                             <img class="img-ext shadow p-1 bg-white"
                                 src="{{ getImage('assets/images/donor/' . $donor->image, imagePath()['donor']['size']) }}"
                                 alt="@lang('image')"><br>
                             <span style="margin-top: 10px">
                                 <h3 class="text-danger">{{ __($donor->name) }}</h3>
+                                <br/>
+                                {{ __($donor->about_me) }}
                             </span>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-6">
