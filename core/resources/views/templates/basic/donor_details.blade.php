@@ -1,3 +1,21 @@
+@php
+    $finddivision = $donor->division->id;
+    $findcity = $donor->city->id;
+    $findlocation = $donor->location->id;
+    $findblood = $donor->blood->id;
+
+    $relateddonor = getContent('latest_donor.content', true);
+    $relateddonors = App\Models\Donor::where('status', 1)
+        ->where('division_id', $finddivision)
+        ->where('city_id', $findcity)
+        ->where('location_id', $findlocation)
+        ->where('blood_id', $findblood)
+        ->orderBy('id', 'DESC')
+        ->with('blood', 'city', 'division', 'location')
+        ->limit(6)
+        ->get();
+@endphp
+
 @extends($activeTemplate . 'layouts.frontend')
 @section('content')
     @php
@@ -92,7 +110,6 @@
                                         <span class="value">{{ __($donor->email) }} <a target="_blank"
                                                 href="https://mail.google.com/mail/?view=cm&fs=1&to={{ __($donor->email) }}"><i
                                                     class="fa-regular fa-envelope"></i> Email</a></span>
-
                                     @else
                                         <span class="value">xxxxxxxxxx@gmail.com <p class="popup" style="color: #00B074;"
                                                 onclick="myFunction()"> <i class="fa-regular fa-envelope"></i></i> Email
@@ -137,7 +154,8 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="fb-comments" data-href="{{ route('donor.details', [slug($donor->name), $donor->id]) }}" data-width="" data-numposts="5"></div>
+                    <div class="fb-comments" data-href="{{ route('donor.details', [slug($donor->name), $donor->id]) }}"
+                        data-width="" data-numposts="5"></div>
                     @push('fbComment')
                         @php echo loadFbComment() @endphp
                     @endpush
@@ -147,8 +165,78 @@
                         echo advertisements('Single_Donor_Right');
                     @endphp
                 </div>
+            </div>
+        </div><br />
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section-header text-center">
+                        <h2 class="section-title">Related Donor</h2>
+                    </div>
+                </div>
+            </div>
 
-
+            <div class="row justify-content-center gy-4">
+                @forelse($relateddonors as $donor)
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="donor-item has--link" style="font-family: 'Noto Sans Bengali',  sans-serif;">
+                            <div class="donor-item__thumb">
+                                <img style="border-radius: 5px;"
+                                    src="{{ getImage('assets/images/donor/' . $donor->image, imagePath()['donor']['size']) }}"
+                                    alt="@lang('image')">
+                            </div>
+                            <div class="donor-item__content">
+                                <h5 style="color: #fff; font-weight: 600;" class="donor-item__name">
+                                    {{ __($donor->name) }}
+                                </h5>
+                                <ul class="donor-item__list">
+                                    <li class="donor-item__list">
+                                        <i class="las la-tint"></i> @lang('ব্লাড গ্রুপ') :
+                                        <span style="color: red">
+                                            {{ __($donor->blood->name) }}
+                                            @if ($donor->blood->name == 'A+')
+                                                (এ পজেটিভ)
+                                            @elseif ($donor->blood->name == 'A-')
+                                                (এ নেগেটিভ)
+                                            @elseif ($donor->blood->name == 'B+')
+                                                (বি পজেটিভ)
+                                            @elseif ($donor->blood->name == 'B-')
+                                                (বি নেগেটিভ)
+                                            @elseif ($donor->blood->name == 'AB+')
+                                                (এবি পজেটিভ)
+                                            @elseif ($donor->blood->name == 'AB-')
+                                                (এবি নেগেটিভ)
+                                            @elseif ($donor->blood->name == 'O+')
+                                                (ও পজেটিভ)
+                                            @elseif ($donor->blood->name == 'O-')
+                                                (ও নেগেটিভ)
+                                            @else
+                                            @endif
+                                        </span>
+                                    </li>
+                                    <li>
+                                        সর্বশেষ রক্ত প্রদান: {{ showDateTime($donor->last_donate, 'd M Y') }}
+                                    </li>
+                                    <li class="text-truncate" style="font-weight: 600">
+                                        <i class="las la-map-marker-alt"></i>
+                                        {{ __($donor->location->name) }}, {{ __($donor->city->name) }}, {{ __($donor->division->name) }}
+                                    </li>
+                                </ul>
+                                <div class="row">
+                                    <div class="col-7 text-white"><span><a
+                                                href="{{ route('donor.details', [slug($donor->name), $donor->id]) }}"
+                                                class="custom-btn">View Details <i
+                                                    class="fa fa-angle-double-right"></i></a></span>
+                                    </div>
+                                    <div class="col-5" style="text-align: right"><i class="las la-eye"></i>
+                                        {{ __($donor->click) }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <h3 class="text-center">{{ $emptyMessage }}</h3>
+                @endforelse
             </div>
         </div>
     </section>

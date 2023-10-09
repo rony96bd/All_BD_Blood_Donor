@@ -7,7 +7,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">@lang('Home')</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ __($pageTitle) }}</li>
+                <li class="breadcrumb-item" aria-current="page">{{ __($pageTitle) }}</li>
             </ol>
         </nav>
     </div>
