@@ -63,21 +63,21 @@ class ResetPasswordController extends Controller
             $notify[] = ['error', 'Token not found!'];
             return redirect()->route('donor.password.reset')->withNotify($notify);
         }
-        $email = $resetToken->email;
-        return view('donor.auth.passwords.reset', compact('pageTitle', 'email', 'token'));
+        $phone = $resetToken->phone;
+        return view('donor.auth.passwords.reset', compact('pageTitle', 'phone', 'token'));
     }
 
 
     public function reset(Request $request)
     {
         $this->validate($request, [
-            'email' => 'required|email',
+            'phone' => 'required',
             'token' => 'required',
             'password' => 'required|confirmed|min:4',
         ]);
 
         $reset = DonorPasswordReset::where('token', $request->token)->orderBy('created_at', 'desc')->first();
-        $user = Donor::where('email', $reset->email)->first();
+        $user = Donor::where('phone', $reset->phone)->first();
         if ($reset->status == 1) {
             $notify[] = ['error', 'Invalid code'];
             return redirect()->route('donor.login')->withNotify($notify);
@@ -88,14 +88,14 @@ class ResetPasswordController extends Controller
         $reset->status = 1;
         $reset->save();
 
-        $userIpInfo = getIpInfo();
-        $userBrowser = osBrowser();
-        sendEmail($user, 'PASS_RESET_DONE', [
-            'operating_system' => $userBrowser['os_platform'],
-            'browser' => $userBrowser['browser'],
-            'ip' => $userIpInfo['ip'],
-            'time' => $userIpInfo['time']
-        ]);
+        // $userIpInfo = getIpInfo();
+        // $userBrowser = osBrowser();
+        // sendEmail($user, 'PASS_RESET_DONE', [
+        //     'operating_system' => $userBrowser['os_platform'],
+        //     'browser' => $userBrowser['browser'],
+        //     'ip' => $userIpInfo['ip'],
+        //     'time' => $userIpInfo['time']
+        // ]);
 
         $notify[] = ['success', 'Password changed'];
         return redirect()->route('donor.login')->withNotify($notify);

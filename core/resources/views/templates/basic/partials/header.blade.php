@@ -50,7 +50,7 @@
                                         alt="Donor Image">
                                     <span class="donorname"> {{ auth()->guard('donor')->user()->name }} </span>
                                 </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <ul class="dropdown-menu" style="width: 190px" aria-labelledby="dropdownMenuButton1">
                                     <li style="border-bottom:lightgray solid 1px" class="sidebar-menu-item">
                                         <a href="{{ route('donor.dashboard') }}" class="nav-link ">
                                             <i class="fa-solid fa-gauge"></i>

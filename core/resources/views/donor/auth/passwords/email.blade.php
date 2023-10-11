@@ -38,8 +38,8 @@
         <button class="navbar-toggler" style="border: none;" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
-            <span class="login-menu"><a href="{{ route('donor.login') }}">Login</a>   <a
-                    href="{{ route('apply.donor') }}">Signup</a></span>
+            <span class="login-menu"><a style="color: blue" href="{{ route('donor.login') }}">Login</a>   <a
+                style="color: blue" href="{{ route('apply.donor') }}">Signup</a></span>
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -73,7 +73,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="phone">@lang('Phone')</label>
-                        <input type="email" name="phone" class="form-control b-radius--capsule" id="username" value="{{ old('phone') }}" placeholder="@lang('Enter your phone...')">
+                        <input type="number" name="phone" class="form-control b-radius--capsule" id="username" value="{{ old('phone') }}" placeholder="@lang('Enter your phone...')">
                         <i class="las la-user input-icon"></i>
                     </div>
                     <div class="form-group d-flex justify-content-between align-items-center">
