@@ -5690,7 +5690,7 @@ blockquote {
 }
 
 .card {
-    border-radius: 25px;
+    border-radius: 10px;
     background-color: #FFF;
 }
 
@@ -5882,4 +5882,7 @@ blockquote {
 .dropdown ul li:hover {
     background-color: #00b074;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+.main-menu li:hover {
+    background-color: lightgray;
 }

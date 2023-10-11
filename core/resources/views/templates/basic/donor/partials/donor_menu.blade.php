@@ -17,19 +17,26 @@
                         class="sidebar-menu-item {{ menuActive('donor.blood-request.index') }}">
                         <a href="{{ Route('donor.blood-request.index') }}" class="nav-link ">
                             <i class="fa-solid fa-user"></i>
-                            <span class="menu-title">@lang('Blood Request')</span>
+                            <span class="menu-title">@lang('Blood Request List')</span>
                         </a>
                     </li>
                     <li style="border-bottom:lightgray solid 1px"
-                        class="sidebar-menu-item {{ menuActive('donor.blood-request.index') }}">
-                        <a href="{{ Route('donor.blood-request.index') }}" class="nav-link ">
+                        class="sidebar-menu-item {{ menuActive('donor.blood-request.create') }}">
+                        <a href="{{ route('donor.blood-request.create') }}" class="nav-link ">
+                            <i class="fa-solid fa-plus"></i>
+                            <span class="menu-title">@lang('New Blood Request')</span>
+                        </a>
+                    </li>
+                    <li style="border-bottom:lightgray solid 1px"
+                        class="sidebar-menu-item {{ menuActive('donor.profile') }}">
+                        <a href="{{ Route('donor.profile') }}" class="nav-link ">
                             <i class="fa-solid fa-pen-to-square"></i>
                             <span class="menu-title">@lang('Edit Profile')</span>
                         </a>
                     </li>
                     <li style="border-bottom:lightgray solid 1px"
-                        class="sidebar-menu-item {{ menuActive('donor.blood-request.index') }}">
-                        <a href="{{ Route('donor.blood-request.index') }}" class="nav-link ">
+                        class="sidebar-menu-item {{ menuActive('donor.password') }}">
+                        <a href="{{ Route('donor.password') }}" class="nav-link ">
                             <i class="fa-solid fa-key"></i>
                             <span class="menu-title">@lang('Change Password')</span>
                         </a>

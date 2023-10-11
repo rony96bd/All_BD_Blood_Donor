@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Auth;
 
 class BloodRequestController extends Controller
 {
+    public function __construct()
+    {
+        $this->activeTemplate = activeTemplate();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -22,13 +26,15 @@ class BloodRequestController extends Controller
      */
     public function index()
     {
-        $pageTitle = "Manage Donor List";
+        $pageTitle = "Blood Request List";
         $emptyMessage = "No data found";
-        $bloodRequests = BloodRequest::latest()->with('blood', 'division', 'city', 'location')->paginate(getPaginate());
+        $bloodRequests = BloodRequest::latest()->with('blood', 'division', 'city', 'location')
+        ->where('donor_id', Auth::guard('donor')->user()->id)
+        ->paginate(getPaginate());
         $bloods = Blood::where('status', 1)->select('id', 'name')->get();
         $donors = Donor::latest()->with('blood', 'location')->paginate(getPaginate());
 
-        return view('donor.blood_request.index', compact('pageTitle', 'emptyMessage', 'donors', 'bloods', 'bloodRequests'));
+        return view($this->activeTemplate . 'donor.blood_request', compact('pageTitle', 'emptyMessage', 'donors', 'bloods', 'bloodRequests'));
     }
 
     /**
@@ -43,7 +49,7 @@ class BloodRequestController extends Controller
         $donor = Auth::guard('donor')->user();
         $cities = City::where('status', 1)->select('id', 'name')->with('location')->get();
         $bloods = Blood::where('status', 1)->select('id', 'name')->get();
-        return view('donor.blood_request.create', $data, compact('pageTitle', 'donor', 'cities', 'bloods'));
+        return view($this->activeTemplate . 'donor.create_blood_request', $data, compact('pageTitle', 'donor', 'cities', 'bloods'));
     }
 
     /**
@@ -81,51 +87,51 @@ class BloodRequestController extends Controller
         $donor->message = $request->message;
         $donor->save();
 
-        $division = Division::where('id', $request->division)->select('id', 'name')->value('name');
-        $city = City::where('id', $request->city)->select('id', 'name')->value('name');
-        $location = Location::where('id', $request->location)->select('id', 'name')->value('name');
-        $blood = Blood::where('id', $request->blood)->select('id', 'name')->value('name');
-        $requrlid = $donor->id;
+        // $division = Division::where('id', $request->division)->select('id', 'name')->value('name');
+        // $city = City::where('id', $request->city)->select('id', 'name')->value('name');
+        // $location = Location::where('id', $request->location)->select('id', 'name')->value('name');
+        // $blood = Blood::where('id', $request->blood)->select('id', 'name')->value('name');
+        // $requrlid = $donor->id;
 
-        $url = "http://bulksmsbd.net/api/smsapi";
-        $api_key = env('BULKSMS_API');
-        $senderid = "8809617612994";
+        // $url = "http://bulksmsbd.net/api/smsapi";
+        // $api_key = env('BULKSMS_API');
+        // $senderid = "8809617612994";
 
-        $numbers = Donor::where('division_id', $request->division)
-            ->where('city_id', $request->city)
-            ->where('location_id', $request->location)
-            ->where('blood_id', $request->blood)
-            ->pluck('phone');
+        // $numbers = Donor::where('division_id', $request->division)
+        //     ->where('city_id', $request->city)
+        //     ->where('location_id', $request->location)
+        //     ->where('blood_id', $request->blood)
+        //     ->pluck('phone');
 
-        $collection = new Collection($numbers);
+        // $collection = new Collection($numbers);
 
-        $array = $collection->toArray();
+        // $array = $collection->toArray();
 
-        $arrayWithNumber = array_map(function ($item) {
-            return '88' . $item;
-        }, $array);
+        // $arrayWithNumber = array_map(function ($item) {
+        //     return '88' . $item;
+        // }, $array);
 
-        $commaSeparatedNumbers = implode(',', $arrayWithNumber);
+        // $commaSeparatedNumbers = implode(',', $arrayWithNumber);
 
-        $sendmess = "From, https://roktodin.com \nEmargency Need Blood:\nDivision: " . $division . "\nDistrict: " . $city . "\nUpazila: " . $location . "\nBlood Group: " . $blood . "\nContact: " . $request->phone;
-        $message = "$sendmess";
-        $data = [
-            "api_key" => $api_key,
-            "senderid" => $senderid,
-            "number" => $commaSeparatedNumbers,
-            "message" => $message
-        ];
+        // $sendmess = "From, https://roktodin.com \nEmargency Need Blood:\nDivision: " . $division . "\nDistrict: " . $city . "\nUpazila: " . $location . "\nBlood Group: " . $blood . "\nContact: " . $request->phone;
+        // $message = "$sendmess";
+        // $data = [
+        //     "api_key" => $api_key,
+        //     "senderid" => $senderid,
+        //     "number" => $commaSeparatedNumbers,
+        //     "message" => $message
+        // ];
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        $response = curl_exec($ch);
-        curl_close($ch);
+        // $ch = curl_init();
+        // curl_setopt($ch, CURLOPT_URL, $url);
+        // curl_setopt($ch, CURLOPT_POST, 1);
+        // curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        // $response = curl_exec($ch);
+        // curl_close($ch);
         $notify[] = ['success', 'Your Requested Submitted'];
-        $notify[] = ['success', $response];
+        // $notify[] = ['success', $response];
         return back()->withNotify($notify);
     }
 

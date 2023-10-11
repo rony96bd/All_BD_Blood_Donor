@@ -50,7 +50,7 @@ class DonorController extends Controller
         $divisions = Division::where('status', 1)->select('id', 'name')->get();
         $donor = Auth::guard('donor')->user();
         $bloods = Blood::where('status', 1)->select('id', 'name')->get();
-        return view('donor.profile', compact('pageTitle', 'donor', 'divisions', 'bloods'));
+        return view($this->activeTemplate . 'donor.profile', compact('pageTitle', 'donor', 'divisions', 'bloods'));
     }
 
     public function profileUpdate(Request $request)
@@ -134,7 +134,7 @@ class DonorController extends Controller
     {
         $pageTitle = 'Password Setting';
         $donor = Auth::guard('donor')->user();
-        return view('donor.password', compact('pageTitle', 'donor'));
+        return view($this->activeTemplate . 'donor.password', compact('pageTitle', 'donor'));
     }
 
     public function passwordUpdate(Request $request)
