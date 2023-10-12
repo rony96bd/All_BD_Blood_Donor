@@ -50,7 +50,8 @@
                                         alt="Donor Image">
                                     <span class="donorname"> {{ auth()->guard('donor')->user()->name }} </span>
                                 </button>
-                                <ul class="dropdown-menu" style="width: 190px" aria-labelledby="dropdownMenuButton1">
+                                <ul class="dropdown-menu" style="width: 190px; margin-left: -70px;"
+                                    aria-labelledby="dropdownMenuButton1">
                                     <li style="border-bottom:lightgray solid 1px" class="sidebar-menu-item">
                                         <a href="{{ route('donor.dashboard') }}" class="nav-link ">
                                             <i class="fa-solid fa-gauge"></i>
@@ -70,7 +71,7 @@
                                         </a>
                                     </li>
                                     <li style="border-bottom:lightgray solid 1px" class="sidebar-menu-item">
-                                        <a href="{{route('donor.password')}}" class="nav-link ">
+                                        <a href="{{ route('donor.password') }}" class="nav-link ">
                                             <i class="fa-solid fa-key"></i>
                                             <span class="menu-title">@lang('Change Password')</span>
                                         </a>
