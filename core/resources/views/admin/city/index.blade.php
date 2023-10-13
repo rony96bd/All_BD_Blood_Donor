@@ -16,35 +16,35 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @forelse($citys as $city)
-                                <tr>
-                                    <td data-label="@lang('Name')">{{__($city->name)}}</td>
-                                    <td data-label="@lang('Division')">
-                                        {{__($city->division->name)}}
-                                    </td>
-                                    <td data-label="@lang('Status')">
-                                        @if($city->status == 1)
-                                            <span class="badge badge--success">@lang('Enable')</span>
-                                        @else
-                                            <span class="badge badge--danger">@lang('Disable')</span>
-                                        @endif
-                                    </td>
-                                    <td data-label="@lang('Last Update')">
-                                        {{ showDateTime($city->updated_at) }}<br> {{ diffForHumans($city->updated_at) }}
-                                    </td>
-                                    <td data-label="@lang('Action')">
-                                        <a href="javascript:void(0)" class="icon-btn btn--primary ml-1 updateCity"
-                                            data-id="{{$city->id}}"
-                                            data-name="{{$city->name}}"
-                                            data-status ="{{$city->status}}"
-                                        ><i class="las la-pen"></i></a>
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td class="text-muted text-center" colspan="100%">{{__($emptyMessage) }}</td>
-                                </tr>
-                            @endforelse
+                                @forelse($citys as $city)
+                                    <tr>
+                                        <td data-label="@lang('Name')">{{ __($city->name) }}</td>
+                                        <td data-label="@lang('Division')">
+                                            @foreach ($divisions as $division)
+                                                {{ __($division->name) }}
+                                            @endforeach
+                                        </td>
+                                        <td data-label="@lang('Status')">
+                                            @if ($city->status == 1)
+                                                <span class="badge badge--success">@lang('Enable')</span>
+                                            @else
+                                                <span class="badge badge--danger">@lang('Disable')</span>
+                                            @endif
+                                        </td>
+                                        <td data-label="@lang('Last Update')">
+                                            {{ showDateTime($city->updated_at) }}<br> {{ diffForHumans($city->updated_at) }}
+                                        </td>
+                                        <td data-label="@lang('Action')">
+                                            <a href="javascript:void(0)" class="icon-btn btn--primary ml-1 updateCity"
+                                                data-id="{{ $city->id }}" data-name="{{ $city->name }}"
+                                                data-status ="{{ $city->status }}"><i class="las la-pen"></i></a>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}</td>
+                                    </tr>
+                                @endforelse
 
                             </tbody>
                         </table>
@@ -67,20 +67,21 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{route('admin.city.store')}}" method="POST">
+                <form action="{{ route('admin.city.store') }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="name" class="form-control-label font-weight-bold">@lang('Name')</label>
-                            <input type="text" class="form-control form-control-lg" name="name" id="name" placeholder="@lang("Enter Name")"  maxlength="80" required="">
+                            <input type="text" class="form-control form-control-lg" name="name" id="name"
+                                placeholder="@lang('Enter Name')" maxlength="80" required="">
                         </div>
 
                         <div class="form-group">
                             <label for="division" class="form-control-label font-weight-bold">@lang('Division')</label>
                             <select class="form-control form-control-lg" id="division" name="division" required="">
                                 <option>@lang('Select One')</option>
-                                @foreach($divisions as $division)
-                                    <option value="{{$division->id}}">{{__($division->name)}}</option>
+                                @foreach ($divisions as $division)
+                                    <option value="{{ $division->id }}">{{ __($division->name) }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -88,13 +89,15 @@
                         <div class="form-group">
                             <label class="form-control-label font-weight-bold">@lang('Status') </label>
                             <input type="checkbox" data-width="100%" data-onstyle="-success" data-offstyle="-danger"
-                                data-toggle="toggle" data-on="@lang('Enable')" data-off="@lang('Disable')" name="status">
+                                data-toggle="toggle" data-on="@lang('Enable')" data-off="@lang('Disable')"
+                                name="status">
                         </div>
 
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn--dark" data-dismiss="modal">@lang('Close')</button>
-                        <button type="submit" class="btn btn--primary"><i class="fa fa-fw fa-paper-plane"></i>@lang('Create')</button>
+                        <button type="submit" class="btn btn--primary"><i
+                                class="fa fa-fw fa-paper-plane"></i>@lang('Create')</button>
                     </div>
                 </form>
             </div>
@@ -111,21 +114,22 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{route('admin.city.update')}}" method="POST">
+                <form action="{{ route('admin.city.update') }}" method="POST">
                     @csrf
                     <input type="hidden" name="id">
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="name" class="form-control-label font-weight-bold">@lang('Name')</label>
-                            <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="@lang("Enter Name")"  maxlength="80" required="">
+                            <input type="text" class="form-control form-control-lg" id="name" name="name"
+                                placeholder="@lang('Enter Name')" maxlength="80" required="">
                         </div>
 
                         <div class="form-group">
                             <label for="division" class="form-control-label font-weight-bold">@lang('Division')</label>
                             <select class="form-control form-control-lg" id="division" name="division" required="">
                                 <option>@lang('Select One')</option>
-                                @foreach($divisions as $division)
-                                    <option value="{{$division->id}}">{{__($division->name)}}</option>
+                                @foreach ($divisions as $division)
+                                    <option value="{{ $division->id }}">{{ __($division->name) }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -133,13 +137,15 @@
                         <div class="form-group">
                             <label class="form-control-label font-weight-bold">@lang('Status') </label>
                             <input type="checkbox" data-width="100%" data-onstyle="-success" data-offstyle="-danger"
-                                data-toggle="toggle" data-on="@lang('Enable')" data-off="@lang('Disabled')" name="status">
+                                data-toggle="toggle" data-on="@lang('Enable')" data-off="@lang('Disabled')"
+                                name="status">
                         </div>
 
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn--dark" data-dismiss="modal">@lang('Close')</button>
-                        <button type="submit" class="btn btn--primary"><i class="fa fa-fw fa-paper-plane"></i>@lang('Update')</button>
+                        <button type="submit" class="btn btn--primary"><i
+                                class="fa fa-fw fa-paper-plane"></i>@lang('Update')</button>
                     </div>
                 </form>
             </div>
@@ -148,28 +154,29 @@
 @endsection
 
 @push('breadcrumb-plugins')
-    <a href="javascript:void(0)" class="btn btn-sm btn--primary box--shadow1 text--small addCity" ><i class="fa fa-fw fa-paper-plane"></i>@lang('Add City')</a>
+    <a href="javascript:void(0)" class="btn btn-sm btn--primary box--shadow1 text--small addCity"><i
+            class="fa fa-fw fa-paper-plane"></i>@lang('Add City')</a>
 @endpush
 
 @push('script')
-<script>
-    "use strict";
-    $('.addCity').on('click', function() {
-        $('#cityModel').modal('show');
-    });
+    <script>
+        "use strict";
+        $('.addCity').on('click', function() {
+            $('#cityModel').modal('show');
+        });
 
-    $('.updateCity').on('click', function() {
-        var modal = $('#updateCityModel');
-        modal.find('input[name=id]').val($(this).data('id'));
-        modal.find('input[name=name]').val($(this).data('name'));
-        modal.find('select[name=division]').val($(this).data('division'));
-        var data = $(this).data('status');
-        if(data == 1){
-            modal.find('input[name=status]').bootstrapToggle('on');
-        }else{
-            modal.find('input[name=status]').bootstrapToggle('off');
-        }
-        modal.modal('show');
-    });
-</script>
+        $('.updateCity').on('click', function() {
+            var modal = $('#updateCityModel');
+            modal.find('input[name=id]').val($(this).data('id'));
+            modal.find('input[name=name]').val($(this).data('name'));
+            modal.find('select[name=division]').val($(this).data('division'));
+            var data = $(this).data('status');
+            if (data == 1) {
+                modal.find('input[name=status]').bootstrapToggle('on');
+            } else {
+                modal.find('input[name=status]').bootstrapToggle('off');
+            }
+            modal.modal('show');
+        });
+    </script>
 @endpush
