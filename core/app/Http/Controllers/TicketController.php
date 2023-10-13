@@ -82,14 +82,14 @@ class TicketController extends Controller
     {
         $pageTitle = "Support Tickets";
         $my_ticket = SupportTicket::where('ticket', $ticket)->orderBy('id','desc')->firstOrFail();
-        $messages = SupportMessage::where('supportticket_id', $my_ticket->id)->orderBy('id','desc')->get();
+        $messages = SupportMessage::where('supportticket_id', $my_ticket->id)->with('admin', 'attachments')->orderBy('id', 'desc')->get();
         return view($this->activeTemplate. 'ticket_view', compact('my_ticket', 'messages', 'pageTitle', ));
 
     }
 
     public function replyTicket(Request $request, $id)
     {
-       
+
         $ticket = SupportTicket::where('id',$id)->firstOrFail();
         $message = new SupportMessage();
         if ($request->replayTicket == 1) {
@@ -153,7 +153,7 @@ class TicketController extends Controller
         }
         return back()->withNotify($notify);
     }
-    
+
 
 
     public function ticketDownload($ticket_id)

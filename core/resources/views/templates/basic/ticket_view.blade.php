@@ -73,7 +73,7 @@
                             <p class="text-muted font-weight-bold my-3">
                                 @lang('Posted on') {{ $message->created_at->format('l, dS F Y @ H:i') }}</p>
                                 <p>{{$message->message}}</p>
-                                @if($message->attachments()->count() > 0)
+                                @if($message->attachments->count() > 0)
                                 <div class="mt-2">
                                     @foreach($message->attachments as $k=> $image)
                                     <a href="{{route('ticket.download',encrypt($image->id))}}" class="mr-3"><i class="fa fa-file"></i>  @lang('Attachment') {{++$k}} </a>
@@ -92,7 +92,7 @@
                                 <p class="text-muted font-weight-bold my-3">
                                     @lang('Posted on') {{ $message->created_at->format('l, dS F Y @ H:i') }}</p>
                                     <p>{{$message->message}}</p>
-                                    @if($message->attachments()->count() > 0)
+                                    @if($message->attachments->count() > 0)
                                     <div class="mt-2">
                                         @foreach($message->attachments as $k=> $image)
                                         <a href="{{route('ticket.download',encrypt($image->id))}}" class="mr-3"><i class="fa fa-file"></i>  @lang('Attachment') {{++$k}} </a>

@@ -21,7 +21,7 @@
                             @forelse($items as $item)
                                 <tr>
                                     <td data-label="@lang('Subject')">
-                                        <a href="{{ route('admin.ticket.view', $item->id) }}" class="font-weight-bold"> [@lang('Ticket')#{{ $item->ticket }}] {{ $item->subject }} </a>
+                                        <a href="{{ route('admin.ticket.view', $item->id) }}" style="color: blue" class="font-weight-bold"> [@lang('Ticket')#{{ $item->ticket }}] {{ $item->subject }} </a>
                                     </td>
 
                                     <td data-label="@lang('Submitted By')">

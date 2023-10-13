@@ -43,7 +43,7 @@
                                     <i class="las la-envelope"></i>
                                 </div>
                                 <div class="single-info__content">
-                                    <p><a href="mailto:{{__($contact->data_values->email_address)}}">{{__($contact->data_values->email_address)}}</a></p>
+                                    <p><a href="mailto:{{__($contact->data_values->secondary_email_address)}}">{{__($contact->data_values->secondary_email_address)}}</a></p>
                                 </div>
                             </li>
 
@@ -53,6 +53,14 @@
                                 </div>
                                 <div class="single-info__content">
                                     <p><a href="tel:{{__($contact->data_values->contact_number)}}">{{__($contact->data_values->contact_number)}}</a></p>
+                                </div>
+                            </li>
+                            <li class="single-info d-flex flex-wrap align-items-center">
+                                <div class="single-info__icon text-white d-flex justify-content-center align-items-center rounded-3">
+                                    <i class="las la-phone-volume"></i>
+                                </div>
+                                <div class="single-info__content">
+                                    <p><a href="tel:{{__($contact->data_values->secondary_contact_number)}}">{{__($contact->data_values->secondary_contact_number)}}</a></p>
                                 </div>
                             </li>
 

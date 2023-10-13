@@ -12,18 +12,6 @@
             "heading": "text"
         }
     },
-    "breadcrumb": {
-        "builder": true,
-        "no_selection":true,
-        "name": "Breadcrumb Section",
-        "content": {
-            "images":{
-                "background_image":{
-                    "size":"1920x1440"
-                }
-            }
-        }
-    },
     "about": {
         "builder": true,
         "name": "About Us",
@@ -56,50 +44,6 @@
             "heading": "text"
         }
     },
-    "overview": {
-        "builder": true,
-        "name": "Overview Section",
-        "content": {
-            "images":{
-                "background_image":{
-                    "size":"1920x1282"
-                }
-            },
-            "heading": "text"
-        },
-        "element": {
-            "title": "text",
-            "overview_icon": "icon",
-            "modal": true
-        }
-    },
-    "faq": {
-        "builder": true,
-        "name": "FAQ Section",
-        "content": {
-            "heading": "text",
-            "sub_heading": "text"
-        },
-        "element": {
-            "title": "text",
-            "answer": "textarea",
-            "modal": true
-        }
-    },
-    "donor": {
-        "builder": true,
-        "name": "Top Donor",
-        "content": {
-            "images":{
-                "background_image":{
-                    "size":"1920x596"
-                }
-            },
-            "heading": "text",
-            "sub_heading": "text"
-        }
-    },
-
     "latest_donor": {
         "builder": true,
         "name": "Latest Donor",
@@ -113,38 +57,6 @@
             "sub_heading": "text"
         }
     },
-
-    "featured_donor": {
-        "builder": true,
-        "name": "Featured Donor",
-        "content": {
-            "images":{
-                "background_image":{
-                    "size":"1920x596"
-                }
-            },
-            "heading": "text",
-            "sub_heading": "text"
-        }
-    },
-
-    "how_it_work": {
-        "builder": true,
-        "name": "How It Work",
-        "content": {
-            "images":{
-                "background_image":{
-                    "size":"1920x1440"
-                }
-            },
-            "heading": "text"
-        },
-        "element": {
-            "title": "text",
-            "icon": "icon",
-            "modal": true
-        }
-    },
     "policy_pages": {
         "builder": true,
         "no_selection":true,
@@ -153,42 +65,6 @@
             "title": "text",
             "details": "textarea-nic",
             "modal": false
-        }
-    },
-    "patner": {
-        "builder": true,
-        "name": "Patner Section",
-        "content": {
-            "heading": "text",
-            "sub_heading": "text"
-        },
-        "element": {
-            "images":{
-                "background_image":{
-                    "size":"255x241"
-                }
-            },
-            "modal": true
-        }
-    },
-    "testimonial": {
-        "builder": true,
-        "name": "Testimonial Section",
-        "content": {
-            "images":{
-                "background_image":{
-                    "size":"1920x1280"
-                }
-            },
-            "heading": "text",
-            "sub_heading": "text"
-        },
-        "element": {
-            "name" : "text",
-            "testimonial" : "textarea",
-            "rating" : "text",
-            "donor_count" : "text",
-            "modal": true
         }
     },
     "blog": {
@@ -208,17 +84,6 @@
             "description_nic": "textarea-nic",
             "modal": false
         }
-    }, 
-    "social_icon": {
-        "builder": true,
-        "no_selection": true,
-        "name": "Social Icons",
-        "element": {
-            "title": "text",
-            "social_icon": "icon",
-            "url": "text",
-            "modal": true
-        }
     },
     "contact_us": {
         "builder": true,
@@ -232,8 +97,10 @@
             },
             "title": "text",
             "email_address": "text",
+            "secondary_email_address": "text",
             "contact_details": "text",
             "contact_number": "text",
+            "secondary_contact_number": "text",
             "latitude": "text",
             "longitude": "text"
         }
