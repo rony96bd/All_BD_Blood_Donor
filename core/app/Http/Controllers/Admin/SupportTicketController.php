@@ -49,7 +49,7 @@ class SupportTicketController extends Controller
     {
         $ticket = SupportTicket::where('id', $id)->firstOrFail();
         $pageTitle = 'Reply Ticket';
-        $messages = SupportMessage::with('ticket')->where('supportticket_id', $ticket->id)->orderBy('id','desc')->get();
+        $messages = SupportMessage::with('ticket')->where('supportticket_id', $ticket->id)->with('admin', 'attachments')->orderBy('id', 'desc')->get();
         return view('admin.support.reply', compact('ticket', 'messages', 'pageTitle'));
     }
     public function ticketReplySend(Request $request, $id)

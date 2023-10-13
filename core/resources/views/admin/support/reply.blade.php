@@ -35,7 +35,7 @@
 
                     <form action="{{ route('admin.ticket.reply', $ticket->id) }}" enctype="multipart/form-data" method="post" class="form-horizontal">
                         @csrf
-                        
+
 
                         <div class="row ">
                             <div class="col-md-12">
@@ -91,7 +91,7 @@
                                     <p class="text-muted font-weight-bold my-3">
                                         @lang('Posted on') {{ showDateTime($message->created_at, 'l, dS F Y @ H:i') }}</p>
                                     <p>{{ $message->message }}</p>
-                                    @if($message->attachments()->count() > 0)
+                                    @if($message->attachments->count() > 0)
                                         <div class="my-3">
                                             @foreach($message->attachments as $k=> $image)
                                                 <a href="{{route('admin.ticket.download',encrypt($image->id))}}" class="mr-3"><i class="fa fa-file"></i>@lang('Attachment') {{++$k}}</a>
@@ -113,7 +113,7 @@
                                     <p class="text-muted font-weight-bold my-3">
                                         @lang('Posted on') {{showDateTime($message->created_at,'l, dS F Y @ H:i') }}</p>
                                     <p>{{ $message->message }}</p>
-                                    @if($message->attachments()->count() > 0)
+                                    @if($message->attachments->count() > 0)
                                         <div class="my-3">
                                             @foreach($message->attachments as $k=> $image)
                                                 <a href="{{route('admin.ticket.download',encrypt($image->id))}}" class="mr-3"><i class="fa fa-file"></i>  @lang('Attachment') {{++$k}} </a>
@@ -149,7 +149,7 @@
                 <div class="modal-footer">
                     <form method="post" action="{{ route('admin.ticket.reply', $ticket->id) }}">
                         @csrf
-                        
+
                         <button type="button" class="btn btn--dark" data-dismiss="modal">@lang('Close') </button>
                         <button type="submit" class="btn btn--success" name="replayTicket" value="2"> @lang('Close Ticket') </button>
                     </form>

@@ -23,11 +23,11 @@
 
     <div class="navbar__right">
         <ul class="navbar__action-list">
-            <li>
+            {{-- <li>
                 <button type="button" class="navbar-search__btn-open">
                     <i class="las la-search"></i>
                 </button>
-            </li>
+            </li> --}}
 
 
             <li class="dropdown">
