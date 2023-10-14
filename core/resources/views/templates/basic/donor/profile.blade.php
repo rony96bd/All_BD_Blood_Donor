@@ -117,8 +117,8 @@
             }
         </style>
         <div class="col-md-10" style="padding-top: 10px">
-            <div class="card" style="border-radius: 10px">
-                <div class="card-header bnfont donor-menu-card-header">
+            <div class="card bnfont" style="border-radius: 10px">
+                <div class="card-header donor-menu-card-header">
                     {{ __($donor->name) }}'s @lang('Profile Information')
                 </div>
                 <div class="card-body">
@@ -313,7 +313,7 @@
                                                     <div class="form-group">
                                                         <label for="details"
                                                             class="font-weight-bold">@lang('About Donor')</label>
-                                                        <textarea name="about_me" id="about_me" class="form-control form-control-lg" placeholder="@lang('Enter About Donor')">{{ $donor->about_me }}</textarea>
+                                                        <textarea name="about_me" id="about_me" class="form-control" placeholder="@lang('Enter About Donor')">{{ $donor->about_me }}</textarea>
                                                     </div>
                                                 </div>
                                             </div>

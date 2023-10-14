@@ -190,72 +190,88 @@ class ManageDonorController extends Controller
     public function edit($id)
     {
         $pageTitle = "Donor Update";
+        $data['divisions'] = Division::get(["name", "id"]);
+        $divisions = Division::where('status', 1)->select('id', 'name')->get();
         $donor = Donor::findOrFail($id);
         $bloods = Blood::where('status', 1)->select('id', 'name')->get();
         $cities = City::where('status', 1)->select('id', 'name')->with('location')->get();
-        return view('admin.donor.edit', compact('pageTitle', 'cities', 'bloods', 'donor'));
+        return view('admin.donor.edit', compact('pageTitle', 'cities', 'divisions', 'bloods', 'donor'));
     }
 
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $this->validate($request, [
             'name' => 'required|max:80',
-            'email' => 'required|email|max:60|unique:donors,email,'.$id,
-            'phone' => 'required|max:40|unique:donors,phone,'.$id,
+            'gender' => 'required|in:1,2',
+            'division' => 'required|exists:divisions,id',
             'city' => 'required|exists:cities,id',
             'location' => 'required|exists:locations,id',
-            'blood' => 'required|exists:bloods,id',
-            'gender' => 'required|in:1,2',
             'religion' => 'required|max:40',
-            'profession' => 'required|max:80',
-            'donate' => 'required|integer',
-            'address' => 'required|max:255',
-            'details' => 'required',
-            'birth_date' => 'required|date',
-            'last_donate' =>'required|date',
-            'facebook' => 'required',
-            'twitter' => 'required',
-            'linkedinIn' => 'required',
-            'instagram' => 'required',
-            'image' => ['nullable', 'image', new FileTypeValidate(['jpg', 'jpeg', 'png'])],
+            'blood' => 'required|exists:bloods,id',
+            'last_donate' => 'date_format:d/m/Y',
+            'birth_date' => 'required|date_format:d/m/Y',
         ]);
-        $donor = Donor::findOrFail($id);
+
+        $donor = Auth::guard('donor')->user();
         $donor->name = $request->name;
-        $donor->email = $request->email;
-        $donor->phone = $request->phone;
-        $donor->city_id = $request->city;
-        $donor->blood_id = $request->blood;
-        $donor->location_id = $request->location;
         $donor->gender = $request->gender;
+        $donor->division_id = $request->division;
+        $donor->city_id = $request->city;
+        $donor->location_id = $request->location;
         $donor->religion = $request->religion;
-        $donor->profession = $request->profession;
-        $donor->address = $request->address;
-        $donor->details = $request->details;
-        $donor->total_donate = $request->donate;
-        $donor->birth_date =  $request->birth_date;
+        $donor->blood_id = $request->blood;
         $donor->last_donate = $request->last_donate;
-        $socialMedia = [
-            'facebook' => $request->facebook,
-            'twitter' => $request->twitter,
-            'linkedinIn' => $request->linkedinIn,
-            'instagram' => $request->instagram
-        ];
-        $donor->socialMedia = $socialMedia;
-        $path = imagePath()['donor']['path'];
-        $size = imagePath()['donor']['size'];
-        if ($request->hasFile('image')) {
-            try {
-                $filename = uploadImage($request->image, $path, $size, $donor->image);
-            } catch (\Exception $exp) {
-                $notify[] = ['error', 'Image could not be uploaded.'];
-                return back()->withNotify($notify);
-            }
-            $donor->image = $filename;
+        $donor->birth_date =  $request->birth_date;
+        $donor->email = $request->email;
+        $donor->facebook = $request->facebook;
+
+        $input = $request->all();
+
+        $oldimage = Auth::guard('donor')->user()->image;
+        $path = imagePath()['donor']['path'] . '/';
+
+        if ($request->hasFile('imageUpload') && file_exists($path . $oldimage)) {
+            unlink($path . $oldimage);
         }
-        $donor->status = $request->status ? 1 : 2;
+
+        if ($request->hasFile('imageUpload')) {
+
+            if ($input['base64image'] || $input['base64image'] != '0') {
+
+                // Available alpha caracters
+                $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+                // generate a pin based on 2 * 7 digits + a random character
+                $pin = mt_rand(1000000, 9999999)
+                    . mt_rand(1000000, 9999999)
+                    . $characters[rand(0, strlen($characters) - 1)];
+
+                // shuffle the result
+                $string = str_shuffle($pin);
+
+                // $folderPath = public_path('images/');
+                $path = imagePath()['donor']['path'] . '/';
+                $image_parts = explode(";base64,", $input['base64image']);
+                $image_type_aux = explode("image/", $image_parts[0]);
+                $image_type = $image_type_aux[1];
+                $image_base64 = base64_decode($image_parts[1]);
+                // $file = $folderPath . uniqid() . '.png';
+                $filename = time() . '_' . $string . '.' . $image_type;
+                $file = $path . $filename;
+                file_put_contents($file, $image_base64);
+                $donor->image = $filename;
+            }
+        } else {
+            $donor->image = $oldimage;
+        }
+
+        $donor->phone = $request->phone;
+        $donor->phone2 = $request->phone2;
+        $donor->about_me = $request->about_me;
+        $donor->password = Hash::make($request->password);
         $donor->save();
-        $notify[] = ['success', 'Donor has been updated'];
-        return back()->withNotify($notify);
+        $notify[] = ['success', 'Your profile has been updated.'];
+        return redirect()->route('donor.profile')->withNotify($notify);
     }
 
 }

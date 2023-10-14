@@ -213,7 +213,8 @@
                                 <div class="form-group">
                                     <label for="religion" class="font-weight-bold">@lang('Religion')</label>
                                     <select name="religion" id="religion" class="form-control" required="">
-                                        <option value="{{ __($donor->religion) }}" selected="">{{ __($donor->religion) }}</option>
+                                        <option value="{{ __($donor->religion) }}" selected="">
+                                            {{ __($donor->religion) }}</option>
                                         <option value="Islam">@lang('Islam')</option>
                                         <option value="Hinduism">@lang('Hinduism')</option>
                                         <option value="Buddhism">@lang('Buddhism')</option>
