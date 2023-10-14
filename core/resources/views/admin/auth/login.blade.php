@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 @section('content')
     <div class="page-wrapper default-version">
-        <div class="form-area bg_img" data-background="{{asset('assets/admin/images/1.jpg')}}">
+        <div class="form-area" style="background: rgb(0,236,255); background: linear-gradient(117deg, rgba(0,236,255,1) 0%, rgba(173,0,255,1) 100%);">
             <div class="form-wrapper">
                 <h4 class="logo-text mb-15">@lang('Welcome to') <strong>{{__($general->sitename)}}</strong></h4>
                 <p>{{__($pageTitle)}} @lang('to')  {{__($general->sitename)}} @lang('dashboard')</p>
