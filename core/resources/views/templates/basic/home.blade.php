@@ -140,9 +140,17 @@
 @push('script')
     @if ($popup == 1)
         <script>
-            setTimeout(function() {
-                $('#myModal').modal('show');
-            }, 3000);
+            if (sessionStorage.getItem('dontLoad') == null) {
+                setTimeout(function() {
+                    $('#myModal').fadeIn(500);
+                    $('#myModal').modal('show');
+                }, 1000);
+                sessionStorage.setItem('dontLoad', 'true');
+            }
+
+            // setTimeout(function() {
+            //     $('#myModal').modal('show');
+            // }, 3000);
 
             // $(document).ready(function() {
             //     $("#myModal").modal("show");
