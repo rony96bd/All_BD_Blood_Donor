@@ -4,8 +4,8 @@
     $policys = getContent('policy_pages.element', false);
     $cookie = App\Models\Frontend::where('data_keys', 'cookie.data')->first();
 @endphp
-
-@if (!session('cookie_accepted'))
+@include('cookie-consent::index')
+{{-- @if (!session('cookie_accepted'))
     <div class="cookie__wrapper">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-between">
@@ -17,7 +17,7 @@
             </div>
         </div>
     </div>
-@endif
+@endif --}}
 
 <footer class="footer img-overlay bg_img"
     style="background-image: url({{ getImage('assets/images/frontend/footer/' . @$footer->data_values->background_image, '1920x921') }});">

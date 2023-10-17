@@ -26,6 +26,7 @@
         "rajurayhan/bndatetime": "dev-master",
         "razorpay/razorpay": "^2.5",
         "sendgrid/sendgrid": "^7.6",
+        "spatie/laravel-cookie-consent": "^3.2",
         "stripe/stripe-php": "^7.72",
         "textmagic/sdk": "dev-master",
         "twilio/sdk": "^6.23",
