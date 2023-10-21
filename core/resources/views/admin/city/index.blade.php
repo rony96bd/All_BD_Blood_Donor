@@ -20,9 +20,11 @@
                                     <tr>
                                         <td data-label="@lang('Name')">{{ __($city->name) }}</td>
                                         <td data-label="@lang('Division')">
-                                            @foreach ($divisions as $division)
+                                            {{ __($city->division->name) }}
+
+                                            {{-- @foreach ($divisions as $division)
                                                 {{ __($division->name) }}
-                                            @endforeach
+                                            @endforeach --}}
                                         </td>
                                         <td data-label="@lang('Status')">
                                             @if ($city->status == 1)

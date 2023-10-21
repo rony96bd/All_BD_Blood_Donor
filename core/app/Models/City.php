@@ -16,7 +16,7 @@ class City extends Model
 
     public function division()
     {
-        return $this->hasMany(Division::class, 'id');
+        return $this->belongsTo(Division::class, 'division_id');
     }
 
     protected $fillable = [
