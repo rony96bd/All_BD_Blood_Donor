@@ -104,6 +104,14 @@
                 <li class="sidebar-menu-item  {{ menuActive('admin.ads.*') }}">
                     <a href="{{ route('admin.ads.index') }}" class="nav-link"
                         data-default-url="{{ route('admin.ads.index') }}">
+                        <i class="menu-icon lar la-heart"></i>
+                        <span class="menu-title">@lang('Blood Request') </span>
+                    </a>
+                </li>
+
+                <li class="sidebar-menu-item  {{ menuActive('admin.ads.*') }}">
+                    <a href="{{ route('admin.ads.index') }}" class="nav-link"
+                        data-default-url="{{ route('admin.ads.index') }}">
                         <i class="menu-icon lab la-adversal"></i>
                         <span class="menu-title">@lang('Advertisement') </span>
                     </a>
