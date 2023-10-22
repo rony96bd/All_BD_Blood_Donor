@@ -3,57 +3,14 @@
     $contact = getContent('contact_us.content', true);
     $policys = getContent('policy_pages.element', false);
     $cookie = App\Models\Frontend::where('data_keys', 'cookie.data')->first();
+    $don['all'] = App\Models\Donor::count();
 @endphp
 @include('cookie-consent::index')
-{{-- @if (!session('cookie_accepted'))
-    <div class="cookie__wrapper">
-        <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-between">
-                <p class="txt my-2">
-                    @php echo @$cookie->data_values->description @endphp
-                    <a href="{{ @$cookie->data_values->link }}" target="_blank">@lang('Read Policy')</a>
-                </p>
-                <a href="javascript:void(0)" class="btn btn--base my-2 policy">@lang('Accept')</a>
-            </div>
-        </div>
-    </div>
-@endif --}}
 
 <footer class="footer img-overlay bg_img"
     style="background-image: url({{ getImage('assets/images/frontend/footer/' . @$footer->data_values->background_image, '1920x921') }});">
     <div class="footer__top">
         <div class="container">
-            {{-- <div class="footer-info-area">
-                <div class="row align-items-center gy-4">
-                    <div class="col-lg-9">
-                        <ul class="footer-contact-list justify-content-lg-start justify-content-center">
-                            <li>
-                                <div class="icon">
-                                    <i class="las la-phone-volume"></i>
-                                </div>
-                                <div class="content">
-                                    <a
-                                        href="tel:{{ __($contact->data_values->contact_number) }}">{{ __($contact->data_values->contact_number) }}</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="icon">
-                                    <i class="las la-envelope"></i>
-                                </div>
-                                <div class="content">
-                                    <a
-                                        href="mailto:{{ __($contact->data_values->email_address) }}">{{ __($contact->data_values->email_address) }}</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 text-lg-end text-center">
-                        <a href="{{ url($footer->data_values->btn_url) }}"
-                            class="btn btn--base">{{ __($footer->data_values->btn_name) }}</a>
-                    </div>
-                </div>
-            </div> --}}
-
             <div class="row gy-5 justify-content-between">
                 <div class="col-xl-4 col-lg-4 col-sm-8 order-lg-1 order-1">
                     <div class="footer-widget">
@@ -64,17 +21,28 @@
                                 src="{{ getImage(imagePath()['logoIcon']['path'] . '/logo.png') }}"
                                 alt="@lang('logo')"></a>
                         <p class="mt-3">{{ __($footer->data_values->title) }}</p>
+                        <p><span
+                                style="background-color: #00e999; border-radius: 5px 0px 0px 5px; padding: 3px 6px 0px 6px; color: black;">
+                                Total Donor</span><span
+                                style="color: hsl(147, 99%, 35%); background-color: #ffffff; padding: 3px 4px 0px 5px; border-radius: 0px 5px 5px 0px;">{{ $don['all'] }}</span></p>
+                        <span style="color: #00e999">Visitor Counter:</span>
+                        <span>
+                            <script type='text/javascript'
+                                src='https://www.freevisitorcounters.com/auth.php?id=6d742e0168aa7da9f78bc98c11831799c4ffbc62'></script>
+                            <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1090372/t/5"></script>
+                        </span>
 
                         <br />
+                        <hr>
                         <span class="text-light mb1" style="font-size: 14px">POWERED BY <i
                                 class="fa fa-chevron-circle-right" aria-hidden="true"></i></span><span
                             style="color: #00e999"> MA GROUP</span>
-                        {{-- <form class="subscribe-form mt-4">
-                            <input type="email" name="email" id="emailSub" class="form--control"
-                                placeholder="@lang('Enter email address')">
-                            <button type="button" class="subscribe-btn"><i class="lab la-telegram-plane"></i></button>
-                        </form> --}}
                     </div>
+                    <script>
+                        $.getJSON("https://api.countapi.xyz/hit/test.roktodin.com/visits", function(response) {
+                            $("#visits").text(response.value);
+                        });
+                    </script>
                 </div>
                 <div class="col-xl-2 col-lg-3 col-sm-6 order-lg-2 order-3">
                     <div class="footer-widget">

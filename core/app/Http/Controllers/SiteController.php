@@ -55,7 +55,7 @@ class SiteController extends Controller
         $divisions = Division::where('status', 1)->select('id', 'name')->get();
         $cities = City::where('status', 1)->select('id', 'name')->get();
 
-        return view($this->activeTemplate . 'home', compact('pageTitle', 'sections', 'divisions', 'cities', 'bloods'));
+        return view($this->activeTemplate . 'home', compact('pageTitle', 'don', 'sections', 'divisions', 'cities', 'bloods'));
     }
 
     public function pages($slug)
