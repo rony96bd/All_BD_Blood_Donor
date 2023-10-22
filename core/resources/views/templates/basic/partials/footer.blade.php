@@ -21,10 +21,10 @@
                                 src="{{ getImage(imagePath()['logoIcon']['path'] . '/logo.png') }}"
                                 alt="@lang('logo')"></a>
                         <p class="mt-3">{{ __($footer->data_values->title) }}</p>
-                        <p><span
+                        <p style="margin-top: 5px; margin-bottom: -18px;"><span
                                 style="background-color: #00e999; border-radius: 5px 0px 0px 5px; padding: 3px 6px 0px 6px; color: black;">
                                 Total Donor</span><span
-                                style="color: hsl(147, 99%, 35%); background-color: #ffffff; padding: 3px 4px 0px 5px; border-radius: 0px 5px 5px 0px;">{{ $don['all'] }}</span></p>
+                                style="color: hsl(147, 99%, 35%); font-weight: bold; background-color: #ffffff; padding: 3px 4px 0px 5px; border-radius: 0px 5px 5px 0px;">{{ $don['all'] }}</span></p>
                         <span style="color: #00e999">Visitor Counter:</span>
                         <span>
                             <a href='http://www.freevisitorcounters.com'>on freevisitorcounters.com</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=6d742e0168aa7da9f78bc98c11831799c4ffbc62'></script>
