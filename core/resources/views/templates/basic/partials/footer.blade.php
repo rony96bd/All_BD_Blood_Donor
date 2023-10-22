@@ -32,7 +32,7 @@
                         </span>
 
                         <br />
-                        <hr>
+                        <hr style="margin: 5px 0px 5px 0px;">
                         <span class="text-light mb1" style="font-size: 14px">POWERED BY <i
                                 class="fa fa-chevron-circle-right" aria-hidden="true"></i></span><span
                             style="color: #00e999"> MA GROUP</span>
