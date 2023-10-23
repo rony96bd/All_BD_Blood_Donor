@@ -28,7 +28,8 @@
                         </div>
                         <div class="blog-details__content">
                             <h4 class="blog-details__title text-danger text-center">জরুরী প্রয়োজনে রক্তের সন্ধানে</h4>
-                            <ul class="caption-list-two mt-4" style="background-color: #FFDADC; margin-left: 10px; margin-right: 10px; margin-bottom: 20px;">
+                            <ul class="caption-list-two mt-4"
+                                style="background-color: #FFDADC; margin-left: 10px; margin-right: 10px; margin-bottom: 20px;">
                                 <li>
                                     <span class="caption">বিভাগ</span>
                                     <span class="value">{{ __($bloodRequest->division->name) }}</span>
@@ -154,6 +155,7 @@
                     .sidebar .widget .widget__title::after {
                         width: 100%;
                     }
+
                     .widget .row:hover {
                         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
                         transition: box-shadow 0.3s ease-in-out;
@@ -164,10 +166,14 @@
                         <div class="widget" style="padding: 10px">
                             <h5 class="widget__title" style="text-align: center">@lang('Recent Blood Request')</h5>
                             @foreach ($bloodRequests as $bloodRequest)
+                                @php
+                                    $timestamp = $bloodRequest->created_at;
+                                    $timeAgo = Carbon\Carbon::parse($timestamp)->ago();
+                                @endphp
                                 <div class="container" style="margin: 0px 0px 15px 0px;">
-                                    <div class="row"
-                                        style="border-radius: 5px;">
-                                        <a style="padding: 0px;" href="{{ route('bloodrequest.details', [$bloodRequest->id]) }}">
+                                    <div class="row" style="border-radius: 5px;">
+                                        <a style="padding: 0px;"
+                                            href="{{ route('bloodrequest.details', [$bloodRequest->id]) }}">
                                             <div class="col-lg-12" style="padding: 0px;">
                                                 <ul class="caption-list-two" style="background-color: #FFDADC;">
                                                     <li style="padding-bottom: 0px;">
