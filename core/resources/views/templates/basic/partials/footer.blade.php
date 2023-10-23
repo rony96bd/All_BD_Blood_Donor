@@ -26,18 +26,17 @@
                                 Total Donor</span><span
                                 style="color: hsl(147, 99%, 35%); font-weight: bold; background-color: #ffffff; padding: 3px 4px 0px 5px; border-radius: 0px 5px 5px 0px;">{{ $don['all'] }}</span>
                         </p>
-                        <span style="color: #00e999">Visitor Counter:</span>
-                        <span>
-                            <a href='http://www.freevisitorcounters.com'>on freevisitorcounters.com</a> <script type='text/javascript'
-                                src='https://www.freevisitorcounters.com/auth.php?id=6d742e0168aa7da9f78bc98c11831799c4ffbc62'></script>
-                            <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1090372/t/5"></script>
-                        </span>
-
                         <br />
                         <hr style="margin: 5px 0px 5px 0px;">
                         <span class="text-light mb1" style="font-size: 14px">POWERED BY <i
                                 class="fa fa-chevron-circle-right" aria-hidden="true"></i></span><span
-                            style="color: #00e999"> MA GROUP</span>
+                            style="color: #00e999"> MA GROUP</span><br>
+                            {{-- <span style="color: #00e999">Visitor Counter:</span>
+                        <span>
+                            <a href='http://www.freevisitorcounters.com'>on freevisitorcounters.com</a> <script type='text/javascript'
+                                src='https://www.freevisitorcounters.com/auth.php?id=6d742e0168aa7da9f78bc98c11831799c4ffbc62'></script>
+                            <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1090372/t/5"></script>
+                        </span> --}}
                     </div>
                 </div>
                 <div class="col-xl-2 col-lg-3 col-sm-6 order-lg-2 order-3">
@@ -98,21 +97,6 @@
                                 </a>
                             </li>
                         </ul>
-
-                        {{-- <ul class="footer-overview-list text-end">
-                            <li class="footer-overview">
-                                <h4 class="footer-overview__number">{{ __($footer->data_values->first_count_digits) }}
-                                </h4>
-                                <p class="footer-overview__caption">{{ __($footer->data_values->first_count_title) }}
-                                </p>
-                            </li>
-                            <li class="footer-overview">
-                                <h4 class="footer-overview__number">{{ __($footer->data_values->second_count_digits) }}
-                                </h4>
-                                <p class="footer-overview__caption">{{ __($footer->data_values->second_count_title) }}
-                                </p>
-                            </li>
-                        </ul> --}}
                     </div>
                 </div>
             </div>
