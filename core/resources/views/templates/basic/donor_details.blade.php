@@ -175,11 +175,11 @@
                                 </div>
                                 <div class="rr-form">
                                     <div class="input-group" style="z-index:1;">
-                                        <input style="height:46px; font-size:13px;" class="form-control" name="comment_body"
+                                        <input style="border-radius: 25px 0px 0px 25px; height:46px; font-size:13px;" class="form-control" name="comment_body"
                                             type="text" placeholder="Write a Comment">
                                         <div class="input-group-prepend">
-                                            <button type="submit" class="btn btn-primary pb-2"><i
-                                                    class="fa fa-paper-plane mr-3"></i> Submit</button>
+                                            <button style="border-radius: 0px 25px 25px 0px;" type="submit" class="btn btn-primary pb-2"><i
+                                                    class="fa fa-paper-plane mr-3"></i></button>
                                         </div>
                                     </div>
                                 </div>

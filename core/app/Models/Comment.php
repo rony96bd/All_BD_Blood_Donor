@@ -14,7 +14,8 @@ class Comment extends Model
         'donor_id',
         'comment_body',
         'post_id',
-        'donordetails_id'
+        'donordetails_id',
+        'bloodrequest_id'
     ];
 
     public function donorcomment()

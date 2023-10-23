@@ -231,6 +231,7 @@ class SiteController extends Controller
     public function bloodRequestDetails($id)
     {
         $pageTitle = "Blood Request Details";
+        BloodRequest::where('id', $id)->firstOrFail()->increment('click');
         $bloodRequest = BloodRequest::where('id', $id)->with('blood', 'division', 'city', 'location', 'donor')->firstOrFail();
         $bloodRequests = BloodRequest::orderBy('created_at', 'desc')
         ->with('blood', 'division', 'city', 'location', 'donor')

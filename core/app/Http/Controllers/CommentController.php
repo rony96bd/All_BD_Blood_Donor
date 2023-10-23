@@ -55,4 +55,26 @@ class CommentController extends Controller
             return redirect('/donor')->withNotify($notify);
         }
     }
+
+    public function bloodrequestcommentStore(Request $request)
+    {
+        if (auth()->guard('donor')->check()) {
+            if ($request->bloodrequest_id) {
+                Comment::create([
+                    'donor_id' => auth()->guard('donor')->user()->id,
+                    'bloodrequest_id' => $request->bloodrequest_id,
+                    'comment_body' => $request->comment_body,
+                ]);
+
+                $notify[] = ['success', 'Comment Successfuly'];
+                return redirect()->back()->withNotify($notify);
+            } else {
+                $notify[] = ['success', 'Bad Request!'];
+                return redirect()->back()->withNotify($notify);
+            }
+        } else {
+            $notify[] = ['success', 'কমেন্ট করার জন্য অবশ্যই লগইন করুন।'];
+            return redirect('/donor')->withNotify($notify);
+        }
+    }
 }

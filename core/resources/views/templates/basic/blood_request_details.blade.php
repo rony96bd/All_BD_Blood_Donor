@@ -23,6 +23,7 @@
                                             {{ __($bloodRequest->donor->name) }}<br>{{ __($timeAgo) }}</div>
                                     </div>
                                 </a>
+                                {{-- <span style="float: right"><i class="fa-solid fa-eye"></i> {{ __($bloodRequest->click) }}</span> --}}
                             </div>
                         </div>
                         <div class="blog-details__content">
@@ -82,10 +83,71 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="blog-details__footer" style="padding: 10px 0;">
-                            <div class="fb-comments" data-href="{{ route('bloodrequest.details', [$bloodRequest->id]) }}"
-                                data-numposts="5"></div>
+                        {{-- Comments Section --}}
+                        <div class="row">
+                            <div class="custom-comments bnfont" style="padding: 0px 36px 15px 36px;" id="custom-comments">
+                                <p class="mt-4 mb-4 text-danger font-weight-bold"> <i class="fa-solid fa-eye"></i>
+                                    {{ __($bloodRequest->click) }} People Visited</p>
+                                <form action="{{ url('bloodrequest-comments') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="bloodrequest_id" value="{{ __($bloodRequest->id) }}" />
+                                    <div style="margin-bottom: 10px">
+                                        <h5 style="font-weight: bold">Leave Comments</h5>
+                                    </div>
+                                    <div class="rr-form">
+                                        <div class="input-group" style="z-index:1;">
+                                            <input style="border-radius: 25px 0px 0px 25px; height:46px; font-size:13px;" class="form-control"
+                                                name="comment_body" type="text" placeholder="Write a Comment">
+                                            <div class="input-group-prepend">
+                                                <button style="border-radius: 0px 25px 25px 0px;" type="submit" class="btn btn-primary pb-2"><i class="fa fa-paper-plane mr-3"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                @php
+                                    $bloodrequest_comment = App\Models\Comment::where('bloodrequest_id', $bloodRequest->id)->get();
+                                @endphp
+
+                                <div class="custom-review-count">
+                                    @forelse ($bloodrequest_comment->sortByDesc('created_at') as $comment)
+                                        @php
+                                            $comment_donor_id = $comment->donor_id;
+                                            $comment_donor_details = App\Models\Donor::where('id', $comment_donor_id)->first();
+                                        @endphp
+                                        <div class="rev-user-item">
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="review-user-info">
+                                                        <div class="media">
+                                                            <img class="shadow bg-white"
+                                                                src="{{ getImage('assets/images/donor/' . $comment_donor_details->image, imagePath()['donor']['size']) }}"
+                                                                alt="@lang('donor image')">
+                                                            <div class="media-body">
+                                                                <p>{{ $comment->created_at->format('d M Y') }}</p>
+                                                                <h5 class="text-danger">{{ $comment_donor_details->name }}
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="comments-section-des">
+                                                        <p> - {{ $comment->comment_body }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @empty
+                                        <h5>No Comments</h5>
+                                    @endforelse
+                                </div>
+                            </div>
                         </div>
+                        {{-- End Comments Section --}}
 
                     </div>
                 </div>
@@ -95,7 +157,16 @@
                         <div class="widget">
                             <h5 class="widget__title">@lang('Recent Post')</h5>
                             @foreach ($bloodRequests as $bloodRequest)
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-6">
                                 <span>{{ __($bloodRequest->id) }}</span>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        Hello
+                                    </div>
+                                </div>
+                            </div>
                             @endforeach
                             <ul class="small-post-list">
 

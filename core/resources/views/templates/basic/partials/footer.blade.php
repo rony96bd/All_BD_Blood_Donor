@@ -21,16 +21,17 @@
                                 src="{{ getImage(imagePath()['logoIcon']['path'] . '/logo.png') }}"
                                 alt="@lang('logo')"></a>
                         <p class="mt-3">{{ __($footer->data_values->title) }}</p>
-                        <p style="margin-top: 5px; margin-bottom: -18px;"><span
-                                style="background-color: #00e999; border-radius: 5px 0px 0px 5px; padding: 3px 6px 0px 6px; color: black;">
-                                Total Donor</span><span
-                                style="color: hsl(147, 99%, 35%); font-weight: bold; background-color: #ffffff; padding: 3px 4px 0px 5px; border-radius: 0px 5px 5px 0px;">{{ $don['all'] }}</span>
-                        </p>
+
                         <br />
                         <hr style="margin: 5px 0px 5px 0px;">
                         <span class="text-light mb1" style="font-size: 14px">POWERED BY <i
                                 class="fa fa-chevron-circle-right" aria-hidden="true"></i></span><span
                             style="color: #00e999"> MA GROUP</span><br>
+                            <p style="margin-top: 5px; margin-bottom: -18px;"><span
+                                style="background-color: #00e999; border-radius: 5px 0px 0px 5px; padding: 3px 6px 0px 6px; color: black;">
+                                Total Donor</span><span
+                                style="font-size: 16px; color: hsl(0, 100%, 39%); font-weight: bold; background-color: #ffffff; padding: 3px 4px 0px 5px; border-radius: 0px 5px 5px 0px;">{{ $don['all'] }}</span>
+                        </p>
                             {{-- <span style="color: #00e999">Visitor Counter:</span>
                         <span>
                             <a href='http://www.freevisitorcounters.com'>on freevisitorcounters.com</a> <script type='text/javascript'
