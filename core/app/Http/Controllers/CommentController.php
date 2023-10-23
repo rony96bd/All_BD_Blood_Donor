@@ -8,6 +8,7 @@ use App\Models\Donor;
 use App\Models\Frontend;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Middleware\VerifyCsrfToken;
 
 class CommentController extends Controller
 {
@@ -75,6 +76,24 @@ class CommentController extends Controller
         } else {
             $notify[] = ['success', 'কমেন্ট করার জন্য অবশ্যই লগইন করুন।'];
             return redirect('/donor')->withNotify($notify);
+        }
+    }
+
+    public function destroy(Request $request)
+    {
+        if (auth()->guard('admin')->check()) {
+            $comment = Comment::where('id', $request->comment_id)->first();
+            $comment->delete();
+
+            return response()->json([
+                'status' => 200,
+                'message' => 'Comment Deleted Successfully'
+            ]);
+        } else {
+            return response()->json([
+                'status' => 401,
+                'message' => 'Login to Delete this comment'
+            ]);
         }
     }
 }

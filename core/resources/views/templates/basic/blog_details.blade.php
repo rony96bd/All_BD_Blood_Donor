@@ -48,10 +48,12 @@
                                     </div>
                                     <div class="rr-form">
                                         <div class="input-group" style="z-index:1;">
-                                            <input style="border-radius: 25px 0px 0px 25px; height:46px; font-size:13px;" class="form-control"
-                                                name="comment_body" type="text" placeholder="Write a Comment">
+                                            <input style="border-radius: 25px 0px 0px 25px; height:46px; font-size:13px;"
+                                                class="form-control" name="comment_body" type="text"
+                                                placeholder="Write a Comment">
                                             <div class="input-group-prepend">
-                                                <button style="border-radius: 0px 25px 25px 0px;" type="submit" class="btn btn-primary pb-2"><i
+                                                <button style="border-radius: 0px 25px 25px 0px;" type="submit"
+                                                    class="btn btn-primary pb-2"><i
                                                         class="fa fa-paper-plane mr-3"></i></button>
                                             </div>
                                         </div>
@@ -68,22 +70,34 @@
                                             $comment_donor_id = $comment->donor_id;
                                             $comment_donor_details = App\Models\Donor::where('id', $comment_donor_id)->first();
                                         @endphp
-                                        <div class="rev-user-item">
+                                        <div class="rev-user-item" id="comment-container">
                                             <hr>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="review-user-info">
-                                                        <div class="media">
-                                                            <img class="shadow bg-white"
-                                                                src="{{ getImage('assets/images/donor/' . $comment_donor_details->image, imagePath()['donor']['size']) }}"
-                                                                alt="@lang('donor image')">
-                                                            <div class="media-body">
-                                                                <h5 class="text-danger">{{ $comment_donor_details->name }}</h5>
-                                                                <p>{{ $comment->created_at->format('d M Y') }}</p>
+                                            <div class="container" style="position: relative;">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="review-user-info">
+                                                            <div class="media">
+                                                                <img class="shadow bg-white"
+                                                                    src="{{ getImage('assets/images/donor/' . $comment_donor_details->image, imagePath()['donor']['size']) }}"
+                                                                    alt="@lang('donor image')">
+                                                                <div class="media-body">
+                                                                    <h5 class="text-danger">
+                                                                        {{ $comment_donor_details->name }}</h5>
+                                                                    <p>{{ $comment->created_at->format('d M Y') }}</p>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @if (auth()->guard('admin')->check())
+                                                    <div
+                                                        style="position: absolute; top: 8px; right: 16px; font-size: 18px;">
+                                                        <button type="button" class="deleteComment btn"
+                                                            value="{{ $comment->id }}">
+                                                            <i style="color: red" class="fa-solid fa-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                @endif
                                             </div>
                                             <div class="row">
                                                 <div class="col">
@@ -135,6 +149,36 @@
         </div>
     </section>
 @endsection
-@push('fbComment')
-    @php echo loadFbComment() @endphp
-@endpush
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $(document).on('click', '.deleteComment', function() {
+                if (confirm('Are you sure you want to delete this comment?')) {
+                    var thisClicked = $(this);
+                    var comment_id = thisClicked.val();
+
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ url('/delete-comment') }}",
+                        data: {
+                            'comment_id': comment_id
+                        },
+                        success: function(res) {
+                            if (res.status == 200) {
+                                thisClicked.closest('#comment-container').remove();
+                                alert(res.message);
+                            } else {
+                                alert(res.message);
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+@endsection
