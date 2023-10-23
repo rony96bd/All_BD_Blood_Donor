@@ -235,7 +235,7 @@ class SiteController extends Controller
         $bloodRequest = BloodRequest::where('id', $id)->with('blood', 'division', 'city', 'location', 'donor')->firstOrFail();
         $bloodRequests = BloodRequest::orderBy('created_at', 'desc')
         ->with('blood', 'division', 'city', 'location', 'donor')
-        ->limit(6)->get();
+        ->limit(5)->get();
         return view($this->activeTemplate . 'blood_request_details', compact('pageTitle', 'bloodRequest', 'bloodRequests'));
     }
 

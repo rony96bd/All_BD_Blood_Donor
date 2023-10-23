@@ -28,11 +28,7 @@
                         </div>
                         <div class="blog-details__content">
                             <h4 class="blog-details__title text-danger text-center">জরুরী প্রয়োজনে রক্তের সন্ধানে</h4>
-                            <ul class="caption-list-two mt-4"
-                                style="background-color: #FFDADC;
-                                        margin-left: 10px;
-                                        margin-right: 10px;
-                                        margin-bottom: 20px;">
+                            <ul class="caption-list-two mt-4" style="background-color: #FFDADC; margin-left: 10px; margin-right: 10px; margin-bottom: 20px;">
                                 <li>
                                     <span class="caption">বিভাগ</span>
                                     <span class="value">{{ __($bloodRequest->division->name) }}</span>
@@ -96,10 +92,13 @@
                                     </div>
                                     <div class="rr-form">
                                         <div class="input-group" style="z-index:1;">
-                                            <input style="border-radius: 25px 0px 0px 25px; height:46px; font-size:13px;" class="form-control"
-                                                name="comment_body" type="text" placeholder="Write a Comment">
+                                            <input style="border-radius: 25px 0px 0px 25px; height:46px; font-size:13px;"
+                                                class="form-control" name="comment_body" type="text"
+                                                placeholder="Write a Comment">
                                             <div class="input-group-prepend">
-                                                <button style="border-radius: 0px 25px 25px 0px;" type="submit" class="btn btn-primary pb-2"><i class="fa fa-paper-plane mr-3"></i></button>
+                                                <button style="border-radius: 0px 25px 25px 0px;" type="submit"
+                                                    class="btn btn-primary pb-2"><i
+                                                        class="fa fa-paper-plane mr-3"></i></button>
                                             </div>
                                         </div>
                                     </div>
@@ -125,7 +124,8 @@
                                                                 src="{{ getImage('assets/images/donor/' . $comment_donor_details->image, imagePath()['donor']['size']) }}"
                                                                 alt="@lang('donor image')">
                                                             <div class="media-body">
-                                                                <h5 class="text-danger">{{ $comment_donor_details->name }}</h5>
+                                                                <h5 class="text-danger">{{ $comment_donor_details->name }}
+                                                                </h5>
                                                                 <p>{{ $comment->created_at->format('d M Y') }}</p>
                                                             </div>
                                                         </div>
@@ -150,22 +150,52 @@
 
                     </div>
                 </div>
-
+                <style>
+                    .sidebar .widget .widget__title::after {
+                        width: 100%;
+                    }
+                    .widget .row:hover {
+                        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                        transition: box-shadow 0.3s ease-in-out;
+                    }
+                </style>
                 <div class="col-lg-4 col-md-4">
                     <div class="sidebar">
-                        <div class="widget">
-                            <h5 class="widget__title">@lang('Recent Post')</h5>
+                        <div class="widget" style="padding: 10px">
+                            <h5 class="widget__title" style="text-align: center">@lang('Recent Blood Request')</h5>
                             @foreach ($bloodRequests as $bloodRequest)
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                <span>{{ __($bloodRequest->id) }}</span>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        Hello
+                                <div class="container" style="margin: 0px 0px 15px 0px;">
+                                    <div class="row"
+                                        style="border-radius: 5px;">
+                                        <a style="padding: 0px;" href="{{ route('bloodrequest.details', [$bloodRequest->id]) }}">
+                                            <div class="col-lg-12" style="padding: 0px;">
+                                                <ul class="caption-list-two" style="background-color: #FFDADC;">
+                                                    <li style="padding-bottom: 0px;">
+                                                        <span class="caption">পোস্ট করেছেন</span>
+                                                        <span class="value">{{ __($bloodRequest->donor->name) }}</span>
+                                                    </li>
+                                                    <li style="padding-bottom: 0px;">
+                                                        <span class="caption">রক্তের গ্রুপ</span>
+                                                        <span class="value">{{ __($bloodRequest->blood->name) }}</span>
+                                                    </li>
+                                                    <li style="padding-bottom: 0px;">
+                                                        <span class="caption">বিভাগ</span>
+                                                        <span
+                                                            class="value">{{ __($bloodRequest->division->name) }}</span>
+                                                    </li>
+                                                    <li style="padding-bottom: 0px;">
+                                                        <span class="caption">জেলা</span>
+                                                        <span class="value">{{ __($bloodRequest->city->name) }}</span>
+                                                    </li>
+                                                    <li style="padding-bottom: 0px;">
+                                                        <span class="caption">পোস্টের সময়</span>
+                                                        <span class="value">{{ __($timeAgo) }}</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
-                            </div>
                             @endforeach
                             <ul class="small-post-list">
 
