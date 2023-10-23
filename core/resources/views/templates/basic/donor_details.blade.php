@@ -199,8 +199,8 @@
                                                     <div class="media">
                                                         <img class="shadow bg-white" src="{{ getImage('assets/images/donor/' . $comment_donor_details->image, imagePath()['donor']['size']) }}" alt="@lang('donor image')">
                                                         <div class="media-body">
-                                                            <p>{{ $comment->created_at->format('d M Y')}}</p>
                                                             <h5 class="text-danger">{{ $comment_donor_details->name }}</h5>
+                                                            <p>{{ $comment->created_at->format('d M Y')}}</p>
                                                         </div>
                                                     </div>
                                                 </div>
