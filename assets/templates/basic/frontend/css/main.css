@@ -5886,3 +5886,28 @@ blockquote {
 .main-menu li:hover {
     background-color: lightgray;
 }
+.media img {
+    width: 55px;
+    height: 55px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+}
+
+.media {
+    display: flex;
+    align-items: flex-start;
+}
+
+.custom-comments {
+    border-top: 1px solid lightgray;
+    padding: 0px 20px 20px 20px;
+}
+
+.media-body {
+    padding: 0px 0px 0px 10px;
+}
+
+.comments-section-des {
+    margin-top: 10px;
+    margin-left: 60px;
+}

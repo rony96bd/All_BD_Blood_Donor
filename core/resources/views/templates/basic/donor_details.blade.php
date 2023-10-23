@@ -38,7 +38,7 @@
                                 alt="@lang('image')"><br>
                             <span style="margin-top: 10px">
                                 <h3 class="text-danger">{{ __($donor->name) }}</h3>
-                                <br/>
+                                <br />
                                 {{ __($donor->about_me) }}
                             </span>
                         </div>
@@ -156,12 +156,64 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="fb-comments" data-href="{{ route('donor.details', [slug($donor->name), $donor->id]) }}"
-                        data-width="" data-numposts="5"></div>
-                    @push('fbComment')
+                    {{-- <div class="fb-comments" data-href="{{ route('donor.details', [slug($donor->name), $donor->id]) }}"
+                        data-width="" data-numposts="5"></div> --}}
+                    {{-- @push('fbComment')
                         @php echo loadFbComment() @endphp
-                    @endpush
+                    @endpush --}}
+
+                    {{-- Comments Section --}}
+                    <div class="row">
+                        <div class="custom-comments bnfont">
+                            <p class="mt-4 mb-4 text-danger font-weight-bold"> <i class="fa-solid fa-eye"></i> {{ __($donor->click) }} People Visited</p>
+                            <form action="https://daktarbook.com/rating/store/1811" method="post">
+                                <input type="hidden" name="_token" value="y6FJsS3HmP8ffZCe9K6LPnYitGeYvkjJz4WdB3gQ">
+                                <div style="margin-bottom: 10px">
+                                    <h5 style="font-weight: bold">Leave Comments</h5>
+                                </div>
+                                <div class="rr-form">
+                                    <div class="input-group" style="z-index:1;">
+                                        <input style="height:46px; font-size:13px;" class="form-control"
+                                            name="description" type="text" placeholder="Write a Comment">
+                                        <div class="input-group-prepend">
+                                            <button type="submit" class="btn btn-primary pb-2"><i
+                                                    class="fa fa-paper-plane mr-3"></i> Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="custom-review-count">
+                                <div class="rev-user-item">
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="review-user-info">
+                                                <div class="media">
+                                                    <img class="mr-4"
+                                                        src=" https://daktarbook.com/uploaded/user/1695752164_65131fe436a30.jpg" alt="image">
+                                                    <div class="media-body">
+                                                        <p>22 Oct 2023</p>
+                                                        <h5 class="text-danger">মোঃ রাকিব উদ্দিন</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="comments-section-des">
+                                                <p> - Hi</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{--End Comments Section--}}
                 </div>
+
+
                 <div class="col-xl-3 d-xl-block d-none">
                     @php
                         echo advertisements('Single_Donor_Right');
@@ -173,7 +225,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="section-header text-center">
-                        <h2 class="section-title">Related Donor</h2>
+                        <h4 style="font-weight: bold">Related Donor</h4>
                     </div>
                 </div>
             </div>
@@ -221,7 +273,8 @@
                                     </li>
                                     <li class="text-truncate" style="font-weight: 600">
                                         <i class="las la-map-marker-alt"></i>
-                                        {{ __($donor->location->name) }}, {{ __($donor->city->name) }}, {{ __($donor->division->name) }}
+                                        {{ __($donor->location->name) }}, {{ __($donor->city->name) }},
+                                        {{ __($donor->division->name) }}
                                     </li>
                                 </ul>
                                 <div class="row">
