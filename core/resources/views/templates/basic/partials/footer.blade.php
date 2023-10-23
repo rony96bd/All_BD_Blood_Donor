@@ -24,11 +24,13 @@
                         <p style="margin-top: 5px; margin-bottom: -18px;"><span
                                 style="background-color: #00e999; border-radius: 5px 0px 0px 5px; padding: 3px 6px 0px 6px; color: black;">
                                 Total Donor</span><span
-                                style="color: hsl(147, 99%, 35%); font-weight: bold; background-color: #ffffff; padding: 3px 4px 0px 5px; border-radius: 0px 5px 5px 0px;">{{ $don['all'] }}</span></p>
+                                style="color: hsl(147, 99%, 35%); font-weight: bold; background-color: #ffffff; padding: 3px 4px 0px 5px; border-radius: 0px 5px 5px 0px;">{{ $don['all'] }}</span>
+                        </p>
                         <span style="color: #00e999">Visitor Counter:</span>
                         <span>
-                            <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=6d742e0168aa7da9f78bc98c11831799c4ffbc62'></script>
-<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1090372/t/5"></script>
+                            <a href='http://www.freevisitorcounters.com'>on freevisitorcounters.com</a> <script type='text/javascript'
+                                src='https://www.freevisitorcounters.com/auth.php?id=6d742e0168aa7da9f78bc98c11831799c4ffbc62'></script>
+                            <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1090372/t/5"></script>
                         </span>
 
                         <br />
@@ -37,11 +39,6 @@
                                 class="fa fa-chevron-circle-right" aria-hidden="true"></i></span><span
                             style="color: #00e999"> MA GROUP</span>
                     </div>
-                    <script>
-                        $.getJSON("https://api.countapi.xyz/hit/test.roktodin.com/visits", function(response) {
-                            $("#visits").text(response.value);
-                        });
-                    </script>
                 </div>
                 <div class="col-xl-2 col-lg-3 col-sm-6 order-lg-2 order-3">
                     <div class="footer-widget">
@@ -68,7 +65,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-2 col-sm-4 order-lg-4 order-2">
+                <div class="col-xl-3 col-lg-2 col-sm-4 order-lg-4 order-2">
                     <div class="footer-widget">
                         <h4 class="footer-widget__title">@lang('Contact Us')</h4>
                         <ul>
