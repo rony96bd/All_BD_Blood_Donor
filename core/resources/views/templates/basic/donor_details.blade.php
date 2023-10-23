@@ -164,17 +164,19 @@
 
                     {{-- Comments Section --}}
                     <div class="row">
-                        <div class="custom-comments bnfont">
-                            <p class="mt-4 mb-4 text-danger font-weight-bold"> <i class="fa-solid fa-eye"></i> {{ __($donor->click) }} People Visited</p>
-                            <form action="https://daktarbook.com/rating/store/1811" method="post">
-                                <input type="hidden" name="_token" value="y6FJsS3HmP8ffZCe9K6LPnYitGeYvkjJz4WdB3gQ">
+                        <div class="custom-comments bnfont" id="custom-comments">
+                            <p class="mt-4 mb-4 text-danger font-weight-bold"> <i class="fa-solid fa-eye"></i>
+                                {{ __($donor->click) }} People Visited</p>
+                            <form action="{{ url('comments') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="donordetails_id" value="{{ __($donor->id) }}" />
                                 <div style="margin-bottom: 10px">
                                     <h5 style="font-weight: bold">Leave Comments</h5>
                                 </div>
                                 <div class="rr-form">
                                     <div class="input-group" style="z-index:1;">
-                                        <input style="height:46px; font-size:13px;" class="form-control"
-                                            name="description" type="text" placeholder="Write a Comment">
+                                        <input style="height:46px; font-size:13px;" class="form-control" name="comment_body"
+                                            type="text" placeholder="Write a Comment">
                                         <div class="input-group-prepend">
                                             <button type="submit" class="btn btn-primary pb-2"><i
                                                     class="fa fa-paper-plane mr-3"></i> Submit</button>
@@ -182,35 +184,43 @@
                                     </div>
                                 </div>
                             </form>
+
                             <div class="custom-review-count">
-                                <div class="rev-user-item">
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="review-user-info">
-                                                <div class="media">
-                                                    <img class="mr-4"
-                                                        src=" https://daktarbook.com/uploaded/user/1695752164_65131fe436a30.jpg" alt="image">
-                                                    <div class="media-body">
-                                                        <p>22 Oct 2023</p>
-                                                        <h5 class="text-danger">মোঃ রাকিব উদ্দিন</h5>
+                                @forelse ($donor->comments->sortByDesc('created_at') as $comment)
+                                    @php
+                                        $comment_donor_id = $comment->donor_id;
+                                        $comment_donor_details = App\Models\Donor::where('id', $comment_donor_id)->first();
+                                    @endphp
+                                    <div class="rev-user-item">
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="review-user-info">
+                                                    <div class="media">
+                                                        <img class="shadow bg-white" src="{{ getImage('assets/images/donor/' . $comment_donor_details->image, imagePath()['donor']['size']) }}" alt="@lang('donor image')">
+                                                        <div class="media-body">
+                                                            <p>{{ $comment->created_at->format('d M Y')}}</p>
+                                                            <h5 class="text-danger">{{ $comment_donor_details->name }}</h5>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="comments-section-des">
-                                                <p> - Hi</p>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="comments-section-des">
+                                                    <p> - {{ $comment->comment_body }}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                @empty
+                                    <h5>No Comments</h5>
+                                @endforelse
                             </div>
                         </div>
                     </div>
-                    {{--End Comments Section--}}
+                    {{-- End Comments Section --}}
                 </div>
 
 

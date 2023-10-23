@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Twilio\TwiML\Video\Room;
 
 Route::get('/clear', function () {
     \Illuminate\Support\Facades\Artisan::call('optimize:clear');
@@ -235,6 +236,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         });
     });
 });
+Route::post('/comments', 'CommentController@store')->name('comments');
+Route::post('/blog-comments', 'CommentController@blogcommentStore')->name('blog.comments');
 
 Route::get('/donor-list', 'SiteController@donor')->name('donor.list');
 Route::get('/donor-list/{slug}/{id}', 'SiteController@donorDetails')->name('donor.details');

@@ -27,7 +27,7 @@
                                 style="color: hsl(147, 99%, 35%); font-weight: bold; background-color: #ffffff; padding: 3px 4px 0px 5px; border-radius: 0px 5px 5px 0px;">{{ $don['all'] }}</span></p>
                         <span style="color: #00e999">Visitor Counter:</span>
                         <span>
-                            <a href='http://www.freevisitorcounters.com'>on freevisitorcounters.com</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=6d742e0168aa7da9f78bc98c11831799c4ffbc62'></script>
+                            <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=6d742e0168aa7da9f78bc98c11831799c4ffbc62'></script>
 <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1090372/t/5"></script>
                         </span>
 

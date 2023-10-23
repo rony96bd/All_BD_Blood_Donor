@@ -46,4 +46,14 @@ class Donor extends Authenticatable
         return $this->belongsTo(City::class, 'city_id');
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'donordetails_id', 'id');
+    }
+
+    public function postcomments()
+    {
+        return $this->belongsTo(Comment::class, 'donor_id');
+    }
+
 }
