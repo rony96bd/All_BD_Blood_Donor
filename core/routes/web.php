@@ -247,6 +247,7 @@ Route::post('/comments', 'CommentController@store')->name('comments');
 Route::post('/blog-comments', 'CommentController@blogcommentStore')->name('blog.comments');
 Route::post('/bloodrequest-comments', 'CommentController@bloodrequestcommentStore')->name('bloodrequest.comments');
 Route::post('/delete-comment', 'CommentController@destroy')->name('delete.comments');
+Route::post('/donor-delete-comment', 'CommentController@dcdestroy')->name('donor.delete.comments');
 
 
 Route::get('/donor-list', 'SiteController@donor')->name('donor.list');

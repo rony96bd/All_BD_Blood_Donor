@@ -29,11 +29,10 @@
                             }
 
                             div#social-links ul li a {
-                                padding: 4px 9px 0px 8px;
+                                padding: 5px 6px 0px 6px;
                                 border: 1px solid #ccc;
                                 margin: 1px;
-                                font-size: 22px;
-                                color: #222;
+                                font-size: 15px;
                                 background-color: beige;
                                 border-radius: 4px;
                             }
@@ -65,10 +64,9 @@
                                     ->facebook()
                                     ->twitter()
                                     ->linkedin()
-                                    ->telegram()
                                     ->whatsapp();
                             @endphp
-                            <span><h4>@lang('Share This Post')</h4></span>  <span>{!! $shareComponent !!}</span>
+                            {{-- <span><h4>@lang('Share This Post')</h4></span>  <span>{!! $shareComponent !!}</span> --}}
                             {{-- <ul class="social__links">
                                 <li>
                                     <a href="https://www.facebook.com/sharer.php?u={{ urlencode(url()->current()) }}"
@@ -87,8 +85,23 @@
                         {{-- Comments Section --}}
                         <div class="row">
                             <div class="custom-comments bnfont" id="custom-comments">
-                                <p class="mt-2 mb-2 text-danger font-weight-bold"> <i class="fa-solid fa-eye"></i>
-                                    12 People Visited</p>
+                                <div class="container" style="padding: 0 0 0 0;">
+                                    <div class="row" style="margin-top: 8px;">
+                                        <div class="col-3">
+
+                                        </div>
+                                        <div class="col-9"><span style="float: right">
+                                                @php
+                                                    $shareComponent = \Share::currentPage()
+                                                        ->facebook()
+                                                        ->twitter()
+                                                        ->linkedin()
+                                                        ->whatsapp();
+                                                @endphp
+                                                {!! $shareComponent !!}
+                                            </span></div>
+                                    </div>
+                                </div>
                                 <form action="{{ url('blog-comments') }}" method="post">
                                     @csrf
                                     <input type="hidden" name="blog_id" value="{{ __($blog->id) }}" />
@@ -149,16 +162,14 @@
                                                     </div>
                                                 @endif
 
-                                                @if (auth()->guard('donor')->check() &&
-                                                        auth()->guard('donor')->user()->id == $comment->donor_id)
-                                                    <div
-                                                        style="position: absolute; top: 8px; right: 16px; font-size: 18px;">
-                                                        <button type="button" class="deleteComment btn"
-                                                            value="{{ $comment->id }}">
-                                                            <i style="color: red" class="fa-solid fa-trash"></i>
-                                                        </button>
-                                                    </div>
-                                                @endif
+                                                @if (auth()->guard('donor')->check() && auth()->guard('donor')->user()->id == $comment->donor_id)
+                                                <div style="position: absolute; top: 8px; right: 16px; font-size: 18px;">
+                                                    <button type="button" class="donordeleteComment btn"
+                                                        value="{{ $comment->id }}">
+                                                        <i style="color: red" class="fa-solid fa-trash"></i>
+                                                    </button>
+                                                </div>
+                                            @endif
                                             </div>
                                             <div class="row">
                                                 <div class="col">
@@ -226,6 +237,28 @@
                     $.ajax({
                         type: "POST",
                         url: "{{ url('/delete-comment') }}",
+                        data: {
+                            'comment_id': comment_id
+                        },
+                        success: function(res) {
+                            if (res.status == 200) {
+                                thisClicked.closest('#comment-container').remove();
+                                alert(res.message);
+                            } else {
+                                alert(res.message);
+                            }
+                        }
+                    });
+                }
+            });
+            $(document).on('click', '.donordeleteComment', function() {
+                if (confirm('Are you sure you want to delete your comment?')) {
+                    var thisClicked = $(this);
+                    var comment_id = thisClicked.val();
+
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ url('/donor-delete-comment') }}",
                         data: {
                             'comment_id': comment_id
                         },

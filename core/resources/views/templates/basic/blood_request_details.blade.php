@@ -80,11 +80,67 @@
                                 </li>
                             </ul>
                         </div>
+                        <style>
+                            div#social-links {
+                                margin: 0 auto;
+                                max-width: 500px;
+                            }
+
+                            div#social-links ul li {
+                                display: inline-block;
+                            }
+
+                            div#social-links ul li a {
+                                padding: 5px 6px 0px 6px;
+                                border: 1px solid #ccc;
+                                margin: 1px;
+                                font-size: 15px;
+                                background-color: beige;
+                                border-radius: 4px;
+                            }
+
+                            .fa-square-facebook {
+                                color: #3B5998
+                            }
+
+                            .fa-twitter {
+                                color: #33CCFF;
+                            }
+
+                            .fa-linkedin {
+                                color: #4875B4;
+                            }
+
+                            .fa-telegram {
+                                color: rgb(51, 144, 236);
+                            }
+
+                            .fa-whatsapp {
+                                color: #00a884;
+                            }
+                        </style>
                         {{-- Comments Section --}}
                         <div class="row">
                             <div class="custom-comments bnfont" style="padding: 0px 36px 15px 36px;" id="custom-comments">
-                                <p class="mt-2 mb-2 text-danger font-weight-bold"> <i class="fa-solid fa-eye"></i>
-                                    {{ __($bloodRequest->click) }} People Visited</p>
+                                <div class="container" style="padding: 0 0 0 0;">
+                                    <div class="row" style="margin-top: 8px;">
+                                        <div class="col-3">
+                                            <p class="mt-2 mb-2 text-danger font-weight-bold"> <i
+                                                    class="fa-solid fa-eye"></i>
+                                                {{ __($bloodRequest->click) }}</p>
+                                        </div>
+                                        <div class="col-9"><span style="float: right">
+                                                @php
+                                                    $shareComponent = \Share::currentPage()
+                                                        ->facebook()
+                                                        ->twitter()
+                                                        ->linkedin()
+                                                        ->whatsapp();
+                                                @endphp
+                                                {!! $shareComponent !!}
+                                            </span></div>
+                                    </div>
+                                </div>
                                 <form action="{{ url('bloodrequest-comments') }}" method="post">
                                     @csrf
                                     <input type="hidden" name="bloodrequest_id" value="{{ __($bloodRequest->id) }}" />
@@ -146,14 +202,16 @@
                                                     </div>
                                                 @endif
 
-                                                @if (auth()->guard('donor')->check() && auth()->guard('donor')->user()->id == $comment->donor_id)
-                                                <div style="position: absolute; top: 8px; right: 16px; font-size: 18px;">
-                                                    <button type="button" class="deleteComment btn"
-                                                        value="{{ $comment->id }}">
-                                                        <i style="color: red" class="fa-solid fa-trash"></i>
-                                                    </button>
-                                                </div>
-                                            @endif
+                                                @if (auth()->guard('donor')->check() &&
+                                                        auth()->guard('donor')->user()->id == $comment->donor_id)
+                                                    <div
+                                                        style="position: absolute; top: 8px; right: 16px; font-size: 18px;">
+                                                        <button type="button" class="donordeleteComment btn"
+                                                            value="{{ $comment->id }}">
+                                                            <i style="color: red" class="fa-solid fa-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                @endif
                                             </div>
                                             <div class="row">
                                                 <div class="col">
@@ -254,6 +312,28 @@
                     $.ajax({
                         type: "POST",
                         url: "{{ url('/delete-comment') }}",
+                        data: {
+                            'comment_id': comment_id
+                        },
+                        success: function(res) {
+                            if (res.status == 200) {
+                                thisClicked.closest('#comment-container').remove();
+                                alert(res.message);
+                            } else {
+                                alert(res.message);
+                            }
+                        }
+                    });
+                }
+            });
+            $(document).on('click', '.donordeleteComment', function() {
+                if (confirm('Are you sure you want to delete your comment?')) {
+                    var thisClicked = $(this);
+                    var comment_id = thisClicked.val();
+
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ url('/donor-delete-comment') }}",
                         data: {
                             'comment_id': comment_id
                         },

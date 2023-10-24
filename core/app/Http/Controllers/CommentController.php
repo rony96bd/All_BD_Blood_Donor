@@ -96,4 +96,21 @@ class CommentController extends Controller
             ]);
         }
     }
+    public function dcdestroy(Request $request)
+    {
+        if (auth()->guard('donor')->check()) {
+            $comment = Comment::where('id', $request->comment_id)->first();
+            $comment->delete();
+
+            return response()->json([
+                'status' => 200,
+                'message' => 'Comment Deleted Successfully'
+            ]);
+        } else {
+            return response()->json([
+                'status' => 401,
+                'message' => 'Login to Delete this comment'
+            ]);
+        }
+    }
 }
