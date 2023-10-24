@@ -9,6 +9,7 @@ use App\Models\City;
 use App\Models\Division;
 use App\Models\Donor;
 use App\Models\Frontend;
+use App\Models\GeneralSetting;
 use App\Models\Language;
 use App\Models\Location;
 use App\Models\Page;
@@ -37,6 +38,7 @@ class SiteController extends Controller
 
     public function index()
     {
+        GeneralSetting::firstOrFail()->increment('counter');
         $count = Page::where('tempname', $this->activeTemplate)->where('slug', 'home')->count();
         if ($count == 0) {
             $page = new Page();

@@ -5889,8 +5889,8 @@ blockquote {
     background-color: lightgray;
 }
 .media img {
-    width: 55px;
-    height: 55px;
+    width: 45px;
+        height: 45px;
     border: 1px solid #ddd;
     border-radius: 50%;
 }
@@ -5910,6 +5910,6 @@ blockquote {
 }
 
 .comments-section-des {
-    margin-top: 10px;
-    margin-left: 60px;
+    margin-top: 1px;
+        margin-left: 70px;
 }

@@ -83,13 +83,12 @@
                         {{-- Comments Section --}}
                         <div class="row">
                             <div class="custom-comments bnfont" style="padding: 0px 36px 15px 36px;" id="custom-comments">
-                                <p class="mt-4 mb-4 text-danger font-weight-bold"> <i class="fa-solid fa-eye"></i>
+                                <p class="mt-2 mb-2 text-danger font-weight-bold"> <i class="fa-solid fa-eye"></i>
                                     {{ __($bloodRequest->click) }} People Visited</p>
                                 <form action="{{ url('bloodrequest-comments') }}" method="post">
                                     @csrf
                                     <input type="hidden" name="bloodrequest_id" value="{{ __($bloodRequest->id) }}" />
                                     <div style="margin-bottom: 10px">
-                                        <h5 style="font-weight: bold">Leave Comments</h5>
                                     </div>
                                     <div class="rr-form">
                                         <div class="input-group" style="z-index:1;">
@@ -114,6 +113,9 @@
                                         @php
                                             $comment_donor_id = $comment->donor_id;
                                             $comment_donor_details = App\Models\Donor::where('id', $comment_donor_id)->first();
+
+                                            $timestamp = $comment->created_at;
+                                            $ctimeAgo = Carbon\Carbon::parse($timestamp)->ago();
                                         @endphp
                                         <div class="rev-user-item" id="comment-container">
                                             <hr>
@@ -126,9 +128,9 @@
                                                                     src="{{ getImage('assets/images/donor/' . $comment_donor_details->image, imagePath()['donor']['size']) }}"
                                                                     alt="@lang('donor image')">
                                                                 <div class="media-body">
-                                                                    <h5 class="text-danger">
-                                                                        {{ $comment_donor_details->name }}</h5>
-                                                                    <p>{{ $comment->created_at->format('d M Y') }}</p>
+                                                                    <h6 class="text-danger">
+                                                                        {{ $comment_donor_details->name }}</h6>
+                                                                    <p style="font-size: 12px">{{ $ctimeAgo }}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -143,6 +145,15 @@
                                                         </button>
                                                     </div>
                                                 @endif
+
+                                                @if (auth()->guard('donor')->check() && auth()->guard('donor')->user()->id == $comment->donor_id)
+                                                <div style="position: absolute; top: 8px; right: 16px; font-size: 18px;">
+                                                    <button type="button" class="deleteComment btn"
+                                                        value="{{ $comment->id }}">
+                                                        <i style="color: red" class="fa-solid fa-trash"></i>
+                                                    </button>
+                                                </div>
+                                            @endif
                                             </div>
                                             <div class="row">
                                                 <div class="col">

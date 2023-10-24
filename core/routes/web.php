@@ -137,6 +137,13 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::post('donor/featured/list/Include', 'ManageDonorController@featuredInclude')->name('donor.featured.include');
         Route::post('donor/featured/list/remove', 'ManageDonorController@featuredNotInclude')->name('donor.featured.remove');
 
+        // Blood Request
+        Route::get('blood-request/list', 'AdminBloodRequestController@index')->name('blood-request.index');
+        Route::get('blood-request/create', 'BloodRequestController@create')->name('blood-request.create');
+        Route::post('blood-request/store', 'BloodRequestController@store')->name('blood-request.store');
+        Route::get('blood-request/edit/{id}', 'BloodRequestController@edit')->name('blood-request.edit');
+        Route::post('blood-request/update/{id}', 'BloodRequestController@update')->name('blood-request.update');
+
         //Report Bugs
         Route::get('request-report', 'AdminController@requestReport')->name('request.report');
         Route::post('request-report', 'AdminController@reportSubmit');
