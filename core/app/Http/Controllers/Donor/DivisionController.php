@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Donor;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -14,7 +14,7 @@ class DivisionController extends Controller
         $pageTitle = "Manage Division";
         $emptyMessage = "No Data Found";
         $divisions = Division::latest()->paginate(getPaginate());
-        return view('admin.division.index', compact('pageTitle', 'emptyMessage', 'divisions'));
+        return view('donor.division.index', compact('pageTitle', 'emptyMessage', 'divisions'));
     }
 
     public function store(Request $request)

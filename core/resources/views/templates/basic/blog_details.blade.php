@@ -18,9 +18,58 @@
                             <h4 class="blog-details__title">{{ __($blog->data_values->title) }}</h4>
                             @php echo $blog->data_values->description_nic @endphp
                         </div>
+                        <style>
+                            div#social-links {
+                                margin: 0 auto;
+                                max-width: 500px;
+                            }
+
+                            div#social-links ul li {
+                                display: inline-block;
+                            }
+
+                            div#social-links ul li a {
+                                padding: 4px 9px 0px 8px;
+                                border: 1px solid #ccc;
+                                margin: 1px;
+                                font-size: 22px;
+                                color: #222;
+                                background-color: beige;
+                                border-radius: 4px;
+                            }
+
+                            .fa-square-facebook {
+                                color: #3B5998
+                            }
+
+                            .fa-twitter {
+                                color: #33CCFF;
+                            }
+
+                            .fa-linkedin {
+                                color: #4875B4;
+                            }
+
+                            .fa-telegram {
+                                color: rgb(51, 144, 236);
+                            }
+
+                            .fa-whatsapp {
+                                color: #00a884;
+                            }
+                        </style>
                         <div class="blog-details__footer">
-                            <h4 class="caption">@lang('Share Tish Post')</h4>
-                            <ul class="social__links">
+
+                            @php
+                                $shareComponent = \Share::currentPage()
+                                    ->facebook()
+                                    ->twitter()
+                                    ->linkedin()
+                                    ->telegram()
+                                    ->whatsapp();
+                            @endphp
+                            <span><h4>@lang('Share This Post')</h4></span>  <span>{!! $shareComponent !!}</span>
+                            {{-- <ul class="social__links">
                                 <li>
                                     <a href="https://www.facebook.com/sharer.php?u={{ urlencode(url()->current()) }}"
                                         target="__blank"><i class="fab fa-facebook-f"></i></a>
@@ -33,7 +82,7 @@
                                     <a href="http://www.linkedin.com/shareArticle?mini=true&url={{ urlencode(url()->current()) }}"
                                         target="__blank"><i class="fab fa-linkedin-in"></i></a>
                                 </li>
-                            </ul>
+                            </ul> --}}
                         </div>
                         {{-- Comments Section --}}
                         <div class="row">
@@ -100,14 +149,16 @@
                                                     </div>
                                                 @endif
 
-                                                @if (auth()->guard('donor')->check() && auth()->guard('donor')->user()->id == $comment->donor_id)
-                                                <div style="position: absolute; top: 8px; right: 16px; font-size: 18px;">
-                                                    <button type="button" class="deleteComment btn"
-                                                        value="{{ $comment->id }}">
-                                                        <i style="color: red" class="fa-solid fa-trash"></i>
-                                                    </button>
-                                                </div>
-                                            @endif
+                                                @if (auth()->guard('donor')->check() &&
+                                                        auth()->guard('donor')->user()->id == $comment->donor_id)
+                                                    <div
+                                                        style="position: absolute; top: 8px; right: 16px; font-size: 18px;">
+                                                        <button type="button" class="deleteComment btn"
+                                                            value="{{ $comment->id }}">
+                                                            <i style="color: red" class="fa-solid fa-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                @endif
                                             </div>
                                             <div class="row">
                                                 <div class="col">

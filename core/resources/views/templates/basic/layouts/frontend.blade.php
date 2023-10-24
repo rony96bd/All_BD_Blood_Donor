@@ -78,6 +78,7 @@
     <script src="https://kit.fontawesome.com/88197b63d0.js" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js"></script>
+    <script src="{{ asset('js/share.js') }}"></script>
 
     @stack('script-lib')
     @stack('script')

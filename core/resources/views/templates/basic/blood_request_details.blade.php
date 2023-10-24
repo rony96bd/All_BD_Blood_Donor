@@ -214,10 +214,6 @@
                                                         <span class="caption">জেলা</span>
                                                         <span class="value">{{ __($bloodRequest->city->name) }}</span>
                                                     </li>
-                                                    <li style="padding-bottom: 0px;">
-                                                        <span class="caption">পোস্টের সময়</span>
-                                                        <span class="value">{{ __($timeAgo) }}</span>
-                                                    </li>
                                                 </ul>
                                             </div>
                                         </a>
