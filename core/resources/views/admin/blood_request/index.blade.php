@@ -57,7 +57,7 @@
 
                                         <td data-label="@lang('Action')">
 
-                                            <a href="{{ route('donor.blood-request.edit', $bloodRequest->id) }}"
+                                            <a href="{{ route('admin.blood-request.edit', $bloodRequest->id) }}"
                                                 class="icon-btn btn--primary ml-1"><i class="las la-pen"></i></a>
                                         </td>
                                     </tr>
@@ -321,9 +321,7 @@
 @push('script')
     <script>
         "use strict";
-        // $('.addBlood').on('click', function() {
-        //     $('#bloodCreateModel').modal('show');
-        // });
+       
 
         $('.updateBlood').on('click', function() {
             var modal = $('#updateBloodModel');

@@ -11,7 +11,8 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap">
     <!-- bootstrap 4  -->
-    <link rel="stylesheet" href="{{ asset('assets/admin/css/vendor/bootstrap.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/templates/basic/frontend/css/lib/bootstrap.min.css') }}"> --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- bootstrap toggle css -->
     <link rel="stylesheet" href="{{ asset('assets/admin/css/vendor/bootstrap-toggle.min.css') }}">
     <!-- fontawesome 5  -->
@@ -57,7 +58,7 @@
 <body>
     @yield('content')
     <!-- jQuery library -->
-    <script src="{{ asset('assets/admin/js/vendor/jquery-3.5.1.min.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- bootstrap js -->
     <script src="{{ asset('assets/admin/js/vendor/bootstrap.bundle.min.js') }}"></script>
     <!-- bootstrap-toggle js -->
