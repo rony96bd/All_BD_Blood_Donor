@@ -7,16 +7,38 @@
         <div class="card swiper-slide bnfont">
             <div class="image-content">
                 <div class="container">
-                    <a class="link-dark"
-                        href="{{ route('donor.details', [slug($bloodRequest->donor->name), $bloodRequest->donor->id]) }}">
-                        <div class="row">
-                            <div class="" style="text-align: right; width: 65px"><img
-                                    src="{{ getImage('assets/images/donor/' . $bloodRequest->donor->image, imagePath()['donor']['size']) }}"
+                    @if ($bloodRequest->donor_id == 0)
+                    @else
+                        <a class="link-dark"
+                            href="{{ route('donor.details', [slug($bloodRequest->donor->name), $bloodRequest->donor->id]) }}">
+                    @endif
+                    <div class="row">
+                        <div class="" style="text-align: right; width: 65px">
+                            @if ($bloodRequest->donor_id == 0)
+                                @php
+                                    $admin_image = DB::table('admins')->value('image');
+                                @endphp
+
+                                <img src="{{ getImage('assets/admin/images/profile/' . $admin_image) }}"
                                     alt="@lang('image')" class="img-fluid"
-                                    style="border-radius: 50px; height: 40px; width: 40px"></div>
-                            <div class="" style="padding-left: 0px; line-height: 20px; width: 75%">
-                                {{ __($bloodRequest->donor->name) }}<br>{{ __($timeAgo) }}</div>
+                                    style="border-radius: 50px; height: 40px; width: 40px">
+                            @else
+                                <img src="{{ getImage('assets/images/donor/' . $bloodRequest->donor->image, imagePath()['donor']['size']) }}"
+                                    alt="@lang('image')" class="img-fluid"
+                                    style="border-radius: 50px; height: 40px; width: 40px">
+                            @endif
                         </div>
+                        <div class="" style="padding-left: 0px; line-height: 20px; width: 75%">
+                            @if ($bloodRequest->donor_id == 0)
+                                @php
+                                    $admin_name = DB::table('admins')->value('name');
+                                @endphp
+                                {{ $admin_name }}<br>{{ __($timeAgo) }}
+                            @else
+                                {{ __($bloodRequest->donor->name) }}<br>{{ __($timeAgo) }}
+                            @endif
+                        </div>
+                    </div>
                     </a>
                 </div>
             </div>

@@ -33,4 +33,5 @@ class BloodRequest extends Model
     {
         return $this->belongsTo(Donor::class, 'donor_id');
     }
+
 }

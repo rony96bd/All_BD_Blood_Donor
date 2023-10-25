@@ -101,9 +101,9 @@
                     </div>
                 </li>
 
-                <li class="sidebar-menu-item  {{ menuActive('admin.ads.*') }}">
-                    <a href="{{ route('admin.ads.index') }}" class="nav-link"
-                        data-default-url="{{ route('admin.ads.index') }}">
+                <li class="sidebar-menu-item  {{ menuActive('admin.blood-request.*') }}">
+                    <a href="{{ route('admin.blood-request.index') }}" class="nav-link"
+                        data-default-url="{{ route('admin.blood-request.index') }}">
                         <i class="menu-icon lar la-heart"></i>
                         <span class="menu-title">@lang('Blood Request') </span>
                     </a>

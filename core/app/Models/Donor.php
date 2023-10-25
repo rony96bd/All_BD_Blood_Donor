@@ -56,4 +56,9 @@ class Donor extends Authenticatable
         return $this->belongsTo(Comment::class, 'donor_id');
     }
 
+    public function bloodRequest()
+    {
+        return $this->hasMany(BloodRequest::class);
+    }
+
 }
