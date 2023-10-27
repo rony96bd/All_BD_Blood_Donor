@@ -4058,15 +4058,15 @@ table.table--light.style--two tbody td {
         background-color: #7367f005;
     }
 
-                .table-responsive--lg tr th,
-                .table-responsive--lg tr td {
+        .table-responsive--lg tr th,
+        .table-responsive--lg tr td {
         display: block;
         padding-left: 45% !important;
         text-align: right !important;
     }
 
-                .table-responsive--lg .user-table-list,
-                .table-responsive--lg .customer-details {
+        .table-responsive--lg .user-table-list,
+        .table-responsive--lg .customer-details {
         justify-content: flex-end;
     }
 
@@ -4100,15 +4100,15 @@ table.table--light.style--two tbody td {
         background-color: #7367f005;
     }
 
-                .table-responsive--md tr th,
-                .table-responsive--md tr td {
+        .table-responsive--md tr th,
+        .table-responsive--md tr td {
         display: block;
         padding-left: 45% !important;
         text-align: right !important;
     }
 
-                .table-responsive--md .user-table-list,
-                .table-responsive--md .customer-details {
+        .table-responsive--md .user-table-list,
+        .table-responsive--md .customer-details {
         justify-content: flex-end;
     }
 
@@ -4142,15 +4142,15 @@ table.table--light.style--two tbody td {
         background-color: #7367f005;
     }
 
-                .table-responsive--sm tr th,
-                .table-responsive--sm tr td {
+        .table-responsive--sm tr th,
+        .table-responsive--sm tr td {
         display: block;
         padding-left: 45% !important;
         text-align: right !important;
     }
 
-                .table-responsive--sm .user-table-list,
-                .table-responsive--sm .customer-details {
+        .table-responsive--sm .user-table-list,
+        .table-responsive--sm .customer-details {
         justify-content: flex-end;
     }
 
@@ -4168,15 +4168,15 @@ table.table--light.style--two tbody td {
         background-color: #f5f5f5;
     }
 
-                .table-responsive--xs tr th,
-                .table-responsive--xs tr td {
+        .table-responsive--xs tr th,
+        .table-responsive--xs tr td {
         display: block;
         padding-left: 45% !important;
         text-align: right !important;
     }
 
-                .table-responsive--xs .user-table-list,
-                .table-responsive--xs .customer-details {
+        .table-responsive--xs .user-table-list,
+        .table-responsive--xs .customer-details {
         justify-content: flex-end;
     }
 
@@ -7151,7 +7151,7 @@ a.icon-btn {
         margin-bottom: 20px
     }
 
-                .payment-method-header .content>.d-flex {
+        .payment-method-header .content>.d-flex {
         flex-direction: column !important
     }
 
@@ -7178,17 +7178,17 @@ a.icon-btn {
         right: 0 !important
     }
 
-                .payment-method-item .payment-method-header .content>.d-flex {
+        .payment-method-item .payment-method-header .content>.d-flex {
         flex-direction: column
     }
 
-                .payment-method-item .payment-method-header .content>.d-flex .input-group {
+        .payment-method-item .payment-method-header .content>.d-flex .input-group {
         order: -1;
         justify-content: flex-start !important;
         margin-bottom: 20px
     }
 
-                .payment-method-item .payment-method-header .content>.d-flex .remove-btn {
+        .payment-method-item .payment-method-header .content>.d-flex .remove-btn {
         order: -1;
         margin-bottom: 15px
     }
@@ -8405,23 +8405,23 @@ h1 small {
 
 .fade:not(.show) {
     opacity: 1;
-        background: #00000073;
+    background: #0000003d;
     }
-    
-    .custom-icon-field {
-        position: relative;
-    }
-    
-    .custom-icon-field i {
-        position: absolute;
-        top: 10px;
-        left: 3px;
-    }
-    
-    .custom-icon-field i[class*="la-"] {
-        font-size: 1.25rem;
-    }
-    
-    .custom-icon-field .form--control {
-        padding-left: 2.5rem;
+
+.custom-icon-field {
+    position: relative;
+}
+
+.custom-icon-field i {
+    position: absolute;
+    top: 10px;
+    left: 3px;
+}
+
+.custom-icon-field i[class*="la-"] {
+    font-size: 1.25rem;
+}
+
+.custom-icon-field .form--control {
+    padding-left: 2.5rem;
 }
