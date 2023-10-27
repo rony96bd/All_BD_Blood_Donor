@@ -155,9 +155,20 @@ class BloodRequestController extends Controller
      * @param  \App\Models\BloodRequest  $bloodRequest
      * @return \Illuminate\Http\Response
      */
-    public function edit(BloodRequest $bloodRequest)
+    public function edit($id)
     {
-        //
+        $pageTitle = "Edit Blood Request";
+        $emptyMessage = "No data found";
+        $bloodRequest = BloodRequest::findOrFail($id);
+        $bloodRequests = BloodRequest::latest()->with('blood', 'division', 'city', 'location', 'donor')
+        ->paginate(getPaginate());
+
+        $data['divisions'] = Division::get(["name", "id"]);
+        $cities = City::where('status', 1)->select('id', 'name')->with('location')->get();
+        $bloods = Blood::where('status', 1)->select('id', 'name')->get();
+        $donors = Donor::latest()->with('blood', 'location')->paginate(getPaginate());
+
+        return view('admin.blood_request.edit', $data, compact('pageTitle', 'emptyMessage', 'donors', 'cities', 'bloods', 'bloodRequests', 'bloodRequest'));
     }
 
     /**
@@ -167,9 +178,34 @@ class BloodRequestController extends Controller
      * @param  \App\Models\BloodRequest  $bloodRequest
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BloodRequest $bloodRequest)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'division' => 'required|exists:divisions,id',
+            'city' => 'required|exists:cities,id',
+            'location' => 'required|exists:locations,id',
+            'blood' => 'required|exists:bloods,id',
+            'donate_date' => 'required',
+            'donate_time' => 'required',
+            'donate_address' => 'required',
+            'phone' => 'required',
+        ]);
+
+        $bloodRequest = BloodRequest::findOrFail($id);
+        $bloodRequest->division_id = $request->division;
+        $bloodRequest->city_id = $request->city;
+        $bloodRequest->location_id = $request->location;
+        $bloodRequest->blood_id = $request->blood;
+        $bloodRequest->problem = $request->problem;
+        $bloodRequest->amount_of_blood = $request->amount_of_blood;
+        $bloodRequest->donate_date = $request->donate_date;
+        $bloodRequest->donate_time = $request->donate_time;
+        $bloodRequest->donate_address =  $request->donate_address;
+        $bloodRequest->phone = $request->phone;
+        $bloodRequest->message = $request->message;
+        $bloodRequest->save();
+        $notify[] = ['success', 'Blood Request has been updated'];
+        return back()->withNotify($notify);
     }
 
     /**
@@ -178,8 +214,21 @@ class BloodRequestController extends Controller
      * @param  \App\Models\BloodRequest  $bloodRequest
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BloodRequest $bloodRequest)
+    public function destroy(Request $request)
     {
-        //
+        if (auth()->guard('admin')->check()) {
+            $bloodRequest = BloodRequest::where('id', $request->bloodrequest_id)->first();
+            $bloodRequest->delete();
+
+            return response()->json([
+                'status' => 200,
+                'message' => 'Blood Request Deleted Successfully'
+            ]);
+        } else {
+            return response()->json([
+                'status' => 401,
+                'message' => 'Something went wrong'
+            ]);
+        }
     }
 }

@@ -110,6 +110,7 @@
             right: 12px;
         }
     </style>
+
     @include($activeTemplate . 'partials.breadcrumb')
     <section class="pb-100 position-relative z-index section--bg" style="background-color: #FDE7EF">
         <div class="container">
@@ -189,19 +190,17 @@
                             <!-- শেষ রক্ত দানের তারিখ ----------------------------------->
                             <div class="form-group col-lg-4">
                                 <label for="last_donate">@lang('Last Blood Donate') </label>
-                                <input type="text" name="last_donate" id="last_donate" value="{{ old('donate') }}"
-                                    data-language="en" placeholder="@lang('DD/MM/YYYY')"
-                                    class="form--control datepicker-here">
+                                <input type="date" name="last_donate" id="last_donate" value="{{ old('donate') }}"
+                                    placeholder="@lang('DD-MM-YYYY')" class="form--control">
                             </div>
 
 
                             <!-- জন্ম তারিখ ----------------------------------->
                             <div class="form-group col-lg-4">
                                 <label for="date_birth">@lang('Date Of Birth') <sup class="text--danger">*</sup></label>
-                                <input type="text" id="date_birth" name="birth_date" value="{{ old('birth_date') }}"
-                                    data-language="en" placeholder="@lang('DD/MM/YYYY')"
-                                    class="form--control datepicker-here" maxlength="255" required="">
-
+                                <input type="date" id="date_birth" name="birth_date" value="{{ old('birth_date') }}"
+                                    placeholder="@lang('DD-MM-YYYY')" class="form--control" maxlength="255"
+                                    required="">
                             </div>
 
                             <!-- ইমেইল ----------------------------------->
@@ -258,7 +257,8 @@
                                     <div class="avatar-edit">
                                         <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
                                             name="imageUpload" class="imageUpload" required="" />
-                                        <input type="hidden" name="base64image" required="" name="base64image" id="base64image">
+                                        <input type="hidden" name="base64image" required="" name="base64image"
+                                            id="base64image">
                                         <label for="imageUpload"></label>
                                     </div>
                                     <div class="avatar-preview container2">
@@ -273,7 +273,8 @@
 
                                         @endphp
                                         <div id="imagePreview" style="{{ $imgs }};">
-                                            <input type="hidden" required="" name="_token" value="{{ csrf_token() }}">
+                                            <input type="hidden" required="" name="_token"
+                                                value="{{ csrf_token() }}">
                                         </div>
                                     </div>
                                 </div>
@@ -326,7 +327,6 @@
 
     {{-- @include($activeTemplate . 'sections.faq') --}}
 @endsection
-
 
 @push('style-lib')
     <link rel="stylesheet" href="{{ asset($activeTemplateTrue . 'frontend/css/datepicker.min.css') }}">

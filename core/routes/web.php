@@ -126,8 +126,11 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('donor/pending', 'ManageDonorController@pending')->name('donor.pending');
         Route::get('donor/approved', 'ManageDonorController@approved')->name('donor.approved');
         Route::get('donor/banned', 'ManageDonorController@banned')->name('donor.banned');
+
         Route::get('donor/create', 'ManageDonorController@create')->name('donor.create');
+
         Route::post('donor/store', 'ManageDonorController@store')->name('donor.store');
+
         Route::get('donor/edit/{id}', 'ManageDonorController@edit')->name('donor.edit');
         Route::post('donor/update/{id}', 'ManageDonorController@update')->name('donor.update');
         Route::post('donor/approved/status', 'ManageDonorController@approvedStatus')->name('donor.approved.status');
@@ -143,6 +146,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::post('blood-request/store', 'BloodRequestController@store')->name('blood-request.store');
         Route::get('blood-request/edit/{id}', 'BloodRequestController@edit')->name('blood-request.edit');
         Route::post('blood-request/update/{id}', 'BloodRequestController@update')->name('blood-request.update');
+        Route::post('blood-request/delete', 'BloodRequestController@destroy')->name('blood-request.delete');
 
         //Report Bugs
         Route::get('request-report', 'AdminController@requestReport')->name('request.report');

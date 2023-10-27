@@ -140,17 +140,11 @@ class ManageDonorController extends Controller
             'division' => 'required|exists:divisions,id',
             'city' => 'required|exists:cities,id',
             'location' => 'required|exists:locations,id',
-            'address' => 'required|max:255',
             'religion' => 'required|max:40',
-            'profession' => 'required|max:80',
             'blood' => 'required|exists:bloods,id',
-            'last_donate' => 'required|date',
-            'birth_date' => 'required|date',
-            'email' => 'required|email|max:60|unique:donors,email',
-            'facebook' => 'required',
-            'image' => ['required', 'image', new FileTypeValidate(['jpg', 'jpeg', 'png'])], 'phone' => 'required|max:40|unique:donors,phone',
+            'birth_date' => 'required',
+            'imageUpload' => ['required', 'image', new FileTypeValidate(['jpg', 'jpeg', 'png'])],
             'phone' => 'required|max:40|unique:donors,phone',
-            'phone2' => 'required|max:40|unique:donors,phone2',
             'password' => 'required|confirmed|min:6',
         ]);
         $donor = new Donor();
@@ -159,31 +153,47 @@ class ManageDonorController extends Controller
         $donor->division_id = $request->division;
         $donor->city_id = $request->city;
         $donor->location_id = $request->location;
-        $donor->address = $request->address;
         $donor->religion = $request->religion;
-        $donor->profession = $request->profession;
         $donor->blood_id = $request->blood;
         $donor->last_donate = $request->last_donate;
         $donor->birth_date =  $request->birth_date;
         $donor->email = $request->email;
         $donor->facebook = $request->facebook;
 
-        $path = imagePath()['donor']['path'];
+        $input = $request->all();
+
         $size = imagePath()['donor']['size'];
-        if ($request->hasFile('image')) {
-            try {
-                $filename = uploadImage($request->image, $path, $size);
-            } catch (\Exception $exp) {
-                $notify[] = ['error', 'Image could not be uploaded.'];
-                return back()->withNotify($notify);
-            }
+
+        if ($input['base64image'] || $input['base64image'] != '0') {
+
+            // Available alpha caracters
+            $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+            // generate a pin based on 2 * 7 digits + a random character
+            $pin = mt_rand(1000000, 9999999)
+                . mt_rand(1000000, 9999999)
+                . $characters[rand(0, strlen($characters) - 1)];
+
+            // shuffle the result
+            $string = str_shuffle($pin);
+
+            $path = imagePath()['donor']['path'] . '/';
+            $image_parts = explode(";base64,", $input['base64image']);
+            $image_type_aux = explode("image/", $image_parts[0]);
+            $image_type = $image_type_aux[1];
+            $image_base64 = base64_decode($image_parts[1]);
+            $filename = time() . '_' . $string . '.' . $image_type;
+            $file = $path . $filename;
+            file_put_contents($file, $image_base64);
             $donor->image = $filename;
         }
         $donor->phone = $request->phone;
         $donor->phone2 = $request->phone2;
+        $donor->about_me = $request->about_me;
+        $donor->status = 1;
         $donor->password = Hash::make($request->password);
         $donor->save();
-        $notify[] = ['success', 'Donor has been created'];
+        $notify[] = ['success', 'Donor has been Added'];
         return back()->withNotify($notify);
     }
 

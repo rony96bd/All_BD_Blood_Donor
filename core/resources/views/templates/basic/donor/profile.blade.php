@@ -313,7 +313,7 @@
                                                     <div class="form-group">
                                                         <label for="details"
                                                             class="font-weight-bold">@lang('About Donor')</label>
-                                                        <textarea name="about_me" id="about_me" class="form-control" placeholder="@lang('Enter About Donor')">{{ $donor->about_me }}</textarea>
+                                                        <textarea maxlength="200" name="about_me" id="about_me" class="form-control" placeholder="@lang('Enter About Donor')">{{ $donor->about_me }}</textarea>
                                                     </div>
                                                 </div>
                                             </div>

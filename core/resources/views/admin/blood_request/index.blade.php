@@ -56,9 +56,17 @@
                                         </td>
 
                                         <td data-label="@lang('Action')">
+                                            <span>
+                                                <a href="{{ route('admin.blood-request.edit', $bloodRequest->id) }}"
+                                                    class="icon-btn btn--primary ml-1"><i class="las la-pen"></i></a>
+                                            </span>
 
-                                            <a href="{{ route('admin.blood-request.edit', $bloodRequest->id) }}"
-                                                class="icon-btn btn--primary ml-1"><i class="las la-pen"></i></a>
+                                            <span>
+                                                <button type="button" style="font-size: 13px;"
+                                                    class="deleteBr btn--danger icon-btn"
+                                                    value="{{ $bloodRequest->id }}"><i
+                                                        class="fa-solid fa-trash"></i></button>
+                                            </span>
                                         </td>
                                     </tr>
                                 @empty
@@ -210,12 +218,11 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
-
         </div>
     </div>
 
-    <div id="updateBloodModel" class="modal fade" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
+    <div id="updateModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">@lang('Update Blood Group')</h5>
@@ -223,28 +230,119 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{ route('admin.blood.update') }}" method="POST">
+                <form class="bnfont" action="{{ route('admin.blood-request.store') }}" method="POST"
+                    style="padding: 15px" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="id">
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="name" class="form-control-label font-weight-bold">@lang('Name')</label>
-                            <input type="text" class="form-control form-control-lg" id="name" name="name"
-                                placeholder="@lang('Enter Blood Group Name')" maxlength="60" required="">
+                    <div class="row">
+                        <div class="form-group col-lg-6">
+                            <label for="division" class="font-weight-bold">@lang('Division') <sup
+                                    class="text--danger">*</sup></label>
+                            <select class="form-control form-control-lg" name="division" id="division-dropdown"
+                                class="select" required="">
+                                <option value="">-- বিভাগ সিলেক্ট করুন --</option>
+                                @foreach ($divisions as $data)
+                                    <option value="{{ $data->id }}">
+                                        {{ $data->name }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
 
-                        <div class="form-group">
-                            <label class="form-control-label font-weight-bold">@lang('Status') </label>
-                            <input type="checkbox" data-width="100%" data-onstyle="-success" data-offstyle="-danger"
-                                data-toggle="toggle" data-on="@lang('Enable')" data-off="@lang('Disabled')"
-                                name="status">
+                        <!-- জেলা ----------------------------------->
+                        <div class="form-group col-lg-6">
+                            <label for="city" class="font-weight-bold">@lang('District') <sup
+                                    class="text--danger">*</sup></label>
+                            <select class="form-control form-control-lg" name="city" id="city-dropdown"
+                                class="select" required="">
+                            </select>
                         </div>
 
+                        <!-- উপজেলা ----------------------------------->
+                        <div class="form-group col-lg-6">
+                            <label for="location" class="font-weight-bold">@lang('Upazila') <sup
+                                    class="text--danger ">*</sup></label>
+                            <select class="form-control form-control-lg" name="location" id="location-dropdown"
+                                class="select" required="">
+                            </select>
+                        </div>
+
+                        <!-- রক্তের গ্রুপ ---------------------------------->
+                        <div class="form-group col-lg-6">
+                            <label for="blood_id" class="font-weight-bold">@lang('Blood Group')</label>
+                            <select name="blood" id="blood_id" class="form-control form-control-lg" required="">
+                                <option value="" selected="" disabled="">@lang('Select One')</option>
+                                @foreach ($bloods as $blood)
+                                    <option value="{{ $blood->id }}">{{ __($blood->name) }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn--dark" data-dismiss="modal">@lang('Close')</button>
-                        <button type="submit" class="btn btn--primary"><i
-                                class="fa fa-fw fa-paper-plane"></i>@lang('Update')</button>
+
+                    <div class="row">
+                        <!-- রোগীর সমস্যা ---------------------------------->
+                        <div class="form-group col-lg-12">
+                            <div class="form-group">
+                                <label for="problem" class="font-weight-bold">@lang('রোগীর সমস্যা')</label>
+                                <input type="text" id="problem" name="problem" value="{{ old('problem') }}"
+                                    class="form-control form-control-lg" placeholder="@lang('রোগীর সমস্যা লিখুন')" required="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-lg-4">
+                            <div class="form-group">
+                                <label for="amount_of_blood" class="font-weight-bold">@lang('রক্তের পরিমাণ (ব্যাগ)')</label>
+                                <input type="text" id="amount_of_blood" name="amount_of_blood"
+                                    value="{{ old('amount_of_blood') }}" class="form-control form-control-lg"
+                                    placeholder="@lang('রক্তের পরিমাণ লিখুন (কত ব্যাগ)')" required="">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-4">
+                            <label for="donate_date" class="font-weight-bold">@lang('রক্ত দানের তারিখ')</label>
+                            <input type="date" id="donate_date" name="donate_date" value="{{ old('donate_date') }}"
+                                data-language="en" placeholder="@lang('DD/MM/YYYY')" class="form-control form-control-lg"
+                                maxlength="255" required="">
+                        </div>
+
+                        <div class="form-group col-lg-4">
+                            <label for="donate_time" class="font-weight-bold">@lang('রক্ত দানের সময়')</label>
+                            <input type="time" id="donate_time" name="donate_time" value="{{ old('donate_time') }}"
+                                data-language="en" class="form-control form-control-lg" maxlength="255" required="">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <!-- রক্ত দানের স্থান ---------------------------------->
+                        <div class="form-group col-lg-8">
+                            <div class="form-group">
+                                <label for="donate_address" class="font-weight-bold">@lang('রক্ত দানের স্থান')</label>
+                                <input type="text" id="donate_address" name="donate_address"
+                                    value="{{ old('donate_address') }}" class="form-control form-control-lg"
+                                    placeholder="@lang('ঠিকানা/হাসপাতাল বা ক্লিনিকের নাম উল্লেখ করুন...')" required="">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <div class="form-group">
+                                <label for="phone" class="font-weight-bold">@lang('যোগাযোগ')</label>
+                                <input type="number" id="phone" name="phone" value=""
+                                    class="form-control form-control-lg" placeholder="@lang('যোগাযোগের মোবাইল নম্বর')" required="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- কিছু কথা ---------------------------------->
+                        <div class="form-group col-lg-12">
+                            <div class="form-group">
+                                <label for="problem" class="font-weight-bold">@lang('কিছু কথা')</label>
+                                <textarea class="form-control form-control-lg" rows="5" id="message" name="message"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn--primary btn-block btn-lg"><i
+                                class="fa fa-fw fa-paper-plane"></i> @lang('Blood Request Post')</button>
                     </div>
                 </form>
             </div>
@@ -253,7 +351,7 @@
 @endsection
 
 @push('breadcrumb-plugins')
-    <a style="color: white" data-toggle="modal" data-target="#myModal"
+    <a style="color: white; cursor: pointer;" data-toggle="modal" data-target="#myModal"
         class="btn btn-sm btn--primary box--shadow1 text--small addBlood"><i class="fa fa-fw fa-paper-plane"></i>
         @lang('Add Blood Request')</a>
 @endpush
@@ -316,24 +414,37 @@
                 })
             });
         });
-    </script>
-@endpush
-@push('script')
-    <script>
-        "use strict";
-       
 
-        $('.updateBlood').on('click', function() {
-            var modal = $('#updateBloodModel');
-            modal.find('input[name=id]').val($(this).data('id'));
-            modal.find('input[name=name]').val($(this).data('name'));
-            var data = $(this).data('status');
-            if (data == 1) {
-                modal.find('input[name=status]').bootstrapToggle('on');
-            } else {
-                modal.find('input[name=status]').bootstrapToggle('off');
-            }
-            modal.modal('show');
+        // Delete Blood Request //////////////////////////////////
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $(document).on('click', '.deleteBr', function() {
+                if (confirm('Are you sure you want to delete this comment?')) {
+                    var thisClicked = $(this);
+                    var bloodrequest_id = thisClicked.val();
+
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ url('/admin/blood-request/delete') }}",
+                        data: {
+                            'bloodrequest_id': bloodrequest_id
+                        },
+                        success: function(res) {
+                            if (res.status == 200) {
+                                window.location.reload();
+                                // thisClicked.closest('#comment-container').remove();
+                                alert(res.message);
+                            } else {
+                                alert(res.message);
+                            }
+                        }
+                    });
+                }
+            });
         });
     </script>
 @endpush
