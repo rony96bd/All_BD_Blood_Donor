@@ -134,6 +134,7 @@
                                     <option value="" selected="" disabled=""></option>
                                     <option value="1">@lang('Male')</option>
                                     <option value="2">@lang('Female')</option>
+                                    <option value="3">@lang('Other')</option>
                                 </select>
                             </div>
                             <!-- বিভাগ ----------------------------------->
@@ -193,7 +194,6 @@
                                 <input type="date" name="last_donate" id="last_donate" value="{{ old('donate') }}"
                                     placeholder="@lang('DD-MM-YYYY')" class="form--control">
                             </div>
-
 
                             <!-- জন্ম তারিখ ----------------------------------->
                             <div class="form-group col-lg-4">

@@ -1,170 +1,192 @@
 @extends('admin.layouts.app')
 @section('panel')
+    <style>
+        form label {
+            color: #000;
+            font-weight: bold;
+        }
+    </style>
     <div class="row mb-none-30">
         <div class="col-lg-12 mb-30">
             <div class="card bnfont">
                 <div class="card-body">
                     <h5 class="card-title mb-25 border-bottom pb-2">{{ __($donor->name) }}'s @lang('Profile Information')</h5>
                     UserName: {{ __($donor->phone) }}<br />
-                    Email: {{ $donor->email }}
-                    <br /> <br />
 
-                    <form action="{{ route('donor.profile.update') }}" id="basic-form" method="POST"
-                        enctype="multipart/form-data" autocomplete="off">
+                    <form method="POST" id="basic-form" enctype="multipart/form-data" action="{{ route('admin.donor.store') }}"
+                        class="contact-form bg-white p-sm-2 rounded-3 position-relative bnfont"
+                        enctype="multipart/form-data">
                         @csrf
-                        <input autocomplete="false" name="hidden" type="text" style="display:none;">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <div class="avatar-upload">
-                                        <div class="avatar-edit">
-                                            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
-                                                name="imageUpload" class="imageUpload" required="" />
-                                            <input type="hidden" name="base64image" required="" name="base64image"
-                                                id="base64image">
-                                            <label for="imageUpload"></label>
-                                        </div>
-                                        <div class="avatar-preview container2">
-                                            @php
-                                                if (!empty($donor->image) && $donor->image != '' && getImage('assets/images/donor/' . $donor->image, imagePath()['donor']['size'])) {
-                                                    $image = $donor->image;
-                                                } else {
-                                                    $image = 'default.png';
-                                                }
-                                                $url = url('assets/images/donor/' . $image);
-                                                $imgs = "background-image:url($url)";
+                        <h5 class="mb-3">@lang('Personal Information')</h5>
+                        <div class="row mb-4">
+                            <!-- নাম ----------------------------------->
+                            <div class="form-group col-lg-6">
+                                <label for="name">@lang('Name')<sup class="text-danger">*</sup></label>
+                                <input type="text" name="name" id="name" value="{{ old('name') }}"
+                                    placeholder="@lang('Full name')" class="form-control" maxlength="80" required="">
+                            </div>
+                            <!-- লিঙ্গ ----------------------------------->
+                            <div class="form-group col-lg-6">
+                                <label for="gender">@lang('Gender') <sup class="text-danger">*</sup></label>
+                                <select name="gender" id="gender" class="select form-control" required="">
+                                    <option value="" selected="" disabled=""></option>
+                                    <option value="1">@lang('Male')</option>
+                                    <option value="2">@lang('Female')</option>
+                                </select>
+                            </div>
+                            <!-- বিভাগ ----------------------------------->
+                            <div class="form-group col-lg-4">
+                                <label for="division">@lang('Division') <sup class="text-danger">*</sup></label>
+                                <select name="division" id="division-dropdown" class="select form-control" required="">
+                                    <option value="">-- বিভাগ সিলেক্ট করুন --</option>
+                                    @foreach ($divisions as $data)
+                                        <option value="{{ $data->id }}">
+                                            {{ $data->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                                            @endphp
-                                            <div id="imagePreview" style="{{ $imgs }};">
-                                                <input type="hidden" required="" name="_token"
-                                                    value="{{ csrf_token() }}">
-                                            </div>
-                                        </div>
-                                    </div>
+                            <!-- জেলা ----------------------------------->
+                            <div class="form-group col-lg-4">
+                                <label for="city">@lang('District') <sup class="text--danger">*</sup></label>
+                                <select name="city" id="city-dropdown" class="select form-control" required="">
+                                </select>
+                            </div>
+
+                            <!-- উপজেলা ----------------------------------->
+                            <div class="form-group col-lg-4">
+                                <label for="location">@lang('Upazila') <sup class="text--danger">*</sup></label>
+                                <select name="location" id="location-dropdown" class="select form-control" required="">
+                                </select>
+                            </div>
+
+                            <!-- ধর্ম ----------------------------------->
+                            <div class="form-group col-lg-4">
+                                <label for="religion">@lang('Religion') <sup class="text--danger">*</sup></label>
+                                <select name="religion" id="religion" class="select form-control" required="">
+                                    <option value="{{ old('religion') }}" selected="" disabled="">
+                                        {{ old('religion') }}</option>
+                                    <option value="Islam">@lang('Islam')</option>
+                                    <option value="Hinduism">@lang('Hinduism')</option>
+                                    <option value="Buddhism">@lang('Buddhism')</option>
+                                    <option value="Christianity">@lang('Christianity')</option>
+                                </select>
+                            </div>
+
+                            <!-- রক্তের গ্রুপ ----------------------------------->
+                            <div class="form-group col-lg-4">
+                                <label for="blood_id">@lang('Blood Group') <sup class="text--danger">*</sup></label>
+                                <select name="blood" id="blood_id" class="select form-control" required="">
+                                    <option value="" selected="" disabled="">@lang('Select One')</option>
+                                    @foreach ($bloods as $blood)
+                                        <option value="{{ $blood->id }}">{{ __($blood->name) }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <!-- শেষ রক্ত দানের তারিখ ----------------------------------->
+                            <div class="form-group col-lg-4">
+                                <label for="last_donate">@lang('Last Blood Donate') </label>
+                                <input type="date" name="last_donate" id="last_donate" value="{{ old('donate') }}"
+                                    placeholder="" class="form-control">
+                            </div>
+
+
+                            <!-- জন্ম তারিখ ----------------------------------->
+                            <div class="form-group col-lg-4">
+                                <label for="date_birth">@lang('Date Of Birth') <sup class="text--danger">*</sup></label>
+                                <input type="date" id="date_birth" name="birth_date" value="{{ old('birth_date') }}"
+                                    placeholder="" class="form-control" maxlength="255" required="">
+
+                            </div>
+
+                            <!-- ইমেইল ----------------------------------->
+                            <div class="form-group col-lg-4">
+                                <label for="email">@lang('Email')</label>
+                                <input type="email" name="email" id="email" value="{{ old('email') }}"
+                                    placeholder="@lang('Enter Email')" class="form-control" maxlength="60">
+                            </div>
+
+                            <!-- ফেসবুক আইডি ----------------------------------->
+                            <div class="form-group col-lg-4">
+                                <label for="facebook">@lang('Facebook Url')</label>
+                                <div class="custom-icon-field">
+                                    <i class="lab la-facebook-f" style="color: #1877F2"></i>
+                                    <input type="text" name="facebook" id="facebook" value="{{ old('facebook') }}"
+                                        placeholder="@lang('Enter Facebook Url')" class="form-control">
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
-                                <div class="form-group ">
-                                    <label class="form-control-label font-weight-bold">@lang('Name')</label>
-                                    <input class="form-control" type="text" name="name"
-                                        value="{{ auth()->guard('donor')->user()->name }}">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="gender" class="font-weight-bold">@lang('Gender')</label>
-                                    <select name="gender" id="gender" class="form-control form-control" required="">
-                                        <option value="" selected="" disabled="">@lang('Select One')</option>
-                                        <option value="1" @if ($donor->gender == 1) selected @endif>
-                                            @lang('Male')</option>
-                                        <option value="2" @if ($donor->gender == 2) selected @endif>
-                                            @lang('Female')</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="division" class="font-weight-bold">@lang('Division') <sup
-                                            class="text--danger">*</sup></label>
-                                    <select name="division" id="division-dropdown" class="form-control" required="">
-                                        <option value="{{ __($donor->division->id) }}">{{ __($donor->division->name) }}
-                                        </option>
-                                        @foreach ($divisions as $data)
-                                            <option value="{{ $data->id }}">
-                                                {{ $data->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="city" class="font-weight-bold">@lang('City')</label>
-                                    <select name="city" id="city-dropdown" class="form-control" required="">
-                                        <option value="{{ __($donor->city->id) }}">{{ __($donor->city->name) }}</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="location" class="font-weight-bold">@lang('Location')</label>
-                                    <select name="location" id="location-dropdown" class="form-control" required="">
-                                        <option value="{{ __($donor->location->id) }}">{{ __($donor->location->name) }}
-                                        </option>
-                                    </select>
-                                </div>
-                                <div class="form-group ">
-                                    <label for="blood" class="font-weight-bold">@lang('Blood Group')</label>
-                                    <select name="blood" id="blood" class="form-control" required="">
-                                        <option value="" selected="" disabled="">@lang('Select One')</option>
-                                        @foreach ($bloods as $blood)
-                                            <option value="{{ $blood->id }}"
-                                                @if ($blood->id == $donor->blood_id) selected @endif>{{ __($blood->name) }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="religion" class="font-weight-bold">@lang('Religion')</label>
-                                    <select name="religion" id="religion" class="form-control" required="">
-                                        <option value="{{ __($donor->religion) }}" selected="">
-                                            {{ __($donor->religion) }}</option>
-                                        <option value="Islam">@lang('Islam')</option>
-                                        <option value="Hinduism">@lang('Hinduism')</option>
-                                        <option value="Buddhism">@lang('Buddhism')</option>
-                                        <option value="Christianity">@lang('Christianity')</option>
-                                    </select>
-                                </div>
+                            <!-- প্রাইমারী মোবাইল নং ----------------------------------->
+                            <div class="form-group col-lg-6">
+                                <label for="phone">@lang('Phone') <sup class="text--danger">*</sup></label>
+                                <input type="text" name="phone" id="phone" value="{{ old('phone') }}"
+                                    placeholder="@lang('Enter Phone')" class="form-control" maxlength="11" required="">
+                                <span id="errorMsg" style="display:none; color: red;">Please Enter Valid Phone
+                                    Number</span>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group ">
-                                    <label for="date_birth" class="font-weight-bold">@lang('Date Of Birth') <sup
-                                            class="text--danger">*</sup></label>
-                                    <input type="text" id="date_birth" name="birth_date"
-                                        value="{{ showDateTime($donor->birth_date, 'd/m/Y') }}" data-language="en"
-                                        placeholder="@lang('DD/MM/YYYY')" class="form-control datepicker-here"
-                                        maxlength="255" required="">
-                                </div>
-                                <div class="form-group ">
-                                    <label class="form-control-label font-weight-bold">@lang('Last Blood Donate')</label>
-                                    <input type="text" name="last_donate" id="last_donate"
-                                        value="{{ showDateTime($donor->last_donate, 'd/m/Y') }}" data-language="en"
-                                        placeholder="@lang('DD/MM/YYYY')" class="form-control datepicker-here"
-                                        autocomplete="off">
-                                </div>
 
-                                <div class="form-group">
-                                    <label for="email" class="font-weight-bold">@lang('Email')</label>
-                                    <input type="email" name="email" id="email" value="{{ __($donor->email) }}"
-                                        placeholder="@lang('Enter Email')" class="form-control" maxlength="60">
-                                </div>
-                                <label for="facebook"
-                                    class="form-control-label font-weight-bold">@lang('Facebook Url')</label>
-                                <div class="input-group mb-3">
-                                    <input type="text" id="facebook" class="form-control"
-                                        value="{{ $donor->facebook }}" placeholder="@lang('Enter Facebook Url')" name="facebook"
-                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text" id="basic-addon2"><i
-                                                class="lab la-facebook-f"></i></span>
+                            <!-- সেকেন্ডারী মোবাইল নং ----------------------------------->
+                            <div class="form-group col-lg-6">
+                                <label for="phone2">@lang('Secondary Phone')</label>
+                                <input type="text" name="phone2" id="phone2" value="{{ old('phone2') }}"
+                                    placeholder="@lang('Enter Phone')" class="form-control" maxlength="11" required="">
+                            </div>
+                            <!-- পাসওয়ার্ড ----------------------------------->
+                            <div class="form-group col-lg-6">
+                                <label for="password">@lang('Password') <sup class="text--danger">*</sup></label>
+                                <input type="password" name="password" id="password" value="{{ old('password') }}"
+                                    placeholder="@lang('Enter Password')" class="form-control" maxlength="60" required="">
+                                <p id="passcheck" style="color: red;">**Please Fill the password</p>
+                            </div>
+
+                            <!-- কনফার্ম পাসওয়ার্ড ----------------------------------->
+                            <div class="form-group col-lg-6">
+                                <label for="password_confirmation">@lang('Confirm Password') <sup
+                                        class="text--danger">*</sup></label>
+                                <input type="password" name="password_confirmation" id="password_confirmation"
+                                    value="{{ old('password_confirmation') }}" placeholder="@lang('Enter Confirm Password')"
+                                    class="form-control" maxlength="60" required="">
+                                <p id="conpasscheck" style="color: red;">**Password didn't match</p>
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <label for="password_confirmation">@lang('About Donor')</label>
+                                <textarea class="form-control" name="about_me" maxlength="200"></textarea>
+                            </div>
+                            <!-- ছবি আপলোড ---------------------------------------->
+                            <div class="col-lg-12">
+                                <div class="avatar-upload">
+                                    <div class="avatar-edit">
+                                        <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
+                                            name="imageUpload" class="imageUpload" required="" />
+                                        <input type="hidden" name="base64image" required="" name="base64image"
+                                            id="base64image">
+                                        <label for="imageUpload"></label>
                                     </div>
-                                </div>
+                                    <div class="avatar-preview container2">
+                                        @php
+                                            if (!empty($image->image) && $image->image != '' && file_exists(public_path('assets/images/donor' . $image->image))) {
+                                                $image = $image->image;
+                                            } else {
+                                                $image = 'default.png';
+                                            }
+                                            $url = url('assets/images/' . $image);
+                                            $imgs = "background-image:url($url)";
 
-                                <div class="form-group ">
-                                    <label class="form-control-label font-weight-bold">@lang('Primary Phone')</label>
-                                    <input class="form-control" type="text" name="phone"
-                                        value="{{ auth()->guard('donor')->user()->phone }}">
-                                </div>
-
-                                <div class="form-group ">
-                                    <label class="form-control-label font-weight-bold">@lang('Secondary Phone')</label>
-                                    <input class="form-control" type="text" name="phone2"
-                                        value="{{ auth()->guard('donor')->user()->phone2 }}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="details" class="font-weight-bold">@lang('About Donor')</label>
-                                    <textarea name="about_me" id="about_me" class="form-control form-control-lg" placeholder="@lang('Enter About Donor')">{{ $donor->about_me }}</textarea>
+                                        @endphp
+                                        <div id="imagePreview" style="{{ $imgs }};">
+                                            <input type="hidden" required="" name="_token"
+                                                value="{{ csrf_token() }}">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn--primary btn-block btn-lg">@lang('Save Changes')</button>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <button type="submit" class="btn btn-primary w-100">@lang('Apply Now')</button>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -197,7 +219,8 @@
     </div>
 @endsection
 @push('breadcrumb-plugins')
-    <a href="{{ route('admin.donor.index') }}" class="btn btn-sm btn--primary box--shadow1 text--small"><i class="fa-solid fa-backward"></i>@lang(' Back')</a>
+    <a href="{{ route('admin.donor.index') }}" class="btn btn-sm btn--primary box--shadow1 text--small"><i
+            class="fa-solid fa-backward"></i>@lang(' Back')</a>
 @endpush
 
 @push('style-lib')
@@ -267,5 +290,101 @@
                 }
             });
         });
+
+        $(document).ready(function() {
+            $('#division-dropdown').on('change', function() {
+                var idDivision = this.value;
+                $("#city-dropdown").html('');
+                $.ajax({
+                    url: "{{ url('api/fetch-cities') }}",
+                    type: "POST",
+                    data: {
+                        division_id: idDivision,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    dataType: 'json',
+                    success: function(result) {
+                        $('#city-dropdown').html(
+                            '<option value="">-- জেলা সিলেক্ট করুন --</option>');
+                        $.each(result.cities, function(key, value) {
+                            $("#city-dropdown").append('<option value="' + value.id +
+                                '">' + value.name + '</option>');
+                        });
+                        $('#location-dropdown').html(
+                            '<option value="">-- Select City --</option>');
+                    }
+                })
+            });
+
+            $('#city-dropdown').on('change', function() {
+                var idCity = this.value;
+                $("#location-dropdown").html('');
+                $.ajax({
+                    url: "{{ url('api/fetch-locations') }}",
+                    type: "POST",
+                    data: {
+                        city_id: idCity,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    dataType: 'json',
+                    success: function(result) {
+                        $('#location-dropdown').html(
+                            '<option value="">-- উপজেলা সিলেক্ট করুন --</option>');
+                        $.each(result.locations, function(key, value) {
+                            $("#location-dropdown").append('<option value="' + value
+                                .id + '">' + value.name + '</option>');
+                        });
+                    }
+                })
+            });
+        });
+
+        // Validate Password
+        $("#passcheck").hide();
+        let passwordError = true;
+        $("#password").keyup(function() {
+            validatePassword();
+        });
+
+        function validatePassword() {
+            let passwordValue = $("#password").val();
+            if (passwordValue.length == "") {
+                $("#passcheck").show();
+                passwordError = false;
+                return false;
+            }
+            if (passwordValue.length < 3 || passwordValue.length > 10) {
+                $("#passcheck").show();
+                $("#passcheck").html(
+                    "**length of your password must be between 3 and 10"
+                );
+                $("#passcheck").css("color", "red");
+                passwordError = false;
+                return false;
+            } else {
+                $("#passcheck").hide();
+            }
+        }
+
+        // Validate Confirm Password
+        $("#conpasscheck").hide();
+        let confirmPasswordError = true;
+        $("#password_confirmation").keyup(function() {
+            validateConfirmPassword();
+        });
+
+        function validateConfirmPassword() {
+            let confirmPasswordValue = $("#password_confirmation").val();
+            let passwordValue = $("#password").val();
+            if (passwordValue != confirmPasswordValue) {
+                $("#conpasscheck").show();
+                $("#conpasscheck").html("**Password didn't Match");
+                $("#conpasscheck").css("color", "red");
+                confirmPasswordError = false;
+                return false;
+            } else {
+                $("#conpasscheck").hide();
+            }
+        }
     </script>
 @endpush

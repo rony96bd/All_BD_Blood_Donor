@@ -331,12 +331,12 @@
                                     alt="@lang('image')">
                             </div>
                             <div class="donor-item__content">
-                                <h5 style="color: #fff; font-weight: 600;" class="donor-item__name">
+                                <h5 style="font-weight: 600;" class="donor-item__name">
                                     {{ __($donor->name) }}
                                 </h5>
                                 <ul class="donor-item__list">
                                     <li class="donor-item__list">
-                                        <i class="las la-tint"></i> @lang('ব্লাড গ্রুপ') :
+                                        <i style="color: red" class="las la-tint"></i> @lang('ব্লাড গ্রুপ') :
                                         <span style="color: red">
                                             {{ __($donor->blood->name) }}
                                             @if ($donor->blood->name == 'A+')
@@ -359,11 +359,11 @@
                                             @endif
                                         </span>
                                     </li>
-                                    <li>
+                                    {{-- <li>
                                         সর্বশেষ রক্ত প্রদান: {{ showDateTime($donor->last_donate, 'd M Y') }}
-                                    </li>
-                                    <li class="text-truncate" style="font-weight: 600">
-                                        <i class="las la-map-marker-alt"></i>
+                                    </li> --}}
+                                    <li class="text-truncate" style="font-weight: 600; margin-bottom: 3px">
+                                        <i style="color: #00B074" class="las la-map-marker-alt"></i>
                                         {{ __($donor->location->name) }}, {{ __($donor->city->name) }},
                                         {{ __($donor->division->name) }}
                                     </li>

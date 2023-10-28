@@ -2556,7 +2556,7 @@ button:focus {
 
 .form--control {
     padding: 0.625rem 1.25rem;
-    border: 1px solid #FB3640;
+    border: 1px solid lightgray;
     width: 100%;
     background-color: #fff;
     border-radius: 3px;
@@ -2570,8 +2570,8 @@ button:focus {
 
 .form--control:focus {
     background-color: #fff;
-    border-color: #FB3640 !important;
-    box-shadow: 0 0 5px rgba(251, 54, 64, 0.35);
+    /* border-color: #000 !important; */
+        box-shadow: 0 0 2px rgba(163, 163, 163, 0.75);
     color: #000;
 }
 
