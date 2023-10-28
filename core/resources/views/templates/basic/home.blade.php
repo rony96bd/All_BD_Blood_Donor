@@ -40,7 +40,7 @@
                         </div>
                         <div class="input-field">
                             <i class="las la-location-arrow"></i>
-                            <select class="select" name="location_id" id="city-dropdown">
+                            <select class="select" name="city_id" id="city-dropdown">
                                 <option value="" disabled="" selected="">@lang('জেলা')</option>
                             </select>
                         </div>
