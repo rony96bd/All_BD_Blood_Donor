@@ -43,27 +43,41 @@
             </form>
         </div>
     </div>
-
+    <style>
+        .section-header h4::after {
+            content: '';
+            height: 2px;
+            width: 90px;
+            background: hsl(0, 100%, 50%);
+            display: block;
+            margin: 0 auto;
+            margin-top: 2px;
+        }
+    </style>
     @if (\Request::route()->getName() != 'donor.search')
     @else
         <section>
-            <div class="container">
-                <nav style="background: white; padding: 3px 0px 0px 8px; border-radius: 8px; font-weight: 600; color: #00B074;">
-                    অনুসন্ধান ফলাফল:
-                    @php
-                    $division = app('request')->input('division_id');
-                    $city = app('request')->input('city_id');
+            <div class="container" style="padding: 0px;">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="section-header text-center">
+                            <h4 style="font-weight: bold">অনুসন্ধান ফলাফল</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <nav
+                        style="background: white; padding: 3px 0px 0px 10px; border-radius: 8px; font-weight: 600; color: #00B074;">
+                        @php
+                            $division = app('request')->input('division_id');
+                            $city = app('request')->input('city_id');
 
-                    $division_name = App\Models\Division::where('id', $division)->first();
-                    $city_name = App\Models\City::where('id', $city)->first();
-
-                    echo $division_name->name;
-                    echo ',';
-                    echo $city_name->name;
-                    @endphp
-                    {{ app('request')->input('division_id') }}
-                </nav>
-            </div>
+                            $division_name = App\Models\Division::where('id', $division)->first();
+                            $city_name = App\Models\City::where('id', $city)->first();
+                        @endphp
+                        {{ $division_name->name }} > {{ $city_name->name }} - ( {{ $don_count }} )
+                    </nav>
+                </div>
         </section>
     @endif
 
@@ -127,7 +141,8 @@
                                                         href="{{ route('donor.details', [slug($donor->name), $donor->id]) }}"
                                                         class="custom-btn">View Details <i
                                                             class="fa fa-angle-double-right"></i></a></span></div>
-                                            <div class="col-5"><i class="las la-eye"></i> {{ __($donor->click) }}</div>
+                                            <div class="col-5" style="text-align: right;"><i class="las la-eye"></i>
+                                                {{ __($donor->click) }}</div>
                                         </div>
                                     </div>
                                 </div>
