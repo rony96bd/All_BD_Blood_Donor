@@ -5147,7 +5147,7 @@ blockquote {
 /* donor search area css end */
 /* search donor section css start */
 .donor-item {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.75);
 }
 
 .donor-item:hover {
@@ -5192,8 +5192,8 @@ blockquote {
 .donor-item__content {
     width: 70%;
     padding: 5px 8px 5px 5px;
-    background-color: #00b074;
-    color: #FFF;
+    /* background-color: #00b074; */
+        /* color: #FFF; */
     border-radius: 0px 5px 5px 0px
 }
 

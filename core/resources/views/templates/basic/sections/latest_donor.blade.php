@@ -31,7 +31,7 @@
                             <img src="{{ getImage('assets/images/donor/' . $donor->image, imagePath()['donor']['size']) }}" alt="@lang('image')">
                         </div>
                         <div class="donor-item__content">
-                            <h5 style="color: #fff; font-weight: 600;" class="donor-item__name">{{ __($donor->name) }}
+                            <h5 style="font-weight: 600;" class="donor-item__name">{{ __($donor->name) }}
                             </h5>
                             <ul class="donor-item__list">
                                 <li class="donor-item__list">
