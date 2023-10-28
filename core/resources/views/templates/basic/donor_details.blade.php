@@ -54,7 +54,27 @@
                                 </li>
                                 <li>
                                     <span class="caption">Blood Group</span>
-                                    <span class="value">{{ __($donor->blood->name) }}</span>
+                                    <span class="value" style="color: red">
+                                        {{ __($donor->blood->name) }}
+                                        @if ($donor->blood->name == 'A+')
+                                            (এ পজেটিভ)
+                                        @elseif ($donor->blood->name == 'A-')
+                                            (এ নেগেটিভ)
+                                        @elseif ($donor->blood->name == 'B+')
+                                            (বি পজেটিভ)
+                                        @elseif ($donor->blood->name == 'B-')
+                                            (বি নেগেটিভ)
+                                        @elseif ($donor->blood->name == 'AB+')
+                                            (এবি পজেটিভ)
+                                        @elseif ($donor->blood->name == 'AB-')
+                                            (এবি নেগেটিভ)
+                                        @elseif ($donor->blood->name == 'O+')
+                                            (ও পজেটিভ)
+                                        @elseif ($donor->blood->name == 'O-')
+                                            (ও নেগেটিভ)
+                                        @else
+                                        @endif
+                                    </span>
                                 </li>
                                 <li>
                                     <span class="caption">Last Donate</span>
@@ -102,8 +122,13 @@
                                 </li>
                             </ul>
                             <span style="padding-left: 20px; font-weight: bold;">Contact Details</span><br>
-                            <span style="padding-left: 20px; color: #00B074;"><a href="{{ route('donor.login') }}">দেখার
-                                    জন্য লগইন করুন</a></span>
+                            @if (auth()->guard('donor')->check())
+                            @else
+                                <span style="padding-left: 20px; color: #00B074;"><a
+                                        href="{{ route('donor.login') }}">দেখার
+                                        জন্য লগইন করুন</a></span>
+                            @endif
+
                             <ul class="caption-list-two"
                                 style="background-color: #FFDADC; margin-left: 10px; margin-right: 10px; margin-bottom: 20px;">
                                 <li>
@@ -207,8 +232,7 @@
                             <div class="container" style="padding: 0 0 0 0;">
                                 <div class="row" style="margin-top: 8px;">
                                     <div class="col-3">
-                                        <p class="mt-2 mb-2 text-danger font-weight-bold"> <i
-                                                class="fa-solid fa-eye"></i>
+                                        <p class="mt-2 mb-2 text-danger font-weight-bold"> <i class="fa-solid fa-eye"></i>
                                             {{ __($donor->click) }}</p>
                                     </div>
                                     <div class="col-9"><span style="float: right">
@@ -285,7 +309,8 @@
                                                 </div>
                                             @endif
 
-                                            @if (auth()->guard('donor')->check() && auth()->guard('donor')->user()->id == $comment->donor_id)
+                                            @if (auth()->guard('donor')->check() &&
+                                                    auth()->guard('donor')->user()->id == $comment->donor_id)
                                                 <div style="position: absolute; top: 8px; right: 16px; font-size: 18px;">
                                                     <button type="button" class="donordeleteComment btn"
                                                         value="{{ $comment->id }}">
@@ -303,7 +328,6 @@
                     </div>
                     {{-- End Comments Section --}}
                 </div>
-
 
                 <div class="col-xl-3 d-xl-block d-none">
                     @php

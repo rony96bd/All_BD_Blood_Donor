@@ -137,6 +137,7 @@
                                     <option value="" selected="" disabled=""></option>
                                     <option value="1">@lang('Male')</option>
                                     <option value="2">@lang('Female')</option>
+                                    <option value="3">@lang('Other')</option>
                                 </select>
                             </div>
                             <!-- বিভাগ ----------------------------------->

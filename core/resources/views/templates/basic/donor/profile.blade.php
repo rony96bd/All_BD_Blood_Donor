@@ -188,6 +188,9 @@
                                                             <option value="2"
                                                                 @if ($donor->gender == 2) selected @endif>
                                                                 @lang('Female')</option>
+                                                            <option value="3"
+                                                                @if ($donor->gender == 3) selected @endif>
+                                                                @lang('Other')</option>
                                                         </select>
                                                     </div>
 
@@ -196,9 +199,7 @@
                                                             <sup class="text--danger">*</sup></label>
                                                         <select name="division" id="division-dropdown" class="form-control"
                                                             required="">
-                                                            <option value="{{ __($donor->division->id) }}">
-                                                                {{ __($donor->division->name) }}
-                                                            </option>
+                                                            <option selected value="{{ __($donor->division->id) }}">{{ __($donor->division->name) }}</option>
                                                             @foreach ($divisions as $data)
                                                                 <option value="{{ $data->id }}">
                                                                     {{ $data->name }}
@@ -211,8 +212,7 @@
                                                             class="font-weight-bold">@lang('City')</label>
                                                         <select name="city" id="city-dropdown" class="form-control"
                                                             required="">
-                                                            <option value="{{ __($donor->city->id) }}">
-                                                                {{ __($donor->city->name) }}</option>
+                                                            <option value="{{ __($donor->city->id) }}">{{ __($donor->city->name) }}</option>
                                                         </select>
                                                     </div>
 
@@ -221,9 +221,7 @@
                                                             class="font-weight-bold">@lang('Location')</label>
                                                         <select name="location" id="location-dropdown" class="form-control"
                                                             required="">
-                                                            <option value="{{ __($donor->location->id) }}">
-                                                                {{ __($donor->location->name) }}
-                                                            </option>
+                                                            <option value="{{ __($donor->location->id) }}">{{ __($donor->location->name) }}</option>
                                                         </select>
                                                     </div>
                                                     <div class="form-group ">
@@ -231,8 +229,7 @@
                                                             class="font-weight-bold">@lang('Blood Group')</label>
                                                         <select name="blood" id="blood" class="form-control"
                                                             required="">
-                                                            <option value="" selected="" disabled="">
-                                                                @lang('Select One')</option>
+                                                            <option value="" selected="" disabled="">@lang('Select One')</option>
                                                             @foreach ($bloods as $blood)
                                                                 <option value="{{ $blood->id }}"
                                                                     @if ($blood->id == $donor->blood_id) selected @endif>
@@ -318,8 +315,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group text-center">
-                                                <button type="submit"
-                                                    class="btn btn-primary">@lang('Save Changes')</button>
+                                                <button type="submit" class="btn btn-primary">@lang('Save Changes')</button>
                                             </div>
                                         </form>
                                     </div>

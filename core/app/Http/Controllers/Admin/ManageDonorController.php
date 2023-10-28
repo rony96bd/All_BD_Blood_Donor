@@ -218,11 +218,10 @@ class ManageDonorController extends Controller
             'location' => 'required|exists:locations,id',
             'religion' => 'required|max:40',
             'blood' => 'required|exists:bloods,id',
-            'last_donate' => 'date_format:d/m/Y',
-            'birth_date' => 'required|date_format:d/m/Y',
+            'birth_date' => 'required',
         ]);
 
-        $donor = Auth::guard('donor')->user();
+        $donor = Donor::findOrFail($id);
         $donor->name = $request->name;
         $donor->gender = $request->gender;
         $donor->division_id = $request->division;
@@ -237,7 +236,7 @@ class ManageDonorController extends Controller
 
         $input = $request->all();
 
-        $oldimage = Auth::guard('donor')->user()->image;
+        $oldimage = $donor->image;
         $path = imagePath()['donor']['path'] . '/';
 
         if ($request->hasFile('imageUpload') && file_exists($path . $oldimage)) {
@@ -280,8 +279,8 @@ class ManageDonorController extends Controller
         $donor->about_me = $request->about_me;
         $donor->password = Hash::make($request->password);
         $donor->save();
-        $notify[] = ['success', 'Your profile has been updated.'];
-        return redirect()->route('donor.profile')->withNotify($notify);
+        $notify[] = ['success', 'Donor has been updated.'];
+        return back()->withNotify($notify);
     }
 
 }
