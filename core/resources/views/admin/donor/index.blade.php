@@ -237,13 +237,12 @@
         class="btn btn-lg btn--primary float-sm-right box--shadow1 text--small mb-2 ml-0 ml-xl-2 ml-lg-0"><i
             class="fa fa-fw fa-paper-plane"></i>@lang('Add Donor')</a>
 
-    <form action="{{ route('admin.donor.search') }}" method="GET"
-        class="form-inline float-sm-right bg--white mb-2 ml-0 ml-xl-2 ml-lg-0">
+    <form action="" method="GET" class="form-inline float-sm-right bg--white mb-2 ml-0 ml-xl-2 ml-lg-0">
         <div class="input-group has_append">
-            <input type="text" id="search" name="search" class="form-control" placeholder="@lang('Blood Donor Name.....')"
+            <input type="text" id="search" name="search" class="form-control" placeholder="@lang('Search Blood Donor...')"
                 value="">
             <div class="input-group-append">
-                <button class="btn btn--primary" type="submit"><i class="fa fa-search"></i></button>
+                <button disabled class="btn btn--primary" ><i class="fa fa-search"></i></button>
             </div>
         </div>
     </form>
