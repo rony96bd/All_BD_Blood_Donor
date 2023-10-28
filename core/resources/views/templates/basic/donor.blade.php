@@ -26,7 +26,7 @@
                 </div>
                 <div class="input-field">
                     <i class="las la-location-arrow"></i>
-                    <select class="select" name="location_id" id="city-dropdown">
+                    <select class="select" name="city_id" id="city-dropdown">
                         <option value="" disabled="" selected="">@lang('জেলা')</option>
                     </select>
                 </div>
@@ -44,7 +44,30 @@
         </div>
     </div>
 
-    <section class="pt-50 pb-50">
+    @if (\Request::route()->getName() != 'donor.search')
+    @else
+        <section>
+            <div class="container">
+                <nav style="background: white; padding: 3px 0px 0px 8px; border-radius: 8px; font-weight: 600; color: #00B074;">
+                    অনুসন্ধান ফলাফল:
+                    @php
+                    $division = app('request')->input('division_id');
+                    $city = app('request')->input('city_id');
+
+                    $division_name = App\Models\Division::where('id', $division)->first();
+                    $city_name = App\Models\City::where('id', $city)->first();
+
+                    echo $division_name->name;
+                    echo ',';
+                    echo $city_name->name;
+                    @endphp
+                    {{ app('request')->input('division_id') }}
+                </nav>
+            </div>
+        </section>
+    @endif
+
+    <section class="pb-50" style="padding-top: 20px">
         <div class="container">
             <div class="row">
                 <div class="col-xl-2 d-xl-block d-none">
