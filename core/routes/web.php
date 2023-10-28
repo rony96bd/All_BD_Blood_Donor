@@ -136,6 +136,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::post('donor/approved/status', 'ManageDonorController@approvedStatus')->name('donor.approved.status');
         Route::post('donor/banned/status', 'ManageDonorController@bannedStatus')->name('donor.banned.status');
         Route::get('donor/search', 'ManageDonorController@search')->name('donor.search');
+        Route::get('donor/search-data', 'ManageDonorController@searchData')->name('donor.search.data');
         Route::get('donor/blood/search', 'ManageDonorController@donorBloodSearch')->name('donor.blood.search');
         Route::post('donor/featured/list/Include', 'ManageDonorController@featuredInclude')->name('donor.featured.include');
         Route::post('donor/featured/list/remove', 'ManageDonorController@featuredNotInclude')->name('donor.featured.remove');
@@ -253,9 +254,8 @@ Route::post('/bloodrequest-comments', 'CommentController@bloodrequestcommentStor
 Route::post('/delete-comment', 'CommentController@destroy')->name('delete.comments');
 Route::post('/donor-delete-comment', 'CommentController@dcdestroy')->name('donor.delete.comments');
 
-
 Route::get('/donor-list', 'SiteController@donor')->name('donor.list');
-Route::get('/donor-list/{slug}/{id}', 'SiteController@donorDetails')->name('donor.details');
+Route::get('/{slug}/{id}', 'SiteController@donorDetails')->name('donor.details');
 Route::get('/donor-list/search', 'SiteController@donorSearch')->name('donor.search');
 Route::post('/donor-list/contact', 'SiteController@contactWithDonor')->name('donor.contact');
 Route::get('/blood/donor/{slug}/{id}', 'SiteController@bloodGroup')->name('blood.group.donor');

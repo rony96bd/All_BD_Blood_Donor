@@ -2,7 +2,7 @@
 @section('panel')
     <div class="row">
         <div class="col-lg-12">
-            <div class="card b-radius--10 ">
+            <div id="load-table-data" class="card b-radius--10 ">
                 <div class="card-body p-0">
                     <div class="table-responsive--sm table-responsive">
                         <table class="table table--light style--two">
@@ -151,7 +151,6 @@
         </div>
     </div>
 
-
     <div class="modal fade" id="cancelBy" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -180,8 +179,6 @@
         </div>
     </div>
 
-
-
     <div class="modal fade" id="includeFeatured" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -207,7 +204,6 @@
             </div>
         </div>
     </div>
-
 
     <div class="modal fade" id="NotincludeFeatured" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -236,8 +232,6 @@
     </div>
 @endsection
 
-
-
 @push('breadcrumb-plugins')
     <a href="{{ route('admin.donor.create') }}"
         class="btn btn-lg btn--primary float-sm-right box--shadow1 text--small mb-2 ml-0 ml-xl-2 ml-lg-0"><i
@@ -246,8 +240,8 @@
     <form action="{{ route('admin.donor.search') }}" method="GET"
         class="form-inline float-sm-right bg--white mb-2 ml-0 ml-xl-2 ml-lg-0">
         <div class="input-group has_append">
-            <input type="text" name="search" class="form-control" placeholder="@lang('Blood Donor Name.....')"
-                value="{{ $search ?? '' }}">
+            <input type="text" id="search" name="search" class="form-control" placeholder="@lang('Blood Donor Name.....')"
+                value="">
             <div class="input-group-append">
                 <button class="btn btn--primary" type="submit"><i class="fa fa-search"></i></button>
             </div>
@@ -273,7 +267,6 @@
 
 @push('script')
     <script>
-        'use strict';
         $('.approved').on('click', function() {
             var modal = $('#approvedby');
             modal.find('input[name=id]').val($(this).data('id'))
@@ -295,6 +288,25 @@
             var modal = $('#NotincludeFeatured');
             modal.find('input[name=id]').val($(this).data('id'))
             modal.modal('show');
+        });
+
+        // Donor Search Ajax
+        $(document).ready(function() {
+            $(document).on('keyup', function(e) {
+                e.preventDefault();
+                let search_string = $('#search').val();
+                $.ajax({
+                    url:"{{ route('admin.donor.search') }}",
+                    method:'GET',
+                    data:{search_string:search_string},
+                    success:function(res){
+                        $('#load-table-data').html(res);
+                        if(res.status=='nothing_found'){
+                            $('#load-table-data').html('<span class="text-danger">'+'Nothing Found'+'</span>');
+                        }
+                    }
+                });
+            });
         });
     </script>
 @endpush

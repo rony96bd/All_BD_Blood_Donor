@@ -20,6 +20,7 @@ class ManageDonorController extends Controller
         $emptyMessage = "No data found";
         $bloods = Blood::where('status', 1)->select('id', 'name')->get();
         $donors = Donor::latest()->with('blood', 'location')->paginate(getPaginate());
+
         return view('admin.donor.index', compact('pageTitle', 'emptyMessage', 'donors', 'bloods'));
     }
 
@@ -73,13 +74,35 @@ class ManageDonorController extends Controller
         return view('admin.donor.index', compact('pageTitle', 'emptyMessage', 'donors', 'bloods', 'bloodId'));
     }
 
+    public function searchData(Request $request)
+    {
+        $pageTitle = "Donor Search";
+        $emptyMessage = "No data found";
+        $search = $request->search;
+        $bloods = Blood::where('status', 1)->select('id', 'name')->get();
+        $donors = Donor::where('name', 'like', "%$search%")->latest()->with('blood', 'division', 'city', 'location')->paginate(getPaginate());
+
+        return view('admin.donor.search-data', compact('pageTitle', 'emptyMessage', 'donors', 'bloods', 'search'))->render();
+    }
+
     public function search(Request $request)
     {
         $pageTitle = "Donor Search";
         $emptyMessage = "No data found";
         $search = $request->search;
         $bloods = Blood::where('status', 1)->select('id', 'name')->get();
-        $donors = Donor::where('name', 'like', "%$search%")->latest()->with('blood', 'location')->paginate(getPaginate());
+        $donors = Donor::where('name', 'like', '%' . $request->search_string . '%')
+        ->orWhere('phone', 'like', '%' . $request->search_string . '%')
+        ->latest()->with('blood', 'division', 'city', 'location')->paginate(getPaginate());
+
+        if ($donors->count() >= 1) {
+            return view('admin.donor.search-data', compact('pageTitle', 'emptyMessage', 'donors', 'bloods'))->render();
+        } else {
+            return response()->json([
+                'status' => 'nothing_found',
+            ]);
+        }
+
         return view('admin.donor.index', compact('pageTitle', 'emptyMessage', 'donors', 'bloods', 'search'));
     }
 
@@ -282,5 +305,4 @@ class ManageDonorController extends Controller
         $notify[] = ['success', 'Donor has been updated.'];
         return back()->withNotify($notify);
     }
-
 }
