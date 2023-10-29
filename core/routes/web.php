@@ -248,6 +248,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         });
     });
 });
+
 Route::post('/comments', 'CommentController@store')->name('comments');
 Route::post('/blog-comments', 'CommentController@blogcommentStore')->name('blog.comments');
 Route::post('/bloodrequest-comments', 'CommentController@bloodrequestcommentStore')->name('bloodrequest.comments');
@@ -255,7 +256,7 @@ Route::post('/delete-comment', 'CommentController@destroy')->name('delete.commen
 Route::post('/donor-delete-comment', 'CommentController@dcdestroy')->name('donor.delete.comments');
 
 Route::get('/donor-list', 'SiteController@donor')->name('donor.list');
-Route::get('/{slug}/{id}', 'SiteController@donorDetails')->name('donor.details');
+Route::get('donor-list/{slug}/{id}', 'SiteController@donorDetails')->name('donor.details');
 Route::get('/donor-list/search', 'SiteController@donorSearch')->name('donor.search');
 Route::post('/donor-list/contact', 'SiteController@contactWithDonor')->name('donor.contact');
 Route::get('/blood/donor/{slug}/{id}', 'SiteController@bloodGroup')->name('blood.group.donor');
@@ -273,6 +274,7 @@ Route::get('blood-request/{id}', 'SiteController@bloodRequestDetails')->name('bl
 
 Route::get('placeholder-image/{size}', 'SiteController@placeholderImage')->name('placeholder.image');
 Route::get('/', 'SiteController@index')->name('home');
+
 Route::get('/apply/donor', 'SiteController@applyDonor')->name('apply.donor');
 
 Route::post('api/fetch-cities', 'SiteController@fetchCity')->name('fetchcity');
