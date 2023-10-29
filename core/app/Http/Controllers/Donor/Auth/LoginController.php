@@ -52,9 +52,9 @@ class LoginController extends Controller
     public function showLoginForm(): View
     {
         $pageTitle = "Donor Login";
-        if (!session()->has('url.intended')) {
-            session(['url.intended' => url()->previous()]);
-        }
+        // if (!session()->has('url.intended')) {
+        //     session(['url.intended' => url()->previous()]);
+        // }
         return view('donor.auth.login', compact('pageTitle'));
     }
 
