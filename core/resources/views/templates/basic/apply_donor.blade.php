@@ -241,6 +241,7 @@
                                 <input type="password" name="password" id="password" value="{{ old('password') }}"
                                     placeholder="@lang('Enter Password')" class="form--control" maxlength="60"
                                     required="">
+                                    <p id="passcheck" style="color: red;">**Please Fill the password</p>
                             </div>
 
                             <!-- কনফার্ম পাসওয়ার্ড ----------------------------------->
@@ -250,6 +251,7 @@
                                 <input type="password" name="password_confirmation" id="password_confirmation"
                                     value="{{ old('password_confirmation') }}" placeholder="@lang('Enter Confirm Password')"
                                     class="form--control" maxlength="60" required="">
+                                    <p id="conpasscheck" style="color: red;">**Password didn't match</p>
                             </div>
                             <!-- ছবি আপলোড ---------------------------------------->
                             <div>
@@ -394,5 +396,52 @@
                 }
             });
         });
+        // Validate Password
+        $("#passcheck").hide();
+        let passwordError = true;
+        $("#password").keyup(function() {
+            validatePassword();
+        });
+
+        function validatePassword() {
+            let passwordValue = $("#password").val();
+            if (passwordValue.length == "") {
+                $("#passcheck").show();
+                passwordError = false;
+                return false;
+            }
+            if (passwordValue.length < 3 || passwordValue.length > 10) {
+                $("#passcheck").show();
+                $("#passcheck").html(
+                    "**length of your password must be between 3 and 10"
+                );
+                $("#passcheck").css("color", "red");
+                passwordError = false;
+                return false;
+            } else {
+                $("#passcheck").hide();
+            }
+        }
+
+        // Validate Confirm Password
+        $("#conpasscheck").hide();
+        let confirmPasswordError = true;
+        $("#password_confirmation").keyup(function() {
+            validateConfirmPassword();
+        });
+
+        function validateConfirmPassword() {
+            let confirmPasswordValue = $("#password_confirmation").val();
+            let passwordValue = $("#password").val();
+            if (passwordValue != confirmPasswordValue) {
+                $("#conpasscheck").show();
+                $("#conpasscheck").html("**Password didn't Match");
+                $("#conpasscheck").css("color", "red");
+                confirmPasswordError = false;
+                return false;
+            } else {
+                $("#conpasscheck").hide();
+            }
+        }
     </script>
 @endpush

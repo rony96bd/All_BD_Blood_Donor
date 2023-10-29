@@ -7,7 +7,7 @@
     <section class="pt-50 pb-50">
         <div class="container">
             <div class="row justify-content-center">
-                <h3 class="mt-5 text-center text-warning">Phone Verification</h3>
+                <h3 class="mt-5 text-center text-danger">Phone Verification</h3>
 
                 <form action="{{ route('verifyotp') }}" method="POST">
                     @csrf

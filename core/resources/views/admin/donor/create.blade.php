@@ -120,7 +120,8 @@
             <div class="card">
                 <div class="card-body">
                     <form method="POST" id="basic-form" enctype="multipart/form-data" action="{{ route('admin.donor.store') }}"
-                        class="contact-form bg-white p-sm-5 p-3 rounded-3 position-relative bnfont" enctype="multipart/form-data">
+                        class="contact-form bg-white p-sm-5 p-3 rounded-3 position-relative bnfont"
+                        enctype="multipart/form-data">
                         @csrf
                         <h5 class="mb-3">@lang('Personal Information')</h5>
                         <div class="row mb-4">

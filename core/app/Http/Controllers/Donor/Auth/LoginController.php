@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Donor\Auth;
 
 use App\Models\GeneralSetting;
 use App\Http\Controllers\Controller;
+use App\Models\Donor;
+use App\Models\Verifytoken;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -38,6 +40,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        $this->activeTemplate = activeTemplate();
         $this->middleware('donor.guest')->except('logout');
     }
 
@@ -72,17 +75,26 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $this->validateLogin($request);
-        $lv = @getLatestVersion();
-        $general = GeneralSetting::first();
-        if (@systemDetails()['version'] < @json_decode($lv)->version) {
-            $general->sys_version = $lv;
+        $get_user = Donor::where('phone', $request->phone)->first();
+        if ($get_user->is_activated == 1) {
+            $this->validateLogin($request);
+            $lv = @getLatestVersion();
+            $general = GeneralSetting::first();
+            if (@systemDetails()['version'] < @json_decode($lv)->version) {
+                $general->sys_version = $lv;
+            } else {
+                $general->sys_version = null;
+            }
+            $general->save();
         } else {
-            $general->sys_version = null;
+            $pageTitle = "Phone Verification";
+            $validToken = verificationCode(6);
+            $get_token = new Verifytoken();
+            $get_token->token = $validToken;
+            $get_token->phone = $request->phone;
+            $get_token->save();
+            return view($this->activeTemplate . 'otp_verification', compact('pageTitle'));
         }
-        $general->save();
-
-        //
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and

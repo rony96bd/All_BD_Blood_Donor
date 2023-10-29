@@ -64,7 +64,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="phone">@lang('Phone')</label>
-                        <input type="text" name="phone" class="form-control b-radius--capsule" id="phone"
+                        <input type="text" name="phone" maxlength="11" class="form-control b-radius--capsule" id="phone"
                             value="{{ old('phone') }}" placeholder="@lang('Phone No: 017xxxxxxxx')">
                         <i class="las la-user input-icon"></i>
                     </div>

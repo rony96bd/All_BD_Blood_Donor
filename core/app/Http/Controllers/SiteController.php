@@ -379,32 +379,33 @@ class SiteController extends Controller
         $get_token = new Verifytoken();
         $get_token->token = $validToken;
         $get_token->phone = $request->phone;
+        $get_token->save();
 
-        // $url = "http://bulksmsbd.net/api/smsapi";
-        // $api_key = env('BULKSMS_API');
-        // $senderid = "8809617612994";
-        // $number = "88" . $request->phone;
+        $url = "http://bulksmsbd.net/api/smsapi";
+        $api_key = env('BULKSMS_API');
+        $senderid = "8809617612994";
+        $number = "88" . $request->phone;
 
-        // $sendmess = "From, https://roktodin.com \nYour Verification Code is: " . $validToken . "";
-        // $message = "$sendmess";
-        // $data = [
-        //     "api_key" => $api_key,
-        //     "senderid" => $senderid,
-        //     "number" => $number,
-        //     "message" => $message
-        // ];
+        $sendmess = "From, https://roktodin.com \nYour Verification Code is: " . $validToken . "";
+        $message = "$sendmess";
+        $data = [
+            "api_key" => $api_key,
+            "senderid" => $senderid,
+            "number" => $number,
+            "message" => $message
+        ];
 
-        // $ch = curl_init();
-        // curl_setopt($ch, CURLOPT_URL, $url);
-        // curl_setopt($ch, CURLOPT_POST, 1);
-        // curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        // $response = curl_exec($ch);
-        // curl_close($ch);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        $response = curl_exec($ch);
+        curl_close($ch);
 
         $notify[] = ['success', 'Your Requested Submitted'];
-        // $notify[] = ['success', $response];
+        $notify[] = ['success', $response];
         return view($this->activeTemplate . 'otp_verification', compact('pageTitle', 'donor'));
     }
 
@@ -415,20 +416,20 @@ class SiteController extends Controller
 
     public function useractivation(Request $request)
     {
-        dd($request->all());
         $get_token = $request->token;
         $get_token = Verifytoken::where('token', $get_token)->first();
 
         if ($get_token) {
             $get_token->is_activated = 1;
             $get_token->save();
-            $donor = Donor::where('phone', $get_token->token)->first();
+            $donor = Donor::where('phone', $get_token->phone)->first();
             $donor->is_activated = 1;
+            $donor->status = 1;
             $donor->save();
             $getting_token = Verifytoken::where('token', $get_token->token)->first();
             $getting_token->delete();
             $notify[] = ['success', 'Your Account has been activated successfully'];
-            return redirect('/')->withNotify($notify);
+            return redirect('/donor')->withNotify($notify);
         } else {
             $notify[] = ['success', 'Your OTP is Invalid'];
             return redirect('/donor/apply')->withNotify($notify);
