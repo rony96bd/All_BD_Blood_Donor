@@ -111,7 +111,7 @@ class ForgotPasswordController extends Controller
         //     'phone' => $user->phone,
         // ]);
         $pageTitle = 'Account Recovery';
-        $notify[] = ['success', 'Password reset email sent successfully'];
+        $notify[] = ['success', 'Password reset message sent successfully'];
         $notify[] = ['success', $response];
         return view('donor.auth.passwords.code_verify', compact('pageTitle', 'notify'));
     }
