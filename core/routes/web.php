@@ -276,11 +276,14 @@ Route::get('placeholder-image/{size}', 'SiteController@placeholderImage')->name(
 Route::get('/', 'SiteController@index')->name('home');
 
 Route::get('/apply/donor', 'SiteController@applyDonor')->name('apply.donor');
+Route::post('/apply/donor/store', 'SiteController@applyDonorstore')->name('apply.donor.store');
+Route::get('/verify-account', 'SiteController@verifyaccount')->name('verifyAccount');
+Route::post('/verifyotp', 'SiteController@useractivation')->name('verifyotp');
+
 
 Route::post('api/fetch-cities', 'SiteController@fetchCity')->name('fetchcity');
 Route::post('api/fetch-locations', 'SiteController@fetchLocation')->name('fetchlocation');
 
-Route::post('/apply/donor/store', 'SiteController@applyDonorstore')->name('apply.donor.store');
 Route::get('/menu/{slug}/{id}', 'SiteController@footerMenu')->name('footer.menu');
 Route::get('/add/{id}', 'SiteController@adclicked')->name('add.clicked');
 Route::post('/subscribe', 'SiteController@subscribe')->name('subscribe');

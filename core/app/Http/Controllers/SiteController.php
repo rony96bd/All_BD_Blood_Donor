@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\SupportAttachment;
 use App\Models\SupportMessage;
 use App\Models\SupportTicket;
+use App\Models\Verifytoken;
 use App\Rules\FileTypeValidate;
 use Carbon\Carbon;
 use Validator;
@@ -285,14 +286,6 @@ class SiteController extends Controller
         imagedestroy($image);
     }
 
-    public function applyDonor()
-    {
-        $pageTitle = "Apply as a Donor";
-        $data['divisions'] = Division::get(["name", "id"]);
-        $bloods = Blood::where('status', 1)->select('id', 'name')->get();
-        return view($this->activeTemplate . 'apply_donor', $data, compact('pageTitle', 'bloods'));
-    }
-
     public function fetchCity(Request $request)
     {
         $data['cities'] = City::where("division_id", $request->division_id)
@@ -309,8 +302,17 @@ class SiteController extends Controller
         return response()->json($data);
     }
 
+    public function applyDonor()
+    {
+        $pageTitle = "Apply as a Donor";
+        $data['divisions'] = Division::get(["name", "id"]);
+        $bloods = Blood::where('status', 1)->select('id', 'name')->get();
+        return view($this->activeTemplate . 'apply_donor', $data, compact('pageTitle', 'bloods'));
+    }
+
     public function applyDonorstore(Request $request)
     {
+        $pageTitle = 'Donor Registration';
         $request->validate([
             'name' => 'required|max:80',
             'gender' => 'required|in:1,2',
@@ -368,21 +370,69 @@ class SiteController extends Controller
             $donor->image = $filename;
         }
 
-        // if ($request->hasFile('image')) {
-        //     try {
-        //         $filename = uploadImage($request->image, $path, $size);
-        //     } catch (\Exception $exp) {
-        //         $notify[] = ['error', 'Image could not be uploaded.'];
-        //         return back()->withNotify($notify);
-        //     }
-        //     $donor->image = $filename;
-        // }
         $donor->phone = $request->phone;
         $donor->phone2 = $request->phone2;
         $donor->password = Hash::make($request->password);
         $donor->save();
+
+        $validToken = verificationCode(6);
+        $get_token = new Verifytoken();
+        $get_token->token = $validToken;
+        $get_token->phone = $request->phone;
+
+        // $url = "http://bulksmsbd.net/api/smsapi";
+        // $api_key = env('BULKSMS_API');
+        // $senderid = "8809617612994";
+        // $number = "88" . $request->phone;
+
+        // $sendmess = "From, https://roktodin.com \nYour Verification Code is: " . $validToken . "";
+        // $message = "$sendmess";
+        // $data = [
+        //     "api_key" => $api_key,
+        //     "senderid" => $senderid,
+        //     "number" => $number,
+        //     "message" => $message
+        // ];
+
+        // $ch = curl_init();
+        // curl_setopt($ch, CURLOPT_URL, $url);
+        // curl_setopt($ch, CURLOPT_POST, 1);
+        // curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        // $response = curl_exec($ch);
+        // curl_close($ch);
+
         $notify[] = ['success', 'Your Requested Submitted'];
-        return back()->withNotify($notify);
+        // $notify[] = ['success', $response];
+        return view($this->activeTemplate . 'otp_verification', compact('pageTitle', 'donor'));
+    }
+
+    public function verifyaccount()
+    {
+        return view('otp_verification');
+    }
+
+    public function useractivation(Request $request)
+    {
+        dd($request->all());
+        $get_token = $request->token;
+        $get_token = Verifytoken::where('token', $get_token)->first();
+
+        if ($get_token) {
+            $get_token->is_activated = 1;
+            $get_token->save();
+            $donor = Donor::where('phone', $get_token->token)->first();
+            $donor->is_activated = 1;
+            $donor->save();
+            $getting_token = Verifytoken::where('token', $get_token->token)->first();
+            $getting_token->delete();
+            $notify[] = ['success', 'Your Account has been activated successfully'];
+            return redirect('/')->withNotify($notify);
+        } else {
+            $notify[] = ['success', 'Your OTP is Invalid'];
+            return redirect('/donor/apply')->withNotify($notify);
+        }
     }
 
     public function adclicked($id)
