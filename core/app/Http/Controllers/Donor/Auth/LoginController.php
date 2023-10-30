@@ -76,7 +76,25 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $get_user = Donor::where('phone', $request->phone)->first();
-        if ($get_user->is_activated == 1) {
+
+        if ($get_user) {
+            $credentials = [
+                'phone' => $request->phone,
+                'password' => $request->password,
+            ];
+
+
+            if ($get_user->is_activated == 1) {
+                if ($this->attemptLogin($request)) {
+                } else {
+                    $notify[] = ['warning', 'Phone No. and password not match! try forgot password'];
+                    return redirect()->back()->withNotify($notify);
+                }
+            } else {
+                $notify[] = ['error', 'Donar Not Found! Please Create an Account!'];
+                return redirect()->back()->withNotify($notify);
+            }
+
             $this->validateLogin($request);
             $lv = @getLatestVersion();
             $general = GeneralSetting::first();
@@ -87,14 +105,47 @@ class LoginController extends Controller
             }
             $general->save();
         } else {
+
+            dd('passhere');
+
             $pageTitle = "Phone Verification";
             $validToken = verificationCode(6);
             $get_token = new Verifytoken();
             $get_token->token = $validToken;
             $get_token->phone = $request->phone;
             $get_token->save();
+
+            // Send SMS to Donor
+            // $url = "http://bulksmsbd.net/api/smsapi";
+            // $api_key = env('BULKSMS_API');
+            // $senderid = "8809617612994";
+            // $number = "88" . $request->phone;
+
+            // $sendmess = "From, https://roktodin.com \nYour Verification Code is: " . $validToken . "";
+            // $message = "$sendmess";
+            // $data = [
+            //     "api_key" => $api_key,
+            //     "senderid" => $senderid,
+            //     "number" => $number,
+            //     "message" => $message
+            // ];
+
+            // $ch = curl_init();
+            // curl_setopt($ch, CURLOPT_URL, $url);
+            // curl_setopt($ch, CURLOPT_POST, 1);
+            // curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+            // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            // $response = curl_exec($ch);
+            // curl_close($ch);
+
+            $notify[] = ['success', 'Your Requested Submitted'];
+            // $notify[] = ['success', $response];
             return view($this->activeTemplate . 'otp_verification', compact('pageTitle'));
         }
+
+                // return redirect()->route('donor.dashboard');
+
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
@@ -134,6 +185,7 @@ class LoginController extends Controller
     }
 
     protected function credentials(Request $request)
+
     {
         return array_merge($request->only($this->phone(), 'password'));
     }

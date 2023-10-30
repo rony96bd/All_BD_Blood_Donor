@@ -431,8 +431,10 @@ class SiteController extends Controller
             $notify[] = ['success', 'Your Account has been activated successfully'];
             return redirect('/donor')->withNotify($notify);
         } else {
+            $this->guard('donor')->logout();
+            $request->session()->invalidate();
             $notify[] = ['success', 'Your OTP is Invalid'];
-            return redirect('/donor/apply')->withNotify($notify);
+            return redirect()->back()->withNotify($notify);
         }
     }
 

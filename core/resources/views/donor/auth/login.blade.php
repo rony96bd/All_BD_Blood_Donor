@@ -5,14 +5,14 @@
 @endphp
 @extends('donor.layouts.master')
 @section('content')
-    <div class="flash-message">
+    {{-- <div class="flash-message">
         @foreach (['danger', 'warning', 'success', 'info'] as $msg)
             @if (Session::has('alert-' . $msg))
                 <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close"
                         data-dismiss="alert" aria-label="close">&times;</a></p>
             @endif
         @endforeach
-    </div>
+    </div> --}}
 
     <div class="container2">
         <nav id="navbar_top" class="navbar navbar-expand-login navbar-light bg-light">
