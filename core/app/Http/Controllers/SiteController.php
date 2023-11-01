@@ -422,7 +422,8 @@ class SiteController extends Controller
 
     public function verifyaccount()
     {
-        return view('otp_verification');
+        $pageTitle = 'otp_verification';
+        return view($this->activeTemplate . 'otp_verification', compact('pageTitle'));
     }
 
     public function useractivation(Request $request)

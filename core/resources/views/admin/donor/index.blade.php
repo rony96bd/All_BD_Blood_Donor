@@ -54,7 +54,7 @@
                                         <td data-label="@lang('Referer info')">
                                             <span>Refer ID: {{ __($donor->referer_id) }}</span><br>
                                             <span>Refer By:
-                                                @if ($donor->referer_by == 0)
+                                                @if ($donor->referer_by == null)
                                                     {{ '' }}
                                                 @else
                                                     {{ $donor->referer_by }}
@@ -64,7 +64,11 @@
                                                 @php
                                                     $total_refer_donor = App\Models\Donor::where('referer_by', $donor->referer_id)->count();
                                                 @endphp
-                                                {{ __($total_refer_donor) }}
+                                                @if ($donor->referer_id)
+                                                    {{ __($total_refer_donor) }}
+                                                @else
+                                                @endif
+
                                             </span><br>
                                         </td>
 
