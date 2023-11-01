@@ -315,7 +315,10 @@ class SiteController extends Controller
 
     public function applyDonorstore(Request $request)
     {
-        $pageTitle = 'Donor Registration';
+        $numberExists = Donor::where('phone', $request->phone)->orWhere('phone2', $request->phone)->first();
+
+        if ($numberExists === null) {
+            $pageTitle = 'Donor Registration';
         $request->validate([
             'name' => 'required|max:80',
             'gender' => 'required|in:1,2',
@@ -410,6 +413,11 @@ class SiteController extends Controller
         $notify[] = ['success', 'Your Requested Submitted'];
         $notify[] = ['success', $response];
         return view($this->activeTemplate . 'otp_verification', compact('pageTitle', 'donor'));
+        } else {
+            $notify[] = ['error', 'Duplicate Donor Found'];
+            return back()->withNotify($notify);
+        }
+
     }
 
     public function verifyaccount()
