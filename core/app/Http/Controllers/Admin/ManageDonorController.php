@@ -51,6 +51,15 @@ class ManageDonorController extends Controller
         return view('admin.donor.index', compact('pageTitle', 'emptyMessage', 'donors', 'bloods'));
     }
 
+    public function referer()
+    {
+        $pageTitle = "Banned Donor List";
+        $emptyMessage = "No data found";
+        $bloods = Blood::where('status', 1)->select('id', 'name')->get();
+        $donors = Donor::whereNotNull('referer_id')->latest()->with('blood', 'location')->paginate(getPaginate());
+        return view('admin.donor.index', compact('pageTitle', 'emptyMessage', 'donors', 'bloods'));
+    }
+
     public function create()
     {
         $pageTitle = "Donor Create";
@@ -93,6 +102,7 @@ class ManageDonorController extends Controller
         $bloods = Blood::where('status', 1)->select('id', 'name')->get();
         $donors = Donor::where('name', 'like', '%' . $request->search_string . '%')
         ->orWhere('phone', 'like', '%' . $request->search_string . '%')
+            ->orWhere('referer_by', 'like', '%' . $request->search_string . '%')
         ->latest()->with('blood', 'division', 'city', 'location')->paginate(getPaginate());
 
         if ($donors->count() >= 1) {
@@ -300,6 +310,7 @@ class ManageDonorController extends Controller
         $donor->phone = $request->phone;
         $donor->phone2 = $request->phone2;
         $donor->about_me = $request->about_me;
+        $donor->referer_id = $request->referer_id;
         $donor->password = Hash::make($request->password);
         $donor->save();
         $notify[] = ['success', 'Donor has been updated.'];

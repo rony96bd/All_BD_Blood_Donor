@@ -5,6 +5,7 @@
         ->with('blood', 'city', 'division', 'location')
         ->limit(9)
         ->get();
+        $emptyMessage = 'No Donor Found!';
 @endphp
 
 <section class="pt-20 pb-20 position-relative z-index-2 overflow-hidden">

@@ -12,7 +12,6 @@
                 <div class="card-body">
                     <h5 class="card-title mb-25 border-bottom pb-2">{{ __($donor->name) }}'s @lang('Profile Information')</h5>
                     UserName: {{ __($donor->phone) }}<br />
-
                     <form action="{{ route('admin.donor.update', $donor->id) }}" id="basic-form" method="POST"
                         enctype="multipart/form-data" autocomplete="off">
                         @csrf
@@ -51,8 +50,7 @@
                             <div class="col-md-6">
                                 <div class="form-group ">
                                     <label class="form-control-label font-weight-bold">@lang('Name')</label>
-                                    <input class="form-control" type="text" name="name"
-                                        value="{{ $donor->name }}">
+                                    <input class="form-control" type="text" name="name" value="{{ $donor->name }}">
                                 </div>
 
                                 <div class="form-group">
@@ -119,6 +117,13 @@
                                         <option value="Christianity">@lang('Christianity')</option>
                                     </select>
                                 </div>
+                                <hr style="margin-top: -5px; margin-bottom: 11px;">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-append">
+                                        <span style="border-radius: 5px 0px 0px 5px;" class="input-group-text text--green font-weight-bold" id="basic-addon2">Refer ID</span>
+                                    </div>
+                                    <input type="text" id="referer_id" class="form-control" value="{{ __($donor->referer_id) }}" placeholder="@lang('Enter Referel ID')" name="referer_id" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group ">
@@ -126,15 +131,14 @@
                                             class="text--danger">*</sup></label>
                                     <input type="date" id="date_birth" name="birth_date"
                                         value="{{ \Carbon\Carbon::parse($donor->birth_date)->format('Y-m-d') }}"
-                                        placeholder="@lang('DD-MM-YYYY')" class="form-control"
-                                        maxlength="255" required="">
+                                        placeholder="@lang('DD-MM-YYYY')" class="form-control" maxlength="255"
+                                        required="">
                                 </div>
                                 <div class="form-group ">
                                     <label class="form-control-label font-weight-bold">@lang('Last Blood Donate')</label>
                                     <input type="date" name="last_donate" id="last_donate"
                                         value="{{ \Carbon\Carbon::parse($donor->last_date)->format('Y-m-d') }}"
-                                        placeholder="@lang('DD-MM-YYYY')" class="form-control"
-                                        autocomplete="off">
+                                        placeholder="@lang('DD-MM-YYYY')" class="form-control" autocomplete="off">
                                 </div>
 
                                 <div class="form-group">
@@ -142,8 +146,7 @@
                                     <input type="email" name="email" id="email" value="{{ __($donor->email) }}"
                                         placeholder="@lang('Enter Email')" class="form-control" maxlength="60">
                                 </div>
-                                <label for="facebook"
-                                    class="form-control-label font-weight-bold">@lang('Facebook Url')</label>
+                                <label for="facebook" class="form-control-label font-weight-bold">@lang('Facebook Url')</label>
                                 <div class="input-group mb-3">
                                     <input type="text" id="facebook" class="form-control"
                                         value="{{ $donor->facebook }}" placeholder="@lang('Enter Facebook Url')" name="facebook"

@@ -50,12 +50,19 @@
                                         alt="Donor Image">
                                     <span class="donorname"> {{ auth()->guard('donor')->user()->name }} </span>
                                 </button>
-                                <ul class="dropdown-menu" style="width: 190px; margin-left: -70px;"
+                                <ul class="dropdown-menu" style="width: 210px; margin-left: -70px;"
                                     aria-labelledby="dropdownMenuButton1">
                                     <li style="border-bottom:lightgray solid 1px" class="sidebar-menu-item">
                                         <a href="{{ route('donor.dashboard') }}" class="nav-link ">
                                             <i class="fa-solid fa-gauge"></i>
                                             <span class="menu-title">@lang('My Profile')</span>
+                                        </a>
+                                    </li>
+                                    <li style="border-bottom:lightgray solid 1px"
+                                        class="sidebar-menu-item {{ menuActive('donor.blood-request.create') }}">
+                                        <a href="{{ route('donor.blood-request.create') }}" class="nav-link ">
+                                            <i class="fa-solid fa-plus"></i>
+                                            <span class="menu-title">@lang('New Blood Request')</span>
                                         </a>
                                     </li>
                                     <li style="border-bottom:lightgray solid 1px" class="sidebar-menu-item">
@@ -64,6 +71,15 @@
                                             <span class="menu-title">@lang('Blood Request')</span>
                                         </a>
                                     </li>
+                                    @if (auth()->guard('donor')->user()->referer_id)
+                                        <li style="border-bottom:lightgray solid 1px" class="sidebar-menu-item">
+                                            <a href="{{ route('donor.referer.index') }}" class="nav-link ">
+                                                <i class="fa-solid fa-share"></i>
+                                                <span class="menu-title">@lang('Refer Donor')</span>
+                                            </a>
+                                        </li>
+                                    @else
+                                    @endif
                                     <li style="border-bottom:lightgray solid 1px" class="sidebar-menu-item">
                                         <a href="{{ route('donor.profile') }}" class="nav-link ">
                                             <i class="fa-solid fa-pen-to-square"></i>

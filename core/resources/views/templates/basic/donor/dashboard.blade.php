@@ -164,12 +164,13 @@
                                                 </div>
                                             </div>
                                             <hr>
+                                            <hr>
                                             <div class="row">
                                                 <div class="col-sm-3">
-                                                    <p class="mb-0 fw-bold">Profession</p>
+                                                    <p class="mb-0 fw-bold">Division</p>
                                                 </div>
                                                 <div class="col-sm-9">
-                                                    <p class="text-muted mb-0">{{ __($donor->profession) }}</p>
+                                                    <p class="text-muted mb-0">{{ __($donor->division->name) }}</p>
                                                 </div>
                                             </div>
                                             <hr>
@@ -188,15 +189,6 @@
                                                 </div>
                                                 <div class="col-sm-9">
                                                     <p class="text-muted mb-0">{{ __($donor->location->name) }}</p>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <p class="mb-0 fw-bold">Address</p>
-                                                </div>
-                                                <div class="col-sm-9">
-                                                    <p class="text-muted mb-0">{{ __($donor->address) }}</p>
                                                 </div>
                                             </div>
                                             <hr>

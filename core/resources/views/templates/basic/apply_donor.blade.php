@@ -122,13 +122,13 @@
                         <h5 class="mb-3">@lang('Personal Information')</h5>
                         <div class="row mb-4">
                             <!-- নাম ----------------------------------->
-                            <div class="form-group col-lg-6">
+                            <div class="form-group col-lg-4">
                                 <label for="name">@lang('Name') <sup class="text--danger">*</sup></label>
                                 <input type="text" name="name" id="name" value="{{ old('name') }}"
                                     placeholder="@lang('Full name')" class="form--control" maxlength="80" required="">
                             </div>
                             <!-- লিঙ্গ ----------------------------------->
-                            <div class="form-group col-lg-6">
+                            <div class="form-group col-lg-4">
                                 <label for="gender">@lang('Gender') <sup class="text--danger">*</sup></label>
                                 <select name="gender" id="gender" class="select" required="" class="form--control">
                                     <option value="" selected="" disabled=""></option>
@@ -136,6 +136,20 @@
                                     <option value="2">@lang('Female')</option>
                                     <option value="3">@lang('Other')</option>
                                 </select>
+                            </div>
+                            <!-- রেফারার ----------------------------------->
+
+                            <div class="form-group col-lg-4">
+                                <label for="referer">@lang('RefererID')</label>
+                                @if (app('request')->input('ref'))
+                                    <input type="referer" name="referer" id="referer" readonly
+                                        value="{{ app('request')->input('ref') }}" placeholder="@lang('Enter Referer ID')"
+                                        class="form--control" maxlength="80" style="background-color: gainsboro;">
+                                @else
+                                    <input type="referer" name="referer" id="referer"
+                                        value="{{ app('request')->input('ref') }}" placeholder="@lang('Enter Referer ID')"
+                                        class="form--control" maxlength="80">
+                                @endif
                             </div>
                             <!-- বিভাগ ----------------------------------->
                             <div class="form-group col-lg-4">
@@ -241,7 +255,7 @@
                                 <input type="password" name="password" id="password" value="{{ old('password') }}"
                                     placeholder="@lang('Enter Password')" class="form--control" maxlength="60"
                                     required="">
-                                    <p id="passcheck" style="color: red;">**Please Fill the password</p>
+                                <p id="passcheck" style="color: red;">**Please Fill the password</p>
                             </div>
 
                             <!-- কনফার্ম পাসওয়ার্ড ----------------------------------->
@@ -251,7 +265,7 @@
                                 <input type="password" name="password_confirmation" id="password_confirmation"
                                     value="{{ old('password_confirmation') }}" placeholder="@lang('Enter Confirm Password')"
                                     class="form--control" maxlength="60" required="">
-                                    <p id="conpasscheck" style="color: red;">**Password didn't match</p>
+                                <p id="conpasscheck" style="color: red;">**Password didn't match</p>
                             </div>
                             <!-- ছবি আপলোড ---------------------------------------->
                             <div>

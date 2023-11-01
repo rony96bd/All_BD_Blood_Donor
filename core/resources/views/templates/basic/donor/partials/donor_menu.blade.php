@@ -27,6 +27,18 @@
                             <span class="menu-title">@lang('New Blood Request')</span>
                         </a>
                     </li>
+                    @if (auth()->guard('donor')->user()->referer_id)
+                    <li style="border-bottom:lightgray solid 1px"
+                        class="sidebar-menu-item">
+                        <a href="{{ route('donor.referer.index') }}" class="nav-link ">
+                            <i class="fa-solid fa-share"></i>
+                            <span class="menu-title">@lang('Refer Donor')</span>
+                        </a>
+                    </li>
+                    @else
+
+                    @endif
+
                     <li style="border-bottom:lightgray solid 1px"
                         class="sidebar-menu-item {{ menuActive('donor.profile') }}">
                         <a href="{{ Route('donor.profile') }}" class="nav-link ">

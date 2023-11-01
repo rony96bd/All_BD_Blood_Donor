@@ -13,7 +13,7 @@
                                     <th>@lang('Blood Group - Location')</th>
                                     <th>@lang('Religion - Address')</th>
                                     <th>@lang('Gender - Age')</th>
-                                    <th>@lang('Featured Donor')</th>
+                                    <th>@lang('Refer ID - Refer By - Total Refer')</th>
                                     <th>@lang('Status')</th>
                                     <th>@lang('Last Update')</th>
                                     <th>@lang('Action')</th>
@@ -51,23 +51,21 @@
                                                 @lang('Years')</span>
                                         </td>
 
-                                        <td data-label="@lang('Featured Donor')">
-                                            @if ($donor->featured == 1)
-                                                <span class="badge badge--success">@lang('Included')</span>
-                                                <a href="javascript:void(0)" class="icon-btn btn--info ml-2 notInclude"
-                                                    data-toggle="tooltip" title=""
-                                                    data-original-title="@lang('Not Include')" data-id="{{ $donor->id }}">
-                                                    <i class="las la-arrow-alt-circle-left"></i>
-                                                </a>
-                                            @else
-                                                <span class="badge badge--warning">@lang('Not included')</span>
-                                                <a href="javascript:void(0)"
-                                                    class="icon-btn btn--success ml-2 include text-white"
-                                                    data-toggle="tooltip" title=""
-                                                    data-original-title="@lang('Include')" data-id="{{ $donor->id }}">
-                                                    <i class="las la-arrow-alt-circle-right"></i>
-                                                </a>
-                                            @endif
+                                        <td data-label="@lang('Referer info')">
+                                            <span>Refer ID: {{ __($donor->referer_id) }}</span><br>
+                                            <span>Refer By:
+                                                @if ($donor->referer_by == 0)
+                                                    {{ '' }}
+                                                @else
+                                                    {{ $donor->referer_by }}
+                                                @endif
+                                            </span><br>
+                                            <span>Total Refer:
+                                                @php
+                                                    $total_refer_donor = App\Models\Donor::where('referer_by', $donor->referer_id)->count();
+                                                @endphp
+                                                {{ __($total_refer_donor) }}
+                                            </span><br>
                                         </td>
 
                                         <td data-label="@lang('Status')">
@@ -242,7 +240,7 @@
             <input type="text" id="search" name="search" class="form-control" placeholder="@lang('Search Blood Donor...')"
                 value="">
             <div class="input-group-append">
-                <button disabled class="btn btn--primary" ><i class="fa fa-search"></i></button>
+                <button disabled class="btn btn--primary"><i class="fa fa-search"></i></button>
             </div>
         </div>
     </form>
@@ -295,13 +293,16 @@
                 e.preventDefault();
                 let search_string = $('#search').val();
                 $.ajax({
-                    url:"{{ route('admin.donor.search') }}",
-                    method:'GET',
-                    data:{search_string:search_string},
-                    success:function(res){
+                    url: "{{ route('admin.donor.search') }}",
+                    method: 'GET',
+                    data: {
+                        search_string: search_string
+                    },
+                    success: function(res) {
                         $('#load-table-data').html(res);
-                        if(res.status=='nothing_found'){
-                            $('#load-table-data').html('<span class="text-danger">'+'Nothing Found'+'</span>');
+                        if (res.status == 'nothing_found') {
+                            $('#load-table-data').html('<span class="text-danger">' +
+                                'Nothing Found' + '</span>');
                         }
                     }
                 });
