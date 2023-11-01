@@ -26,6 +26,9 @@ use Illuminate\Http\Request;
 use Exception;
 use Twilio\Rest\Client;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 
 
@@ -431,8 +434,6 @@ class SiteController extends Controller
             $notify[] = ['success', 'Your Account has been activated successfully'];
             return redirect('/donor')->withNotify($notify);
         } else {
-            $this->guard('donor')->logout();
-            $request->session()->invalidate();
             $notify[] = ['success', 'Your OTP is Invalid'];
             return redirect()->back()->withNotify($notify);
         }
