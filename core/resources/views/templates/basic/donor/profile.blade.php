@@ -257,19 +257,19 @@
                                                         <label for="date_birth"
                                                             class="font-weight-bold">@lang('Date Of Birth') <sup
                                                                 class="text--danger">*</sup></label>
-                                                        <input type="text" id="date_birth" name="birth_date"
-                                                            value="{{ showDateTime($donor->birth_date, 'd/m/Y') }}"
-                                                            data-language="en" placeholder="@lang('DD/MM/YYYY')"
-                                                            class="form-control datepicker-here" maxlength="255"
+                                                        <input type="date" id="date_birth" name="birth_date"
+                                                            value="{{ \Carbon\Carbon::parse($donor->birth_date)->format('Y-m-d') }}"
+                                                            data-language="en" placeholder=""
+                                                            class="form-control" maxlength="255"
                                                             required="">
                                                     </div>
                                                     <div class="form-group ">
                                                         <label
                                                             class="form-control-label font-weight-bold">@lang('Last Blood Donate')</label>
-                                                        <input type="text" name="last_donate" id="last_donate"
-                                                            value="{{ showDateTime($donor->last_donate, 'd/m/Y') }}"
-                                                            data-language="en" placeholder="@lang('DD/MM/YYYY')"
-                                                            class="form-control datepicker-here" autocomplete="off">
+                                                        <input type="date" name="last_donate" id="last_donate"
+                                                            value="{{ \Carbon\Carbon::parse($donor->last_date)->format('Y-m-d') }}"
+                                                            data-language="en" placeholder=""
+                                                            class="form-control " autocomplete="off">
                                                     </div>
 
                                                     <div class="form-group">
@@ -298,7 +298,7 @@
                                                         <label
                                                             class="form-control-label font-weight-bold">@lang('Primary Phone')</label>
                                                         <input class="form-control" type="text" name="phone"
-                                                            value="{{ auth()->guard('donor')->user()->phone }}">
+                                                            value="{{ auth()->guard('donor')->user()->phone }}" readonly>
                                                     </div>
 
                                                     <div class="form-group ">

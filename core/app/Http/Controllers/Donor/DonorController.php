@@ -63,8 +63,7 @@ class DonorController extends Controller
             'location' => 'required|exists:locations,id',
             'religion' => 'required|max:40',
             'blood' => 'required|exists:bloods,id',
-            'last_donate' => 'date_format:d/m/Y',
-            'birth_date' => 'required|date_format:d/m/Y',
+            'birth_date' => 'required',
         ]);
 
         $donor = Auth::guard('donor')->user();
@@ -120,7 +119,7 @@ class DonorController extends Controller
             $donor->image = $oldimage;
         }
 
-        $donor->phone = $request->phone;
+        // $donor->phone = $request->phone;
         $donor->phone2 = $request->phone2;
         $donor->about_me = $request->about_me;
         $donor->password = Hash::make($request->password);
