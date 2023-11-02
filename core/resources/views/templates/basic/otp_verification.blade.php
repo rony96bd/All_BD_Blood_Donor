@@ -9,8 +9,10 @@
             <div class="row">
                 <div class="col d-md-block text-center d-none"></div>
                 <div class="col text-center">
-                    <div class="row justify-content-center" style="background: white; border-radius: 10px; padding-bottom: 20px; margin: 0;">
-                        <h6 class="mt-3 text-center text-danger">OTP has been Send to {{__($donor->phone)}}. Please verify your phone number.</h6>
+                    <div class="row justify-content-center bnfont" style="background: white; border-radius: 10px; padding-bottom: 20px; margin: 0;">
+                        <h6 class="mt-3 text-center" style="color: #00B074">
+                            {{-- {{__($donor->phone)}} --}}
+                            এই নম্বরে OTP পাঠানো হয়েছে। নিচে OTP কোডটি প্রবেশ করান।</h6>
 
                         <form action="{{ route('verifyotp') }}" method="POST">
                             @csrf

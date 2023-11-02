@@ -105,10 +105,6 @@
                                     <span class="value">{{ __($donor->religion) }}</span>
                                 </li>
                                 <li>
-                                    <span class="caption">Profession</span>
-                                    <span class="value">{{ __($donor->profession) }}</span>
-                                </li>
-                                <li>
                                     <span class="caption">Division</span>
                                     <span class="value">{{ __($donor->division->name) }}</span>
                                 </li>

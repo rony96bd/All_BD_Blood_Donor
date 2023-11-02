@@ -21,28 +21,49 @@
         }
 
         .avatar-upload .avatar-edit {
-            position: absolute;
+            position: relative;
             right: 12px;
             z-index: 1;
             top: 10px;
+            margin-bottom: -15px;
         }
 
-        .avatar-upload .avatar-edit input {
-            display: none;
-        }
+        /* .avatar-upload .avatar-edit input {
+                    display: none;
+                } */
 
-        .avatar-upload .avatar-edit input+label {
-            display: inline-block;
-            width: 34px;
-            height: 34px;
-            margin-bottom: 0;
-            border-radius: 100%;
-            background: #FFFFFF;
-            border: 1px solid transparent;
-            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-            cursor: pointer;
-            font-weight: normal;
-            transition: all 0.2s ease-in-out;
+        /* .avatar-upload .avatar-edit input+label {
+                    display: inline-block;
+                    width: 34px;
+                    height: 34px;
+                    margin-bottom: 0;
+                    border-radius: 100%;
+                    background: #FFFFFF;
+                    border: 1px solid transparent;
+                    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+                    cursor: pointer;
+                    font-weight: normal;
+                    transition: all 0.2s ease-in-out;
+                } */
+        .custom-file-button {
+            input[type="file"] {
+                margin-left: -2px !important;
+
+                &::-webkit-file-upload-button {
+                    display: none;
+                }
+
+                &::file-selector-button {
+                    display: none;
+                }
+            }
+
+            &:hover {
+                label {
+                    background-color: #dde0e3;
+                    cursor: pointer;
+                }
+            }
         }
 
         .avatar-upload .avatar-edit input+label:hover {
@@ -50,17 +71,17 @@
             border-color: #d6d6d6;
         }
 
-        .avatar-upload .avatar-edit input+label:after {
-            content: "\f040";
-            font-family: 'FontAwesome';
-            color: #757575;
-            position: absolute;
-            top: 10px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            margin: auto;
-        }
+        /* .avatar-upload .avatar-edit input+label:after {
+                    content: "\f040";
+                    font-family: 'FontAwesome';
+                    color: #757575;
+                    position: absolute;
+                    top: 10px;
+                    left: 0;
+                    right: 0;
+                    text-align: center;
+                    margin: auto;
+                } */
 
         .avatar-upload .avatar-preview {
             width: 192px;
@@ -131,7 +152,8 @@
                             <div class="form-group col-lg-4">
                                 <label for="gender">@lang('Gender') <sup class="text--danger">*</sup></label>
                                 <select name="gender" id="gender" class="select" required="" class="form--control">
-                                    <option value="" selected="" disabled=""></option>
+                                    <option value="{{ old('gender') }}" selected="" disabled="">{{ old('gender') }}
+                                    </option>
                                     <option value="1">@lang('Male')</option>
                                     <option value="2">@lang('Female')</option>
                                     <option value="3">@lang('Other')</option>
@@ -140,7 +162,7 @@
                             <!-- রেফারার ----------------------------------->
 
                             <div class="form-group col-lg-4">
-                                <label for="referer">@lang('RefererID')</label>
+                                <label for="referer">@lang('RefererID') <sup class="text--warning">(Optional)</sup></label>
                                 @if (app('request')->input('ref'))
                                     <input type="referer" name="referer" id="referer" readonly
                                         value="{{ app('request')->input('ref') }}" placeholder="@lang('Enter Referer ID')"
@@ -195,7 +217,8 @@
                             <div class="form-group col-lg-4">
                                 <label for="blood_id">@lang('Blood Group') <sup class="text--danger">*</sup></label>
                                 <select name="blood" id="blood_id" class="select" required="">
-                                    <option value="" selected="" disabled="">@lang('Select One')</option>
+                                    <option value="{{ old('blood') }}" selected="" disabled="">
+                                        {{ old('blood') }}</option>
                                     @foreach ($bloods as $blood)
                                         <option value="{{ $blood->id }}">{{ __($blood->name) }}</option>
                                     @endforeach
@@ -204,9 +227,10 @@
 
                             <!-- শেষ রক্ত দানের তারিখ ----------------------------------->
                             <div class="form-group col-lg-4">
-                                <label for="last_donate">@lang('Last Blood Donate') </label>
-                                <input type="date" name="last_donate" id="last_donate" value="{{ old('donate') }}"
-                                    placeholder="@lang('DD-MM-YYYY')" class="form--control">
+                                <label for="last_donate">@lang('Last Blood Donate') <sup class="text--warning">(Optional)</sup></label>
+                                <input type="date" name="last_donate" id="last_donate"
+                                    value="{{ old('last_donate') }}" placeholder="@lang('DD-MM-YYYY')"
+                                    class="form--control">
                             </div>
 
                             <!-- জন্ম তারিখ ----------------------------------->
@@ -219,14 +243,16 @@
 
                             <!-- ইমেইল ----------------------------------->
                             <div class="form-group col-lg-4">
-                                <label for="email">@lang('Email')</label>
-                                <input type="email" name="email" id="email" value="{{ old('email') }}"
+                                <label for="email">@lang('Email') <sup class="text--warning">(Optional)</sup></label>
+                                <input type="email"
+                                    pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
+                                    name="email" id="email" value="{{ old('email') }}"
                                     placeholder="@lang('Enter Email')" class="form--control" maxlength="60">
                             </div>
 
                             <!-- ফেসবুক আইডি ----------------------------------->
                             <div class="form-group col-lg-4">
-                                <label for="facebook">@lang('Facebook Url')</label>
+                                <label for="facebook">@lang('Facebook Url') <sup class="text--warning">(Optional)</sup></label>
                                 <div class="custom-icon-field">
                                     <i class="lab la-facebook-f"></i>
                                     <input type="text" name="facebook" id="facebook" value="{{ old('facebook') }}"
@@ -238,21 +264,21 @@
                             <div class="form-group col-lg-6">
                                 <label for="phone">@lang('Phone') <sup class="text--danger">*</sup></label>
                                 <input type="text" name="phone" id="phone" value="{{ old('phone') }}"
-                                    placeholder="@lang('Enter Phone')" class="form--control" maxlength="40"
+                                    placeholder="@lang('Enter Phone')" class="form--control" maxlength="11"
                                     required="">
                             </div>
 
                             <!-- সেকেন্ডারী মোবাইল নং ----------------------------------->
                             <div class="form-group col-lg-6">
-                                <label for="phone2">@lang('Secondary Phone')</label>
+                                <label for="phone2">@lang('Secondary Phone') <sup class="text--warning">(Optional)</sup></label>
                                 <input type="text" name="phone2" id="phone2" value="{{ old('phone2') }}"
-                                    placeholder="@lang('Enter Phone')" class="form--control" maxlength="40">
+                                    placeholder="@lang('Enter Phone')" class="form--control" maxlength="11">
                             </div>
                             <!-- পাসওয়ার্ড ----------------------------------->
                             <div class="form-group col-lg-6">
                                 <label for="password">@lang('Password') <sup class="text--danger">*</sup></label>
                                 <input type="password" name="password" id="password" value="{{ old('password') }}"
-                                    placeholder="@lang('Enter Password')" class="form--control" maxlength="60"
+                                    placeholder="@lang('Enter Password')" class="form--control" maxlength="10"
                                     required="">
                                 <p id="passcheck" style="color: red;">**Please Fill the password</p>
                             </div>
@@ -263,15 +289,15 @@
                                         class="text--danger">*</sup></label>
                                 <input type="password" name="password_confirmation" id="password_confirmation"
                                     value="{{ old('password_confirmation') }}" placeholder="@lang('Enter Confirm Password')"
-                                    class="form--control" maxlength="60" required="">
+                                    class="form--control" maxlength="10" required="">
                                 <p id="conpasscheck" style="color: red;">**Password didn't match</p>
                             </div>
                             <!-- ছবি আপলোড ---------------------------------------->
                             <div>
                                 <div class="avatar-upload">
                                     <div class="avatar-edit">
-                                        <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
-                                            name="imageUpload" class="imageUpload" required="" />
+                                        <span style="color: #00B074; font-weight:bold">Upload Image:</span><input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
+                                            name="imageUpload" class="imageUpload" required />
                                         <input type="hidden" name="base64image" required="" name="base64image"
                                             id="base64image">
                                         <label for="imageUpload"></label>
@@ -423,10 +449,10 @@
                 passwordError = false;
                 return false;
             }
-            if (passwordValue.length < 3 || passwordValue.length > 10) {
+            if (passwordValue.length < 6 || passwordValue.length > 10) {
                 $("#passcheck").show();
                 $("#passcheck").html(
-                    "**length of your password must be between 3 and 10"
+                    "**length of your password must be between 6 and 10"
                 );
                 $("#passcheck").css("color", "red");
                 passwordError = false;
