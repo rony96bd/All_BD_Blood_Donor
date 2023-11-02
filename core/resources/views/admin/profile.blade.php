@@ -41,6 +41,11 @@
                                     <input class="form-control" type="email" name="email"
                                         value="{{ auth()->guard('admin')->user()->email }}">
                                 </div>
+                                <div class="form-group">
+                                    <label class="form-control-label  font-weight-bold">@lang('Phone')</label>
+                                    <input class="form-control" type="number" name="phone"
+                                        value="{{ auth()->guard('admin')->user()->phone }}">
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">

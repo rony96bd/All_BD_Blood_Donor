@@ -46,6 +46,7 @@ class AdminController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email',
+            'phone' => 'required',
             'image' => ['nullable','image',new FileTypeValidate(['jpg','jpeg','png'])]
         ]);
         $user = Auth::guard('admin')->user();
@@ -62,6 +63,7 @@ class AdminController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->phone = $request->phone;
         $user->save();
         $notify[] = ['success', 'Your profile has been updated.'];
         return redirect()->route('admin.profile')->withNotify($notify);
