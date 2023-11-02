@@ -346,6 +346,7 @@ class SiteController extends Controller
         $donor->birth_date =  $request->birth_date;
         $donor->email = $request->email;
         $donor->facebook = $request->facebook;
+            $donor->referer_by = $request->referer;
 
         $input = $request->all();
 
