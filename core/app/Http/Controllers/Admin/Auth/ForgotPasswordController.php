@@ -58,17 +58,17 @@ class ForgotPasswordController extends Controller
     public function sendResetCodeEmail(Request $request)
     {
         $this->validate($request, [
-            'email' => 'required|email',
+            'phone' => 'required',
         ]);
-        
-        $user = Admin::where('email', $request->email)->first();
+
+        $user = Admin::where('phone', $request->phone)->first();
         if (!$user) {
-            return back()->withErrors(['Email Not Available']);
+            return back()->withErrors(['Phone Not Available']);
         }
 
         $code = verificationCode(6);
         $adminPasswordReset = new AdminPasswordReset();
-        $adminPasswordReset->email = $user->email;
+        $adminPasswordReset->phone = $user->phone;
         $adminPasswordReset->token = $code;
         $adminPasswordReset->status = 0;
         $adminPasswordReset->created_at = date("Y-m-d h:i:s");
@@ -76,16 +76,33 @@ class ForgotPasswordController extends Controller
 
         $userIpInfo = getIpInfo();
         $userBrowser = osBrowser();
-        sendEmail($user, 'PASS_RESET_CODE', [
-            'code' => $code,
-            'operating_system' => $userBrowser['os_platform'],
-            'browser' => $userBrowser['browser'],
-            'ip' => $userIpInfo['ip'],
-            'time' => $userIpInfo['time']
-        ]);
+
+        $url = "http://bulksmsbd.net/api/smsapi";
+        $api_key = env('BULKSMS_API');
+        $senderid = "8809617612994";
+        $number = "88" . $user->phone;
+
+        $sendmess = "From, https://roktodin.com \nAdmin Verification Code is: " . $code . "";
+        $message = "$sendmess";
+        $data = [
+            "api_key" => $api_key,
+            "senderid" => $senderid,
+            "number" => $number,
+            "message" => $message
+        ];
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        $response = curl_exec($ch);
+        curl_close($ch);
 
         $pageTitle = 'Account Recovery';
         $notify[] = ['success', 'Password reset email sent successfully'];
+        $notify[] = ['success', $response];
         return view('admin.auth.passwords.code_verify', compact('pageTitle', 'notify'));
     }
 

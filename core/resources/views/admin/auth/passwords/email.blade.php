@@ -7,8 +7,8 @@
                 <form action="{{ route('admin.password.reset') }}" method="POST" class="cmn-form mt-30">
                     @csrf
                     <div class="form-group">
-                        <label for="email">@lang('Email')</label>
-                        <input type="email" name="email" class="form-control b-radius--capsule" id="username" value="{{ old('email') }}" placeholder="@lang('Enter your email')">
+                        <label for="phone">@lang('Phone')</label>
+                        <input type="number" name="phone" class="form-control b-radius--capsule" id="username" value="{{ old('email') }}" placeholder="@lang('Enter your phone number')">
                         <i class="las la-user input-icon"></i>
                     </div>
                     <div class="form-group d-flex justify-content-between align-items-center">

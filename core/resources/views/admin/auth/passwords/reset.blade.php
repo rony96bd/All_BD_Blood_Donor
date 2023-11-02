@@ -7,7 +7,7 @@
                 <form action="{{ route('admin.password.change') }}" method="POST" class="cmn-form mt-30">
                     @csrf
 
-                    <input type="hidden" name="email" value="{{ $email }}">
+                    <input type="hidden" name="phone" value="{{ $phone }}">
                     <input type="hidden" name="token" value="{{ $token }}">
 
                     <div class="form-group">

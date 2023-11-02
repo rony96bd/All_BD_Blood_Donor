@@ -62,21 +62,21 @@ class ResetPasswordController extends Controller
             $notify[] = ['error', 'Token not found!'];
             return redirect()->route('admin.password.reset')->withNotify($notify);
         }
-        $email = $resetToken->email;
-        return view('admin.auth.passwords.reset', compact('pageTitle', 'email', 'token'));
+        $phone = $resetToken->phone;
+        return view('admin.auth.passwords.reset', compact('pageTitle', 'phone', 'token'));
     }
 
 
     public function reset(Request $request)
     {
         $this->validate($request, [
-            'email' => 'required|email',
+            'phone' => 'required',
             'token' => 'required',
             'password' => 'required|confirmed|min:4',
         ]);
 
         $reset = AdminPasswordReset::where('token', $request->token)->orderBy('created_at', 'desc')->first();
-        $user = Admin::where('email', $reset->email)->first();
+        $user = Admin::where('phone', $reset->phone)->first();
         if ($reset->status == 1) {
             $notify[] = ['error', 'Invalid code'];
             return redirect()->route('admin.login')->withNotify($notify);
@@ -87,14 +87,14 @@ class ResetPasswordController extends Controller
         $reset->status = 1;
         $reset->save();
 
-        $userIpInfo = getIpInfo();
-        $userBrowser = osBrowser();
-        sendEmail($user, 'PASS_RESET_DONE', [
-            'operating_system' => $userBrowser['os_platform'],
-            'browser' => $userBrowser['browser'],
-            'ip' => $userIpInfo['ip'],
-            'time' => $userIpInfo['time']
-        ]);
+        // $userIpInfo = getIpInfo();
+        // $userBrowser = osBrowser();
+        // sendEmail($user, 'PASS_RESET_DONE', [
+        //     'operating_system' => $userBrowser['os_platform'],
+        //     'browser' => $userBrowser['browser'],
+        //     'ip' => $userIpInfo['ip'],
+        //     'time' => $userIpInfo['time']
+        // ]);
 
         $notify[] = ['success', 'Password changed'];
         return redirect()->route('admin.login')->withNotify($notify);
