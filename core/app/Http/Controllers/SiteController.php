@@ -328,7 +328,7 @@ class SiteController extends Controller
             'religion' => 'required|max:40',
             'blood' => 'required|exists:bloods,id',
             'birth_date' => 'required',
-            'imageUpload' => ['required', 'image', new FileTypeValidate(['jpg', 'jpeg', 'png'])],
+                'imageUpload' => ['required', 'image', new FileTypeValidate(['gif', 'JPG', 'jpg', 'jpeg', 'png'])],
             'phone' => 'required|max:40|unique:donors,phone',
             'password' => 'required|confirmed|min:6',
             'term' => 'accepted',
