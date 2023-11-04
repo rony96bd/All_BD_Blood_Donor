@@ -23,7 +23,7 @@
                 @php echo @$cookie->data_values->description @endphp
                 <a href="{{ @$cookie->data_values->link }}" target="_blank">@lang('Read Policy')</a>
             </p>
-            <button href="javascript:void(0)"
+            <button href="javascript:void(0)" style="background-color: #00B074; border-radius: 5px; color: white;"
                 class="js-cookie-consent-agree policy cookie-consent__agree cursor-pointer flex items-center justify-center px-4 py-2 rounded-md text-sm font-medium text-yellow-800 bg-yellow-400 hover:bg-yellow-300">
                 {{ trans('cookie-consent::texts.agree') }}
             </button>
