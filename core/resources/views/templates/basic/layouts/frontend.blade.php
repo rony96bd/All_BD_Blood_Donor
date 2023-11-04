@@ -55,7 +55,6 @@
             <div></div>
             <div></div>
         </div>
-        Hi
     </div>
     @include($activeTemplate . 'partials.header')
     <div class="main-wrapper">
