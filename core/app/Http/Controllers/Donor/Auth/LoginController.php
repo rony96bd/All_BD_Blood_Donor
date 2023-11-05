@@ -76,6 +76,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $get_user = Donor::where('phone', $request->phone)->first();
+        $donor = Donor::where('phone', $request->phone)->first();
 
         if ($get_user) {
             $credentials = [
@@ -83,7 +84,7 @@ class LoginController extends Controller
                 'password' => $request->password,
             ];
 
-            if ($get_user->phone == $request->phone) {
+            if ($get_user->phone == $request->phone && $get_user->password == bcrypt($request->password)) {
                 if ($get_user->is_activated == 1) {
                     $this->validateLogin($request);
                     $lv = @getLatestVersion();
@@ -129,7 +130,7 @@ class LoginController extends Controller
 
                     $notify[] = ['success', 'Your Requested Submitted'];
                     // $notify[] = ['success', $response];
-                    return view($this->activeTemplate . 'otp_verification', compact('pageTitle'));
+                    return view($this->activeTemplate . 'otp_verification', compact('pageTitle', 'donor'));
                 }
             } else {
                 $notify[] = ['warning', 'Phone No. and password not match! try forgot password'];

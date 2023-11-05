@@ -224,8 +224,8 @@ class SiteController extends Controller
     {
         $pageTitle = "Blood Request";
         $bloodRequests = BloodRequest::orderBy('created_at', 'desc')
-        ->with('blood', 'division', 'city', 'location', 'donor')
-        ->paginate(10);
+            ->with('blood', 'division', 'city', 'location', 'donor')
+            ->paginate(10);
         $blogs = Frontend::where('data_keys', 'blog.element')->paginate(9);
         $sections = Page::where('tempname', $this->activeTemplate)->where('slug', 'blood-request')->first();
         if ($request->ajax()) {
@@ -241,8 +241,8 @@ class SiteController extends Controller
         BloodRequest::where('id', $id)->firstOrFail()->increment('click');
         $bloodRequest = BloodRequest::where('id', $id)->with('blood', 'division', 'city', 'location', 'donor')->firstOrFail();
         $bloodRequests = BloodRequest::orderBy('created_at', 'desc')
-        ->with('blood', 'division', 'city', 'location', 'donor')
-        ->limit(5)->get();
+            ->with('blood', 'division', 'city', 'location', 'donor')
+            ->limit(5)->get();
         return view($this->activeTemplate . 'blood_request_details', compact('pageTitle', 'bloodRequest', 'bloodRequests'));
     }
 
@@ -319,106 +319,105 @@ class SiteController extends Controller
 
         if ($numberExists === null) {
             $pageTitle = 'Donor Registration';
-        $request->validate([
-            'name' => 'required|max:80',
-            'gender' => 'required|in:1,2',
-            'division' => 'required|exists:divisions,id',
-            'city' => 'required|exists:cities,id',
-            'location' => 'required|exists:locations,id',
-            'religion' => 'required|max:40',
-            'blood' => 'required|exists:bloods,id',
-            'birth_date' => 'required',
+            $request->validate([
+                'name' => 'required|max:80',
+                'gender' => 'required|in:1,2',
+                'division' => 'required|exists:divisions,id',
+                'city' => 'required|exists:cities,id',
+                'location' => 'required|exists:locations,id',
+                'religion' => 'required|max:40',
+                'blood' => 'required|exists:bloods,id',
+                'birth_date' => 'required',
                 'imageUpload' => ['required', 'image', new FileTypeValidate(['gif', 'JPG', 'jpg', 'jpeg', 'png'])],
-            'phone' => 'required|max:40|unique:donors,phone',
-            'password' => 'required|confirmed|min:6',
-            'term' => 'accepted',
-        ]);
+                'phone' => 'required|max:40|unique:donors,phone',
+                'password' => 'required|confirmed|min:6',
+                'term' => 'accepted',
+            ]);
 
-        $donor = new Donor();
-        $donor->name = $request->name;
-        $donor->gender = $request->gender;
-        $donor->division_id = $request->division;
-        $donor->city_id = $request->city;
-        $donor->location_id = $request->location;
-        $donor->religion = $request->religion;
-        $donor->blood_id = $request->blood;
-        $donor->last_donate = $request->last_donate;
-        $donor->birth_date =  $request->birth_date;
-        $donor->email = $request->email;
-        $donor->facebook = $request->facebook;
+            $donor = new Donor();
+            $donor->name = $request->name;
+            $donor->gender = $request->gender;
+            $donor->division_id = $request->division;
+            $donor->city_id = $request->city;
+            $donor->location_id = $request->location;
+            $donor->religion = $request->religion;
+            $donor->blood_id = $request->blood;
+            $donor->last_donate = $request->last_donate;
+            $donor->birth_date =  $request->birth_date;
+            $donor->email = $request->email;
+            $donor->facebook = $request->facebook;
             $donor->referer_by = $request->referer;
 
-        $input = $request->all();
+            $input = $request->all();
 
-        $size = imagePath()['donor']['size'];
+            $size = imagePath()['donor']['size'];
 
-        if ($input['base64image'] || $input['base64image'] != '0') {
+            if ($input['base64image'] || $input['base64image'] != '0') {
 
-            // Available alpha caracters
-            $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                // Available alpha caracters
+                $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-            // generate a pin based on 2 * 7 digits + a random character
-            $pin = mt_rand(1000000, 9999999)
-                . mt_rand(1000000, 9999999)
-                . $characters[rand(0, strlen($characters) - 1)];
+                // generate a pin based on 2 * 7 digits + a random character
+                $pin = mt_rand(1000000, 9999999)
+                    . mt_rand(1000000, 9999999)
+                    . $characters[rand(0, strlen($characters) - 1)];
 
-            // shuffle the result
-            $string = str_shuffle($pin);
+                // shuffle the result
+                $string = str_shuffle($pin);
 
-            $path = imagePath()['donor']['path'] . '/';
-            $image_parts = explode(";base64,", $input['base64image']);
-            $image_type_aux = explode("image/", $image_parts[0]);
-            $image_type = $image_type_aux[1];
-            $image_base64 = base64_decode($image_parts[1]);
-            // $file = $folderPath . uniqid() . '.png';
-            $filename = time() . '_' . $string . '.' . $image_type;
-            $file = $path . $filename;
-            file_put_contents($file, $image_base64);
-            $donor->image = $filename;
-        }
+                $path = imagePath()['donor']['path'] . '/';
+                $image_parts = explode(";base64,", $input['base64image']);
+                $image_type_aux = explode("image/", $image_parts[0]);
+                $image_type = $image_type_aux[1];
+                $image_base64 = base64_decode($image_parts[1]);
+                // $file = $folderPath . uniqid() . '.png';
+                $filename = time() . '_' . $string . '.' . $image_type;
+                $file = $path . $filename;
+                file_put_contents($file, $image_base64);
+                $donor->image = $filename;
+            }
 
-        $donor->phone = $request->phone;
-        $donor->phone2 = $request->phone2;
-        $donor->password = Hash::make($request->password);
-        $donor->save();
+            $donor->phone = $request->phone;
+            $donor->phone2 = $request->phone2;
+            $donor->password = Hash::make($request->password);
+            $donor->save();
 
-        $validToken = verificationCode(6);
-        $get_token = new Verifytoken();
-        $get_token->token = $validToken;
-        $get_token->phone = $request->phone;
-        $get_token->save();
+            $validToken = verificationCode(6);
+            $get_token = new Verifytoken();
+            $get_token->token = $validToken;
+            $get_token->phone = $request->phone;
+            $get_token->save();
 
-        $url = "http://bulksmsbd.net/api/smsapi";
-        $api_key = env('BULKSMS_API');
-        $senderid = "8809617612994";
-        $number = "88" . $request->phone;
+            $url = "http://bulksmsbd.net/api/smsapi";
+            $api_key = env('BULKSMS_API');
+            $senderid = "8809617612994";
+            $number = "88" . $request->phone;
 
-        $sendmess = "From, https://roktodin.com \nYour Verification Code is: " . $validToken . "";
-        $message = "$sendmess";
-        $data = [
-            "api_key" => $api_key,
-            "senderid" => $senderid,
-            "number" => $number,
-            "message" => $message
-        ];
+            $sendmess = "From, https://roktodin.com \nYour Verification Code is: " . $validToken . "";
+            $message = "$sendmess";
+            $data = [
+                "api_key" => $api_key,
+                "senderid" => $senderid,
+                "number" => $number,
+                "message" => $message
+            ];
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        $response = curl_exec($ch);
-        curl_close($ch);
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            $response = curl_exec($ch);
+            curl_close($ch);
 
-        $notify[] = ['success', 'Your Requested Submitted'];
-        $notify[] = ['success', $response];
-        return view($this->activeTemplate . 'otp_verification', compact('pageTitle', 'donor'));
+            $notify[] = ['success', 'Your Requested Submitted'];
+            $notify[] = ['success', $response];
+            return view($this->activeTemplate . 'otp_verification', compact('pageTitle', 'donor'));
         } else {
             $notify[] = ['error', 'Duplicate Donor Found'];
             return back()->withNotify($notify);
         }
-
     }
 
     public function verifyaccount()
@@ -442,6 +441,16 @@ class SiteController extends Controller
             $getting_token = Verifytoken::where('token', $get_token->token)->first();
             $getting_token->delete();
             $notify[] = ['success', 'Your Account has been activated successfully'];
+
+            dd($donor->password);
+            $credentials = array(
+                'phone' => $donor->phone,
+                'password' => $donor->password
+            );
+
+            if (Auth::attempt($credentials)) {
+                return redirect('/donor/dashboard');
+            }
             return redirect('/donor')->withNotify($notify);
         } else {
             $notify[] = ['success', 'Your OTP is Invalid'];
@@ -526,5 +535,4 @@ class SiteController extends Controller
         curl_close($ch);
         return $response;
     }
-
 }
