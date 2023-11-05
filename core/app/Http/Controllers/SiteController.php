@@ -29,6 +29,8 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
 
 
 
@@ -442,15 +444,8 @@ class SiteController extends Controller
             $getting_token->delete();
             $notify[] = ['success', 'Your Account has been activated successfully'];
 
-            dd($donor->password);
-            $credentials = array(
-                'phone' => $donor->phone,
-                'password' => $donor->password
-            );
+            Auth::guard('donor')->login($donor);
 
-            if (Auth::attempt($credentials)) {
-                return redirect('/donor/dashboard');
-            }
             return redirect('/donor')->withNotify($notify);
         } else {
             $notify[] = ['success', 'Your OTP is Invalid'];

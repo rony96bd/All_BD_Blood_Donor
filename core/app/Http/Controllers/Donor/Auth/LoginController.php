@@ -9,6 +9,7 @@ use App\Models\Verifytoken;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
 class LoginController extends Controller
@@ -84,7 +85,7 @@ class LoginController extends Controller
                 'password' => $request->password,
             ];
 
-            if ($get_user->phone == $request->phone && $get_user->password == bcrypt($request->password)) {
+            if ($get_user->phone == $request->phone) {
                 if ($get_user->is_activated == 1) {
                     $this->validateLogin($request);
                     $lv = @getLatestVersion();
