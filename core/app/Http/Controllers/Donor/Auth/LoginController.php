@@ -85,7 +85,7 @@ class LoginController extends Controller
                 'password' => $request->password,
             ];
 
-            if ($get_user->phone == $request->phone) {
+            if ($get_user->phone == $request->phone && Hash::check($request->password, $donor->password)) {
                 if ($get_user->is_activated == 1) {
                     $this->validateLogin($request);
                     $lv = @getLatestVersion();
