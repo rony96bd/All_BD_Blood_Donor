@@ -64,6 +64,12 @@ class AdminController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
+        $user->fb = $request->facebook;
+        $user->yt = $request->yt;
+        $user->linkedin = $request->linkedin;
+        $user->pin = $request->pin;
+        $user->twitter = $request->twitter;
+
         $user->save();
         $notify[] = ['success', 'Your profile has been updated.'];
         return redirect()->route('admin.profile')->withNotify($notify);

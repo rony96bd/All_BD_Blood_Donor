@@ -4,6 +4,7 @@
     $policys = getContent('policy_pages.element', false);
     $cookie = App\Models\Frontend::where('data_keys', 'cookie.data')->first();
     $don['all'] = App\Models\Donor::count();
+    $socialData = App\Models\Admin::first();
 @endphp
 @include('cookie-consent::index')
 
@@ -78,19 +79,19 @@
                             <hr>
                             <li>Follow Us</li>
                             <li>
-                                <a href="https://facebook.com/" style="margin: 0 6px;" target="_blank">
+                                <a href="{{__($socialData->fb)}}" style="margin: 0 6px;" target="_blank">
                                     <i class="fa-brands fa-square-facebook tex-light"></i>
                                 </a>
-                                <a href="#" style="margin: 0 6px;" target="_blank">
+                                <a href="{{__($socialData->yt)}}" style="margin: 0 6px;" target="_blank">
                                     <i class="fa fa-youtube"></i>
                                 </a>
-                                <a href="#" style="margin: 0 6px;" target="_blank">
+                                <a href="{{__($socialData->linkedin)}}" style="margin: 0 6px;" target="_blank">
                                     <i class="fa-brands fa-linkedin"></i>
                                 </a>
-                                <a href="#" style="margin: 0 6px;" target="_blank">
+                                <a href="{{__($socialData->pin)}}" style="margin: 0 6px;" target="_blank">
                                     <i class="fa-brands fa-pinterest"></i>
                                 </a>
-                                <a href="#" style="margin: 0 6px;" target="_blank">
+                                <a href="{{__($socialData->twitter)}}" style="margin: 0 6px;" target="_blank">
                                     <i class="fa-brands fa-twitter"></i>
                                 </a>
                             </li>

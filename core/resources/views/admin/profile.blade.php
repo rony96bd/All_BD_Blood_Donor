@@ -46,6 +46,52 @@
                                     <input class="form-control" type="number" name="phone"
                                         value="{{ auth()->guard('admin')->user()->phone }}">
                                 </div>
+                                <label for="facebook" class="form-control-label font-weight-bold">@lang('Facebook Url')</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" id="facebook" class="form-control"
+                                        value="{{ $admin->fb }}" placeholder="@lang('Enter Facebook Url')" name="facebook"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="basic-addon2"><i
+                                                class="lab la-facebook-f"></i></span>
+                                    </div>
+                                </div>
+                                <label for="youtube" class="form-control-label font-weight-bold">@lang('YouTube Url')</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" id="facebook" class="form-control"
+                                        value="{{ $admin->yt }}" placeholder="@lang('Enter Youtube Url')" name="yt"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="basic-addon2"><i class="lab la-youtube"></i></span>
+                                    </div>
+                                </div>
+                                <label for="linkedin" class="form-control-label font-weight-bold">@lang('Linkedin Url')</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" id="facebook" class="form-control"
+                                        value="{{ $admin->linkedin }}" placeholder="@lang('Enter LinkedIn Url')" name="linkedin"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="basic-addon2"><i class="lab la-linkedin"></i></span>
+                                    </div>
+                                </div>
+                                <label for="pinterest" class="form-control-label font-weight-bold">@lang('Pinterest Url')</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" id="facebook" class="form-control"
+                                        value="{{ $admin->pin }}" placeholder="@lang('Enter Pinterest Url')" name="pin"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="basic-addon2"><i class="lab la-pinterest"></i></span>
+                                    </div>
+                                </div>
+                                <label for="twitter" class="form-control-label font-weight-bold">@lang('Twitter Url')</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" id="facebook" class="form-control"
+                                        value="{{ $admin->twitter }}" placeholder="@lang('Enter Twitter Url')" name="twitter"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text" id="basic-addon2"><i class="lab la-twitter"></i></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
