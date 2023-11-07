@@ -29,22 +29,22 @@
         }
 
         /* .avatar-upload .avatar-edit input {
-                    display: none;
-                } */
+                            display: none;
+                        } */
 
         /* .avatar-upload .avatar-edit input+label {
-                    display: inline-block;
-                    width: 34px;
-                    height: 34px;
-                    margin-bottom: 0;
-                    border-radius: 100%;
-                    background: #FFFFFF;
-                    border: 1px solid transparent;
-                    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-                    cursor: pointer;
-                    font-weight: normal;
-                    transition: all 0.2s ease-in-out;
-                } */
+                            display: inline-block;
+                            width: 34px;
+                            height: 34px;
+                            margin-bottom: 0;
+                            border-radius: 100%;
+                            background: #FFFFFF;
+                            border: 1px solid transparent;
+                            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+                            cursor: pointer;
+                            font-weight: normal;
+                            transition: all 0.2s ease-in-out;
+                        } */
         .custom-file-button {
             input[type="file"] {
                 margin-left: -2px !important;
@@ -72,16 +72,16 @@
         }
 
         /* .avatar-upload .avatar-edit input+label:after {
-                    content: "\f040";
-                    font-family: 'FontAwesome';
-                    color: #757575;
-                    position: absolute;
-                    top: 10px;
-                    left: 0;
-                    right: 0;
-                    text-align: center;
-                    margin: auto;
-                } */
+                            content: "\f040";
+                            font-family: 'FontAwesome';
+                            color: #757575;
+                            position: absolute;
+                            top: 10px;
+                            left: 0;
+                            right: 0;
+                            text-align: center;
+                            margin: auto;
+                        } */
 
         .avatar-upload .avatar-preview {
             width: 192px;
@@ -227,7 +227,8 @@
 
                             <!-- শেষ রক্ত দানের তারিখ ----------------------------------->
                             <div class="form-group col-lg-4">
-                                <label for="last_donate">@lang('Last Blood Donate') <sup class="text--warning">(Optional)</sup></label>
+                                <label for="last_donate">@lang('Last Blood Donate') <sup
+                                        class="text--warning">(Optional)</sup></label>
                                 <input type="date" name="last_donate" id="last_donate"
                                     value="{{ old('last_donate') }}" placeholder="@lang('DD-MM-YYYY')"
                                     class="form--control">
@@ -236,14 +237,39 @@
                             <!-- জন্ম তারিখ ----------------------------------->
                             <div class="form-group col-lg-4">
                                 <label for="date_birth">@lang('Date Of Birth') <sup class="text--danger">*</sup></label>
+                                <div class="row">
+                                    <div class="col"><select name="start_day" class="select">
+                                        <option disabled selected>Day</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="31">31</option>
+                                    </select></div>
+                                    <div class="col"><select name="start_month" class="select">
+                                        <option disabled selected>Month</option>
+                                        <option value="1">Jan</option>
+                                        <option value="2">Feb</option>
+                                        <option value="12">Dec</option>
+                                    </select></div>
+                                    <div class="col"><select name="start_year" class="select">
+                                        <option disabled selected>Year</option>
+
+                                        <option value="1900">1900</option>
+                                        <option value="1901">1901</option>
+                                        <option value="2018">2018</option>
+                                    </select></div>
+                                </div>
+                            </div>
+                            {{-- <div class="form-group col-lg-4">
+                                <label for="date_birth">@lang('Date Of Birth') <sup class="text--danger">*</sup></label>
                                 <input type="date" id="date_birth" name="birth_date" value="{{ old('birth_date') }}"
                                     placeholder="@lang('DD-MM-YYYY')" class="form--control" maxlength="255"
                                     required="">
-                            </div>
+                            </div> --}}
 
                             <!-- ইমেইল ----------------------------------->
                             <div class="form-group col-lg-4">
-                                <label for="email">@lang('Email') <sup class="text--warning">(Optional)</sup></label>
+                                <label for="email">@lang('Email') <sup
+                                        class="text--warning">(Optional)</sup></label>
                                 <input type="email"
                                     pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
                                     name="email" id="email" value="{{ old('email') }}"
@@ -252,7 +278,8 @@
 
                             <!-- ফেসবুক আইডি ----------------------------------->
                             <div class="form-group col-lg-4">
-                                <label for="facebook">@lang('Facebook Url') <sup class="text--warning">(Optional)</sup></label>
+                                <label for="facebook">@lang('Facebook Url') <sup
+                                        class="text--warning">(Optional)</sup></label>
                                 <div class="custom-icon-field">
                                     <i class="lab la-facebook-f"></i>
                                     <input type="text" name="facebook" id="facebook" value="{{ old('facebook') }}"
@@ -270,7 +297,8 @@
 
                             <!-- সেকেন্ডারী মোবাইল নং ----------------------------------->
                             <div class="form-group col-lg-6">
-                                <label for="phone2">@lang('Secondary Phone') <sup class="text--warning">(Optional)</sup></label>
+                                <label for="phone2">@lang('Secondary Phone') <sup
+                                        class="text--warning">(Optional)</sup></label>
                                 <input type="text" name="phone2" id="phone2" value="{{ old('phone2') }}"
                                     placeholder="@lang('Enter Phone')" class="form--control" maxlength="11">
                             </div>
@@ -296,7 +324,8 @@
                             <div>
                                 <div class="avatar-upload">
                                     <div class="avatar-edit">
-                                        <span style="color: #00B074; font-weight:bold">Upload Image:</span><input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
+                                        <span style="color: #00B074; font-weight:bold">Upload Image:</span><input
+                                            type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
                                             name="imageUpload" class="imageUpload" required />
                                         <input type="hidden" name="base64image" required="" name="base64image"
                                             id="base64image">
