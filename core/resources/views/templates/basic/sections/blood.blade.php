@@ -165,7 +165,7 @@
             loop: true,
             centerSlide: 'true',
             fade: 'true',
-            autoplay: true,
+            autoplay: false,
             grabCursor: 'true',
             pagination: {
                 el: ".swiper-pagination",
