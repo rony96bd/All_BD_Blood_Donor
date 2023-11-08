@@ -317,6 +317,8 @@ class SiteController extends Controller
 
     public function applyDonorstore(Request $request)
     {
+        $dob = $request->year . "-" . $request->month . "-" . $request->day;
+
         $numberExists = Donor::where('phone', $request->phone)->orWhere('phone2', $request->phone)->first();
 
         if ($numberExists === null) {
@@ -329,7 +331,7 @@ class SiteController extends Controller
                 'location' => 'required|exists:locations,id',
                 'religion' => 'required|max:40',
                 'blood' => 'required|exists:bloods,id',
-                'birth_date' => 'required',
+                // 'birth_date' => 'required',
                 'imageUpload' => ['required', 'image', new FileTypeValidate(['gif', 'JPG', 'jpg', 'jpeg', 'png'])],
                 'phone' => 'required|max:40|unique:donors,phone',
                 'password' => 'required|confirmed|min:6',
@@ -345,7 +347,7 @@ class SiteController extends Controller
             $donor->religion = $request->religion;
             $donor->blood_id = $request->blood;
             $donor->last_donate = $request->last_donate;
-            $donor->birth_date =  $request->birth_date;
+            $donor->birth_date =  $dob;
             $donor->email = $request->email;
             $donor->facebook = $request->facebook;
             $donor->referer_by = $request->referer;

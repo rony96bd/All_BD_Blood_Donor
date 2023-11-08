@@ -180,6 +180,7 @@ class ManageDonorController extends Controller
             'phone' => 'required|max:40|unique:donors,phone',
             'password' => 'required|confirmed|min:6',
         ]);
+
         $donor = new Donor();
         $donor->name = $request->name;
         $donor->gender = $request->gender;

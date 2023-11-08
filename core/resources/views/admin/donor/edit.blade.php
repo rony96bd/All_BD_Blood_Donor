@@ -159,8 +159,7 @@
 
                                 <div class="form-group ">
                                     <label class="form-control-label font-weight-bold">@lang('Primary Phone')</label>
-                                    <input class="form-control" type="text" name="phone"
-                                        value="{{ $donor->phone }}">
+                                    <input class="form-control" type="text" name="phone" value="{{ $donor->phone }}">
                                 </div>
 
                                 <div class="form-group ">
