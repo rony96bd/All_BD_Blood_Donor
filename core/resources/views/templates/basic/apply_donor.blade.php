@@ -291,7 +291,7 @@
                                 <div class="custom-icon-field">
                                     <i class="lab la-facebook-f"></i>
                                     <input type="text" name="facebook" id="facebook" value="{{ old('facebook') }}"
-                                        placeholder="@lang('Enter Facebook Url')" class="form--control">
+                                        placeholder="@lang('Example: https://facebook.com/xxxxx')" class="form--control">
                                 </div>
                             </div>
 
