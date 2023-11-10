@@ -20,14 +20,14 @@
                     <div class="contact-wrapper-content h-100" style="background-color: #280718">
                         <h4 class="title text-white mb-4">@lang('Reach Us')</h4>
                         <ul class="contact-info-list">
-                            <li class="single-info d-flex flex-wrap align-items-center">
+                            {{-- <li class="single-info d-flex flex-wrap align-items-center">
                                 <div class="single-info__icon text-white d-flex justify-content-center align-items-center rounded-3">
                                     <i class="las la-map-marked-alt"></i>
                                 </div>
                                 <div class="single-info__content">
                                     <p>{{__($contact->data_values->contact_details)}}</p>
                                 </div>
-                            </li>
+                            </li> --}}
 
                             <li class="single-info d-flex flex-wrap align-items-center">
                                 <div class="single-info__icon text-white d-flex justify-content-center align-items-center rounded-3">
@@ -66,9 +66,9 @@
 
                         </ul>
 
-                        <div class="map-area mt-4">
+                        {{-- <div class="map-area mt-4">
                             <iframe src = "https://maps.google.com/maps?q={{__($contact->data_values->latitude)}},{{__($contact->data_values->longitude)}}&hl=es;z=14&amp;output=embed"></iframe>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="col-lg-6">
