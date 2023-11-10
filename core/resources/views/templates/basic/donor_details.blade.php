@@ -135,11 +135,11 @@
                                         <span class="caption"><i class="fa-brands fa-facebook"></i> Facebook</span>
                                         @if (auth()->guard('donor')->check())
                                             <span class="value"><a target="_blank"
-                                                    href="{{ __($donor->facebook) }}">{{ __($donor->facebook) }} </a></span>
+                                                    href="{{ __($donor->facebook) }}">Visit Facebook </a></span>
                                         @else
                                             <span class="value">
                                                 <p class="popup" style="color: #00B074;" onclick="myFunction1()">
-                                                    facebook.com/xxxxx
+                                                    Visit Facebook
                                                     <span class="popuptext" id="myPopup1">
                                                         ফেসবুক লিংক দেখতে <a href="{{ route('apply.donor') }}"> Signup </a>
                                                         করে
