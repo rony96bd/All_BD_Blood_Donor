@@ -76,11 +76,13 @@
                                         @endif
                                     </span>
                                 </li>
-                                <li>
-                                    <span class="caption">Last Donate</span>
-                                    <span class="value">{{ showDateTime($donor->last_donate, 'd M Y') }}</span>
-                                </li>
-
+                                @if ($donor->last_donate == null)
+                                @else
+                                    <li>
+                                        <span class="caption">Last Donate</span>
+                                        <span class="value">{{ showDateTime($donor->last_donate, 'd M Y') }}</span>
+                                    </li>
+                                @endif
                                 <li>
                                     <span class="caption">Gender</span>
                                     <span class="value">
