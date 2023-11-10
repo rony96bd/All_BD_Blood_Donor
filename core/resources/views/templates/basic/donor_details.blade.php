@@ -129,39 +129,49 @@
 
                             <ul class="caption-list-two"
                                 style="background-color: #FFDADC; margin-left: 10px; margin-right: 10px; margin-bottom: 20px;">
-                                <li>
-                                    <span class="caption"><i class="fa-brands fa-facebook"></i> Facebook</span>
-                                    @if (auth()->guard('donor')->check())
-                                        <span class="value"><a target="_blank"
-                                                href="{{ __($donor->facebook) }}">{{ __($donor->facebook) }} </a></span>
-                                    @else
-                                        <span class="value">
-                                            <p class="popup" style="color: #00B074;" onclick="myFunction1()">
-                                                facebook.com/xxxxx
-                                                <span class="popuptext" id="myPopup1">
-                                                    ফেসবুক লিংক দেখতে <a href="{{ route('apply.donor') }}"> Signup </a> করে
-                                                    <a href="{{ route('donor.login') }}"> Login </a> করুন</a>
-                                                </span>
-                                            </p>
-                                        </span>
-                                    @endif
-                                </li>
-                                <li>
-                                    <span class="caption">Email</span>
-                                    @if (auth()->guard('donor')->check())
-                                        <span class="value">{{ __($donor->email) }} <a target="_blank"
-                                                href="https://mail.google.com/mail/?view=cm&fs=1&to={{ __($donor->email) }}"><i
-                                                    class="fa-regular fa-envelope"></i> Email</a></span>
-                                    @else
-                                        <span class="value">xxxxxxxxxx@gmail.com <p class="popup" style="color: #00B074;"
-                                                onclick="myFunction()"> <i class="fa-regular fa-envelope"></i></i> Email
-                                                <span class="popuptext" id="myPopup">
-                                                    ইমেইল দেখতে <a href="{{ route('apply.donor') }}"> Signup </a> করে <a
-                                                        href="{{ route('donor.login') }}"> Login </a> করুন</a>
-                                                </span>
-                                            </p></span>
-                                    @endif
-                                </li>
+                                @if ($donor->facebook == null)
+                                @else
+                                    <li>
+                                        <span class="caption"><i class="fa-brands fa-facebook"></i> Facebook</span>
+                                        @if (auth()->guard('donor')->check())
+                                            <span class="value"><a target="_blank"
+                                                    href="{{ __($donor->facebook) }}">{{ __($donor->facebook) }} </a></span>
+                                        @else
+                                            <span class="value">
+                                                <p class="popup" style="color: #00B074;" onclick="myFunction1()">
+                                                    facebook.com/xxxxx
+                                                    <span class="popuptext" id="myPopup1">
+                                                        ফেসবুক লিংক দেখতে <a href="{{ route('apply.donor') }}"> Signup </a>
+                                                        করে
+                                                        <a href="{{ route('donor.login') }}"> Login </a> করুন</a>
+                                                    </span>
+                                                </p>
+                                            </span>
+                                        @endif
+                                    </li>
+                                @endif
+
+                                @if ($donor->email == null)
+                                @else
+                                    <li>
+                                        <span class="caption">Email</span>
+                                        @if (auth()->guard('donor')->check())
+                                            <span class="value">{{ __($donor->email) }} <a target="_blank"
+                                                    href="https://mail.google.com/mail/?view=cm&fs=1&to={{ __($donor->email) }}"><i
+                                                        class="fa-regular fa-envelope"></i> Email</a></span>
+                                        @else
+                                            <span class="value">xxxxxxxxxx@gmail.com <p class="popup"
+                                                    style="color: #00B074;" onclick="myFunction()"> <i
+                                                        class="fa-regular fa-envelope"></i></i> Email
+                                                    <span class="popuptext" id="myPopup">
+                                                        ইমেইল দেখতে <a href="{{ route('apply.donor') }}"> Signup </a> করে
+                                                        <a href="{{ route('donor.login') }}"> Login </a> করুন</a>
+                                                    </span>
+                                                </p></span>
+                                        @endif
+                                    </li>
+                                @endif
+
 
                                 <li>
                                     <span class="caption">Phone</span>
