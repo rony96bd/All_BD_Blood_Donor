@@ -29,22 +29,22 @@
         }
 
         /* .avatar-upload .avatar-edit input {
-                                        display: none;
-                                    } */
+                                            display: none;
+                                        } */
 
         /* .avatar-upload .avatar-edit input+label {
-                                        display: inline-block;
-                                        width: 34px;
-                                        height: 34px;
-                                        margin-bottom: 0;
-                                        border-radius: 100%;
-                                        background: #FFFFFF;
-                                        border: 1px solid transparent;
-                                        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-                                        cursor: pointer;
-                                        font-weight: normal;
-                                        transition: all 0.2s ease-in-out;
-                                    } */
+                                            display: inline-block;
+                                            width: 34px;
+                                            height: 34px;
+                                            margin-bottom: 0;
+                                            border-radius: 100%;
+                                            background: #FFFFFF;
+                                            border: 1px solid transparent;
+                                            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+                                            cursor: pointer;
+                                            font-weight: normal;
+                                            transition: all 0.2s ease-in-out;
+                                        } */
         .custom-file-button {
             input[type="file"] {
                 margin-left: -2px !important;
@@ -72,16 +72,16 @@
         }
 
         /* .avatar-upload .avatar-edit input+label:after {
-                                        content: "\f040";
-                                        font-family: 'FontAwesome';
-                                        color: #757575;
-                                        position: absolute;
-                                        top: 10px;
-                                        left: 0;
-                                        right: 0;
-                                        text-align: center;
-                                        margin: auto;
-                                    } */
+                                            content: "\f040";
+                                            font-family: 'FontAwesome';
+                                            color: #757575;
+                                            position: absolute;
+                                            top: 10px;
+                                            left: 0;
+                                            right: 0;
+                                            text-align: center;
+                                            margin: auto;
+                                        } */
 
         .avatar-upload .avatar-preview {
             width: 192px;
@@ -227,12 +227,46 @@
 
                             <!-- শেষ রক্ত দানের তারিখ ----------------------------------->
                             <div class="form-group col-lg-4">
+                                <label for="date_birth">@lang('Last Blood Donate') <sup
+                                        class="text--warning">(Optional)</sup></label>
+                                <div class="row">
+                                    <div class="col"><select name="bday" class="select">
+                                            <option disabled selected>Day</option>
+                                            @php
+                                                $i = 00;
+                                                for ($i = 01; $i <= 31; $i++) {
+                                                    $day_value = str_pad($i, 2, '0', STR_PAD_LEFT);
+                                                    echo "<option value=$day_value>$day_value</option>";
+                                                }
+                                            @endphp
+                                        </select></div>
+                                    <div class="col"><select name="bmonth" class="select">
+                                            <option disabled selected>Month</option>
+                                            <option value="01">Jan</option>
+                                            <option value="02">Feb</option>
+                                            <option value="03">Mar</option>
+                                            <option value="04">Apr</option>
+                                            <option value="05">May</option>
+                                            <option value="06">Jun</option>
+                                            <option value="07">Jul</option>
+                                            <option value="08">Aug</option>
+                                            <option value="09">Sep</option>
+                                            <option value="10">Oct</option>
+                                            <option value="11">Nov</option>
+                                            <option value="12">Dec</option>
+                                        </select></div>
+                                    <div class="col"><input type="number" name="byear"
+                                            value="{{ old('year') }}" placeholder="@lang('Year')"
+                                            class="form--control"></div>
+                                </div>
+                            </div>
+                            {{-- <div class="form-group col-lg-4">
                                 <label for="last_donate">@lang('Last Blood Donate') <sup
                                         class="text--warning">(Optional)</sup></label>
                                 <input type="date" name="last_donate" id="last_donate"
                                     value="{{ old('last_donate') }}" placeholder="@lang('DD-MM-YYYY')"
                                     class="form--control">
-                            </div>
+                            </div> --}}
 
                             <!-- জন্ম তারিখ ----------------------------------->
                             <div class="form-group col-lg-4">
@@ -243,7 +277,7 @@
                                             @php
                                                 $i = 00;
                                                 for ($i = 01; $i <= 31; $i++) {
-                                                    $day_value = str_pad($i, 2, "0", STR_PAD_LEFT);
+                                                    $day_value = str_pad($i, 2, '0', STR_PAD_LEFT);
                                                     echo "<option value=$day_value>$day_value</option>";
                                                 }
                                             @endphp
@@ -263,8 +297,9 @@
                                             <option value="11">Nov</option>
                                             <option value="12">Dec</option>
                                         </select></div>
-                                    <div class="col"><input type="number" name="year" value="{{ old('year') }}"
-                                        placeholder="@lang('Year')" class="form--control" required=""></div>
+                                    <div class="col"><input type="number" name="year"
+                                            value="{{ old('year') }}" placeholder="@lang('Year')"
+                                            class="form--control" required=""></div>
                                 </div>
                             </div>
                             {{-- <div class="form-group col-lg-4">

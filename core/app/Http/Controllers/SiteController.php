@@ -318,6 +318,7 @@ class SiteController extends Controller
     public function applyDonorstore(Request $request)
     {
         $dob = $request->year . "-" . $request->month . "-" . $request->day;
+        $last_donate = $request->byear . "-" . $request->bmonth . "-" . $request->bday;
 
         $numberExists = Donor::where('phone', $request->phone)->orWhere('phone2', $request->phone)->first();
 
@@ -346,7 +347,7 @@ class SiteController extends Controller
             $donor->location_id = $request->location;
             $donor->religion = $request->religion;
             $donor->blood_id = $request->blood;
-            $donor->last_donate = $request->last_donate;
+            $donor->last_donate = $last_donate;
             $donor->birth_date =  $dob;
             $donor->email = $request->email;
             $donor->facebook = $request->facebook;
