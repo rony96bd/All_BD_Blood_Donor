@@ -156,13 +156,13 @@
                                     <li>
                                         <span class="caption">Email</span>
                                         @if (auth()->guard('donor')->check())
-                                            <span class="value">{{ __($donor->email) }} <a target="_blank"
-                                                    href="https://mail.google.com/mail/?view=cm&fs=1&to={{ __($donor->email) }}"><i
-                                                        class="fa-regular fa-envelope"></i> Email</a></span>
+                                            <span class="value"><a target="_blank"
+                                                    href="mailto:{{ __($donor->email) }}"><i
+                                                        class="fa-regular fa-envelope"></i> Send Email</a></span>
                                         @else
-                                            <span class="value">xxxxxxxxxx@gmail.com <p class="popup"
+                                            <span class="value"><p class="popup"
                                                     style="color: #00B074;" onclick="myFunction()"> <i
-                                                        class="fa-regular fa-envelope"></i></i> Email
+                                                        class="fa-regular fa-envelope"></i> Send Email
                                                     <span class="popuptext" id="myPopup">
                                                         ইমেইল দেখতে <a href="{{ route('apply.donor') }}"> Signup </a> করে
                                                         <a href="{{ route('donor.login') }}"> Login </a> করুন</a>
@@ -171,8 +171,6 @@
                                         @endif
                                     </li>
                                 @endif
-
-
                                 <li>
                                     <span class="caption">Phone</span>
                                     @if (auth()->guard('donor')->check())
