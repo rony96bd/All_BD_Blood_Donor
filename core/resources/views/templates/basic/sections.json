@@ -115,13 +115,7 @@
                     "size":"1920x921"
                 }
             },
-            "title": "text",
-            "btn_name": "text",
-            "btn_url": "text",
-            "first_count_digits": "text",
-            "first_count_title": "text",
-            "second_count_digits": "text",
-            "second_count_title": "text"
+            "title": "text"
         }
     }
 }
