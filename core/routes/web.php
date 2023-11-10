@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Twilio\TwiML\Video\Room;
+use Spatie\Sitemap\SitemapGenerator;
+use Spatie\Sitemap\Tags\Url;
 
 Route::get('/clear', function () {
     \Illuminate\Support\Facades\Artisan::call('optimize:clear');
@@ -291,6 +293,10 @@ Route::post('api/fetch-locations', 'SiteController@fetchLocation')->name('fetchl
 Route::get('/menu/{slug}/{id}', 'SiteController@footerMenu')->name('footer.menu');
 Route::get('/add/{id}', 'SiteController@adclicked')->name('add.clicked');
 Route::post('/subscribe', 'SiteController@subscribe')->name('subscribe');
+
+Route::get("sitemap.xml", function () {
+    return \Illuminate\Support\Facades\Redirect::to('sitemap.xml');
+});
 
 Route::get('/sms-page', 'SiteController@sms_page')->name('sms.page');
 Route::post('/send-sms', 'SiteController@send_sms')->name('send.sms');
