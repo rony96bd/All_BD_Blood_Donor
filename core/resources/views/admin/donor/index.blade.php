@@ -8,6 +8,7 @@
                         <table class="table table--light style--two">
                             <thead>
                                 <tr>
+                                    <th>@lang('Serial')</th>
                                     <th>@lang('Name - Profession')</th>
                                     <th>@lang('Email - Phone')</th>
                                     <th>@lang('Blood Group - Location')</th>
@@ -20,8 +21,14 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                $sn_count = 1;
+                                @endphp
                                 @forelse($donors as $donor)
                                     <tr>
+                                        <td data-label="@lang('Serial')">
+                                            <span>{{ __($sn_count++) }}</span>
+                                        </td>
                                         <td data-label="@lang('Name - Profession')">
                                             <span>{{ __($donor->name) }}</span><br>
                                             <span>{{ __($donor->profession) }}</span>
