@@ -132,7 +132,8 @@
                                 <li>
                                     <span class="caption"><i class="fa-brands fa-facebook"></i> Facebook</span>
                                     @if (auth()->guard('donor')->check())
-                                        <span class="value"><a target="_blank" href="{{ __($donor->facebook) }}">{{ __($donor->facebook) }} </a></span>
+                                        <span class="value"><a target="_blank"
+                                                href="{{ __($donor->facebook) }}">{{ __($donor->facebook) }} </a></span>
                                     @else
                                         <span class="value">
                                             <p class="popup" style="color: #00B074;" onclick="myFunction1()">
@@ -177,21 +178,25 @@
                                                 </span>
                                     @endif
                                 </li>
-                                <li>
-                                    <span class="caption">Secondary Phone</span>
-                                    @if (auth()->guard('donor')->check())
-                                        <span class="value">{{ __($donor->phone2) }} <a
-                                                href="tel:{{ __($donor->phone2) }}"> <i class="fa fa-phone"></i> কল
-                                                দিন</a></span>
-                                    @else
-                                        <span class="value">01xxxxxxxxx <p class="popup" style="color: #00B074;"
-                                                onclick="myFunction3()"> <i class="fa fa-phone"></i> কল দিন
-                                                <span class="popuptext" id="myPopup3">
-                                                    মোবাইল নম্বর দেখতে <a href="{{ route('apply.donor') }}"> Signup </a>
-                                                    করে <a href="{{ route('donor.login') }}"> Login </a> করুন</a>
-                                                </span>
-                                    @endif
-                                </li>
+                                @if ($donor->phone2 == null)
+                                @else
+                                    <li>
+                                        <span class="caption">Secondary Phone</span>
+                                        @if (auth()->guard('donor')->check())
+                                            <span class="value">{{ __($donor->phone2) }} <a
+                                                    href="tel:{{ __($donor->phone2) }}"> <i class="fa fa-phone"></i> কল
+                                                    দিন</a></span>
+                                        @else
+                                            <span class="value">01xxxxxxxxx <p class="popup" style="color: #00B074;"
+                                                    onclick="myFunction3()"> <i class="fa fa-phone"></i> কল দিন
+                                                    <span class="popuptext" id="myPopup3">
+                                                        মোবাইল নম্বর দেখতে <a href="{{ route('apply.donor') }}"> Signup
+                                                        </a>
+                                                        করে <a href="{{ route('donor.login') }}"> Login </a> করুন</a>
+                                                    </span>
+                                        @endif
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </div>
