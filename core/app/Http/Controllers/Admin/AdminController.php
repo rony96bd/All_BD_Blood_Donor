@@ -25,7 +25,7 @@ class AdminController extends Controller
         $city = City::count();
         $locations = Location::count();
         $ads = Advertisement::count();
-        $don['all'] = Donor::count();
+        $don['all'] = Donor::where('status', 0)->where('status', 1)->count();
         $don['pending'] = Donor::where('status', 0)->count();
         $don['approved'] = Donor::where('status', 1)->count();
         $don['banned'] = Donor::where('status', 2)->count();
