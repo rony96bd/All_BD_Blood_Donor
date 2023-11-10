@@ -1,8 +1,9 @@
 <?php
 
+use App\Models\Donor;
 use Illuminate\Support\Facades\Route;
 use Twilio\TwiML\Video\Room;
-use Spatie\Sitemap\SitemapGenerator;
+use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 
 Route::get('/clear', function () {
@@ -294,8 +295,26 @@ Route::get('/menu/{slug}/{id}', 'SiteController@footerMenu')->name('footer.menu'
 Route::get('/add/{id}', 'SiteController@adclicked')->name('add.clicked');
 Route::post('/subscribe', 'SiteController@subscribe')->name('subscribe');
 
-Route::get("sitemap.xml", function () {
-    return \Illuminate\Support\Facades\Redirect::to('sitemap.xml');
+Route::get('/sitemap.xml', function () {
+    $donors = \App\Models\Donor::all();
+    $sitemap = Sitemap::create();
+
+    // Add URLs to the sitemap
+    $sitemap->add(Url::create('/'));
+    $sitemap->add(Url::create('/about-us'));
+    $sitemap->add(Url::create('/blog'));
+    $sitemap->add(Url::create('/blood-request'));
+    $sitemap->add(Url::create('/contact'));
+    $sitemap->add(Url::create('/donor-list'));
+
+    foreach ($donors as $donor) {
+        $sitemap->add('donor-list/' . slug($donor->name) . '/' .  $donor->id);
+    }
+
+    $sitemap->add(Url::create('/menu/privacy-policy/42'));
+    $sitemap->add(Url::create('/menu/terms-of-service/43'));
+    // Generate the sitemap
+    return $sitemap->toResponse('sitemap.xml');
 });
 
 Route::get('/sms-page', 'SiteController@sms_page')->name('sms.page');
