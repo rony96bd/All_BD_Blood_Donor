@@ -28,7 +28,7 @@ class AdminController extends Controller
         $don['all'] = Donor::count();
         $don['pending'] = Donor::where('status', 0)->count();
         $don['approved'] = Donor::where('status', 1)->count();
-        $don['banned'] = Donor::where('status', 0)->count();
+        $don['banned'] = Donor::where('status', 2)->count();
         $donors = Donor::orderBy('id', 'DESC')->with('blood', 'location')->limit(8)->get();
         return view('admin.dashboard', compact('pageTitle', 'don', 'blood', 'city', 'locations', 'ads', 'donors'));
     }

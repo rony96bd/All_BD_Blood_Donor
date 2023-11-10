@@ -238,7 +238,7 @@
                             <div class="form-group col-lg-6">
                                 <label for="phone2">@lang('Secondary Phone')</label>
                                 <input type="text" name="phone2" id="phone2" value="{{ old('phone2') }}"
-                                    placeholder="@lang('Enter Phone')" class="form-control" maxlength="11" required="">
+                                    placeholder="@lang('Enter Phone')" class="form-control" maxlength="11">
                             </div>
                             <!-- পাসওয়ার্ড ----------------------------------->
                             <div class="form-group col-lg-6">
