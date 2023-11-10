@@ -26,17 +26,17 @@
                         <span class="text-light mb1" style="font-size: 14px">POWERED BY <i
                                 class="fa fa-chevron-circle-right" aria-hidden="true"></i></span><span
                             style="color: #00e999"> MA GROUP</span><br>
-                            <p style="margin-top: 5px;"><span
+                        <p style="margin-top: 5px;"><span
                                 style="background-color: #00e999; border-radius: 5px 0px 0px 5px; padding: 3px 6px 0px 6px; color: black;">
                                 Total Donor</span><span
                                 style="font-size: 16px; color: hsl(0, 100%, 39%); font-weight: bold; background-color: #ffffff; padding: 3px 4px 0px 5px; border-radius: 0px 5px 5px 0px;">{{ $don['all'] }}</span>
                         </p>
                     </div>
                     <p style="margin-top: 5px; margin-bottom: -18px;"><span
-                        style="background-color: #00e999; border-radius: 5px 0px 0px 5px; padding: 3px 6px 0px 6px; color: black;">
-                        Total Hits</span><span
-                        style="font-size: 16px; color: hsl(0, 100%, 39%); font-weight: bold; background-color: #ffffff; padding: 3px 4px 0px 5px; border-radius: 0px 5px 5px 0px;">{{ __($general->counter) }}</span>
-                </p>
+                            style="background-color: #00e999; border-radius: 5px 0px 0px 5px; padding: 3px 6px 0px 6px; color: black;">
+                            Total Hits</span><span
+                            style="font-size: 16px; color: hsl(0, 100%, 39%); font-weight: bold; background-color: #ffffff; padding: 3px 4px 0px 5px; border-radius: 0px 5px 5px 0px;">{{ __($general->counter) }}</span>
+                    </p>
                 </div>
                 <div class="col-xl-2 col-lg-3 col-sm-6 order-lg-2 order-3">
                     <div class="footer-widget">
@@ -71,27 +71,30 @@
                                     href="mailto:{{ __($contact->data_values->email_address) }}">{{ __($contact->data_values->email_address) }}</a>
                             </li>
                             <li><i class="las la-envelope"></i>  <a
-                                    href="mailto:{{ __($contact->data_values->email_address) }}">{{ __($contact->data_values->email_address) }}</a>
+                                    href="mailto:{{ __($contact->data_values->secondary_email_address) }}">{{ __($contact->data_values->secondary_email_address) }}</a>
                             </li>
                             <li><i class="las la-phone-volume"></i>  <a
                                     href="tel:{{ __($contact->data_values->contact_number) }}">{{ __($contact->data_values->contact_number) }}</a>
                             </li>
+                            <li><i class="las la-phone-volume"></i>  <a
+                                    href="tel:{{ __($contact->data_values->secondary_contact_number) }}">{{ __($contact->data_values->secondary_contact_number) }}</a>
+                            </li>
                             <hr>
                             <li>Follow Us</li>
                             <li>
-                                <a href="{{__($socialData->fb)}}" style="margin: 0 6px;" target="_blank">
+                                <a href="{{ __($socialData->fb) }}" style="margin: 0 6px;" target="_blank">
                                     <i class="fa-brands fa-square-facebook tex-light"></i>
                                 </a>
-                                <a href="{{__($socialData->yt)}}" style="margin: 0 6px;" target="_blank">
+                                <a href="{{ __($socialData->yt) }}" style="margin: 0 6px;" target="_blank">
                                     <i class="fa fa-youtube"></i>
                                 </a>
-                                <a href="{{__($socialData->linkedin)}}" style="margin: 0 6px;" target="_blank">
+                                <a href="{{ __($socialData->linkedin) }}" style="margin: 0 6px;" target="_blank">
                                     <i class="fa-brands fa-linkedin"></i>
                                 </a>
-                                <a href="{{__($socialData->pin)}}" style="margin: 0 6px;" target="_blank">
+                                <a href="{{ __($socialData->pin) }}" style="margin: 0 6px;" target="_blank">
                                     <i class="fa-brands fa-pinterest"></i>
                                 </a>
-                                <a href="{{__($socialData->twitter)}}" style="margin: 0 6px;" target="_blank">
+                                <a href="{{ __($socialData->twitter) }}" style="margin: 0 6px;" target="_blank">
                                     <i class="fa-brands fa-twitter"></i>
                                 </a>
                             </li>
