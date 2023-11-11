@@ -100,6 +100,24 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('password', 'AdminController@password')->name('password');
         Route::post('password', 'AdminController@passwordUpdate')->name('password.update');
 
+        // Donor
+        Route::get('donor/create', 'ManageDonorController@create')->name('donor.create');
+        Route::post('donor/store', 'ManageDonorController@store')->name('donor.store');
+        Route::get('donor/list', 'ManageDonorController@index')->name('donor.index');
+        Route::get('donor/pending', 'ManageDonorController@pending')->name('donor.pending');
+        Route::get('donor/approved', 'ManageDonorController@approved')->name('donor.approved');
+        Route::get('donor/banned', 'ManageDonorController@banned')->name('donor.banned');
+        Route::get('donor/referer', 'ManageDonorController@referer')->name('donor.referer');
+        Route::get('donor/edit/{id}', 'ManageDonorController@edit')->name('donor.edit');
+        Route::post('donor/update/{id}', 'ManageDonorController@update')->name('donor.update');
+        Route::post('donor/approved/status', 'ManageDonorController@approvedStatus')->name('donor.approved.status');
+        Route::post('donor/banned/status', 'ManageDonorController@bannedStatus')->name('donor.banned.status');
+        Route::get('donor/search', 'ManageDonorController@search')->name('donor.search');
+        Route::get('donor/search-data', 'ManageDonorController@searchData')->name('donor.search.data');
+        Route::get('donor/blood/search', 'ManageDonorController@donorBloodSearch')->name('donor.blood.search');
+        // Route::post('donor/featured/list/Include', 'ManageDonorController@featuredInclude')->name('donor.featured.include');
+        // Route::post('donor/featured/list/remove', 'ManageDonorController@featuredNotInclude')->name('donor.featured.remove');
+
         //Blood
         Route::get('blood/list', 'BloodController@index')->name('blood.index');
         Route::post('blood/store', 'BloodController@store')->name('blood.store');
@@ -126,27 +144,6 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('division/list', 'DivisionController@index')->name('division.index');
         Route::post('division/store', 'DivisionController@store')->name('division.store');
         Route::post('division/update', 'DivisionController@update')->name('division.update');
-
-        // Donor
-        Route::get('donor/list', 'ManageDonorController@index')->name('donor.index');
-        Route::get('donor/pending', 'ManageDonorController@pending')->name('donor.pending');
-        Route::get('donor/approved', 'ManageDonorController@approved')->name('donor.approved');
-        Route::get('donor/banned', 'ManageDonorController@banned')->name('donor.banned');
-        Route::get('donor/referer', 'ManageDonorController@referer')->name('donor.referer');
-
-        Route::get('donor/create', 'ManageDonorController@create')->name('donor.create');
-
-        Route::post('donor/store', 'ManageDonorController@store')->name('donor.store');
-
-        Route::get('donor/edit/{id}', 'ManageDonorController@edit')->name('donor.edit');
-        Route::post('donor/update/{id}', 'ManageDonorController@update')->name('donor.update');
-        Route::post('donor/approved/status', 'ManageDonorController@approvedStatus')->name('donor.approved.status');
-        Route::post('donor/banned/status', 'ManageDonorController@bannedStatus')->name('donor.banned.status');
-        Route::get('donor/search', 'ManageDonorController@search')->name('donor.search');
-        Route::get('donor/search-data', 'ManageDonorController@searchData')->name('donor.search.data');
-        Route::get('donor/blood/search', 'ManageDonorController@donorBloodSearch')->name('donor.blood.search');
-        Route::post('donor/featured/list/Include', 'ManageDonorController@featuredInclude')->name('donor.featured.include');
-        Route::post('donor/featured/list/remove', 'ManageDonorController@featuredNotInclude')->name('donor.featured.remove');
 
         // Blood Request
         Route::get('blood-request/list', 'BloodRequestController@index')->name('blood-request.index');
