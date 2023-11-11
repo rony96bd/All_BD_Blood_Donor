@@ -75,7 +75,7 @@
                             $division_name = App\Models\Division::where('id', $division)->first();
                             $city_name = App\Models\City::where('id', $city)->first();
                         @endphp
-                        {{ $division_name->name }} > {{ $city_name->name }} - ( {{ $don_count }} )
+                        {{ $division_name->name ?? ""}} > {{ $city_name->name ?? ""}} - ( {{ $don_count }} )
                     </nav>
                 </div>
         </section>
