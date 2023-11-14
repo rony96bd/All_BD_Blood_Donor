@@ -124,7 +124,7 @@ class SiteController extends Controller
         if ($request->division_id) {
             $donors = $donors->where('division_id', $request->division_id);
         }
-        $donors = $donors->with('blood', 'division', 'city', 'location')->paginate(getPaginate(10));
+        $donors = $donors->with('blood', 'division', 'city', 'location')->get();
         $don_count =  $donors->count();
         return view($this->activeTemplate . 'donor', compact('pageTitle', 'don_count', 'emptyMessage', 'donors', 'divisions', 'cities', 'locations', 'bloods', 'locationId', 'cityId', 'divisionId',  'bloodId'));
     }
