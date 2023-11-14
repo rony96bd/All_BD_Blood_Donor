@@ -111,7 +111,7 @@ class SiteController extends Controller
         $locationId = $request->location_id;
         $cityId = $request->city_id;
         $bloodId = $request->blood_id;
-        $donors = Donor::where('status', 1);
+        $donors = Donor::where('status', 1)->paginate(getPaginate());
         if ($request->blood_id) {
             $donors = $donors->where('blood_id', $request->blood_id)->paginate(getPaginate());
         }
