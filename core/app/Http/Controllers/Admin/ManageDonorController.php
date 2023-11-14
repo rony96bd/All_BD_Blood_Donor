@@ -19,7 +19,7 @@ class ManageDonorController extends Controller
         $pageTitle = "Manage Donor List";
         $emptyMessage = "No data found";
         $bloods = Blood::where('status', 1)->select('id', 'name')->get();
-        $donors = Donor::latest()->with('blood', 'location')->paginate(getPaginate());
+        $donors = Donor::where('status', 1)->latest()->with('blood', 'location')->paginate(getPaginate());
 
         return view('admin.donor.index', compact('pageTitle', 'emptyMessage', 'donors', 'bloods'));
     }
