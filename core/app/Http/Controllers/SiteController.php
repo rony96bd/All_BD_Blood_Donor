@@ -149,7 +149,7 @@ class SiteController extends Controller
 
     public function bloodGroup($slug, $id)
     {
-        $blood = Blood::where('status', 1)->where('id', decrypt($id))->firstOrFail();
+        $blood = Blood::where('status', 1)->where('id', $id)->firstOrFail();
         $pageTitle = $blood->name . " Blood Group Donor";
         $emptyMessage = "No data found";
         $bloods = Blood::where('status', 1)->select('id', 'name')->get();

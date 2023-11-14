@@ -28,7 +28,7 @@
             @foreach ($bloods as $blood)
                 <div class="col-lg-3 col-sm-4 col-6">
                     <div class="avaiable-blood-single has--link">
-                        <a href="{{ route('blood.group.donor', [slug($blood->name), encrypt($blood->id)]) }}"
+                        <a href="{{ route('blood.group.donor', [slug($blood->name), $blood->id]) }}"
                             class="item--link"></a>
                         <h6 class="avaiable-blood-single__name"><i class="las la-tint"></i>{{ __($blood->name) }}</h6>
                         <span class="avaiable-blood-single__amount">{{ $blood->donor->count() }}</span>
