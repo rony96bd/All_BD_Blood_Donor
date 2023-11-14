@@ -113,16 +113,16 @@ class SiteController extends Controller
         $bloodId = $request->blood_id;
         $donors = Donor::where('status', 1)->paginate(getPaginate());
         if ($request->blood_id) {
-            $donors = $donors->where('blood_id', $request->blood_id)->paginate(getPaginate());
+            $donors = $donors->where('blood_id', $request->blood_id);
         }
         if ($request->city_id) {
-            $donors = $donors->where('city_id', $request->city_id)->paginate(getPaginate());
+            $donors = $donors->where('city_id', $request->city_id);
         }
         if ($request->location_id) {
-            $donors = $donors->where('location_id', $request->location_id)->paginate(getPaginate());
+            $donors = $donors->where('location_id', $request->location_id);
         }
         if ($request->division_id) {
-            $donors = $donors->where('division_id', $request->division_id)->paginate(getPaginate());
+            $donors = $donors->where('division_id', $request->division_id);
         }
         // $donors = $donors->with('blood', 'division', 'city', 'location')->paginate(getPaginate());
         $don_count =  $donors->count();
