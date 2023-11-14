@@ -941,7 +941,9 @@ body::-webkit-scrollbar-thumb,
 }
 
 .avaiable-blood-single__name {
-    color: #fff;
+    color: #FB3640;
+        font-weight: 600;
+        height: 75px;
 }
 .t-company-thumb,
 .hero__blood-search-form,
@@ -969,7 +971,7 @@ body::-webkit-scrollbar-thumb,
 }
 
 .avaiable-blood-single__amount {
-    color: #fff;
+    color: #000;
 }
 
 .about-thumb img,
@@ -3558,7 +3560,7 @@ label {
     overflow: hidden;
     border: #ddd solid 1px;
     background-position: center;
-        background-image: url(https://uxwing.com/wp-content/themes/uxwing/download/medical-science-lab/blood-drop-icon.png);
+        background-image: url('../blood-drop-icon.png');
         background-size: contain;
         background-repeat: no-repeat;
         height: 180px;
@@ -3606,8 +3608,8 @@ label {
     margin-top: 16px;
 }
 .avaiable-blood-single__name {
-    font-size: 2.00rem;
-        padding-top: 36px;
+    font-size: 27px;
+        padding-top: 46px;
 }
 .custom-btn {
     background: #ff2121;
