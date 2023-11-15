@@ -363,6 +363,10 @@
                                     class="form--control" maxlength="10" required="">
                                 <p id="conpasscheck" style="color: red;">**Password didn't match</p>
                             </div>
+                            <div class="form-group col-lg-12">
+                                <label for="password_confirmation">@lang('About Donor')</label>
+                                <textarea class="form-control" name="about_me" maxlength="200"></textarea>
+                            </div>
                             <!-- ছবি আপলোড ---------------------------------------->
                             <div>
                                 <div class="avatar-upload">

@@ -318,13 +318,12 @@ class SiteController extends Controller
     public function applyDonorstore(Request $request)
     {
         $dob = $request->year . "-" . $request->month . "-" . $request->day;
+
         if ($request->bday && $request->bmonth && $request->byear) {
             $last_donate = $request->byear . "-" . $request->bmonth . "-" . $request->bday;
         } else {
-            $last_donate = "";
+            $last_donate = null;
         }
-
-        $last_donate = $request->byear . "-" . $request->bmonth . "-" . $request->bday;
 
         $numberExists = Donor::where('phone', $request->phone)->orWhere('phone2', $request->phone)->first();
 
@@ -391,6 +390,7 @@ class SiteController extends Controller
             $donor->phone = $request->phone;
             $donor->phone2 = $request->phone2;
             $donor->password = Hash::make($request->password);
+            $donor->about_me = $request->about_me;
             $donor->save();
 
             $validToken = verificationCode(6);
