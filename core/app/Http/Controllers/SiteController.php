@@ -112,20 +112,24 @@ class SiteController extends Controller
         $cityId = $request->city_id;
         $bloodId = $request->blood_id;
         // $donors = Donor::where('status', 1);
+        $donors = Donor::where('blood_id', 'like', '%' . $request->blood_id . '%')
+            ->orWhere('city_id', 'like', '%' . $request->city_id . '%')
+            ->orWhere('location_id', 'like', '%' . $request->location_id . '%')
+            ->orWhere('division_id', 'like', '%' . $request->division_id . '%')
+            ->latest()->with('blood', 'division', 'city', 'location')->where('status', 1)->paginate(getPaginate());
 
-
-        if ($request->blood_id) {
-            $donors = Donor::where('blood_id', $request->blood_id)->where('status', 1)->with('blood', 'division', 'city', 'location')->get();
-        }
-        if ($request->city_id) {
-            $donors = Donor::where('city_id', $request->city_id)->where('status', 1)->with('blood', 'division', 'city', 'location')->get();
-        }
-        if ($request->location_id) {
-            $donors = Donor::where('location_id', $request->location_id)->where('status', 1)->with('blood', 'division', 'city', 'location')->get();
-        }
-        if ($request->division_id) {
-            $donors = Donor::where('division_id', $request->division_id)->where('status', 1)->with('blood', 'division', 'city', 'location')->get();
-        }
+        // if ($request->blood_id) {
+        //     $donors = Donor::where('blood_id', $request->blood_id)->where('status', 1)->with('blood', 'division', 'city', 'location')->get();
+        // }
+        // if ($request->city_id) {
+        //     $donors = Donor::where('city_id', $request->city_id)->where('status', 1)->with('blood', 'division', 'city', 'location')->get();
+        // }
+        // if ($request->location_id) {
+        //     $donors = Donor::where('location_id', $request->location_id)->where('status', 1)->with('blood', 'division', 'city', 'location')->get();
+        // }
+        // if ($request->division_id) {
+        //     $donors = Donor::where('division_id', $request->division_id)->where('status', 1)->with('blood', 'division', 'city', 'location')->get();
+        // }
         // $donors = $donors->with('blood', 'division', 'city', 'location')->paginate(getPaginate());
         $don_count =  $donors->count();
         return view($this->activeTemplate . 'donor_search', compact('pageTitle', 'don_count', 'emptyMessage', 'donors', 'divisions', 'cities', 'locations', 'bloods', 'locationId', 'cityId', 'divisionId',  'bloodId'));
