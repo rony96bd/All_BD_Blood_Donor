@@ -116,7 +116,7 @@ class SiteController extends Controller
             ->where('city_id', 'like', '%' . $request->city_id . '%')
             ->where('location_id', 'like', '%' . $request->location_id . '%')
             ->where('division_id', 'like', '%' . $request->division_id . '%')
-        ->latest()->with('blood', 'division', 'city', 'location')->where('status', 1)->paginate();
+        ->latest()->with('blood', 'division', 'city', 'location')->where('status', 1)->get();
 
         // if ($request->blood_id) {
         //     $donors = Donor::where('blood_id', $request->blood_id)->where('status', 1)->with('blood', 'division', 'city', 'location')->get();
