@@ -128,7 +128,7 @@ class SiteController extends Controller
         }
         // $donors = $donors->with('blood', 'division', 'city', 'location')->paginate(getPaginate());
         $don_count =  $donors->count();
-        return view($this->activeTemplate . 'donor', compact('pageTitle', 'don_count', 'emptyMessage', 'donors', 'divisions', 'cities', 'locations', 'bloods', 'locationId', 'cityId', 'divisionId',  'bloodId'));
+        return view($this->activeTemplate . 'donor_search', compact('pageTitle', 'don_count', 'emptyMessage', 'donors', 'divisions', 'cities', 'locations', 'bloods', 'locationId', 'cityId', 'divisionId',  'bloodId'));
     }
 
     public function contactWithDonor(Request $request)
