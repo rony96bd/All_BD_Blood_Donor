@@ -113,9 +113,9 @@ class SiteController extends Controller
         $bloodId = $request->blood_id;
         // $donors = Donor::where('status', 1);
         $donors = Donor::where('blood_id', 'like', '%' . $request->blood_id . '%')
-            ->orWhere('city_id', 'like', '%' . $request->city_id . '%')
-            ->orWhere('location_id', 'like', '%' . $request->location_id . '%')
-            ->orWhere('division_id', 'like', '%' . $request->division_id . '%')
+            ->where('city_id', 'like', '%' . $request->city_id . '%')
+            ->where('location_id', 'like', '%' . $request->location_id . '%')
+            ->where('division_id', 'like', '%' . $request->division_id . '%')
             ->latest()->with('blood', 'division', 'city', 'location')->where('status', 1)->paginate(getPaginate());
 
         // if ($request->blood_id) {
