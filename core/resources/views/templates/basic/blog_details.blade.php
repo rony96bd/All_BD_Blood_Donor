@@ -244,7 +244,7 @@
 @endsection
 @section('scripts')
     <script>
-        $.getJSON("https://api.countapi.xyz/hit/roktodin.com/visits", function(response) {
+        $.getJSON("https://api.countapi.xyz/hit/roktodin.com/", function(response) {
             $("#visits").text(response.value);
         });
         $(document).ready(function() {
