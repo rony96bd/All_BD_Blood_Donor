@@ -27,7 +27,7 @@
         <div class="row justify-content-center gy-4">
             @foreach ($bloods as $blood)
                 <div class="col-lg-3 col-sm-4 col-6">
-                    <div class="avaiable-blood-single has--link">
+                    <div class="avaiable-blood-single has--link" style="box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.75)">
                         <a href="{{ route('blood.group.donor', [slug($blood->name), $blood->id]) }}"
                             class="item--link"></a>
                         <h6 class="avaiable-blood-single__name"><i class="las la-tint"></i>{{ __($blood->name) }}</h6>
