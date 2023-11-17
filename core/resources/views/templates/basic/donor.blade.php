@@ -1,11 +1,7 @@
 @extends($activeTemplate . 'layouts.frontend')
 @section('content')
     @include($activeTemplate . 'partials.breadcrumb')
-    <div class="adv2 text-center">
-        @php
-            echo advertisements('All_Donor_Top_Mobile');
-        @endphp
-    </div>
+
     <div class="donor-search-area">
         <div class="container">
             <form method="GET" action="{{ route('donor.search') }}" class="hero__blood-search-form">
@@ -47,6 +43,12 @@
                 </div>
             </form>
         </div>
+    </div>
+
+    <div class="adv2 text-center">
+        @php
+            echo advertisements('All_Donor_Top_Mobile');
+        @endphp
     </div>
     <style>
         .section-header h4::after {
