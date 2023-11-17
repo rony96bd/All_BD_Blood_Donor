@@ -22,7 +22,6 @@ class AdvertisementController extends Controller
         $request->validate([
             'name' => 'required|max:60',
             'type' => 'required|in:1,2',
-            'size' => 'required|in:220x474,261x474,820x213,416x554,320x50,1140x320, 1140x1140',
         ]);
         if($request->type == 1){
             $request->validate([
@@ -43,10 +42,10 @@ class AdvertisementController extends Controller
         if($request->adimage){
             list($width, $height) = getimagesize($request->adimage);
             $size = $width.'x'.$height;
-            if($request->size != $size){
-                $notify[]=['error','Sorry image size has to be '.$request->size];
-                return back()->withNotify($notify);
-            }
+            // if($request->size != $size){
+            //     $notify[]=['error','Sorry image size has to be '.$request->size];
+            //     return back()->withNotify($notify);
+            // }
             try {
                 $advr->image = uploadImage($request->adimage, $path);
             } catch (\Exception $exp) {
@@ -72,7 +71,6 @@ class AdvertisementController extends Controller
         $advr = Advertisement::findOrFail($id);
         $request->validate([
             'name' => 'required|max:40',
-            'size' => 'required|in:220x474,261x474,820x213,416x554,320x50,1140x320,1140x1140',
         ]);
         if($advr->type == 1){
             $request->validate([
@@ -90,12 +88,12 @@ class AdvertisementController extends Controller
         $advr->size = $request->size;
         $path = imagePath()['advertisement']['path'];
         if($request->adimage){
-            list($width, $height) = getimagesize($request->adimage);
-            $size = $width.'x'.$height;
-            if($request->size != $size){
-                $notify[]=['error','Sorry image size has to be '.$request->size];
-                return back()->withNotify($notify);
-            }
+            // list($width, $height) = getimagesize($request->adimage);
+            // $size = $width.'x'.$height;
+            // if($request->size != $size){
+            //     $notify[]=['error','Sorry image size has to be '.$request->size];
+            //     return back()->withNotify($notify);
+            // }
             try {
                 $advr->image = uploadImage($request->adimage,$path,null,$advr->image);
             } catch (\Exception $exp) {
