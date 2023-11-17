@@ -18,12 +18,13 @@
                         Your Refer ID: <a
                             href="{{ route('apply.donor') }}?ref={{ auth()->guard('donor')->user()->referer_id }}">
                             {{ route('apply.donor') }}?ref={{ auth()->guard('donor')->user()->referer_id }}</a><button
-                                id="copyBtn" style="
+                            id="copyBtn"
+                            style="
                                 background: none;
                                 color: currentColor;
                             "
-                                data-text="{{ route('apply.donor') }}?ref={{ auth()->guard('donor')->user()->referer_id }}"><i
-                                    class="fa-solid fa-copy"></i></button></span>
+                            data-text="{{ route('apply.donor') }}?ref={{ auth()->guard('donor')->user()->referer_id }}"><i
+                                class="fa-solid fa-copy"></i></button></span>
 
 
                     <script>
@@ -48,6 +49,7 @@
                                             <table class="table table-striped">
                                                 <thead>
                                                     <tr>
+                                                        <th>@lang('ক্রমিক')</th>
                                                         <th>@lang('ছবি')</th>
                                                         <th>@lang('নাম')</th>
                                                         <th>@lang('ঠিকানা')</th>
@@ -56,8 +58,14 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @php
+                                                        $sn_count = 1;
+                                                    @endphp
                                                     @forelse($referers as $referer)
                                                         <tr>
+                                                            <td data-label="@lang('Serial')">
+                                                                <span>{{ __($sn_count++) }}</span>
+                                                            </td>
                                                             <td>
                                                                 <span>
                                                                     <img src="{{ getImage('assets/images/donor/' . $referer->image ?? '', imagePath()['donor']['size']) }}"
