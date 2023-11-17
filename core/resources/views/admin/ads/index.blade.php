@@ -11,7 +11,7 @@
                                     <th scope="col">@lang('Name')</th>
                                     <th scope="col">@lang('Advertisement Type')</th>
                                     <th scope="col">@lang('Total Click')</th>
-                                    <th scope="col">@lang('Ad Size')</th>
+                                    {{-- <th scope="col">@lang('Ad Size')</th> --}}
                                     <th scope="col">@lang('Total Impression')</th>
                                     <th scope="col">@lang('Status')</th>
                                     <th scope="col">@lang('Last Update')</th>
@@ -52,10 +52,10 @@
                                             {{ __($advr->click) }}
                                         </td>
 
-                                        <td data-label=">@lang('Ad Size')">
+                                        {{-- <td data-label=">@lang('Ad Size')">
                                             <span
                                                 class="text--small badge font-weight-normal badge--primary">{{ __($advr->size) }}</span>
-                                        </td>
+                                        </td> --}}
 
                                         <td data-label="@lang('Total Impression')">
                                             {{ __($advr->impression) }}
@@ -117,12 +117,12 @@
                             <label for="name" class="font-weight-bold">@lang('Name')</label>
                             <select class="form-control form-control-lg" name="name" id="name">
                                 <option value="">@lang('Select AD Place Name')</option>
-                                <option value="Front_Top">@lang('Front Top')</option>
-                                <option value="After_Banner1">@lang('After Banner 1')</option>
-                                <option value="After_Banner2">@lang('After Banner 2')</option>
-                                <option value="After_Banner3">@lang('After Banner 3')</option>
-                                <option value="All_Donor_Left">@lang('All Donor Left')</option>
-                                <option value="All_Donor_Right">@lang('All Donor Right')</option>
+                                <option value="Front_Top">@lang('Front Top (820x200)')</option>
+                                <option value="After_Banner1">@lang('After Banner 1 (1140x320)')</option>
+                                <option value="After_Banner2">@lang('After Banner 2 (1140x320)')</option>
+                                <option value="After_Banner3">@lang('After Banner 3 (1140x320)')</option>
+                                <option value="All_Donor_Left">@lang('All Donor Left (220x474)')</option>
+                                <option value="All_Donor_Right">@lang('All Donor Right (220x474)')</option>
                                 <option value="Single_Donor_Left">@lang('Single Donor Left')</option>
                                 <option value="Single_Donor_Right">@lang('Single Donor Right')</option>
                                 <option value="Blood_Request_Left">@lang('Blood Request Left')</option>
@@ -130,7 +130,7 @@
                             </select>
                         </div>
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="size" class="font-weight-bold">@lang('Select Ad Size')</label>
                             <select class="form-control form-control-lg" name="size" id="size">
                                 <option value="">@lang('Select Size')</option>
@@ -142,7 +142,7 @@
                                 <option value="1140x1140">@lang('1140x1140')</option>
                                 <option value="1140x320">@lang('1140x320')</option>
                             </select>
-                        </div>
+                        </div> --}}
 
                         <div class="form-group">
                             <label for="type" class="font-weight-bold">@lang('Select Type')</label>
@@ -230,7 +230,7 @@
 @push('breadcrumb-plugins')
     <button type="button" data-toggle="modal" data-target="#adModal"
         class="btn btn-sm btn--primary box--shadow1 text--small"><i
-            class="fa fa-fw fa-paper-plane"></i>@lang('Add Ads')</button>
+            class="fa fa-fw fa-paper-plane"></i> @lang('Add Ads')</button>
 @endpush
 
 @push('script')

@@ -24,7 +24,7 @@
                         $dateConverter->getConvertedDateTime('2018-09-07 12:19:50 pm', 'EnEn', ''); // Friday 7th September 2018 12:19:50 PM
                     @endphp
                 </div>
-                <div class="top-nav-bar adv text-end hidden-lg" style="width: 320px; height: 50px">
+                <div class="top-nav-bar adv text-end hidden-lg" style="width: 320px; height: 50px; margin-top: 0px;">
                     @php
                         echo advertisements('Front_Top');
                     @endphp
