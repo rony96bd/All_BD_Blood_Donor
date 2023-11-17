@@ -26,7 +26,7 @@ class AdvertisementController extends Controller
         if($request->type == 1){
             $request->validate([
                 'redirect_url' => 'required|url',
-                'adimage' => 'required|image|mimes:jpg,jpeg,png,PNG',
+                'adimage' => 'required|image|mimes:jpg,jpeg,png,PNG,webp,gif,svg',
             ]);
         }
         else{
