@@ -367,7 +367,15 @@
                     @endphp
                 </div>
             </div>
-        </div><br />
+        </div>
+
+        <br />
+        <div class="adv2 text-center">
+            @php
+                echo advertisements('Single_Donor_Bottom_Mobile');
+            @endphp
+        </div>
+        <br/>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6">
@@ -442,11 +450,6 @@
             </div>
         </div>
     </section>
-    <div class="adv2 text-center">
-        @php
-            echo advertisements('Single_Donor_Bottom_Mobile');
-        @endphp
-    </div>
 @endsection
 @section('scripts')
     <script>
