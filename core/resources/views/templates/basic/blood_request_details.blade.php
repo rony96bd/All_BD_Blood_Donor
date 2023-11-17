@@ -1,7 +1,16 @@
 @extends($activeTemplate . 'layouts.frontend')
 @section('content')
     @include($activeTemplate . 'partials.breadcrumb')
-    <section class="blog-details-section pt-50 pb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                @php
+                    echo advertisements('Single_Blood_Request_Top');
+                @endphp
+            </div>
+        </div>
+    </div>
+    <section class="blog-details-section pt-50 pb-50">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-8">
@@ -254,6 +263,7 @@
                         {{-- End Comments Section --}}
                     </div>
                 </div>
+
                 <style>
                     .sidebar .widget .widget__title::after {
                         width: 100%;
@@ -264,6 +274,7 @@
                         transition: box-shadow 0.3s ease-in-out;
                     }
                 </style>
+
                 <div class="col-lg-4 col-md-4">
                     <div class="sidebar">
                         <div class="widget" style="padding: 10px; border-radius: 10px;">
@@ -316,18 +327,21 @@
 
                             </ul>
                         </div>
-                        @php
-                            echo advertisements('416x554');
-                        @endphp
-
-                        @php
-                            echo advertisements('416x554');
-                        @endphp
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                @php
+                    echo advertisements('Single_Blood_Request_Bottom');
+                @endphp
+            </div>
+        </div>
+    </div>
+    <br />
 @endsection
 
 @section('scripts')

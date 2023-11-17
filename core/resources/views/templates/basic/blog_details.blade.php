@@ -1,6 +1,15 @@
 @extends($activeTemplate . 'layouts.frontend')
 @section('content')
     @include($activeTemplate . 'partials.breadcrumb')
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                @php
+                    echo advertisements('Single_Blog_Bottom');
+                @endphp
+            </div>
+        </div>
+    </div>
     <section class="blog-details-section pt-100 pb-100">
         <div class="container">
             <div class="row">
@@ -162,14 +171,16 @@
                                                     </div>
                                                 @endif
 
-                                                @if (auth()->guard('donor')->check() && auth()->guard('donor')->user()->id == $comment->donor_id)
-                                                <div style="position: absolute; top: 8px; right: 16px; font-size: 18px;">
-                                                    <button type="button" class="donordeleteComment btn"
-                                                        value="{{ $comment->id }}">
-                                                        <i style="color: red" class="fa-solid fa-trash"></i>
-                                                    </button>
-                                                </div>
-                                            @endif
+                                                @if (auth()->guard('donor')->check() &&
+                                                        auth()->guard('donor')->user()->id == $comment->donor_id)
+                                                    <div
+                                                        style="position: absolute; top: 8px; right: 16px; font-size: 18px;">
+                                                        <button type="button" class="donordeleteComment btn"
+                                                            value="{{ $comment->id }}">
+                                                            <i style="color: red" class="fa-solid fa-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                @endif
                                             </div>
                                             <div class="row">
                                                 <div class="col">
@@ -220,9 +231,22 @@
             </div>
         </div>
     </section>
+    <div id="visits">...</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                @php
+                    echo advertisements('Single_Blog_Bottom');
+                @endphp
+            </div>
+        </div>
+    </div>
 @endsection
 @section('scripts')
     <script>
+        $.getJSON("https://api.countapi.xyz/hit/roktodin.com/visits", function(response) {
+            $("#visits").text(response.value);
+        });
         $(document).ready(function() {
             $.ajaxSetup({
                 headers: {

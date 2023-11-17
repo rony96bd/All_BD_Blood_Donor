@@ -1,18 +1,17 @@
 @extends($activeTemplate . 'layouts.frontend')
 @section('content')
     @include($activeTemplate . 'partials.breadcrumb')
-    <section class="pt-100 pb-100">
+    <div class="adv2 text-center">
+        @php
+            echo advertisements('Blog_Top_Mobile');
+        @endphp
+    </div>
+    <section class="pt-50 pb-50">
         <div class="container">
             <div class="row">
                 <div class="col-xl-2 col-lg-3 col-md-4 d-md-block d-none">
                     @php
-                        echo advertisements('220x474');
-                    @endphp
-                    @php
-                        echo advertisements('220x474');
-                    @endphp
-                    @php
-                        echo advertisements('220x474');
+                        echo advertisements('Blog_Left');
                     @endphp
                 </div>
                 <div class="col-xl-8 col-lg-9 col-md-8">
@@ -39,22 +38,19 @@
                         @endforeach
                     </div>
                 </div>
-
-
                 <div class="col-xl-2 d-xl-block d-none">
                     @php
-                        echo advertisements('220x474');
-                    @endphp
-                    @php
-                        echo advertisements('220x474');
-                    @endphp
-                    @php
-                        echo advertisements('220x474');
+                        echo advertisements('Blog_Right');
                     @endphp
                 </div>
             </div>
         </div>
     </section>
+    <div class="adv2 text-center">
+        @php
+            echo advertisements('Blog_Bottom_Mobile');
+        @endphp
+    </div>
 
     @if ($sections->secs != null)
         @foreach (json_decode($sections->secs) as $sec)

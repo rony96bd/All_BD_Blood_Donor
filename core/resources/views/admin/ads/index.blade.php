@@ -133,6 +133,14 @@
                                 <option value="Blood_Request_Right">@lang('Blood Request Right (220x474)')</option>
                                 <option value="Blood_Request_Top_Mobile">@lang('Blood Request Top Mobile')</option>
                                 <option value="Blood_Request_Bottom_Mobile">@lang('Blood Request Bottom Mobile')</option>
+                                <option value="Single_Blood_Request_Top">@lang('Single Blood Request Top')</option>
+                                <option value="Single_Blood_Request_Bottom">@lang('Single Blood Request Bottom')</option>
+                                <option value="Blog_Left">@lang('Blog Left')</option>
+                                <option value="Blog_Right">@lang('Blog Right')</option>
+                                <option value="Blog_Top_Mobile">@lang('Blog Top Mobile')</option>
+                                <option value="Blog_Bottom_Mobile">@lang('Blog Bottom Mobile')</option>
+                                <option value="Single_Blog_Top">@lang('Single Blog Top')</option>
+                                <option value="Single_Blog_Bottom">@lang('Single Blog Bottom')</option>
                             </select>
                         </div>
 
