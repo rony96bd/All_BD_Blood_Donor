@@ -1,14 +1,19 @@
 @extends($activeTemplate . 'layouts.frontend')
 <style>
     div.sticky {
-      position: -webkit-sticky;
-      position: sticky;
-      top: 84px;
-      padding: 5px;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 84px;
+        padding: 5px;
     }
-    </style>
+</style>
 @section('content')
     @include($activeTemplate . 'partials.breadcrumb')
+    <div class="adv2 text-center">
+        @php
+            echo advertisements('Blood_Request_Top_Mobile');
+        @endphp
+    </div>
     <section class="pt-50 pb-100">
         <div class="container">
             <div class="row" style="align-items:flex-start">
@@ -32,6 +37,11 @@
             </div>
         </div>
     </section>
+    <div class="adv2 text-center">
+        @php
+            echo advertisements('Blood_Request_Bottom_Mobile');
+        @endphp
+    </div>
 
     @if ($sections->secs != null)
         @foreach (json_decode($sections->secs) as $sec)

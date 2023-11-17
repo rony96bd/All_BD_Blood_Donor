@@ -1,6 +1,11 @@
 @extends($activeTemplate . 'layouts.frontend')
 @section('content')
     @include($activeTemplate . 'partials.breadcrumb')
+    <div class="adv2 text-center">
+        @php
+            echo advertisements('All_Donor_Top_Mobile');
+        @endphp
+    </div>
     <div class="donor-search-area">
         <div class="container">
             <form method="GET" action="{{ route('donor.search') }}" class="hero__blood-search-form">
@@ -75,7 +80,7 @@
                             $division_name = App\Models\Division::where('id', $division)->first();
                             $city_name = App\Models\City::where('id', $city)->first();
                         @endphp
-                        {{ $division_name->name ?? ""}} > {{ $city_name->name ?? ""}} - ( {{ $don_count }} )
+                        {{ $division_name->name ?? '' }} > {{ $city_name->name ?? '' }} - ( {{ $don_count }} )
                     </nav>
                 </div>
         </section>
@@ -89,6 +94,7 @@
                         echo advertisements('All_Donor_Left');
                     @endphp
                 </div>
+
                 <div class="col-xl-8 col-lg-9 col-md-12">
                     <div class="row gy-4">
                         @forelse($donors as $donor)
@@ -159,11 +165,15 @@
                     @php
                         echo advertisements('All_Donor_Right');
                     @endphp
-
                 </div>
             </div>
         </div>
     </section>
+    <div class="adv2 text-center">
+        @php
+            echo advertisements('All_Donor_Bottom_Mobile');
+        @endphp
+    </div>
 @endsection
 @push('script')
     <script>

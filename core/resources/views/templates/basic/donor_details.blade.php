@@ -22,6 +22,11 @@
         $breadcrumb = getContent('breadcrumb.content', true);
     @endphp
     @include($activeTemplate . 'partials.breadcrumb')
+    <div class="adv2 text-center">
+        @php
+            echo advertisements('Single_Donor_Top_Mobile');
+        @endphp
+    </div>
     <section class="pt-50 pb-50">
         <div class="container">
             <div class="row">
@@ -437,6 +442,11 @@
             </div>
         </div>
     </section>
+    <div class="adv2 text-center">
+        @php
+            echo advertisements('Single_Donor_Bottom_Mobile');
+        @endphp
+    </div>
 @endsection
 @section('scripts')
     <script>

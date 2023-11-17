@@ -123,10 +123,16 @@
                                 <option value="After_Banner3">@lang('After Banner 3 (1140x320)')</option>
                                 <option value="All_Donor_Left">@lang('All Donor Left (220x474)')</option>
                                 <option value="All_Donor_Right">@lang('All Donor Right (220x474)')</option>
-                                <option value="Single_Donor_Left">@lang('Single Donor Left')</option>
-                                <option value="Single_Donor_Right">@lang('Single Donor Right')</option>
-                                <option value="Blood_Request_Left">@lang('Blood Request Left')</option>
-                                <option value="Blood_Request_Right">@lang('Blood Request Right')</option>
+                                <option value="All_Donor_Top_Mobile">@lang('All Donor Top Mobile')</option>
+                                <option value="All_Donor_Bottom_Mobile">@lang('All Donor Bottom Mobile')</option>
+                                <option value="Single_Donor_Left">@lang('Single Donor Left (300x600)')</option>
+                                <option value="Single_Donor_Right">@lang('Single Donor Right (300x600)')</option>
+                                <option value="Single_Donor_Top_Mobile">@lang('Single Donor Top Mobile')</option>
+                                <option value="Single_Donor_Bottom_Mobile">@lang('Single Donor Bottom Mobile')</option>
+                                <option value="Blood_Request_Left">@lang('Blood Request Left (220x474)')</option>
+                                <option value="Blood_Request_Right">@lang('Blood Request Right (220x474)')</option>
+                                <option value="Blood_Request_Top_Mobile">@lang('Blood Request Top Mobile')</option>
+                                <option value="Blood_Request_Bottom_Mobile">@lang('Blood Request Bottom Mobile')</option>
                             </select>
                         </div>
 
