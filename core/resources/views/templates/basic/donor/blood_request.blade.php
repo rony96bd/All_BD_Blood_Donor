@@ -22,6 +22,7 @@
                                             <table class="table table--light style--two">
                                                 <thead>
                                                     <tr>
+                                                        <th>@lang('ক্রমিক')</th>
                                                         <th>@lang('বিভাগ - জেলা - উপজেলা')</th>
                                                         <th>@lang('ব্লাড গ্রুপ - রোগীর সমস্যা')</th>
                                                         <th>@lang('রক্তের পরিমান')</th>
@@ -32,8 +33,14 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @php
+                                                        $sn_count = 1;
+                                                    @endphp
                                                     @forelse($bloodRequests as $bloodRequest)
                                                         <tr>
+                                                            <td data-label="@lang('Serial')">
+                                                                <span>{{ __($sn_count++) }}</span>
+                                                            </td>
                                                             <td>
                                                                 <span>বিভাগ:
                                                                     {{ __($bloodRequest->division->name) }}</span><br>
