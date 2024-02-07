@@ -295,6 +295,7 @@ Route::post('/subscribe', 'SiteController@subscribe')->name('subscribe');
 Route::get('/sitemap.xml', function () {
     $donors = \App\Models\Donor::all();
     $sitemap = Sitemap::create();
+    $blogElements = getContent('blog.element', false, 4, true);
 
     // Add URLs to the sitemap
     $sitemap->add(Url::create('/'));
@@ -304,6 +305,9 @@ Route::get('/sitemap.xml', function () {
     $sitemap->add(Url::create('/contact'));
     $sitemap->add(Url::create('/donor-list'));
 
+    foreach ($blogElements as $blogElement) {
+        $sitemap->add('blog/' . $blogElement->id . '/' . slug($blogElement->data_values->title));
+    }
     foreach ($donors as $donor) {
         $sitemap->add('donor-list/' . slug($donor->name) . '/' .  $donor->id);
     }
